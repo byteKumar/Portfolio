@@ -11,7 +11,7 @@ const projectsData = [
     description: "Explore my React portfolio—a fusion of code and creativity, showcasing a symphony of innovation in a virtual journey.",
     image: "/images/projects/portfolio3.jpeg",
     tag: ["All", "Web"],
-    gitUrl: "/",
+    gitUrl: "https://github.com/KavyaRachana/portfolio",
     previewUrl: "/",
   },
   {
@@ -20,7 +20,7 @@ const projectsData = [
     description: "Welcome to Peer Pulse, where connections resonate and ideas pulse through a dynamic network. Embrace a platform that transforms collaboration into a rhythmic exchange, fostering innovation and shared growth.",
     image: "/images/projects/peer.jpeg",
     tag: ["All", "Web"],
-    gitUrl: "/",
+    gitUrl: "https://github.com/KavyaRachana/portfolio",
     previewUrl: "/",
   },
   {
@@ -29,7 +29,7 @@ const projectsData = [
     description: "Experience cafe management redefined with our Java-powered system. Efficient, innovative, and customer-centric—it's the future of seamless operations.",
     image: "/images/projects/cafe.avif",
     tag: ["All", "Java"],
-    gitUrl: "/",
+    gitUrl: "https://github.com/KavyaRachana/Cafe-Management-System",
     previewUrl: "/",
   },
   // {
