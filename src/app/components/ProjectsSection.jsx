@@ -3,13 +3,16 @@ import React, { useState, useRef } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
+import Peer from "../../../public/peer.jpeg";
+import Portfolio from "../../../public/portfolio3.jpeg";
+import Cafe from "../../../public/cafe.avif";
 
 const projectsData = [
   {
     id: 1,
     title: "React Portfolio Website",
     description: "Explore my React portfolio—a fusion of code and creativity, showcasing a symphony of innovation in a virtual journey.",
-    image: "/images/projects/portfolio3.jpeg",
+    image: {Portfolio},
     tag: ["All", "Web"],
     gitUrl: "https://github.com/KavyaRachana/portfolio",
     previewUrl: "/",
@@ -18,7 +21,7 @@ const projectsData = [
     id: 2,
     title: "Peer Pulse",
     description: "Welcome to Peer Pulse, where connections resonate and ideas pulse through a dynamic network. Embrace a platform that transforms collaboration into a rhythmic exchange, fostering innovation and shared growth.",
-    image: "/images/projects/peer.jpeg",
+    image: {Peer},
     tag: ["All", "Web"],
     gitUrl: "https://github.com/KavyaRachana/portfolio",
     previewUrl: "/",
@@ -27,7 +30,7 @@ const projectsData = [
     id: 3,
     title: "Cafe Management",
     description: "Experience cafe management redefined with our Java-powered system. Efficient, innovative, and customer-centric—it's the future of seamless operations.",
-    image: "/images/projects/cafe.avif",
+    image:{Cafe} ,
     tag: ["All", "Java"],
     gitUrl: "https://github.com/KavyaRachana/Cafe-Management-System",
     previewUrl: "/",
