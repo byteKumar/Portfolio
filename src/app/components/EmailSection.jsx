@@ -53,15 +53,14 @@ const handleSubmit = async (e) => {
         </h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
           {" "}
-          I&apos;m currently looking for new opportunities, my inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          try my best to get back to you!
+          "I&apos;m always eager to connect! Whether you're offering a new opportunity
+           or just want to chat, feel free to drop a message – I&apos;ll get back to you as soon as I can!"
         </p>
         <div className="socials flex flex-row gap-2">
-          <Link href="https://github.com/KavyaRachana">
+          <Link href="https://github.com/varun123-prog">
             <Image src={GithubIcon} alt="Github Icon" />
           </Link>
-          <Link href="https://www.linkedin.com/in/kavya-rachana-m/">
+          <Link href="https://www.linkedin.com/in/chamankumar5/">
             <Image src={LinkedinIcon} alt="Linkedin Icon" />
           </Link>
         </div>

@@ -13,11 +13,14 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      height: {
+        'revert-layer': 'revert-layer',
+      },
     },
     colors: {
       ...colors,
-      primary: colors.purple,
-      secondary: colors.pink,
+      primary: colors.green,
+      secondary: colors.yellow,
     },
   },
   plugins: [],

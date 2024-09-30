@@ -12,12 +12,12 @@ const TAB_DATA = [
       <div style={{ display: 'flex', gap: '20px'}}>
   <ul className="list-disc pl-2">
     <div>
-      <li>C</li>
-      <li>C++</li>
       <li>Java</li>
-      <li>Python</li>
-      <li>Oracle</li>
-      <li>SQL</li>
+      <li>C++</li>
+      <li>JavScript</li>
+      <li>HTML</li>
+      <li>TypeScript</li>
+      <li>CSS</li>
     </div>
   </ul>
 
@@ -26,20 +26,31 @@ const TAB_DATA = [
       <li>MySQL</li>
       <li>PostgreSQL</li>
       <li>MongoDB</li>
-      <li>Oracle</li>
-      <li>Hadoop</li>
-      <li>HTML</li> 
+      <li>Spring</li>
+      <li>SpringBoot</li>
+      <li>JQuery</li> 
     </div>
   </ul>
 
   <ul className="list-disc pl-2">
     <div>
-      <li>CSS</li>
-      <li>TypeScript</li>
-      <li>JavaScript</li>
-      <li>Express</li>
+      <li>Redux</li>
       <li>Node.js</li>
-      <li>React</li> 
+      <li>GraphQL</li>
+      <li>Express</li>
+      <li>CI/CD</li>
+      <li>ReactJS</li> 
+    </div>
+  </ul>
+
+  <ul className="list-disc pl-2">
+    <div>
+      <li>Git</li>
+      <li>Docker</li>
+      <li>Amazon Web Services (AWS)</li>
+      <li>Terraform</li>
+      <li>RESTful APIs</li>
+      <li>AEM (Adobe Experience Manager)</li> 
     </div>
   </ul>
   
@@ -52,18 +63,18 @@ const TAB_DATA = [
     content: (
       <ul className="list-disc pl-2">
         <li><b>Northeastern University</b>
-          <p> September 2023 - May 2025 </p>
-          <p>Master of Science in Software Engineering Systems</p>
-          <p>GPA: 3.85/4</p>
-          <p>Revelant Courses: Object Oriented Design with JAVA, Web Design and User Experience, Database Management and Database Design, Network Structures and Cloud Computing
+          <p> September 2024 - May 2026 </p>
+          <p>Master of Science in Computer Science</p>
+          <p>GPA: 3.9/4</p>
+          <p>Revelant Courses: Program Design Paradigms, Web Development
 </p>
         </li>
         <br />
-        <li><b>Dadi Insitute of Engineering and Technology </b>
-            <p>May 2015 - June 2019</p>
+        <li><b>Galgotias University </b>
+            <p>August 2018 - May 2022</p>
             <p>Bachelor of Technology in Computer Science & Engineering</p>
-            <p>GPA: 8.2/10</p>
-            <p>Relevant Courses: Computer Programming, OOP with C++,  Data Structures, Concepts OF JAVA, Web Technologies, Learning Advanced JAVA, Software Engineering, DBMS
+            <p>GPA: 8.4/10</p>
+            <p>Relevant Courses: Data Structures, Algorithms, Databases, Operating Systems, Computer Networks
 </p>
         </li>
       </ul>
@@ -74,18 +85,27 @@ const TAB_DATA = [
     id: "certifications",
     content: (
       <ul className="list-disc pl-2">
-        <li>Technology Analsyt 
-          <p>December 2019 - July 2023</p>
-          <p><i>Infosys Ltd., Hyderabad, India</i></p>
-          <p>- Led a team that played a pivotal role in supporting the production of one of National Australia Bank&apos;s (NAB) largest data warehouses. Managed the execution of numerous automated scripts on a daily basis, each containing intricate business logic. Oversaw the entire lifecycle of data processes, including ingestion, engineering, and distribution, catering to 75% of the bank&apos;s global customer base.</p>
-          <p>- Engaged directly with clients to grasp their needs and requirements, advocating for them in the field to ensure project alignment. Developed tailored SQL scripts for data ingestion, addressing compatibility issues with the SQL metadata script for 80% of the received data. Collaborated closely with the QA team to guarantee a smooth transition of accurately delivered data for all banking processes.</p>
-          <p>- Provided comprehensive onboarding guidance for both onsite and offshore teams, conducting knowledge transfer trainings to enhance team capabilities.</p>
+        <li>Web Developer 
+          <p>July 2022 - August 2024</p>
+          <p><i>AKQA., Haryana, India</i></p>
+          <p>- Led the optimization of IWC Schaffhausen’s global e-commerce platform, improving customer experience, and
+          achieving a 20% increase in code coverage and a 10% reduction in ticket resolution time.</p>
+          <p>- Developed reusable components in Adobe Experience Manager (AEM) with comprehensive documentation,
+          reducing infrastructure costs by 20% and enhancing scalability.</p>
+          <p>- Ensured cross-browser compatibility and optimized website performance, using AEM, HTML, JavaScript, CSS,
+          LESS, Docker, Confluence, React, Java, Slightly and Jira.</p>
         </li>
         <br />
-        <li>Software Developer Intern
-        <p>December 2019 - July 2023</p>
-          <p><i>Global InfoTech, Hyderabad, India</i></p>
-          <p>- Established a database that encompasses authentic ratings for 60% of the applications on the Google Play Store. Developed predictive software using JAVA to optimize the efficiency of various solutions, and actively contributed to the creation of both the front end and back end of the application.</p>
+        <li>Software Engineering Intern
+        <p>November 2021 - February 2022</p>
+          <p><i>BluePi, Haryana, India</i></p>
+          <p>- Developed in-house projects using Spring Boot and Java, optimizing system efficiency and performance while reducing API calls by 10%; gained hands-on experience with AWS, managing VMs, and earning AWS Developer Associate certification.</p>
+        </li>
+        <br />
+        <li>Teaching Assistant
+        <p>August 2019 - December 2019</p>
+          <p><i>Coding Ninjas, New Delhi, India</i></p>
+          <p>- Instructed 400+ students on Object-Oriented Design and testing practices, improving project quality by 10%, while providing C++ support for Data Structures and Algorithms, and boosting student engagement by 15% through webinars and Q&A sessions.</p>
         </li>
       </ul>
     ),
@@ -109,11 +129,11 @@ const AboutSection = () => {
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
-          For the past 3.8 years, I&apos;ve been delving into the digital realms as a tech analyst, specializing in orchestrating database symphonies. With expertise in SQL, MySQL, PostgreSQL, and GIT, I thrive on unraveling the intricate dance of data.
-
-          A perpetual learner, I&apos;m always hungry to expand my knowledge and skill set. My academic journey included hands-on experiences with Object-Oriented Design, Java, JavaScript, React, Redux, Node.js, Express, HTML, and CSS.
-
-          As both a team lead and a team player, I find excitement in collaborating with others to craft extraordinary full-stack applications. Let&apos;s redefine the rhythm of technological precision together!
+          I'm Chaman Kumar, a Master's student in Computer Science at Northeastern University with over two years of experience in web development and software engineering.
+          I’ve worked at AKQA and BluePi, leading projects that optimized e-commerce platforms and improved system efficiency.
+          Skilled in Java, JavaScript, React, Node.js, AWS, and AEM, I enjoy solving complex problems and delivering scalable solutions.
+          I’ve also mentored 400+ students at Coding Ninjas, fueling my passion for both learning and teaching. 
+          Outside of work, I love exploring new cuisines, playing volleyball, and hiking.
           </p>
           <div className="flex flex-row justify-start mt-8">
             <TabButton
