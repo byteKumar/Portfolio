@@ -15,6 +15,7 @@ module.exports = {
       },
       height: {
         'revert-layer': 'revert-layer',
+        'inherit': 'inherit',
       },
     },
     colors: {

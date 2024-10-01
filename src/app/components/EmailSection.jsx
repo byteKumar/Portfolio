@@ -11,34 +11,34 @@ const EmailSection = () => {
 
 
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  const { email, subject, message } = e.target;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { email, subject, message } = e.target;
 
-  const templateParams = {
-    to_email: email.value,
-    subject: subject.value,
-    message: message.value,
-  };
+    const templateParams = {
+      to_email: email.value,
+      subject: subject.value,
+      message: message.value,
+    };
 
-  try {
-    const response = await emailjs.send(
-      'service_idq818c', // Replace with your EmailJS service ID
-      'template_uofzhrk', // Replace with your EmailJS template ID
-      templateParams,
-      'NlBxZ22mhTsX0WbvJ' // Replace with your EmailJS user ID
-    );
+    try {
+      const response = await emailjs.send(
+        'service_idq818c', // Replace with your EmailJS service ID
+        'template_uofzhrk', // Replace with your EmailJS template ID
+        templateParams,
+        'NlBxZ22mhTsX0WbvJ' // Replace with your EmailJS user ID
+      );
 
-    console.log('Email sent:', response);
+      console.log('Email sent:', response);
 
-    if (response.status === 200) {
-      console.log('Message sent.');
-      setEmailSubmitted(true);
+      if (response.status === 200) {
+        console.log('Message sent.');
+        setEmailSubmitted(true);
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
     }
-  } catch (error) {
-    console.error('Error sending email:', error);
-  }
-};
+  };
 
 
   return (
@@ -54,7 +54,7 @@ const handleSubmit = async (e) => {
         <p className="text-[#ADB7BE] mb-4 max-w-md">
           {" "}
           &quot;I&apos;m always eager to connect! Whether you&#39;re offering a new opportunity
-          or just want to chat, feel free to drop a message. I&apos;ll get back to you as soon as I can!&quot;
+          or just want to chat, feel free to drop a message. I&apos;ll get back to you as soon as I can&quot;
         </p>
         <div className="socials flex flex-row gap-2">
           <Link href="https://github.com/varun123-prog">
@@ -129,6 +129,6 @@ const handleSubmit = async (e) => {
       </div>
     </section>
   );
-        };
+};
 
 export default EmailSection;
