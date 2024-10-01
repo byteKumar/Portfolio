@@ -54,7 +54,7 @@ const handleSubmit = async (e) => {
         <p className="text-[#ADB7BE] mb-4 max-w-md">
           {" "}
           "I&apos;m always eager to connect! Whether you're offering a new opportunity
-           or just want to chat, feel free to drop a message – I&apos;ll get back to you as soon as I can!"
+           or just want to chat, feel free to drop a message. I&apos;ll get back to you as soon as I can!"
         </p>
         <div className="socials flex flex-row gap-2">
           <Link href="https://github.com/varun123-prog">

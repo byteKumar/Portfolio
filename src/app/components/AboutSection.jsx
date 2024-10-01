@@ -129,10 +129,10 @@ const AboutSection = () => {
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
-          I'm Chaman Kumar, a Master's student in Computer Science at Northeastern University with over two years of experience in web development and software engineering.
-          I’ve worked at AKQA and BluePi, leading projects that optimized e-commerce platforms and improved system efficiency.
+          I&apos;m Chaman Kumar, a Master&apos;s student in Computer Science at Northeastern University with over two years of experience in web development and software engineering.
+          I&apos;ve worked at AKQA and BluePi, leading projects that optimized e-commerce platforms and improved system efficiency.
           Skilled in Java, JavaScript, React, Node.js, AWS, and AEM, I enjoy solving complex problems and delivering scalable solutions.
-          I’ve also mentored 400+ students at Coding Ninjas, fueling my passion for both learning and teaching. 
+          I&apos;ve also mentored 400+ students at Coding Ninjas, fueling my passion for both learning and teaching. 
           Outside of work, I love exploring new cuisines, playing volleyball, and hiking.
           </p>
           <div className="flex flex-row justify-start mt-8">
