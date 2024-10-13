@@ -1,11 +1,11 @@
-import Peer from "../public/peer.jpeg";
+import Task from "../public/taskscheduler.jpg";
 
 import Portfolio from "../public/portfolio3.jpeg";
 
-import Cafe from "../public/cafe.jpg"
+import Recipe from "../public/recipe.jpg"
 
 export {
-    Peer,
+    Task,
     Portfolio,
-    Cafe
+    Recipe
 };

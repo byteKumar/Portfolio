@@ -3,8 +3,7 @@ import React, { useState, useRef } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
-import {Peer, Portfolio } from "../../../public/index.js";
-import Cafe from "../../../public/cafe.jpg"
+import {Task, Portfolio, Recipe } from "../../../public/index.js";
 
 const projectsData = [
   {
@@ -13,25 +12,25 @@ const projectsData = [
     description: "Explore my React portfolio—a fusion of code and creativity, showcasing a symphony of innovation in a virtual journey.",
     image: Portfolio,
     tag: ["All", "Web"],
-    gitUrl: "https://github.com/KavyaRachana/portfolio",
+    gitUrl: "https://github.com/byteKumar/Portfolio",
     previewUrl: "/",
   },
   {
     id: 2,
-    title: "Peer Pulse",
-    description: "Welcome to Peer Pulse, where connections resonate and ideas pulse through a dynamic network. Embrace a platform that transforms collaboration into a rhythmic exchange, fostering innovation and shared growth.",
-    image: Peer,
+    title: "Recipe Hub",
+    description: "Designed and developed a full-stack MERN (MongoDB, Express.js, React, Node.js) web application that allows users to browse, search, and save their favorite recipes.\nImplemented user authentication, recipe creation and editing functionalities, and a personalized recipe feed to enhance user engagement and experience.",
+    image: Recipe,
     tag: ["All", "Web"],
-    gitUrl: "https://github.com/KavyaRachana/portfolio",
-    previewUrl: "/",
+    gitUrl: "https://github.com/byteKumar/RecipeHub",
+    previewUrl: "https://recipehubck.netlify.app/",
   },
   {
     id: 3,
-    title: "Cafe Management",
-    description: "Experience cafe management redefined with our Java-powered system. Efficient, innovative, and customer-centric—it's the future of seamless operations.",
-    image: Cafe,
+    title: "Task Flow Planner",
+    description: "An algorithm designed to sequence and allocate project tasks efficiently based on provided constraints. It organizes Epics, Stories, and Tasks in a specified order, assigning them to available personnel while considering their skill sets and daily availability. The output is a detailed daily plan in CSV format, ensuring optimal task management and adherence to project milestones.",
+    image: Task,
     tag: ["All", "Java"],
-    gitUrl: "https://github.com/KavyaRachana/Cafe-Management-System",
+    gitUrl: "https://github.com/byteKumar/TaskFlow-Planner",
     previewUrl: "/",
   },
   // {
