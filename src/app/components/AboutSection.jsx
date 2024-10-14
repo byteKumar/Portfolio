@@ -2,58 +2,46 @@
 import React, { useTransition, useState } from "react";
 import Image from "next/image";
 import TabButton from "./TabButton";
-import AboutImage from "../../../public/about-image.png"
+import AboutImage from "../../../public/about-image.png";
 
 const TAB_DATA = [
   {
     title: "Skills",
     id: "skills",
     content: (
-      <div style={{ display: 'flex', gap: '20px' }}>
-        <ul className="list-disc pl-2">
-          <div>
-            <li>Java</li>
-            <li>C++</li>
-            <li>JavScript</li>
-            <li>HTML</li>
-            <li>TypeScript</li>
-            <li>CSS</li>
-          </div>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 text-sm sm:text-base">
+        <ul className="list-disc pl-2 space-y-2">
+          <li>Java</li>
+          <li>C++</li>
+          <li>JavaScript</li>
+          <li>HTML</li>
+          <li>TypeScript</li>
+          <li>CSS</li>
         </ul>
-
-        <ul className="list-disc pl-2">
-          <div>
-            <li>MySQL</li>
-            <li>PostgreSQL</li>
-            <li>MongoDB</li>
-            <li>Spring</li>
-            <li>SpringBoot</li>
-            <li>JQuery</li>
-          </div>
+        <ul className="list-disc pl-2 space-y-2">
+          <li>MySQL</li>
+          <li>PostgreSQL</li>
+          <li>MongoDB</li>
+          <li>Spring</li>
+          <li>SpringBoot</li>
+          <li>jQuery</li>
         </ul>
-
-        <ul className="list-disc pl-2">
-          <div>
-            <li>Redux</li>
-            <li>Node.js</li>
-            <li>GraphQL</li>
-            <li>Express</li>
-            <li>CI/CD</li>
-            <li>ReactJS</li>
-          </div>
+        <ul className="list-disc pl-2 space-y-2">
+          <li>Redux</li>
+          <li>Node.js</li>
+          <li>GraphQL</li>
+          <li>Express</li>
+          <li>CI/CD</li>
+          <li>ReactJS</li>
         </ul>
-
-        <ul className="list-disc pl-2">
-          <div>
-            <li>Git</li>
-            <li>Docker</li>
-            <li>Amazon Web Services &apos;AWS&apos;</li>
-            <li>Terraform</li>
-            <li>RESTful APIs</li>
-            <li>AEM &apos;Adobe Experience Manager&apos;</li>
-          </div>
+        <ul className="list-disc pl-2 space-y-2">
+          <li>Git</li>
+          <li>Docker</li>
+          <li>Amazon Web Services (AWS)</li>
+          <li>Terraform</li>
+          <li>RESTful APIs</li>
+          <li>AEM (Adobe Experience Manager)</li>
         </ul>
-
       </div>
     ),
   },
@@ -61,50 +49,74 @@ const TAB_DATA = [
     title: "Education",
     id: "education",
     content: (
-      <ul className="list-disc pl-2">
-        <li><b className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">Northeastern University</b>
-          <p> September 2024 - May 2026 </p>
+      <ul className="list-disc pl-2 text-sm sm:text-base space-y-6">
+        <li>
+          <b className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
+            Northeastern University
+          </b>
+          <p>September 2024 - May 2026</p>
           <p>Master of Science in Computer Science</p>
           <p>GPA: 3.9/4</p>
-          <p>Revelant Courses: Program Design Paradigms, Web Development</p>
+          <p>Relevant Courses: Program Design Paradigms, Web Development</p>
         </li>
-        <br />
-        <li><b className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">Galgotias University </b>
+        <li>
+          <b className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
+            Galgotias University
+          </b>
           <p>August 2018 - May 2022</p>
           <p>Bachelor of Technology in Computer Science & Engineering</p>
           <p>GPA: 8.4/10</p>
-          <p>Relevant Courses: Data Structures, Algorithms, Databases, Operating Systems, Computer Networks
-          </p>
+          <p>Relevant Courses: Data Structures, Algorithms, Databases, Operating Systems, Computer Networks</p>
         </li>
       </ul>
     ),
   },
   {
-    title: "Certifications",
+    title: "Experience",
     id: "certifications",
     content: (
-      <ul className="list-disc pl-2">
-        <li>Web Developer
+      <ul className="list-disc pl-2 text-sm sm:text-base space-y-6">
+        <li>
+          <b>Web Developer</b>
           <p>July 2022 - August 2024</p>
-          <p><i className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">AKQA., Haryana, India</i></p>
-          <p>- Led the optimization of IWC Schaffhausen&apos;s global e-commerce platform, improving customer experience, and
-            achieving a 20% increase in code coverage and a 10% reduction in ticket resolution time.</p>
-          <p>- Developed reusable components in Adobe Experience Manager-AEM with comprehensive documentation,
-            reducing infrastructure costs by 20% and enhancing scalability.</p>
-          <p>- Ensured cross-browser compatibility and optimized website performance, using AEM, HTML, JavaScript, CSS,
-            LESS, Docker, Confluence, React, Java, Slightly and Jira.</p>
+          <p>
+            <i className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
+              AKQA, Haryana, India
+            </i>
+          </p>
+          <p>
+            - Led the optimization of IWC Schaffhausen&apos;s global e-commerce platform, improving customer experience and achieving a 20% increase in code coverage.
+          </p>
+          <p>
+            - Developed reusable components in AEM, reducing infrastructure costs by 20% and enhancing scalability.
+          </p>
+          <p>
+            - Ensured cross-browser compatibility, optimized performance using AEM, React, Docker, and Java.
+          </p>
         </li>
-        <br />
-        <li>Software Engineering Intern
+        <li>
+          <b>Software Engineering Intern</b>
           <p>November 2021 - February 2022</p>
-          <p><i className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">BluePi, Haryana, India</i></p>
-          <p>- Developed in-house projects using Spring Boot and Java, optimizing system efficiency and performance while reducing API calls by 10%; gained hands-on experience with AWS, managing VMs, and earning AWS Developer Associate certification.</p>
+          <p>
+            <i className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
+              BluePi, Haryana, India
+            </i>
+          </p>
+          <p>
+            - Worked with Spring Boot and Java, optimizing API efficiency by reducing calls by 10%, gaining hands-on experience with AWS.
+          </p>
         </li>
-        <br />
-        <li>Teaching Assistant
+        <li>
+          <b>Teaching Assistant</b>
           <p>August 2019 - December 2019</p>
-          <p><i className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">Coding Ninjas, New Delhi, India</i></p>
-          <p>- Instructed 400+ students on Object-Oriented Design and testing practices, improving project quality by 10%, while providing C++ support for Data Structures and Algorithms, and boosting student engagement by 15% through webinars and Q&A sessions.</p>
+          <p>
+            <i className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
+              Coding Ninjas, New Delhi, India
+            </i>
+          </p>
+          <p>
+            - Instructed 400+ students in OOP and testing practices, improving project quality by 10%, and conducted webinars to boost engagement.
+          </p>
         </li>
       </ul>
     ),
@@ -122,43 +134,39 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="text-white" id="about">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <Image alt="" src={AboutImage} width={500} height={500} />
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-secondary-600 bg-clip-text text-transparent w-fit">About Me</h2>
-          <p className="text-base lg:text-lg">
-            I&apos;m Chaman Kumar, a Master&apos;s student in Computer Science at Northeastern University with over two years of experience in web development and software engineering.
-            I&apos;ve worked at AKQA and BluePi, leading projects that optimized e-commerce platforms and improved system efficiency.
-            Skilled in Java, JavaScript, React, Node.js, AWS, and AEM, I enjoy solving complex problems and delivering scalable solutions.
-            I&apos;ve also mentored 400+ students at Coding Ninjas, fueling my passion for both learning and teaching.
-            Outside of work, I love exploring new cuisines, playing volleyball, and hiking.
+    <section className="text-white py-16" id="about">
+      <div className="md:grid md:grid-cols-2 gap-12 items-center px-4 xl:px-16">
+        <div className="relative">
+          <Image alt="About Me Image" src={AboutImage} width={500} height={500} className="rounded-lg shadow-lg" />
+          <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black opacity-30 rounded-lg"></div>
+        </div>
+
+        <div className="mt-6 md:mt-0 flex flex-col">
+          <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-primary-400 to-secondary-600 bg-clip-text text-transparent">
+            About Me
+          </h2>
+          <p className="text-base lg:text-lg leading-relaxed mb-6">
+            I&apos;m Chaman Kumar, a Master&apos;s student at Northeastern University with over two years of experience in web development and software engineering. 
+            I&apos;ve led projects optimizing e-commerce platforms and improving system efficiency at AKQA and BluePi. I specialize in Java, JavaScript, AWS, AEM, and React, with a passion for solving complex challenges and delivering scalable solutions.
+            Outside of work, I&apos;m an avid foodie, volleyball player, and hiking enthusiast.
           </p>
-          <div className="flex flex-row justify-start mt-8">
-            <TabButton
-              selectTab={() => handleTabChange("skills")}
-              active={tab === "skills"}
-            >
-              {" "}
-              Skills{" "}
-            </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange("education")}
-              active={tab === "education"}
-            >
-              {" "}
-              Education{" "}
-            </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange("certifications")}
-              active={tab === "certifications"}
-            >
-              {" "}
-              Experience{" "}
-            </TabButton>
+
+          <div className="flex flex-row space-x-4 mb-8">
+            {TAB_DATA.map((tabData) => (
+              <TabButton
+                key={tabData.id}
+                selectTab={() => handleTabChange(tabData.id)}
+                active={tab === tabData.id}
+              >
+                {tabData.title}
+              </TabButton>
+            ))}
           </div>
-          <div className="mt-8 overflow-x-auto">
-            {TAB_DATA.find((t) => t.id === tab).content}
+
+          <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
+            <div className="overflow-x-auto transition-opacity duration-300 ease-in-out">
+              {TAB_DATA.find((t) => t.id === tab).content}
+            </div>
           </div>
         </div>
       </div>

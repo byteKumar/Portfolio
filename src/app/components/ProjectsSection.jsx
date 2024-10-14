@@ -3,13 +3,13 @@ import React, { useState, useRef } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
-import {Task, Portfolio, Recipe } from "../../../public/index.js";
+import { Task, Portfolio, Recipe } from "../../../public/index.js";
 
 const projectsData = [
   {
     id: 1,
     title: "React Portfolio Website",
-    description: "Explore my React portfolio—a fusion of code and creativity, showcasing a symphony of innovation in a virtual journey.",
+    description: "A personal portfolio built with React showcasing creativity and coding expertise in a seamless, interactive user experience.",
     image: Portfolio,
     tag: ["All", "Web"],
     gitUrl: "https://github.com/byteKumar/Portfolio",
@@ -18,7 +18,7 @@ const projectsData = [
   {
     id: 2,
     title: "Recipe Hub",
-    description: "Designed and developed a full-stack MERN (MongoDB, Express.js, React, Node.js) web application that allows users to browse, search, and save their favorite recipes.\nImplemented user authentication, recipe creation and editing functionalities, and a personalized recipe feed to enhance user engagement and experience.",
+    description: "A full-stack MERN app for discovering and saving recipes with user authentication and personalized recipe feed.",
     image: Recipe,
     tag: ["All", "Web"],
     gitUrl: "https://github.com/byteKumar/RecipeHub",
@@ -27,39 +27,12 @@ const projectsData = [
   {
     id: 3,
     title: "Task Flow Planner",
-    description: "An algorithm designed to sequence and allocate project tasks efficiently based on provided constraints. It organizes Epics, Stories, and Tasks in a specified order, assigning them to available personnel while considering their skill sets and daily availability. The output is a detailed daily plan in CSV format, ensuring optimal task management and adherence to project milestones.",
+    description: "Algorithm-based task sequencing and allocation system to optimize project management, generating detailed daily plans.",
     image: Task,
     tag: ["All", "Java"],
     gitUrl: "https://github.com/byteKumar/TaskFlow-Planner",
     previewUrl: "/",
   },
-  // {
-  //   id: 4,
-  //   title: "Food Ordering Application",
-  //   description: "Project 4 description",
-  //   image: "/images/projects/4.png",
-  //   tag: ["All", "Mobile"],
-  //   gitUrl: "/",
-  //   previewUrl: "/",
-  // },
-  // {
-  //   id: 5,
-  //   title: "React Firebase Template",
-  //   description: "Authentication and CRUD operations",
-  //   image: "/images/projects/5.png",
-  //   tag: ["All", "Web"],
-  //   gitUrl: "/",
-  //   previewUrl: "/",
-  // },
-  // {
-  //   id: 6,
-  //   title: "Full-stack Roadmap",
-  //   description: "Project 5 description",
-  //   image: "/images/projects/6.png",
-  //   tag: ["All", "Web"],
-  //   gitUrl: "/",
-  //   previewUrl: "/",
-  // },
 ];
 
 const ProjectsSection = () => {
@@ -76,40 +49,34 @@ const ProjectsSection = () => {
   );
 
   const cardVariants = {
-    initial: { y: 50, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
+    initial: { y: 50, opacity: 0, scale: 0.95 },
+    animate: { y: 0, opacity: 1, scale: 1 },
   };
 
   return (
-    <section id="projects">
-      <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
-        My Projects
+    <section id="projects" className="py-16 px-4 bg-gradient-to-b from-gray-800 to-gray-900">
+      <h2 className="text-center text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600 mb-12">
+        Featured Projects
       </h2>
-      <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
-        <ProjectTag
-          onClick={handleTagChange}
-          name="All"
-          isSelected={tag === "All"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Web"
-          isSelected={tag === "Web"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Java"
-          isSelected={tag === "Java"}
-        />
+      <div className="flex justify-center items-center gap-4 mb-12">
+        {["All", "Web", "Java"].map((name) => (
+          <ProjectTag
+            key={name}
+            onClick={handleTagChange}
+            name={name}
+            isSelected={tag === name}
+          />
+        ))}
       </div>
-      <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
+      <ul ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
         {filteredProjects.map((project, index) => (
           <motion.li
             key={index}
             variants={cardVariants}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.4 }}
+            transition={{ duration: 0.5, delay: index * 0.3, ease: "easeOut" }}
+            className="cursor-pointer hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-out"
           >
             <ProjectCard
               key={project.id}

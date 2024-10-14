@@ -1,131 +1,79 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
+import ResumeIcon from "../../../public/resume-icon.svg"; // Import Resume icon
+import EmailIcon from "../../../public/email-icon.svg"; // Import Email icon
 import Link from "next/link";
 import Image from "next/image";
-import emailjs from 'emailjs-com';
 
 const EmailSection = () => {
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
-
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const { email, subject, message } = e.target;
-
-    const templateParams = {
-      to_email: email.value,
-      subject: subject.value,
-      message: message.value,
-    };
-
-    try {
-      const response = await emailjs.send(
-        'service_idq818c', // Replace with your EmailJS service ID
-        'template_uofzhrk', // Replace with your EmailJS template ID
-        templateParams,
-        'NlBxZ22mhTsX0WbvJ' // Replace with your EmailJS user ID
-      );
-
-      console.log('Email sent:', response);
-
-      if (response.status === 200) {
-        console.log('Message sent.');
-        setEmailSubmitted(true);
-      }
-    } catch (error) {
-      console.error('Error sending email:', error);
-    }
-  };
-
-
   return (
     <section
       id="contact"
-      className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
+      className="flex flex-col items-center justify-center my-16 py-32 relative text-center bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-lg"
     >
-      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
-      <div className="z-10">
-        <h5 className="text-xl font-bold text-white my-2">
-          Let&apos;s Connect
+      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-96 w-96 z-0 blur-lg absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20"></div>
+      <div className="z-10 max-w-2xl mx-auto">
+        <h5 className="text-4xl font-extrabold text-white mb-6 animate-pulse">
+          Let&apos;s Connect 🚀
         </h5>
-        <p className="text-[#ADB7BE] mb-4 max-w-md">
-          {" "}
-          &quot;I&apos;m always eager to connect! Whether you&#39;re offering a new opportunity
-          or just want to chat, feel free to drop a message. I&apos;ll get back to you as soon as I can&quot;
+        <p className="text-[#ADB7BE] mb-10 text-lg leading-relaxed">
+          I&apos;m always open to exciting new opportunities, and I love connecting with brilliant minds. 
+          If you have a project in mind or just want to say hi, feel free to reach out. 
+          I promise to get back to you faster than you expect!
         </p>
-        <div className="socials flex flex-row gap-2">
-          <Link href="https://github.com/byteKumar">
-            <Image src={GithubIcon} alt="Github Icon" />
+
+        <div className="flex justify-center gap-6 mb-10">
+          <Link href="https://github.com" passHref>
+            <Image
+              src={GithubIcon}
+              alt="Github Icon"
+              width={40}
+              height={40}
+              className="hover:scale-110 transform transition-transform duration-300"
+            />
           </Link>
-          <Link href="https://www.linkedin.com/in/chamankumar5/">
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
+          <Link href="https://linkedin.com" passHref>
+            <Image
+              src={LinkedinIcon}
+              alt="LinkedIn Icon"
+              width={40}
+              height={40}
+              className="hover:scale-110 transform transition-transform duration-300"
+            />
+          </Link>
+          {/* Resume Icon */}
+          <Link href="https://drive.google.com/file/d/1px1OUTyAzBPJsneog8sTqMFFdd2d4INw/view?usp=sharing" target="_blank" passHref>
+            <Image
+              src={ResumeIcon}
+              alt="Resume Icon"
+              width={40}
+              height={40}
+              className="hover:scale-110 transform transition-transform duration-300"
+            />
+          </Link>
+          {/* Email Icon */}
+          <Link href="mailto:kumar.cham@northeastern.edu" passHref>
+            <Image
+              src={EmailIcon}
+              alt="Email Icon"
+              width={40}
+              height={40}
+              className="hover:scale-110 transform transition-transform duration-300"
+            />
           </Link>
         </div>
-      </div>
-      <div>
-        {emailSubmitted ? (
-          <p className="text-green-500 text-sm mt-2">
-            Email sent successfully!
-          </p>
-        ) : (
-          <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div className="mb-6">
-              <label
-                htmlFor="email"
-                className="text-white block mb-2 text-sm font-medium"
-              >
-                Your email
-              </label>
-              <input
-                name="email"
-                type="email"
-                id="email"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="name@example.com"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="subject"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Subject
-              </label>
-              <input
-                name="subject"
-                type="text"
-                id="subject"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Just saying hi"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="message"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Message
-              </label>
-              <textarea
-                name="message"
-                id="message"
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Let's talk about..."
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
-            >
-              Send Message
-            </button>
-          </form>
-        )}
+
+        <p className="text-[#ADB7BE] text-xl font-semibold mb-4">
+          Let&apos;s collaborate on something amazing!
+        </p>
+        <p className="text-primary-500 font-bold text-2xl animate-bounce">
+          kumar.cham@northeastern.edu
+        </p>
+        <p className="text-[#ADB7BE] text-sm mt-4 italic">
+          Drop me a line – let&apos;s build the future together ✨
+        </p>
       </div>
     </section>
   );
