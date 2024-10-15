@@ -37,10 +37,10 @@ const TAB_DATA = [
         <ul className="list-disc pl-2 space-y-2">
           <li>Git</li>
           <li>Docker</li>
-          <li>Amazon Web Services (AWS)</li>
+          <li>AWS</li>
           <li>Terraform</li>
           <li>RESTful APIs</li>
-          <li>AEM (Adobe Experience Manager)</li>
+          <li>AEM</li>
         </ul>
       </div>
     ),
