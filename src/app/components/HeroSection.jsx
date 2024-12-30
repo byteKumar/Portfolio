@@ -1,13 +1,42 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import heroImage from "../../../public/hero-image.jpeg"
+import heroImage from "../../../public/hero-image.jpeg";
 
 const HeroSection = () => {
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if the user has scrolled to the bottom of the page
+      if (
+        window.innerHeight + document.documentElement.scrollTop >=
+        document.documentElement.scrollHeight - 10
+      ) {
+        setShowBackToTop(true); // Show the "Back to Top" button
+      } else {
+        setShowBackToTop(false); // Hide the button when not at the bottom
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    // Smooth scroll to the top
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="lg:py-16">
       <div className="grid grid-cols-1 sm:grid-cols-12">
@@ -21,7 +50,7 @@ const HeroSection = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
               Hello, I&apos;m{" "}
             </span>
-            <br></br>
+            <br />
             <TypeAnimation
               sequence={[
                 "CHAMAN",
@@ -32,8 +61,6 @@ const HeroSection = () => {
                 1000,
                 "Frontend Developer",
                 1000,
-                "Programmer",
-                1000,
               ]}
               wrapper="span"
               speed={50}
@@ -41,7 +68,7 @@ const HeroSection = () => {
             />
           </h1>
           <p className="text-[#ADB7BE] text-base sm:text-lg mb-5 lg:text-xl">
-          I'm a passionate developer who is always looking for new challenges. I love learning new things and building things. I have Experience in MERN stack, Java Frameworks, Frontend/Backend/Cloud Technologies, and DevOps
+            I&apos;m a passionate developer who is always looking for new challenges. I love learning new things and building things. I have experience in MERN stack, Java Frameworks, Frontend/Backend/Cloud Technologies, and DevOps.
           </p>
           <div>
             <Link
@@ -51,7 +78,7 @@ const HeroSection = () => {
               Hire Me
             </Link>
             <Link
-              href="https://drive.google.com/file/d/1px1OUTyAzBPJsneog8sTqMFFdd2d4INw/view?usp=sharing"
+              href="https://drive.google.com/file/d/1OEkdsiOOrQ9KL13VoBTOjeZuu7HKxly-/view?usp=sharing"
               target="_blank"
               className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-white mt-3"
             >
@@ -78,6 +105,25 @@ const HeroSection = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* "Open to work" Button */}
+      <div
+        className="fixed bottom-10 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-3 cursor-pointer border-2 border-green-500 rounded-full py-3 px-6 bg-[#181818] text-white text-base transition-all duration-300 z-50"
+        onClick={() => window.location.href = "mailto:kumar.cham@northeastern.edu"}
+      >
+        <span className="text-l font-semibold">Open to Work</span>
+        <div className="w-3 h-3 rounded-full bg-green-500 animate-ping" />
+      </div>
+
+      {/* "Back to Top" Button */}
+      {showBackToTop && (
+        <div
+          className="fixed bottom-10 right-10 cursor-pointer text-white text-2xl p-4 rounded-full border-2 border-green-500 bg-[#181818] hover:bg-green-500 hover:text-black transition-all duration-300 z-50"
+          onClick={scrollToTop}
+        >
+          ☝️
+        </div>
+      )}
     </section>
   );
 };

@@ -11,20 +11,24 @@ const EmailSection = () => {
   return (
     <section
       id="contact"
-      className="flex flex-col items-center justify-center my-16 py-32 relative text-center bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-lg"
+      className="flex flex-col items-center justify-center my-16 py-24 relative text-center bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-lg"
     >
+      {/* Background blur circle */}
       <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-96 w-96 z-0 blur-lg absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20"></div>
-      <div className="z-10 max-w-2xl mx-auto">
-        <h5 className="text-4xl font-extrabold text-white mb-6 animate-pulse">
+      
+      <div className="z-10 max-w-2xl mx-auto px-4">
+        {/* Header */}
+        <h5 className="text-3xl font-extrabold text-white mb-4 animate-pulse">
           Let&apos;s Connect 🚀
         </h5>
-        <p className="text-[#ADB7BE] mb-10 text-lg leading-relaxed">
+        <p className="text-[#ADB7BE] mb-8 text-lg leading-relaxed max-w-xl mx-auto">
           I&apos;m always open to exciting new opportunities, and I love connecting with brilliant minds. 
           If you have a project in mind or just want to say hi, feel free to reach out. 
           I promise to get back to you faster than you expect!
         </p>
 
-        <div className="flex justify-center gap-6 mb-10">
+        {/* Social and contact links */}
+        <div className="flex justify-center gap-6 mb-6">
           <Link href="https://github.com" passHref>
             <Image
               src={GithubIcon}
@@ -43,8 +47,7 @@ const EmailSection = () => {
               className="hover:scale-110 transform transition-transform duration-300"
             />
           </Link>
-          {/* Resume Icon */}
-          <Link href="https://drive.google.com/file/d/1px1OUTyAzBPJsneog8sTqMFFdd2d4INw/view?usp=sharing" target="_blank" passHref>
+          <Link href="https://drive.google.com/file/d/1OEkdsiOOrQ9KL13VoBTOjeZuu7HKxly-/view?usp=sharing" target="_blank" passHref>
             <Image
               src={ResumeIcon}
               alt="Resume Icon"
@@ -53,7 +56,6 @@ const EmailSection = () => {
               className="hover:scale-110 transform transition-transform duration-300"
             />
           </Link>
-          {/* Email Icon */}
           <Link href="mailto:kumar.cham@northeastern.edu" passHref>
             <Image
               src={EmailIcon}
@@ -65,7 +67,8 @@ const EmailSection = () => {
           </Link>
         </div>
 
-        <p className="text-[#ADB7BE] text-xl font-semibold mb-4">
+        {/* Contact email and message */}
+        <p className="text-[#ADB7BE] text-lg font-semibold mb-2">
           Let&apos;s collaborate on something amazing!
         </p>
         <p className="text-primary-500 font-bold text-2xl animate-bounce">

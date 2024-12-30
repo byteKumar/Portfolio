@@ -49,79 +49,116 @@ const TAB_DATA = [
     title: "Education",
     id: "education",
     content: (
-      <ul className="list-disc pl-2 text-sm sm:text-base space-y-6">
-        <li>
-          <b className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
-            Northeastern University
-          </b>
-          <p>September 2024 - May 2026</p>
-          <p>Master of Science in Computer Science</p>
-          <p>GPA: 3.9/4</p>
-          <p>Relevant Courses: Program Design Paradigms, Web Development</p>
-        </li>
-        <li>
-          <b className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
-            Galgotias University
-          </b>
-          <p>August 2018 - May 2022</p>
-          <p>Bachelor of Technology in Computer Science & Engineering</p>
-          <p>GPA: 8.4/10</p>
-          <p>Relevant Courses: Data Structures, Algorithms, Databases, Operating Systems, Computer Networks</p>
-        </li>
-      </ul>
+      <div className="space-y-8">
+        <div className="grid grid-cols-2 text-sm sm:text-base">
+          <div>
+            <b className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
+              Northeastern University
+            </b>
+            <p>Master of Science in Computer Science</p>
+          </div>
+          <div className="text-right">
+            <p>September 2024 - May 2026</p>
+            <p>GPA: 3.9/4</p>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-gray-900 p-4 rounded-lg shadow-md">
+          <p className="col-span-full text-center font-semibold text-primary-400">
+            Relevant Courses
+          </p>
+          <ul className="list-none space-y-2">
+            <li className="p-2 bg-gray-800 rounded-md shadow-sm">CS5010 Program Design Paradigms</li>
+            <li className="p-2 bg-gray-800 rounded-md shadow-sm">CS5610 Web Development</li>
+          </ul>
+          <ul className="list-none space-y-2">
+            <li className="p-2 bg-gray-800 rounded-md shadow-sm">CS5800 Algorithms</li>
+            <li className="p-2 bg-gray-800 rounded-md shadow-sm">CS5200 Database Management Systems</li>
+          </ul>
+        </div>
+        <hr className="border-gray-600" />
+        <div className="grid grid-cols-2 text-sm sm:text-base">
+          <div>
+            <b className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
+              Galgotias University
+            </b>
+            <p>Bachelor of Technology in Computer Science & Engineering</p>
+          </div>
+          <div className="text-right">
+            <p>August 2018 - May 2022</p>
+            <p>GPA: 8.4/10</p>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-gray-900 p-4 rounded-lg shadow-md">
+          <p className="col-span-full text-center font-semibold text-primary-400">
+            Relevant Courses
+          </p>
+          <ul className="list-none space-y-2">
+            <li className="p-2 bg-gray-800 rounded-md shadow-sm">Data Structures</li>
+            <li className="p-2 bg-gray-800 rounded-md shadow-sm">Algorithms</li>
+            <li className="p-2 bg-gray-800 rounded-md shadow-sm">Web Development</li>
+          </ul>
+          <ul className="list-none space-y-2">
+            <li className="p-2 bg-gray-800 rounded-md shadow-sm">Database Management Systems</li>
+            <li className="p-2 bg-gray-800 rounded-md shadow-sm">Operating Systems</li>
+            <li className="p-2 bg-gray-800 rounded-md shadow-sm">Computer Networks</li>
+          </ul>
+        </div>
+      </div>
     ),
   },
   {
     title: "Experience",
-    id: "certifications",
+    id: "experience",
     content: (
-      <ul className="list-disc pl-2 text-sm sm:text-base space-y-6">
-        <li>
-          <b>Web Developer</b>
-          <p>July 2022 - August 2024</p>
-          <p>
-            <i className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
-              AKQA, Haryana, India
-            </i>
-          </p>
-          <p>
-            - Led the optimization of IWC Schaffhausen&apos;s global e-commerce platform, improving customer experience and achieving a 20% increase in code coverage.
-          </p>
-          <p>
-            - Developed reusable components in AEM, reducing infrastructure costs by 20% and enhancing scalability.
-          </p>
-          <p>
-            - Ensured cross-browser compatibility, optimized performance using AEM, React, Docker, and Java.
-          </p>
-        </li>
-        <li>
-          <b>Software Engineering Intern</b>
-          <p>November 2021 - February 2022</p>
-          <p>
-            <i className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
-              BluePi, Haryana, India
-            </i>
-          </p>
-          <p>
-            - Worked with Spring Boot and Java, optimizing API efficiency by reducing calls by 10%, gaining hands-on experience with AWS.
-          </p>
-        </li>
-        <li>
-          <b>Teaching Assistant</b>
-          <p>August 2019 - December 2019</p>
-          <p>
-            <i className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
-              Coding Ninjas, New Delhi, India
-            </i>
-          </p>
-          <p>
-            - Instructed 400+ students in OOP and testing practices, improving project quality by 10%, and conducted webinars to boost engagement.
-          </p>
-        </li>
-      </ul>
+      <div className="space-y-6 text-sm sm:text-base">
+        {[
+          {
+            position: "Graduate Teaching Assistant",
+            duration: "Jan 2024 - Present",
+            company: "Northeastern University",
+          },
+          {
+            position: "Full-Stack Developer",
+            duration: "Sept 2024 - Present",
+            company: "Aspiring Product Managers Club @ Northeastern University",
+          },
+          {
+            position: "Software Engineer",
+            duration: "July 2022 - August 2024",
+            company: "AKQA",
+          },
+          {
+            position: "Software Engineering Intern",
+            duration: "November 2021 - February 2022",
+            company: "BluePi",
+          },
+          {
+            position: "Teaching Assistant",
+            duration: "August 2019 - December 2019",
+            company: "Coding Ninjas",
+          },
+        ].map(({ position, duration, company }, index) => (
+          <div key={position}>
+            <div className="grid grid-cols-2">
+              <div>
+                <b>{position}</b>
+                <p className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
+                  {company}
+                </p>
+              </div>
+              <div className="text-right">
+                <p>{duration}</p>
+              </div>
+            </div>
+            {index !== 4 && <hr className="border-gray-600 mt-4" />}
+          </div>
+        ))}
+      </div>
     ),
   },
 ];
+
+
 
 const AboutSection = () => {
   const [tab, setTab] = useState("skills");
@@ -135,23 +172,20 @@ const AboutSection = () => {
 
   return (
     <section className="text-white py-16" id="about">
-      <div className="md:grid md:grid-cols-2 gap-12 items-center px-4 xl:px-16">
-        <div className="relative">
-          <Image alt="About Me Image" src={AboutImage} width={500} height={500} className="rounded-lg shadow-lg" />
-          <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black opacity-30 rounded-lg"></div>
-        </div>
-
+      <div className="md:grid gap-12 items-center px-4 xl:px-16">
         <div className="mt-6 md:mt-0 flex flex-col">
           <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-primary-400 to-secondary-600 bg-clip-text text-transparent">
-            About Me
+            Background
           </h2>
-          <p className="text-base lg:text-lg leading-relaxed mb-6">
-            I&apos;m Chaman Kumar, a Master&apos;s student at Northeastern University with over two years of experience in web development and software engineering. 
-            I&apos;ve led projects optimizing e-commerce platforms and improving system efficiency at AKQA and BluePi. I specialize in Java, JavaScript, AWS, AEM, and React, with a passion for solving complex challenges and delivering scalable solutions.
-            Outside of work, I&apos;m an avid foodie, volleyball player, and hiking enthusiast.
-          </p>
+          <div className="text-base lg:text-lg leading-relaxed mb-6">
+            <p class="mb-[25px] mt-0">I am a Master&apos;s in Computer Science student at Northeastern University. </p>
 
-          <div className="flex flex-row space-x-4 mb-8">
+            <p class="mb-[25px] mt-0">My expertise spans developing scalable systems, optimizing data processes, and leveraging cloud technologies (AWS, GCP) to drive efficiency and innovation.
+            I consistently stay abreast of the latest developments in my field, diligently seeking opportunities to learn and explore emerging technologies. </p>
+            <p class="mb-[25px] mt-0">When I&apos;m not in front of a computer screen, you&apos;ll likely find me reading a non-fiction book, exploring new trails, or out on a run.</p>
+          </div>
+
+          <div className="flex flex-row justify-center space-x-4 mb-8">
             {TAB_DATA.map((tabData) => (
               <TabButton
                 key={tabData.id}

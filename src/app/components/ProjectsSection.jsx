@@ -3,20 +3,29 @@ import React, { useState, useRef } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
-import { Task, Portfolio, Recipe } from "../../../public/index.js";
+import { Task, Portfolio, ImageProcessing, PepperUni, Recipe } from "../../../public/index.js";
 
 const projectsData = [
   {
     id: 1,
+    title: "Image Processing Application",
+    description: "Built a Swing GUI and batch processing tool for image manipulation with Command Pattern and MVC, supporting JPG, PNG, and PPM formats.",
+    image: ImageProcessing,
+    tag: ["All", "Java"],
+    gitUrl: "https://github.com/anandms101/PDPAssignment6",
+    previewUrl: "/",
+  },
+  {
+    id: 2,
     title: "React Portfolio Website",
     description: "A personal portfolio built with React showcasing creativity and coding expertise in a seamless, interactive user experience.",
     image: Portfolio,
     tag: ["All", "Web"],
     gitUrl: "https://github.com/byteKumar/Portfolio",
-    previewUrl: "/",
+    previewUrl: "https://chamankumar.vercel.app/",
   },
   {
-    id: 2,
+    id: 3,
     title: "Recipe Hub",
     description: "A full-stack MERN app for discovering and saving recipes with user authentication and personalized recipe feed.",
     image: Recipe,
@@ -25,7 +34,7 @@ const projectsData = [
     previewUrl: "https://recipehubck.netlify.app/",
   },
   {
-    id: 3,
+    id: 4,
     title: "Task Flow Planner",
     description: "Algorithm-based task sequencing and allocation system to optimize project management, generating detailed daily plans.",
     image: Task,
@@ -33,15 +42,30 @@ const projectsData = [
     gitUrl: "https://github.com/byteKumar/TaskFlow-Planner",
     previewUrl: "/",
   },
+  {
+    id: 5,
+    title: "Pepperuni",
+    description: "Built PepperUni, a MERN-based AI resume analysis platform designed in Figma, enhancing resume scores by 20%.",
+    image: PepperUni,
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/apmcneuboston/PepperUni",
+    previewUrl: "https://pepperuni.com/",
+  },
 ];
 
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
+  const [visibleProjects, setVisibleProjects] = useState(3);  // Track the number of visible projects
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   const handleTagChange = (newTag) => {
     setTag(newTag);
+    setVisibleProjects(3);  // Reset visible projects when the tag changes
+  };
+
+  const handleShowMore = () => {
+    setVisibleProjects((prevVisible) => prevVisible + 3);  // Show 3 more projects
   };
 
   const filteredProjects = projectsData.filter((project) =>
@@ -69,7 +93,7 @@ const ProjectsSection = () => {
         ))}
       </div>
       <ul ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-        {filteredProjects.map((project, index) => (
+        {filteredProjects.slice(0, visibleProjects).map((project, index) => (
           <motion.li
             key={index}
             variants={cardVariants}
@@ -89,6 +113,16 @@ const ProjectsSection = () => {
           </motion.li>
         ))}
       </ul>
+      {filteredProjects.length > visibleProjects && (
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={handleShowMore}
+            className="px-6 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-all"
+          >
+            Show More
+          </button>
+        </div>
+      )}
     </section>
   );
 };
