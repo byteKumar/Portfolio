@@ -11,7 +11,7 @@ const EmailSection = () => {
   return (
     <section
       id="contact"
-      className="flex flex-col items-center justify-center my-16 py-16 px-4 relative text-center bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-lg max-w-[90%] mx-auto"
+      className="flex flex-col items-center justify-center my-16 py-16 px-4 relative text-center bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-lg max-w-full mx-auto"
     >
       {/* Background blur circle */}
       <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-72 w-72 sm:h-96 sm:w-96 z-0 blur-lg absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20"></div>
