@@ -58,7 +58,7 @@ const TAB_DATA = [
             <p>Master of Science in Computer Science</p>
           </div>
           <div className="text-right">
-            <p>September 2024 - May 2026</p>
+            <p>Sept 2024 - May 2026</p>
             <p>GPA: 3.9/4</p>
           </div>
         </div>
@@ -84,7 +84,7 @@ const TAB_DATA = [
             <p>Bachelor of Technology in Computer Science & Engineering</p>
           </div>
           <div className="text-right">
-            <p>August 2018 - May 2022</p>
+            <p>Aug 2018 - May 2022</p>
             <p>GPA: 8.4/10</p>
           </div>
         </div>
@@ -124,17 +124,17 @@ const TAB_DATA = [
           },
           {
             position: "Software Engineer",
-            duration: "July 2022 - August 2024",
+            duration: "Jul 2022 - Aug 2024",
             company: "AKQA",
           },
           {
             position: "Software Engineering Intern",
-            duration: "November 2021 - February 2022",
+            duration: "Nov 2021 - Feb 2022",
             company: "BluePi",
           },
           {
             position: "Teaching Assistant",
-            duration: "August 2019 - December 2019",
+            duration: "Aug 2019 - Dec 2019",
             company: "Coding Ninjas",
           },
         ].map(({ position, duration, company }, index) => (

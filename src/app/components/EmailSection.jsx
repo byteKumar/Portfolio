@@ -11,24 +11,24 @@ const EmailSection = () => {
   return (
     <section
       id="contact"
-      className="flex flex-col items-center justify-center my-16 py-24 relative text-center bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-lg"
+      className="flex flex-col items-center justify-center my-16 py-16 px-4 relative text-center bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-lg max-w-[90%] mx-auto"
     >
       {/* Background blur circle */}
-      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-96 w-96 z-0 blur-lg absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20"></div>
+      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-72 w-72 sm:h-96 sm:w-96 z-0 blur-lg absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20"></div>
       
-      <div className="z-10 max-w-2xl mx-auto px-4">
+      <div className="z-10 max-w-xl mx-auto">
         {/* Header */}
-        <h5 className="text-3xl font-extrabold text-white mb-4 animate-pulse">
+        <h5 className="text-2xl sm:text-3xl font-extrabold text-white mb-4 animate-pulse">
           Let&apos;s Connect 🚀
         </h5>
-        <p className="text-[#ADB7BE] mb-8 text-lg leading-relaxed max-w-xl mx-auto">
+        <p className="text-[#ADB7BE] mb-8 text-base sm:text-lg leading-relaxed max-w-lg mx-auto">
           I&apos;m always open to exciting new opportunities, and I love connecting with brilliant minds. 
           If you have a project in mind or just want to say hi, feel free to reach out. 
           I promise to get back to you faster than you expect!
         </p>
 
         {/* Social and contact links */}
-        <div className="flex justify-center gap-6 mb-6">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-6">
           <Link href="https://github.com" passHref>
             <Image
               src={GithubIcon}
@@ -68,13 +68,13 @@ const EmailSection = () => {
         </div>
 
         {/* Contact email and message */}
-        <p className="text-[#ADB7BE] text-lg font-semibold mb-2">
+        <p className="text-[#ADB7BE] text-base sm:text-lg font-semibold mb-2">
           Let&apos;s collaborate on something amazing!
         </p>
-        <p className="text-primary-500 font-bold text-2xl animate-bounce">
+        <p className="text-primary-500 font-bold text-lg sm:text-2xl animate-bounce">
           kumar.cham@northeastern.edu
         </p>
-        <p className="text-[#ADB7BE] text-sm mt-4 italic">
+        <p className="text-[#ADB7BE] text-xs sm:text-sm mt-4 italic">
           Drop me a line – let&apos;s build the future together ✨
         </p>
       </div>
