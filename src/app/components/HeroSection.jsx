@@ -92,7 +92,7 @@ const HeroSection = () => {
               I&apos;m a passionate developer who is always looking for new
               challenges. I love learning new things and building things. I
               have experience in MERN stack, Java Frameworks,
-              Frontend/Backend/Cloud Technologies, and DevOps.
+              Frontend/Backend/Cloud Technologies, andd DevOps.
             </p>
             <div className="mt-5">
               <Link
