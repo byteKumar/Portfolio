@@ -46,7 +46,7 @@ const TAB_DATA = [
     ),
   },
   {
-    title: "Education",
+    title: "Educationn",
     id: "education",
     content: (
       <div className="space-y-8">
