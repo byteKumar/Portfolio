@@ -139,7 +139,7 @@ const ResumeSection = () => {
             {/* Fixed Header - Title and Tabs */}
             <div className="sticky top-8 z-10 bg-white dark:bg-[#121212] pb-4 mb-8 pt-2 -mt-2">
               {/* Title */}
-              <h1 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">Chaman's Profile</h1>
+              <h1 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">Chaman&#39;s Profile</h1>
               
               {/* Tab Navigation */}
               <div className="flex flex-wrap gap-4 md:gap-6 border-b border-gray-300 dark:border-white/10 pb-4">
