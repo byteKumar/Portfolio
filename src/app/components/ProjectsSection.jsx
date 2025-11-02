@@ -78,10 +78,14 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-16 px-4 bg-gradient-to-b from-gray-800 to-gray-900">
-      <h2 className="text-center text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600 mb-12">
-        Featured Projects
-      </h2>
+    <section id="projects" className="py-20 px-4 bg-gradient-to-b from-gray-800 to-gray-900">
+      <div className="container mx-auto px-4 xl:px-16 max-w-7xl">
+        <div className="mb-12">
+          <h2 className="section-title bg-gradient-to-r from-primary-400 to-secondary-600 bg-clip-text text-transparent mb-4 text-center">
+            Featured Projects
+          </h2>
+          <div className="section-divider"></div>
+        </div>
       <div className="flex justify-center items-center gap-4 mb-12">
         {["All", "Web", "Java"].map((name) => (
           <ProjectTag
@@ -117,12 +121,13 @@ const ProjectsSection = () => {
         <div className="flex justify-center mt-8">
           <button
             onClick={handleShowMore}
-            className="px-6 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-all"
+            className="px-6 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-all font-medium"
           >
             Show More
           </button>
         </div>
       )}
+      </div>
     </section>
   );
 };

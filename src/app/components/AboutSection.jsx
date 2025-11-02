@@ -171,18 +171,19 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="text-white py-16" id="about">
-      <div className="md:grid gap-12 items-center px-4 xl:px-16">
+    <section className="text-white py-20" id="about">
+      <div className="container mx-auto px-4 xl:px-16 max-w-7xl">
         <div className="mt-6 md:mt-0 flex flex-col">
-          <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-primary-400 to-secondary-600 bg-clip-text text-transparent">
-            Background
-          </h2>
-          <div className="text-base lg:text-lg leading-relaxed mb-6">
-            <p class="mb-[25px] mt-0">I am a Master&apos;s in Computer Science student at Northeastern University. </p>
-
-            <p class="mb-[25px] mt-0">My expertise spans developing scalable systems, optimizing data processes, and leveraging cloud technologies (AWS, GCP) to drive efficiency and innovation.
-            I consistently stay abreast of the latest developments in my field, diligently seeking opportunities to learn and explore emerging technologies. </p>
-            <p class="mb-[25px] mt-0">When I&apos;m not in front of a computer screen, you&apos;ll likely find me reading a non-fiction book, exploring new trails, or out on a run.</p>
+          <div className="mb-12">
+            <h2 className="section-title bg-gradient-to-r from-primary-400 to-secondary-600 bg-clip-text text-transparent mb-4">
+              Background
+            </h2>
+            <div className="section-divider"></div>
+          </div>
+          <div className="section-content mb-8 space-y-6">
+            <p>I am a Master&apos;s in Computer Science student at Northeastern University.</p>
+            <p>My expertise spans developing scalable systems, optimizing data processes, and leveraging cloud technologies (AWS, GCP) to drive efficiency and innovation. I consistently stay abreast of the latest developments in my field, diligently seeking opportunities to learn and explore emerging technologies.</p>
+            <p>When I&apos;m not in front of a computer screen, you&apos;ll likely find me reading a non-fiction book, exploring new trails, or out on a run.</p>
           </div>
 
           <div className="flex flex-row justify-center space-x-4 mb-8">
