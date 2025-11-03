@@ -458,32 +458,32 @@ const ResumeSection = () => {
                         </p>
                       </div>
                       <div className="space-y-4">
-                        <h4 className="text-xl font-light text-white/90 mb-4">Databases/Testing</h4>
-                        <p className="text-white/70 text-base leading-relaxed font-light">
+                        <h4 className="text-xl font-light text-gray-900 dark:text-white/90 mb-4">Databases/Testing</h4>
+                        <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
                           MySQL, PostgreSQL, DynamoDB, MongoDB, Redis, JUnit, Mockito, Jest, Postman, SonarQube
                         </p>
                       </div>
                       <div className="space-y-4">
-                        <h4 className="text-xl font-light text-white/90 mb-4">Cloud & DevOps</h4>
-                        <p className="text-white/70 text-base leading-relaxed font-light">
+                        <h4 className="text-xl font-light text-gray-900 dark:text-white/90 mb-4">Cloud & DevOps</h4>
+                        <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
                           Jenkins, Docker, Kubernetes, GCP, Azure, AWS (Lambda, EC2, S3, RDS/DynamoDB, IAM, SNS)
                         </p>
                       </div>
                       <div className="space-y-4">
-                        <h4 className="text-xl font-light text-white/90 mb-4">Software Development</h4>
-                        <p className="text-white/70 text-base leading-relaxed font-light">
+                        <h4 className="text-xl font-light text-gray-900 dark:text-white/90 mb-4">Software Development</h4>
+                        <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
                           Object-Oriented Design, TDD, Agile, Scrum, Retrospective, Story Planning, Sprint, Service First
                         </p>
                       </div>
                       <div className="space-y-4">
-                        <h4 className="text-xl font-light text-white/90 mb-4">Certifications</h4>
-                        <p className="text-white/70 text-base leading-relaxed font-light">
+                        <h4 className="text-xl font-light text-gray-900 dark:text-white/90 mb-4">Certifications</h4>
+                        <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
                           AWS Cloud Practitioner, AWS Certified Developer Associate
                         </p>
                       </div>
                       <div className="md:col-span-2 space-y-4">
-                        <h4 className="text-xl font-light text-white/90 mb-4">Other Tools</h4>
-                        <p className="text-white/70 text-base leading-relaxed font-light">
+                        <h4 className="text-xl font-light text-gray-900 dark:text-white/90 mb-4">Other Tools</h4>
+                        <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
                           Selenium, jQuery, CloudWatch, Cypress, Git, Linux/Bash, CI/CD, GitHub Actions, REST API, JWT
                         </p>
                       </div>
@@ -1032,16 +1032,30 @@ const ResumeSection = () => {
 
                     {/* Download Section */}
                     <div className="flex flex-col items-center gap-4 pt-4">
-                      <a
-                        href="/Chaman_Kumar_Resume_2025.pdf"
-                        download="Chaman_Kumar_Resume_2025.pdf"
-                        className="inline-flex items-center space-x-3 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-300 rounded-lg font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        <span>Download Resume</span>
-                      </a>
+                      <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                        <a
+                          href="/Chaman_Kumar_Resume_2025.pdf"
+                          download="Chaman_Kumar_Resume_2025.pdf"
+                          className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-300 rounded-lg font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                          <span>Download Resume</span>
+                        </a>
+                        <a
+                          href="https://drive.google.com/file/d/1RzvuXUag-NiXiFPu7X-w2vFyIy6LDH8j/view?usp=drive_link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center space-x-3 px-8 py-4 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 rounded-lg font-medium"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                          <span>View on Google Drive</span>
+                          <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+                        </a>
+                      </div>
                       {isRecruiter && (
                         <p className="text-sm text-gray-600 dark:text-white/60 font-light">
                           I look forward to hearing from you!
