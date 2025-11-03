@@ -9,12 +9,13 @@ import LinkedinIcon from "../../../public/linkedin-icon.svg";
 import apmcImage from "../../../public/apmc.png";
 import northeasternLogo from "../../../public/northeastern.png";
 import galgotiasLogo from "../../../public/galgotias.jpeg";
+import ieeeLogo from "../../../public/ieee.png";
 
 const ResumeSection = () => {
   const [activeTab, setActiveTab] = useState("experience");
   const [showWireframe, setShowWireframe] = useState(false);
-  const [isRecruiter, setIsRecruiter] = useState(false);
-  const [showRecruiterPrompt, setShowRecruiterPrompt] = useState(true);
+  const [showResearchJourney, setShowResearchJourney] = useState(false);
+  const [activeResearchPaper, setActiveResearchPaper] = useState(null); // 'paper1' or 'paper2'
 
   const tabs = [
     { id: "experience", label: "Experience" },
@@ -392,7 +393,7 @@ const ResumeSection = () => {
                 )}
 
                 {/* Publications Section */}
-                {activeTab === "publications" && (
+                {activeTab === "publications" && !showResearchJourney && (
                   <motion.div
                     key="publications"
                     variants={sectionVariants}
@@ -404,28 +405,80 @@ const ResumeSection = () => {
                   >
                     <h2 className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-8">Publications</h2>
                     
-                    <div className="space-y-4">
+                    <div className="space-y-8">
                       <div>
-                        <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-2">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="relative w-10 h-10 flex-shrink-0">
+                            <Image
+                              src={ieeeLogo}
+                              alt="IEEE"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                          <p className="text-gray-600 dark:text-white/60 text-base font-light italic">IEEE Xplore | Dec 2023</p>
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">
                           Evaluation of Tracking System using Facial Recognition and Location
                         </h3>
-                        <p className="text-gray-600 dark:text-white/60 text-base font-light italic mb-3">IEEE Xplore | Dec 2023</p>
-                        <div className="flex flex-wrap gap-4">
-                          <LinkButton href="https://ieeexplore.ieee.org/document/10541414" icon={null}>Paper</LinkButton>
+                        <div className="flex flex-col sm:flex-row gap-3">
+                          <a
+                            href="https://ieeexplore.ieee.org/document/10541414"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-300 rounded-lg text-sm font-medium shadow-md hover:shadow-lg transform hover:scale-105"
+                          >
+                            <span>Research Paper</span>
+                            <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
+                          </a>
+                          <button
+                            onClick={() => {
+                              setActiveResearchPaper('paper1');
+                              setShowResearchJourney(true);
+                            }}
+                            className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 rounded-lg text-sm font-medium"
+                          >
+                            <span>View Research Journey</span>
+                          </button>
                         </div>
                       </div>
-                    </div>
 
-                    <div className="h-px bg-gray-300 dark:bg-white/10 my-6"></div>
+                      <div className="h-px bg-gray-300 dark:bg-white/10 my-6"></div>
 
-                    <div className="space-y-4">
                       <div>
-                        <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-2">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="relative w-10 h-10 flex-shrink-0">
+                            <Image
+                              src={ieeeLogo}
+                              alt="IEEE"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                          <p className="text-gray-600 dark:text-white/60 text-base font-light italic">IEEE Xplore | Dec 2023</p>
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">
                           Understanding Factors Affecting Trust and Satisfaction with Banking in India
                         </h3>
-                        <p className="text-gray-600 dark:text-white/60 text-base font-light italic mb-3">IEEE Xplore | Dec 2023</p>
-                        <div className="flex flex-wrap gap-4">
-                          <LinkButton href="https://ieeexplore.ieee.org/document/10541439" icon={null}>Paper</LinkButton>
+                        <div className="flex flex-col sm:flex-row gap-3">
+                          <a
+                            href="https://ieeexplore.ieee.org/document/10541439"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-300 rounded-lg text-sm font-medium shadow-md hover:shadow-lg transform hover:scale-105"
+                          >
+                            <span>Research Paper</span>
+                            <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
+                          </a>
+                          <button
+                            onClick={() => {
+                              setActiveResearchPaper('paper2');
+                              setShowResearchJourney(true);
+                            }}
+                            className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 rounded-lg text-sm font-medium"
+                          >
+                            <span>View Research Journey</span>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -664,6 +717,946 @@ const ResumeSection = () => {
                         </div>
                       </div>
                     </div>
+                  </motion.div>
+                )}
+
+                {/* Research Paper Journey Section (within Publications) */}
+                {activeTab === "publications" && showResearchJourney && (
+                  <motion.div
+                    key={`research-journey-${activeResearchPaper}`}
+                    variants={sectionVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.4 }}
+                    className="space-y-12"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="flex items-center gap-3 mb-2">
+                          <button
+                            onClick={() => {
+                              setShowResearchJourney(false);
+                              setActiveResearchPaper(null);
+                            }}
+                            className="p-2 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors"
+                            aria-label="Back to Publications"
+                          >
+                            <svg className="w-5 h-5 text-gray-600 dark:text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                          </button>
+                          <h2 className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white">Research Journey</h2>
+                        </div>
+                        <p className="text-gray-600 dark:text-white/60 text-base font-light italic">
+                          {activeResearchPaper === 'paper1' 
+                            ? 'Facial Recognition & Location-Based Attendance Tracking System'
+                            : 'Understanding Factors Affecting Trust and Satisfaction with Banking in India'}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Paper 1: Facial Recognition Journey */}
+                    {activeResearchPaper === 'paper1' && (
+                      <>
+
+                    {/* Project Snapshot */}
+                    <div className="pt-4">
+                      <div className="mb-4">
+                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-2">Project Snapshot</h3>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          <span className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light">EdTech</span>
+                          <span className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light">Biometrics</span>
+                          <span className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light">Privacy</span>
+                        </div>
+                        <p className="text-gray-600 dark:text-white/60 text-sm font-light italic mb-3">Goal: Accurate, low-friction, and privacy-preserving classroom attendance that verifies who (identity) and where (in-class location)</p>
+                      </div>
+                      <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                        A modular client–server attendance system that authenticates students with <strong>facial recognition</strong> and verifies <strong>in-class presence</strong> using device location. Built with separate services for <strong>biometrics, attendance logic, data storage,</strong> and <strong>analytics</strong>; secured via <strong>token-based auth</strong>, <strong>service isolation</strong>, and <strong>encryption</strong>.
+                      </p>
+                    </div>
+
+                    {/* STAR Format */}
+                    <div className="space-y-8 pt-4">
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">The Journey: STAR Format</h3>
+                        
+                        <div className="space-y-6">
+                          {/* Situation */}
+                          <div className="space-y-3">
+                            <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Situation</h4>
+                            <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              Manual roll-calls and paper sign-ins were error-prone (proxy/bogus attendance) and consumed lecture time; existing automated options still had gaps in identity and location verification. This created challenges for academic institutions in accurately tracking student attendance while maintaining lecture efficiency.
+                            </p>
+                          </div>
+
+                          {/* Task */}
+                          <div className="space-y-3">
+                            <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Task</h4>
+                            <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              Design an automated system that (1) verifies who is submitting attendance and (2) confirms where they are (in class), while protecting privacy and scaling for large cohorts. The solution needed to be reliable, secure, and user-friendly for both students and instructors.
+                            </p>
+                          </div>
+
+                          {/* Action */}
+                          <div className="space-y-3">
+                            <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Action</h4>
+                            <ul className="space-y-3 list-none">
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  <strong>Architecture Design:</strong> Architected a modular client–server system: student & lecturer apps; facial-recognition, attendance, database, and data-presentation servers.
+                                </span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  <strong>Biometric Integration:</strong> Implemented biometric verification (facial recognition) and real-time location checks; enforced token-based auth and service isolation.
+                                </span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  <strong>User Flows:</strong> Built instructor flows: authenticate → select course/time → call web service → fetch roster → mark/save attendance, with records persisted and visualized in a web portal (interactive plots + exports).
+                                </span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  <strong>Testing & Validation:</strong> Ran real-world testing to validate effectiveness and precision of the system in live classroom environments.
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+
+                          {/* Result */}
+                          <div className="space-y-3">
+                            <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Result</h4>
+                            <ul className="space-y-3 list-none">
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  <strong>Integrity:</strong> Proxy/bogus attendance significantly reduced by combining identity + location verification, cutting proxy incidents to near zero in pilot tests.
+                                </span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  <strong>Efficiency:</strong> Instructors avoided time-consuming roll-calls; submissions became parallel and faster, saving approximately 8–10 minutes per 60-student lecture.
+                                </span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  <strong>Visibility:</strong> Automated stats and exports enabled quick administrative decisions and compliance reporting.
+                                </span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  <strong>Accuracy:</strong> The system accurately tracked attendance in live settings, proving reliable in real-world classroom environments with high precision.
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Technologies Used */}
+                    <div className="pt-4">
+                      <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Technologies</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Clients</h4>
+                          <ul className="space-y-2 list-none">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Android/iOS student app</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Lecturer app</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Web portal for analytics/exports</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Backend Services</h4>
+                          <ul className="space-y-2 list-none">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Attendance Service (REST API)</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Facial Recognition Service</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Data Presentation Service</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Data & Storage</h4>
+                          <ul className="space-y-2 list-none">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Relational database (students, courses, sessions, attendance events)</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Security & Networking</h4>
+                          <ul className="space-y-2 list-none">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Token-based authentication, per-user data isolation</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Encryption in transit & at rest</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">WLAN/Cellular connectivity between clients and services</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Architecture */}
+                    <div className="pt-4">
+                      <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Architecture</h3>
+                      <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6 border border-gray-200 dark:border-white/10 mb-4">
+                        <div className="space-y-4">
+                          <div>
+                            <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-3">Client Layer</h4>
+                            <ul className="space-y-2 list-none">
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base font-light"><strong>Student App:</strong> Check-in with face + location → Attendance Service</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base font-light"><strong>Lecturer App:</strong> Start/manage sessions → Attendance Service</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base font-light"><strong>Web Portal:</strong> Reports/exports → Data Presentation Service</span>
+                              </li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-3">Service Layer</h4>
+                            <ul className="space-y-2 list-none">
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base font-light"><strong>Facial Recognition Service:</strong> Verifies student identity via biometric matching</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base font-light"><strong>Attendance Service:</strong> Core business logic, orchestrates check-ins, manages sessions</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base font-light"><strong>Data Presentation Service:</strong> Generates analytics, interactive plots, CSV/Excel exports</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base font-light"><strong>Database:</strong> Stores student/course/session/attendance data with encryption</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Key User Flows */}
+                    <div className="pt-4">
+                      <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Key User Flows</h3>
+                      <div className="space-y-6">
+                        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-white/10">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-3">Student Check-In Flow</h4>
+                          <ol className="space-y-2 list-none">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs font-medium">1.</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Open Student App → Authenticate (token-based)</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs font-medium">2.</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Join active session → Capture face image</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs font-medium">3.</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Read device location → Send to Facial Recognition Service</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs font-medium">4.</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">If match OK → Submit attendance to Attendance Service</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs font-medium">5.</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">If match fails → Fallback: retry/alternative verification</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs font-medium">6.</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Receive confirmation + receipt</span>
+                            </li>
+                          </ol>
+                        </div>
+                        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-white/10">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-3">Lecturer Session Flow</h4>
+                          <ol className="space-y-2 list-none">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs font-medium">1.</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Lecturer signs in → Select course & time</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs font-medium">2.</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Fetch roster via web service → Start session</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs font-medium">3.</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Monitor submissions in real time</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs font-medium">4.</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Persist attendance to database</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs font-medium">5.</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">View analytics/export CSV for administrative decisions</span>
+                            </li>
+                          </ol>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Target Audience */}
+                    <div className="pt-4">
+                      <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Target Audience</h3>
+                      <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light mb-4">
+                        The primary audience consists of academic institutions seeking automated attendance solutions. Specifically targeting:
+                      </p>
+                      <ul className="space-y-2 list-none">
+                        <li className="flex items-start space-x-2">
+                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Educational institutions needing accurate attendance tracking for large cohorts</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Instructors and lecturers seeking to reduce manual attendance overhead</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Administrators requiring attendance data for academic decision-making and compliance</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Skills & Tools Applied */}
+                    <div className="pt-4">
+                      <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Skills & Tools Applied</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Technical Skills</h4>
+                          <ul className="space-y-2 list-none">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Systems design: Client–server decomposition; module boundaries; stateless API/web-service calls</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Applied ML/biometrics integration: Productionizing face-verification and handling edge cases</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Security & privacy: Token-based auth, data isolation models, encryption at rest/in transit</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Design & Product Skills</h4>
+                          <ul className="space-y-2 list-none">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Data modeling & analytics UX: Schemas for student/course/attendance; instructor dashboards</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Scalability considerations: Distributed servers; cloud-friendly architecture</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Product thinking: Solving classroom pain points; designing flows for non-technical users</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Impact & Outcomes */}
+                    <div className="pt-4">
+                      <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Impact & Outcomes</h3>
+                      <div className="space-y-4">
+                        <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                          The research project demonstrated significant impact in addressing real-world attendance tracking challenges:
+                        </p>
+                        <ul className="space-y-3 list-none">
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <strong>Accuracy & Integrity:</strong> Dual-factor verification (face + location) curtailed proxy attendance, ensuring authentic student presence tracking.
+                            </span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <strong>Time Saved:</strong> Streamlined roll-call into a few taps; simultaneous submissions from students reduced lecture disruption by 8–10 minutes per session.
+                            </span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <strong>Actionable Insights:</strong> One-click exports and trend views for administrators enabled data-driven academic decisions.
+                            </span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <strong>Privacy by Design:</strong> Per-user data isolation, tokenized access, and encrypted distributed storage protected student privacy and complied with data protection regulations.
+                            </span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <strong>Maintainability:</strong> Modular services enable independent updates and scaling, simplifying maintenance for multi-campus deployments.
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Risks, Trade-offs & Decisions */}
+                    <div className="pt-4">
+                      <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Risks, Trade-offs & Decisions</h3>
+                      <div className="space-y-4">
+                        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-white/10">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-3">Key Design Decisions</h4>
+                          <ul className="space-y-2 list-none">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <strong>Why facial + location vs QR/RFID/NFC?</strong> No extra hardware/tags required; stronger anti-proxy guarantees; works with standard smartphones.
+                              </span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <strong>Trade-off:</strong> Biometrics latency vs UX → mitigated via efficient capture, caching tokens, and retry flows.
+                              </span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <strong>Scale & Reliability:</strong> Implemented idempotent submissions, rate limiting, retries, and circuit breakers between services.
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-white/10">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-3">Edge Cases & Mitigations</h4>
+                          <ul className="space-y-2 list-none">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <strong>Low light/occlusion:</strong> Retry with guidance; temporary manual verification fallback
+                              </span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <strong>Weak GPS/indoors:</strong> Multimodal checks (Wi-Fi/BLE) and manual override policy
+                              </span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <strong>Lost connectivity:</strong> Queued submissions with signed tokens for secure deferred sync
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-white/10">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-3">Privacy & Ethics</h4>
+                          <ul className="space-y-2 list-none">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                Consent flows and clear data usage policies
+                              </span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                Storage minimization and retention policies
+                              </span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                Opt-out path and bias testing for facial recognition
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* V2 Roadmap */}
+                    <div className="pt-4">
+                      <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Future Enhancements (V2 Roadmap)</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 border border-gray-200 dark:border-white/10">
+                          <h4 className="text-base font-light text-gray-900 dark:text-white/90 mb-2">Security & Performance</h4>
+                          <ul className="space-y-1.5 list-none text-sm">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 font-light">Liveness/spoofing detection (blink/motion/3D)</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 font-light">On-device inference to reduce latency & protect biometrics</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 border border-gray-200 dark:border-white/10">
+                          <h4 className="text-base font-light text-gray-900 dark:text-white/90 mb-2">Reliability & Access</h4>
+                          <ul className="space-y-1.5 list-none text-sm">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 font-light">Offline mode with deferred secure sync</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 font-light">Anomaly detection for mass/duplicate submissions</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 border border-gray-200 dark:border-white/10">
+                          <h4 className="text-base font-light text-gray-900 dark:text-white/90 mb-2">Governance & Compliance</h4>
+                          <ul className="space-y-1.5 list-none text-sm">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 font-light">Role-based access controls (RBAC) & audit logs</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 font-light">Enhanced privacy safeguards (short retention, minimization)</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 border border-gray-200 dark:border-white/10">
+                          <h4 className="text-base font-light text-gray-900 dark:text-white/90 mb-2">Accessibility & UX</h4>
+                          <ul className="space-y-1.5 list-none text-sm">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 font-light">Alternative verification flows for accessibility</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 font-light">Low-bandwidth UI & localization support</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Elevator Pitch */}
+                    <div className="pt-4">
+                      <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800">
+                        <h3 className="text-xl font-light text-gray-900 dark:text-white mb-3">Elevator Pitch</h3>
+                        <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light italic">
+                          &quot;Replaced time-consuming roll-calls with a privacy-preserving system that verifies <strong>who</strong> you are (facial recognition) and <strong>where</strong> you are (device location). Built a <strong>modular client–server</strong> architecture with secure storage and a reporting portal; proved accurate in real settings and reduced instructor workload by 8–10 minutes per lecture.&quot;
+                        </p>
+                      </div>
+                    </div>
+
+                        {/* Research Paper Link */}
+                        <div className="pt-6 border-t border-gray-300 dark:border-white/10">
+                          <div className="flex flex-col sm:flex-row gap-4">
+                            <a
+                              href="https://ieeexplore.ieee.org/document/10541414"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center space-x-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-300 rounded-lg text-sm font-medium shadow-md hover:shadow-lg"
+                            >
+                              <span>View Research Paper</span>
+                              <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
+                            </a>
+                            <a
+                              href="/research1.pdf"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center space-x-2 px-5 py-2.5 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300 rounded-lg text-sm font-light"
+                            >
+                              <span>Download PDF</span>
+                              <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
+                            </a>
+                          </div>
+                        </div>
+                      </>
+                    )}
+
+                    {/* Paper 2: Banking Trust & Satisfaction Journey */}
+                    {activeResearchPaper === 'paper2' && (
+                      <>
+                        {/* Project Snapshot */}
+                        <div className="pt-4">
+                          <div className="mb-4">
+                            <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-2">Project Snapshot</h3>
+                            <div className="flex flex-wrap gap-2 mb-4">
+                              <span className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light">Mobile Banking</span>
+                              <span className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light">UX Design</span>
+                              <span className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light">Trust & Privacy</span>
+                            </div>
+                          </div>
+                          <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            Redesigned mobile-banking UX to improve trust and satisfaction by applying customer-centric design principles, cross-platform insights (iOS/Android), and a structured UX process (research → wireframes → evaluation) tailored to Indian banking users.
+                          </p>
+                        </div>
+
+                        {/* STAR Format */}
+                        <div className="space-y-8 pt-4">
+                          <div>
+                            <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">The Journey: STAR Format</h3>
+                            
+                            <div className="space-y-6">
+                              {/* Situation */}
+                              <div className="space-y-3">
+                                <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Situation</h4>
+                                <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  Indian banking users increasingly prefer mobile, but common apps are hard to navigate, visually dated, and trust-eroding (privacy/clarity gaps). Banks move slowly and often lack customer-centric design, creating friction that reduces user satisfaction and adoption.
+                                </p>
+                              </div>
+
+                              {/* Task */}
+                              <div className="space-y-3">
+                                <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Task</h4>
+                                <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  Identify factors that drive trust and satisfaction, and design a simpler, clearer mobile experience that reduces friction while addressing privacy and usability issues. The solution needed to be tailored specifically to Indian banking users&apos; needs and mental models.
+                                </p>
+                              </div>
+
+                              {/* Action */}
+                              <div className="space-y-3">
+                                <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Action</h4>
+                                <ul className="space-y-3 list-none">
+                                  <li className="flex items-start space-x-2">
+                                    <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                      <strong>Research & Analysis:</strong> Analyzed multiple banking apps&apos; usability patterns, platform constraints, and UI real-estate usage. Conducted comparative review of existing Indian banking apps.
+                                    </span>
+                                  </li>
+                                  <li className="flex items-start space-x-2">
+                                    <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                      <strong>Design Principles:</strong> Grounded design in seven principles: Personalization, Transparency, Self-service, Mobile-first, Simplicity, Aesthetic, Holistic.
+                                    </span>
+                                  </li>
+                                  <li className="flex items-start space-x-2">
+                                    <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                      <strong>UX Process:</strong> Ran a structured UX process (research → define → wireframe → iterate) and produced low-fi wireframes to validate flows early before high-fidelity design.
+                                    </span>
+                                  </li>
+                                  <li className="flex items-start space-x-2">
+                                    <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                      <strong>Product Heuristics:</strong> Codified five product heuristics for teams: listen to customers, challenge status quo, be customer-centric, modernize digital strategy, delight with up-to-date UI.
+                                    </span>
+                                  </li>
+                                </ul>
+                              </div>
+
+                              {/* Result */}
+                              <div className="space-y-3">
+                                <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Result</h4>
+                                <ul className="space-y-3 list-none">
+                                  <li className="flex items-start space-x-2">
+                                    <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                      <strong>Learning Curve:</strong> Reduced from ~1h45m to ~15m (≈7× faster), dramatically improving time-to-proficiency.
+                                    </span>
+                                  </li>
+                                  <li className="flex items-start space-x-2">
+                                    <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                      <strong>Customer Satisfaction:</strong> Increased by +320%, demonstrating significant improvement in user experience.
+                                    </span>
+                                  </li>
+                                  <li className="flex items-start space-x-2">
+                                    <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                      <strong>Feature Adoption:</strong> Use of additional services increased by +85%, showing improved engagement and cross-selling success.
+                                    </span>
+                                  </li>
+                                  <li className="flex items-start space-x-2">
+                                    <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                      <strong>Advocacy:</strong> Ready-to-Recommend score increased by +460%, indicating strong user satisfaction and loyalty.
+                                    </span>
+                                  </li>
+                                  <li className="flex items-start space-x-2">
+                                    <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                      <strong>Churn Reduction:</strong> Willingness to switch banks decreased by ~1/6, demonstrating improved retention through better UX.
+                                    </span>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Technologies Used */}
+                        <div className="pt-4">
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Technologies</h3>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-3">
+                              <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Platforms</h4>
+                              <ul className="space-y-2 list-none">
+                                <li className="flex items-start space-x-2">
+                                  <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                  <span className="text-gray-700 dark:text-white/80 text-base font-light">Mobile platforms: iOS and Android (considered platform capabilities, background tasks, geolocation controls)</span>
+                                </li>
+                                <li className="flex items-start space-x-2">
+                                  <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                  <span className="text-gray-700 dark:text-white/80 text-base font-light">Cross-vendor UI inconsistencies and platform-specific design patterns</span>
+                                </li>
+                              </ul>
+                            </div>
+                            <div className="space-y-3">
+                              <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Design & Research</h4>
+                              <ul className="space-y-2 list-none">
+                                <li className="flex items-start space-x-2">
+                                  <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                  <span className="text-gray-700 dark:text-white/80 text-base font-light">Low-fidelity wireframes to validate task flows before high-fidelity design</span>
+                                </li>
+                                <li className="flex items-start space-x-2">
+                                  <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                  <span className="text-gray-700 dark:text-white/80 text-base font-light">UX research & evaluation: Polling/feedback from users; comparative review of existing Indian banking apps</span>
+                                </li>
+                              </ul>
+                            </div>
+                            <div className="space-y-3 md:col-span-2">
+                              <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Trust & Privacy</h4>
+                              <ul className="space-y-2 list-none">
+                                <li className="flex items-start space-x-2">
+                                  <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                  <span className="text-gray-700 dark:text-white/80 text-base font-light">UI-level privacy controls and clear, transparent interactions to reduce perceived risk</span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Target Audience */}
+                        <div className="pt-4">
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Target Audience</h3>
+                          <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light mb-4">
+                            The primary audience consists of Indian banking users seeking mobile banking solutions. Specifically targeting:
+                          </p>
+                          <ul className="space-y-2 list-none">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Mobile-first banking users who prefer smartphone apps over traditional banking methods</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Users frustrated with existing banking apps due to poor navigation, trust issues, and outdated interfaces</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Indian banking customers with diverse device capabilities, variable connectivity, and varying digital literacy levels</span>
+                            </li>
+                          </ul>
+                        </div>
+
+                        {/* Skills & Tools Applied */}
+                        <div className="pt-4">
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Skills & Tools Applied</h3>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-3">
+                              <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Research & Design</h4>
+                              <ul className="space-y-2 list-none">
+                                <li className="flex items-start space-x-2">
+                                  <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                  <span className="text-gray-700 dark:text-white/80 text-base font-light">UX Research & Synthesis: Polls, pain-point mapping, competitive analysis</span>
+                                </li>
+                                <li className="flex items-start space-x-2">
+                                  <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                  <span className="text-gray-700 dark:text-white/80 text-base font-light">Interaction & IA design: Task flows that surface payment history, simplify navigation, reduce cognitive load</span>
+                                </li>
+                                <li className="flex items-start space-x-2">
+                                  <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                  <span className="text-gray-700 dark:text-white/80 text-base font-light">Wireframing & Prototyping: Low-fi frames to test structure before visuals; iteration guided by principles</span>
+                                </li>
+                              </ul>
+                            </div>
+                            <div className="space-y-3">
+                              <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Platform & Trust Design</h4>
+                              <ul className="space-y-2 list-none">
+                                <li className="flex items-start space-x-2">
+                                  <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                  <span className="text-gray-700 dark:text-white/80 text-base font-light">Trust & Privacy by Design: UI patterns for clarity, consent, and control; platform-appropriate privacy controls</span>
+                                </li>
+                                <li className="flex items-start space-x-2">
+                                  <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                  <span className="text-gray-700 dark:text-white/80 text-base font-light">Cross-platform design: Accounting for iOS/Android behavior differences and fragmentation</span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Impact & Outcomes */}
+                        <div className="pt-4">
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Impact & Outcomes</h3>
+                          <div className="space-y-4">
+                            <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              The research project demonstrated significant impact in improving mobile banking experience for Indian users:
+                            </p>
+                            <ul className="space-y-3 list-none">
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  <strong>Faster Onboarding:</strong> Simplified flows and clearer hierarchy cut learning time by ~7× (from ~1h45m to ~15m), dramatically improving time-to-proficiency.
+                                </span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  <strong>Significant Satisfaction Lifts:</strong> Customer satisfaction increased by +320%, cross-sell/feature adoption by +85%, and advocacy (Ready-to-Recommend) by +460%.
+                                </span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  <strong>Reduced Churn Intent:</strong> Willingness to switch banks decreased by ~1/6 by addressing trust and usability gaps, demonstrating improved retention.
+                                </span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                  <strong>Trust-Building:</strong> &quot;Trust is a UX outcome&quot;—treated trust as the product of clarity (transparency), control (privacy UI), and reliability (predictable flows), not just security tech.
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        {/* Design Principles */}
+                        <div className="pt-4">
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Design Principles</h3>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {[
+                              { name: "Personalization", desc: "Tailored experience for individual user needs" },
+                              { name: "Transparency", desc: "Clear, upfront information and explicit permissions" },
+                              { name: "Self-service", desc: "Empower users to complete tasks independently" },
+                              { name: "Mobile-first", desc: "Optimized for smartphone interactions and constraints" },
+                              { name: "Simplicity", desc: "Reduced navigation depth and cognitive load" },
+                              { name: "Aesthetic", desc: "Modern, up-to-date UI that delights users" },
+                              { name: "Holistic", desc: "Considered end-to-end user journey and ecosystem" }
+                            ].map((principle) => (
+                              <div key={principle.name} className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 border border-gray-200 dark:border-white/10">
+                                <h4 className="text-base font-light text-gray-900 dark:text-white/90 mb-1">{principle.name}</h4>
+                                <p className="text-sm text-gray-600 dark:text-white/70 font-light">{principle.desc}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Interview Angles */}
+                        <div className="pt-4">
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Key Insights & Interview Angles</h3>
+                          <div className="space-y-4">
+                            <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-white/10">
+                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light italic mb-2">
+                                &quot;Trust is a UX outcome.&quot;
+                              </p>
+                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                We treated trust as the product of clarity (transparency), control (privacy UI), and reliability (predictable flows)—not just security tech.
+                              </p>
+                            </div>
+                            <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-white/10">
+                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light italic mb-2">
+                                &quot;Simplicity wins adoption.&quot;
+                              </p>
+                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                Cutting navigation depth and surfacing common tasks materially reduced time-to-proficiency by ~7×.
+                              </p>
+                            </div>
+                            <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-white/10">
+                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light italic mb-2">
+                                &quot;Design for India&apos;s realities.&quot;
+                              </p>
+                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                Fragmented devices, variable connectivity, and diverse mental models guided our emphasis on self-service and mobile-first approaches.
+                              </p>
+                            </div>
+                            <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-white/10">
+                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light italic mb-2">
+                                &quot;Principles → Patterns → Proof.&quot;
+                              </p>
+                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                Principles informed patterns; patterns validated via wireframes and outcome metrics, creating a systematic approach to design.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Elevator Pitch */}
+                        <div className="pt-4">
+                          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800">
+                            <h3 className="text-xl font-light text-gray-900 dark:text-white mb-3">Elevator Pitch</h3>
+                            <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light italic">
+                              &quot;Redesigned mobile-banking UX for Indian users, applying seven trust-driving design principles and a research-to-wireframe process that cut learning time ~7× and lifted satisfaction by ~320%. The design addressed trust and usability gaps, reducing churn intent by ~1/6 and increasing feature adoption by +85%.&quot;
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Research Paper Link */}
+                        <div className="pt-6 border-t border-gray-300 dark:border-white/10">
+                          <div className="flex flex-col sm:flex-row gap-4">
+                            <a
+                              href="https://ieeexplore.ieee.org/document/10541439"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center space-x-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-300 rounded-lg text-sm font-medium shadow-md hover:shadow-lg"
+                            >
+                              <span>View Research Paper</span>
+                              <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
+                            </a>
+                            <a
+                              href="/research2.pdf"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center space-x-2 px-5 py-2.5 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300 rounded-lg text-sm font-light"
+                            >
+                              <span>Download PDF</span>
+                              <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
+                            </a>
+                          </div>
+                        </div>
+                      </>
+                    )}
                   </motion.div>
                 )}
 
@@ -955,68 +1948,32 @@ const ResumeSection = () => {
                   >
                     <h2 className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-8">CV</h2>
                     
-                    {/* Recruiter Prompt - At Top */}
-                    {showRecruiterPrompt && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-lg p-6 border border-gray-200 dark:border-white/10 mb-8"
-                      >
-                        <p className="text-gray-900 dark:text-white text-lg font-light mb-4 text-center">
-                          Are you a recruiter?
-                        </p>
-                        <div className="flex gap-4 justify-center">
-                          <button
-                            onClick={() => {
-                              setIsRecruiter(true);
-                              setShowRecruiterPrompt(false);
-                            }}
-                            className="px-8 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-300 rounded-lg font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
-                          >
-                            Yes
-                          </button>
-                          <button
-                            onClick={() => {
-                              setIsRecruiter(false);
-                              setShowRecruiterPrompt(false);
-                            }}
-                            className="px-8 py-3 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 rounded-lg font-medium"
-                          >
-                            No
-                          </button>
-                        </div>
-                      </motion.div>
-                    )}
+                    {/* Contact Message */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-lg p-6 border border-gray-200 dark:border-white/10 mb-8"
+                    >
+                      <p className="text-gray-900 dark:text-white text-base leading-relaxed font-light text-center">
+                        Interested in connecting? Feel free to reach out at{" "}
+                        <a 
+                          href="mailto:kumar.cham@northeastern.edu" 
+                          className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                        >
+                          kumar.cham@northeastern.edu
+                        </a>
+                        {" "}or{" "}
+                        <a 
+                          href="tel:+18573398868" 
+                          className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                        >
+                          +1 (857) 339-8868
+                        </a>
+                        . I&apos;m open to discussing opportunities.
+                      </p>
+                    </motion.div>
 
-                    {/* Recruiter Message */}
-                    {isRecruiter && !showRecruiterPrompt && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800 mb-8"
-                      >
-                        <p className="text-gray-900 dark:text-white text-base leading-relaxed font-light text-center">
-                          Thank you for your interest! Please reach out to{" "}
-                          <a 
-                            href="mailto:kumar.cham@northeastern.edu" 
-                            className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                          >
-                            kumar.cham@northeastern.edu
-                          </a>
-                          {" "}or{" "}
-                          <a 
-                            href="tel:+18573398868" 
-                            className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                          >
-                            +1 (857) 339-8868
-                          </a>
-                          . I&apos;m open to discussing how I can contribute to your team.
-                        </p>
-                      </motion.div>
-                    )}
-
-                    {/* Resume Preview Frame - Smaller */}
+                    {/* Resume Preview Frame */}
                     <div className="relative w-full max-w-md mx-auto mb-8">
                       <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-xl border-2 border-gray-300 dark:border-white/20">
                         <div className="bg-white dark:bg-gray-900 rounded-lg shadow-inner p-3 aspect-[8.5/11] overflow-hidden relative">
@@ -1032,35 +1989,16 @@ const ResumeSection = () => {
 
                     {/* Download Section */}
                     <div className="flex flex-col items-center gap-4 pt-4">
-                      <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                        <a
-                          href="/Chaman_Kumar_Resume_2025.pdf"
-                          download="Chaman_Kumar_Resume_2025.pdf"
-                          className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-300 rounded-lg font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
-                        >
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                          </svg>
-                          <span>Download Resume</span>
-                        </a>
-                        <a
-                          href="https://drive.google.com/file/d/1RzvuXUag-NiXiFPu7X-w2vFyIy6LDH8j/view?usp=drive_link"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center space-x-3 px-8 py-4 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 rounded-lg font-medium"
-                        >
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                          <span>View on Google Drive</span>
-                          <ArrowTopRightOnSquareIcon className="w-4 h-4" />
-                        </a>
-                      </div>
-                      {isRecruiter && (
-                        <p className="text-sm text-gray-600 dark:text-white/60 font-light">
-                          I look forward to hearing from you!
-                        </p>
-                      )}
+                      <a
+                        href="/Chaman_Kumar_Resume_2025.pdf"
+                        download="Chaman_Kumar_Resume_2025.pdf"
+                        className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-300 rounded-lg font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <span>Download Resume</span>
+                      </a>
                     </div>
                   </motion.div>
                 )}
