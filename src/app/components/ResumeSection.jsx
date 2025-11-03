@@ -10,12 +10,18 @@ import apmcImage from "../../../public/apmc.png";
 import northeasternLogo from "../../../public/northeastern.png";
 import galgotiasLogo from "../../../public/galgotias.jpeg";
 import ieeeLogo from "../../../public/ieee.png";
+import akqaLogo from "../../../public/akqa.png";
+import iwcLogo from "../../../public/iwc.png";
+import montblancLogo from "../../../public/montblanc.svg";
+import bluepiLogo from "../../../public/bluepi.jpeg";
 
 const ResumeSection = () => {
   const [activeTab, setActiveTab] = useState("experience");
   const [showWireframe, setShowWireframe] = useState(false);
   const [showResearchJourney, setShowResearchJourney] = useState(false);
   const [activeResearchPaper, setActiveResearchPaper] = useState(null); // 'paper1' or 'paper2'
+  const [showTAJourney, setShowTAJourney] = useState(false);
+  const [showAKQAProjects, setShowAKQAProjects] = useState(false);
 
   const tabs = [
     { id: "experience", label: "Experience" },
@@ -110,7 +116,7 @@ const ResumeSection = () => {
                     />
                   </div>
                   <a
-                    href="https://linkedin.com/in/yourprofile"
+                    href="https://www.linkedin.com/in/chamankumar5/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-900 dark:text-white/70 hover:text-gray-600 dark:hover:text-white text-sm font-light transition-colors"
@@ -153,7 +159,14 @@ const ResumeSection = () => {
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
+                    onClick={() => {
+                      setActiveTab(tab.id);
+                      setShowWireframe(false);
+                      setShowResearchJourney(false);
+                      setActiveResearchPaper(null);
+                      setShowTAJourney(false);
+                      setShowAKQAProjects(false);
+                    }}
                     className={`px-2 py-2 text-sm md:text-base font-light transition-all duration-300 relative ${
                       activeTab === tab.id
                         ? "text-gray-900 dark:text-white"
@@ -190,72 +203,291 @@ const ResumeSection = () => {
                     <h2 className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-8">Work Experience</h2>
                     
                     {/* Graduate Teaching Assistant */}
-                    <div className="space-y-3">
-                      <div>
-                        <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">
-                          Graduate Teaching Assistant
-                        </h3>
-                        <p className="text-gray-600 dark:text-white/60 text-base font-light italic">Northeastern University, Massachusetts | Jan 2025 - Present</p>
+                    {!showTAJourney ? (
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <div className="relative w-10 h-10 flex-shrink-0">
+                            <Image
+                              src={northeasternLogo}
+                              alt="Northeastern University"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                          <div>
+                            <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">
+                              Graduate Teaching Assistant
+                            </h3>
+                            <p className="text-gray-600 dark:text-white/60 text-base font-light italic">Northeastern University, Massachusetts | Jan 2025 - Present</p>
+                          </div>
+                        </div>
+                        <ul className="space-y-2 list-none">
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Led TA team, shipped MERN Q&A platform (500+ students)</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Mentored 5 teams (TDD, peer reviews, improved deployment 25%, reduced incidents 40%)</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Ran labs/office hours (100+ students), taught MERN/Agile (95% project completion)</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Built CI/CD (raised coverage 20%, reduced deployment errors 20%, bug cycles 10%)</span>
+                          </li>
+                        </ul>
+                        <div className="pt-3">
+                          <button
+                            onClick={() => setShowTAJourney(true)}
+                            className="inline-flex items-center space-x-2 px-5 py-2.5 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 rounded-lg text-sm font-medium"
+                          >
+                            <span>View Journey</span>
+                          </button>
+                        </div>
                       </div>
-                      <ul className="space-y-2 list-none">
-                        <li className="flex items-start space-x-2">
-                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Led TA team, shipped MERN Q&A platform (500+ students)</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Mentored 5 teams (TDD, peer reviews, improved deployment 25%, reduced incidents 40%)</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Ran labs/office hours (100+ students), taught MERN/Agile (95% project completion)</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Built CI/CD (raised coverage 20%, reduced deployment errors 20%, bug cycles 10%)</span>
-                        </li>
-                      </ul>
-                    </div>
+                    ) : (
+                      <motion.div
+                        key="ta-journey"
+                        variants={sectionVariants}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        transition={{ duration: 0.4 }}
+                        className="space-y-6"
+                      >
+                        <div className="flex items-center gap-3 mb-4">
+                          <button
+                            onClick={() => setShowTAJourney(false)}
+                            className="p-2 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors"
+                            aria-label="Back to Experience"
+                          >
+                            <svg className="w-5 h-5 text-gray-600 dark:text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                          </button>
+                          <div className="flex items-center gap-3">
+                            <div className="relative w-10 h-10 flex-shrink-0">
+                              <Image
+                                src={northeasternLogo}
+                                alt="Northeastern University"
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                            <div>
+                              <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">
+                                Graduate Teaching Assistant
+                              </h3>
+                              <p className="text-gray-600 dark:text-white/60 text-base font-light italic">Northeastern University, Massachusetts | Jan 2025 - Present</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6 border border-gray-200 dark:border-white/10">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-4">Teaching Assignments</h4>
+                          <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light mb-6">
+                            I have served as a Graduate Teaching Assistant across multiple semesters, contributing to CS4530 (Fundamentals of Software Engineering) course. Here are my semester assignments:
+                          </p>
+                          <div className="space-y-4">
+                            <div className="border-l-4 border-blue-500 dark:border-blue-400 pl-4 py-2">
+                              <h5 className="text-base font-light text-gray-900 dark:text-white mb-2">Spring 2025</h5>
+                              <a
+                                href="https://neu-se.github.io/CS4530-Spring-2025/staff/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                              >
+                                <span>View Staff Page</span>
+                                <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+                              </a>
+                            </div>
+                            <div className="border-l-4 border-green-500 dark:border-green-400 pl-4 py-2">
+                              <h5 className="text-base font-light text-gray-900 dark:text-white mb-2">Summer 2025</h5>
+                              <a
+                                href="https://neu-se.github.io/CS4530-Summer-2025/staff/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                              >
+                                <span>View Staff Page</span>
+                                <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+                              </a>
+                            </div>
+                            <div className="border-l-4 border-purple-500 dark:border-purple-400 pl-4 py-2">
+                              <h5 className="text-base font-light text-gray-900 dark:text-white mb-2">Fall 2025</h5>
+                              <a
+                                href="https://neu-se.github.io/CS4530-Fall-2025/staff/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                              >
+                                <span>View Staff Page</span>
+                                <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
 
                     <div className="h-px bg-gray-300 dark:bg-white/10 my-8"></div>
 
                     {/* Software Engineer - AKQA */}
-                    <div className="space-y-3">
-                      <div>
-                        <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">Software Engineer</h3>
-                        <p className="text-gray-600 dark:text-white/60 text-base font-light italic">AKQA, Gurgaon, India | Jul 2022 - Aug 2024</p>
+                    {!showAKQAProjects ? (
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <div className="relative w-10 h-10 flex-shrink-0">
+                            <Image
+                              src={akqaLogo}
+                              alt="AKQA"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                          <div>
+                            <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">Software Engineer</h3>
+                            <p className="text-gray-600 dark:text-white/60 text-base font-light italic">AKQA, Gurgaon, India | Jul 2022 - Aug 2024</p>
+                          </div>
+                        </div>
+                        <ul className="space-y-2 list-none">
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Optimized IWC website (Core Web Vitals, UX, AEM+MERN)</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Stabilized releases via Jenkins CI/CD (11s to 4s page loads, lifted engagement 18%, interactions 23%)</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Led accessibility/analytics (85%+ WCAG 2.1 A/AA, SKU attribution)</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Led digital activations for WaW (55% reach/engagement, 500M+ online reach)</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Built JUnit/Jest/Cypress tests (lifted coverage 20%, cut errors 20%, bug cycles 10%)</span>
+                          </li>
+                        </ul>
+                        <div className="pt-3">
+                          <button
+                            onClick={() => setShowAKQAProjects(true)}
+                            className="inline-flex items-center space-x-2 px-5 py-2.5 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 rounded-lg text-sm font-medium"
+                          >
+                            <span>View Projects Worked On</span>
+                          </button>
+                        </div>
                       </div>
-                      <ul className="space-y-2 list-none">
-                        <li className="flex items-start space-x-2">
-                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Optimized IWC website (Core Web Vitals, UX, AEM+MERN)</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Stabilized releases via Jenkins CI/CD (11s to 4s page loads, lifted engagement 18%, interactions 23%)</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Led accessibility/analytics (85%+ WCAG 2.1 A/AA, SKU attribution)</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Led digital activations for WaW (55% reach/engagement, 500M+ online reach)</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Built JUnit/Jest/Cypress tests (lifted coverage 20%, cut errors 20%, bug cycles 10%)</span>
-                        </li>
-                      </ul>
-                    </div>
+                    ) : (
+                      <motion.div
+                        key="akqa-projects"
+                        variants={sectionVariants}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        transition={{ duration: 0.4 }}
+                        className="space-y-6"
+                      >
+                        <div className="flex items-center gap-3 mb-4">
+                          <button
+                            onClick={() => setShowAKQAProjects(false)}
+                            className="p-2 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors"
+                            aria-label="Back to Experience"
+                          >
+                            <svg className="w-5 h-5 text-gray-600 dark:text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                          </button>
+                          <div className="flex items-center gap-3">
+                            <div className="relative w-10 h-10 flex-shrink-0">
+                              <Image
+                                src={akqaLogo}
+                                alt="AKQA"
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                            <div>
+                              <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">Software Engineer</h3>
+                              <p className="text-gray-600 dark:text-white/60 text-base font-light italic">AKQA, Gurgaon, India | Jul 2022 - Aug 2024</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6 border border-gray-200 dark:border-white/10">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-4">Projects Worked On</h4>
+                          <div className="space-y-6">
+                            <div className="flex items-start gap-4">
+                              <div className="relative w-16 h-16 flex-shrink-0">
+                                <Image
+                                  src={iwcLogo}
+                                  alt="IWC"
+                                  fill
+                                  className="object-contain"
+                                />
+                              </div>
+                              <div className="flex-1">
+                                <h5 className="text-base font-light text-gray-900 dark:text-white mb-2">IWC</h5>
+                                <a
+                                  href="https://www.iwc.com/us-en"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                                >
+                                  <span>Visit Website</span>
+                                  <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+                                </a>
+                              </div>
+                            </div>
+                            <div className="flex items-start gap-4">
+                              <div className="relative w-16 h-16 flex-shrink-0">
+                                <Image
+                                  src={montblancLogo}
+                                  alt="Montblanc"
+                                  fill
+                                  className="object-contain"
+                                />
+                              </div>
+                              <div className="flex-1">
+                                <h5 className="text-base font-light text-gray-900 dark:text-white mb-2">Montblanc</h5>
+                                <a
+                                  href="https://www.montblanc.com/en-us"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                                >
+                                  <span>Visit Website</span>
+                                  <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
 
                     <div className="h-px bg-gray-300 dark:bg-white/10 my-8"></div>
 
                     {/* Software Engineer Intern */}
                     <div className="space-y-3">
-                      <div>
-                        <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">Software Engineer Intern</h3>
-                        <p className="text-gray-600 dark:text-white/60 text-base font-light italic">Bluepi, Gurgaon, India | Nov 2021 - Feb 2022</p>
+                      <div className="flex items-center gap-3">
+                        <div className="relative w-10 h-10 flex-shrink-0 border-2 border-gray-300 dark:border-white/30 rounded-lg overflow-hidden">
+                          <Image
+                            src={bluepiLogo}
+                            alt="BluePi"
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">Software Engineer Intern</h3>
+                          <p className="text-gray-600 dark:text-white/60 text-base font-light italic">Bluepi, Gurgaon, India | Nov 2021 - Feb 2022</p>
+                        </div>
                       </div>
                       <ul className="space-y-2 list-none">
                         <li className="flex items-start space-x-2">
@@ -275,6 +507,17 @@ const ResumeSection = () => {
                           <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Co-lead AWS redesign (right-sized EC2, tuned RDS, autoscaling, monitored CloudWatch – raised resilience, cut costs 10%)</span>
                         </li>
                       </ul>
+                      <div className="pt-3">
+                        <a
+                          href="https://www.bluepiit.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center space-x-2 px-5 py-2.5 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 rounded-lg text-sm font-medium"
+                        >
+                          <span>View Site</span>
+                          <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+                        </a>
+                      </div>
                     </div>
                   </motion.div>
                 )}
