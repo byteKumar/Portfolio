@@ -706,7 +706,7 @@ const ResumeSection = () => {
                           <div className="space-y-3">
                             <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Situation</h4>
                             <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
-                              As Leader of Technical Development at the Aspiring Product Managers Club, I observed a critical challenge: students were struggling with resume optimization for job applications. Many were submitting generic resumes that didn't align with specific job requirements, resulting in low interview conversion rates. The competitive job market demanded tailored, impactful resumes that highlighted relevant skills and experiences.
+                              As Leader of Technical Development at the Aspiring Product Managers Club, I observed a critical challenge: students were struggling with resume optimization for job applications. Many were submitting generic resumes that didn&apos;t align with specific job requirements, resulting in low interview conversion rates. The competitive job market demanded tailored, impactful resumes that highlighted relevant skills and experiences.
                             </p>
                           </div>
 
