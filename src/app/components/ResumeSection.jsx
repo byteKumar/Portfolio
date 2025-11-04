@@ -14,6 +14,7 @@ import akqaLogo from "../../../public/akqa.png";
 import iwcLogo from "../../../public/iwc.png";
 import montblancLogo from "../../../public/montblanc.svg";
 import bluepiLogo from "../../../public/bluepi.jpeg";
+import folderImage from "./folder.png";
 
 const ResumeSection = () => {
   const [activeTab, setActiveTab] = useState("education");
@@ -154,10 +155,9 @@ const ResumeSection = () => {
           <div className="w-full lg:hidden">
             <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-5 shadow-sm border border-gray-200 dark:border-white/10">
               <div className="space-y-4">
-
                 {/* Profile Photo */}
                 <div className="w-full flex justify-center lg:justify-start">
-                  <div className="relative w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] lg:w-[180px] lg:h-[180px] flex-shrink-0">
+                  <div className="relative w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] flex-shrink-0">
                     <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-gray-300 dark:border-white/30 shadow-md">
                       <Image
                         src={heroImage}
@@ -165,7 +165,7 @@ const ResumeSection = () => {
                         fill
                         className="object-cover"
                         priority
-                        sizes="(max-width: 640px) 120px, (max-width: 1024px) 150px, 180px"
+                        sizes="(max-width: 640px) 120px, 150px"
                       />
                     </div>
                   </div>
@@ -256,7 +256,6 @@ const ResumeSection = () => {
           <div className="hidden lg:block fixed lg:top-[76px] lg:left-[calc(10%+1rem)] lg:w-[calc((80%-4rem)/5)] lg:h-[75vh] lg:overflow-hidden lg:z-10">
             <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-5 shadow-sm border border-gray-200 dark:border-white/10 h-full overflow-hidden">
               <div className="space-y-4">
-
                 {/* Profile Photo */}
                 <div className="w-full flex justify-center lg:justify-start">
                   <div className="relative w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] lg:w-[180px] lg:h-[180px] flex-shrink-0">
@@ -588,6 +587,28 @@ const ResumeSection = () => {
                         <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6 border border-gray-200 dark:border-white/10">
                           <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-4">Projects Worked On</h4>
                           <div className="space-y-6">
+                            <div className="flex items-start gap-4">
+                              <div className="relative w-16 h-16 flex-shrink-0">
+                                <Image
+                                  src={akqaLogo}
+                                  alt="AKQA"
+                                  fill
+                                  className="object-contain"
+                                />
+                              </div>
+                              <div className="flex-1">
+                                <h5 className="text-base font-light text-gray-900 dark:text-white mb-2">AKQA</h5>
+                                <a
+                                  href="https://www.akqa.com/"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                                >
+                                  <span>Visit Website</span>
+                                  <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+                                </a>
+                              </div>
+                            </div>
                             <div className="flex items-start gap-4">
                               <div className="relative w-16 h-16 flex-shrink-0">
                                 <Image
@@ -2461,10 +2482,46 @@ const ResumeSection = () => {
                         </form>
                       </div>
                     ) : (
-                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10">
-                        <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
-                          Study materials and resources will be displayed here.
-                        </p>
+                      <div className="flex flex-wrap gap-3 sm:gap-4">
+                        {/* Blind 75 Folder */}
+                        <a
+                          href="https://github.com/byteKumar/Blind-75"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex flex-col items-center justify-start space-y-1 hover:opacity-80 transition-opacity duration-200"
+                        >
+                          <div className="relative w-16 h-16 sm:w-20 sm:h-20">
+                            <Image
+                              src={folderImage}
+                              alt="Blind 75"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                          <p className="text-gray-900 dark:text-white text-xs sm:text-sm font-medium text-center max-w-[80px] break-words">
+                            Blind 75
+                          </p>
+                        </a>
+
+                        {/* Design Pattern Folder */}
+                        <a
+                          href="https://github.com/byteKumar/systemdesign"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex flex-col items-center justify-start space-y-1 hover:opacity-80 transition-opacity duration-200"
+                        >
+                          <div className="relative w-16 h-16 sm:w-20 sm:h-20">
+                            <Image
+                              src={folderImage}
+                              alt="Design Pattern"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                          <p className="text-gray-900 dark:text-white text-xs sm:text-sm font-medium text-center max-w-[80px] break-words">
+                            Design Pattern
+                          </p>
+                        </a>
                       </div>
                     )}
                   </motion.div>
