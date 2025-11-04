@@ -113,7 +113,7 @@ const ResumeSection = () => {
               ))}
               <button
                 onClick={toggleTheme}
-                className="p-2 sm:p-3 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 backdrop-blur-sm border border-gray-300 dark:border-white/20 transition-all duration-300 ml-2"
+                className="p-2 sm:p-2 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 backdrop-blur-sm border border-gray-300 dark:border-white/20 transition-all duration-300 ml-2"
                 aria-label="Toggle theme"
               >
                 {theme === "dark" ? (
@@ -2356,7 +2356,7 @@ const ResumeSection = () => {
                         {" "}or{" "}
                         <a 
                           href="tel:+18573398868" 
-                          className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                          className="text-blue-600 dark:text-blue-400 hover:underline font-medium whitespace-nowrap"
                         >
                           +1 (857) 339-8868
                         </a>
@@ -2405,20 +2405,7 @@ const ResumeSection = () => {
                     transition={{ duration: 0.4 }}
                     className="space-y-4"
                   >
-                    <div className="flex items-center justify-between mb-3 sm:mb-4">
-                      <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Study</h2>
-                      <button
-                        onClick={toggleTheme}
-                        className="p-2 sm:p-3 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 backdrop-blur-sm border border-gray-300 dark:border-white/20 transition-all duration-300 ml-2"
-                        aria-label="Toggle theme"
-                      >
-                        {theme === "dark" ? (
-                          <SunIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 dark:text-white" />
-                        ) : (
-                          <MoonIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 dark:text-white" />
-                        )}
-                      </button>
-                    </div>
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Study</h2>
                     
                     <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10">
                       <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
