@@ -31,6 +31,7 @@ const ResumeSection = () => {
     { id: "education", label: "Education" },
     { id: "leadership", label: "Leadership" },
     { id: "cv", label: "CV" },
+    { id: "study", label: "Study" },
   ];
 
   const LinkButton = ({ href, children, icon, external = true }) => (
@@ -198,8 +199,8 @@ const ResumeSection = () => {
           <div className="hidden lg:block lg:col-span-1"></div>
 
           {/* Fixed Profile Card for Desktop */}
-          <div className="hidden lg:block fixed lg:top-[76px] lg:left-[calc(10%+1rem)] lg:w-[calc((80%-4rem)/5)] lg:h-[75vh] lg:overflow-y-auto lg:z-10">
-            <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-5 shadow-sm border border-gray-200 dark:border-white/10 h-full overflow-y-auto">
+          <div className="hidden lg:block fixed lg:top-[76px] lg:left-[calc(10%+1rem)] lg:w-[calc((80%-4rem)/5)] lg:h-[75vh] lg:overflow-hidden lg:z-10">
+            <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-5 shadow-sm border border-gray-200 dark:border-white/10 h-full overflow-hidden">
               <div className="space-y-4">
 
                 {/* Profile Photo */}
@@ -2355,6 +2356,27 @@ const ResumeSection = () => {
                         </svg>
                         <span>Download Resume</span>
                       </a>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Study Section */}
+                {activeTab === "study" && (
+                  <motion.div
+                    key="study"
+                    variants={sectionVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.4 }}
+                    className="space-y-4"
+                  >
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Study</h2>
+                    
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10">
+                      <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
+                        Study materials and resources will be displayed here.
+                      </p>
                     </div>
                   </motion.div>
                 )}
