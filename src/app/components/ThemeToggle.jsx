@@ -3,12 +3,13 @@ import React, { useState, useEffect } from "react";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    // Check for saved theme preference or default to dark
-    const savedTheme = localStorage.getItem("theme") || "dark";
+    // Check for saved theme preference or default to light
+    const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
+    // The theme is already set by the script in layout.js, but we sync it here
     if (savedTheme === "dark") {
       document.documentElement.classList.add("dark");
     } else {

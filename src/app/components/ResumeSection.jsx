@@ -339,7 +339,7 @@ const ResumeSection = () => {
                     {!showAKQAProjects ? (
                       <div className="space-y-3">
                         <div className="flex items-center gap-3">
-                          <div className="relative w-10 h-10 flex-shrink-0">
+                          <div className="relative w-10 h-10 flex-shrink-0 border border-transparent dark:border-white rounded overflow-hidden">
                             <Image
                               src={akqaLogo}
                               alt="AKQA"
@@ -404,7 +404,7 @@ const ResumeSection = () => {
                             </svg>
                           </button>
                           <div className="flex items-center gap-3">
-                            <div className="relative w-10 h-10 flex-shrink-0">
+                            <div className="relative w-10 h-10 flex-shrink-0 border border-transparent dark:border-white rounded overflow-hidden">
                               <Image
                                 src={akqaLogo}
                                 alt="AKQA"
