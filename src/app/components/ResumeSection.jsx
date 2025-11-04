@@ -16,7 +16,7 @@ import montblancLogo from "../../../public/montblanc.svg";
 import bluepiLogo from "../../../public/bluepi.jpeg";
 
 const ResumeSection = () => {
-  const [activeTab, setActiveTab] = useState("experience");
+  const [activeTab, setActiveTab] = useState("education");
   const [showWireframe, setShowWireframe] = useState(false);
   const [showResearchJourney, setShowResearchJourney] = useState(false);
   const [activeResearchPaper, setActiveResearchPaper] = useState(null); // 'paper1' or 'paper2'
@@ -25,11 +25,11 @@ const ResumeSection = () => {
   const [theme, setTheme] = useState("light");
 
   const tabs = [
+    { id: "education", label: "Education" },
     { id: "experience", label: "Experience" },
     { id: "projects", label: "Projects" },
-    { id: "publications", label: "Publications" },
     { id: "skills", label: "Skills" },
-    { id: "education", label: "Education" },
+    { id: "publications", label: "Publications" },
     { id: "leadership", label: "Leadership" },
     { id: "cv", label: "CV" },
     { id: "study", label: "Study" },
@@ -80,21 +80,10 @@ const ResumeSection = () => {
     <section className="text-gray-900 dark:text-white min-h-screen bg-gray-50 dark:bg-[#0a0a0a] relative" id="resume">
       {/* Fixed Header with Tabs */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#121212] border-b border-gray-200 dark:border-white/10 shadow-sm">
-        <div className="w-full pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-[10%] md:pr-0">
+        <div className="w-full pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-[10%] md:pr-[10%]">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-3 gap-3">
             <h1 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Chaman&#39;s Profile</h1>
             <div className="flex flex-wrap items-center gap-1 sm:gap-1">
-              <button
-                onClick={toggleTheme}
-                className="p-2 sm:p-3 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 backdrop-blur-sm border border-gray-300 dark:border-white/20 transition-all duration-300 ml-2"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? (
-                  <SunIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 dark:text-white" />
-                ) : (
-                  <MoonIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 dark:text-white" />
-                )}
-              </button>
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
@@ -122,6 +111,17 @@ const ResumeSection = () => {
                   )}
                 </button>
               ))}
+              <button
+                onClick={toggleTheme}
+                className="p-2 sm:p-3 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 backdrop-blur-sm border border-gray-300 dark:border-white/20 transition-all duration-300 ml-2"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? (
+                  <SunIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 dark:text-white" />
+                ) : (
+                  <MoonIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 dark:text-white" />
+                )}
+              </button>
             </div>
           </div>
         </div>
