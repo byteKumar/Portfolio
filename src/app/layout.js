@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-white dark:bg-[#121212]`}>{children}</body>
     </html>
   )
 }

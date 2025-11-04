@@ -53,8 +53,8 @@ const ResumeSection = () => {
   };
 
   return (
-    <section className="text-gray-900 dark:text-white min-h-screen bg-white dark:bg-[#121212]" id="resume">
-      <div className="container mx-auto px-6 md:px-12 py-8">
+    <section className="text-gray-900 dark:text-white min-h-screen bg-white dark:bg-[#121212] relative" id="resume">
+      <div className="container mx-auto px-6 md:px-12 py-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
           {/* Left Sidebar - Profile Section */}
           <div className="lg:col-span-1 lg:sticky lg:top-8 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto">
@@ -150,7 +150,7 @@ const ResumeSection = () => {
           {/* Right Content Area */}
           <div className="lg:col-span-3 flex flex-col">
             {/* Fixed Header - Title and Tabs */}
-            <div className="sticky top-8 z-10 bg-white dark:bg-[#121212] pb-4 mb-8 pt-2 -mt-2">
+            <div className="sticky top-0 z-10 bg-white dark:bg-[#121212] pb-4 mb-8 pt-8 -mt-8">
               {/* Title */}
               <h1 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">Chaman&#39;s Profile</h1>
               
