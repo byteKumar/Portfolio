@@ -23,6 +23,9 @@ const ResumeSection = () => {
   const [showTAJourney, setShowTAJourney] = useState(false);
   const [showAKQAProjects, setShowAKQAProjects] = useState(false);
   const [theme, setTheme] = useState("light");
+  const [studyAuthenticated, setStudyAuthenticated] = useState(false);
+  const [studyPassword, setStudyPassword] = useState("");
+  const [studyPasswordError, setStudyPasswordError] = useState(false);
 
   const tabs = [
     { id: "education", label: "Education" },
@@ -76,6 +79,18 @@ const ResumeSection = () => {
     }
   };
 
+  const handleStudyPasswordSubmit = (e) => {
+    e.preventDefault();
+    if (studyPassword === "Varun@9315852072") {
+      setStudyAuthenticated(true);
+      setStudyPasswordError(false);
+      setStudyPassword("");
+    } else {
+      setStudyPasswordError(true);
+      setStudyPassword("");
+    }
+  };
+
   return (
     <section className="text-gray-900 dark:text-white min-h-screen bg-gray-50 dark:bg-[#0a0a0a] relative" id="resume">
       {/* Fixed Header with Tabs */}
@@ -94,6 +109,11 @@ const ResumeSection = () => {
                     setActiveResearchPaper(null);
                     setShowTAJourney(false);
                     setShowAKQAProjects(false);
+                    // Reset password state when switching away from study tab
+                    if (tab.id !== "study") {
+                      setStudyPassword("");
+                      setStudyPasswordError(false);
+                    }
                   }}
                   className={`px-2 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 relative ${
                     activeTab === tab.id
@@ -2407,11 +2427,46 @@ const ResumeSection = () => {
                   >
                     <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Study</h2>
                     
-                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10">
-                      <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
-                        Study materials and resources will be displayed here.
-                      </p>
-                    </div>
+                    {!studyAuthenticated ? (
+                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-white/10">
+                        <form onSubmit={handleStudyPasswordSubmit} className="space-y-4">
+                          <div>
+                            <label htmlFor="study-password" className="block text-sm font-medium text-gray-700 dark:text-white/70 mb-2">
+                              Enter Password
+                            </label>
+                            <input
+                              type="password"
+                              id="study-password"
+                              value={studyPassword}
+                              onChange={(e) => {
+                                setStudyPassword(e.target.value);
+                                setStudyPasswordError(false);
+                              }}
+                              className="w-full px-4 py-2 border border-gray-300 dark:border-white/20 rounded-lg bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent"
+                              placeholder="Enter password"
+                              autoFocus
+                            />
+                          </div>
+                          {studyPasswordError && (
+                            <div className="text-red-600 dark:text-red-400 text-sm font-medium">
+                              Restricted Zone.
+                            </div>
+                          )}
+                          <button
+                            type="submit"
+                            className="w-full px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-200 rounded-lg font-medium"
+                          >
+                            Access Study Section
+                          </button>
+                        </form>
+                      </div>
+                    ) : (
+                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10">
+                        <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
+                          Study materials and resources will be displayed here.
+                        </p>
+                      </div>
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
