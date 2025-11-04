@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { ArrowTopRightOnSquareIcon, MapPinIcon, BuildingOfficeIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
+import { ArrowTopRightOnSquareIcon, MapPinIcon, BuildingOfficeIcon, EnvelopeIcon, SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
 import heroImage from "../../../public/hero-image.jpeg";
 import GithubIcon from "../../../public/github-icon.svg";
@@ -22,6 +22,7 @@ const ResumeSection = () => {
   const [activeResearchPaper, setActiveResearchPaper] = useState(null); // 'paper1' or 'paper2'
   const [showTAJourney, setShowTAJourney] = useState(false);
   const [showAKQAProjects, setShowAKQAProjects] = useState(false);
+  const [theme, setTheme] = useState("light");
 
   const tabs = [
     { id: "experience", label: "Experience" },
@@ -53,6 +54,28 @@ const ResumeSection = () => {
     exit: { opacity: 0, y: -20 }
   };
 
+  // Theme toggle functionality
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
   return (
     <section className="text-gray-900 dark:text-white min-h-screen bg-gray-50 dark:bg-[#0a0a0a] relative" id="resume">
       {/* Fixed Header with Tabs */}
@@ -61,6 +84,17 @@ const ResumeSection = () => {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-3 gap-3">
             <h1 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Chaman&#39;s Profile</h1>
             <div className="flex flex-wrap items-center gap-1 sm:gap-1">
+              <button
+                onClick={toggleTheme}
+                className="p-2 sm:p-3 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 backdrop-blur-sm border border-gray-300 dark:border-white/20 transition-all duration-300 ml-2"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? (
+                  <SunIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 dark:text-white" />
+                ) : (
+                  <MoonIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 dark:text-white" />
+                )}
+              </button>
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
@@ -2371,7 +2405,20 @@ const ResumeSection = () => {
                     transition={{ duration: 0.4 }}
                     className="space-y-4"
                   >
-                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Study</h2>
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Study</h2>
+                      <button
+                        onClick={toggleTheme}
+                        className="p-2 sm:p-3 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 backdrop-blur-sm border border-gray-300 dark:border-white/20 transition-all duration-300 ml-2"
+                        aria-label="Toggle theme"
+                      >
+                        {theme === "dark" ? (
+                          <SunIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 dark:text-white" />
+                        ) : (
+                          <MoonIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 dark:text-white" />
+                        )}
+                      </button>
+                    </div>
                     
                     <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10">
                       <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
