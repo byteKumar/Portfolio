@@ -326,28 +326,28 @@ const ResumeSection = () => {
                             />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-0.5">
+                            <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-2">
                               Graduate Teaching Assistant
                             </h3>
-                            <p className="text-xs sm:text-sm text-gray-500 dark:text-white/50 font-normal break-words">Northeastern University, Massachusetts | Jan 2025 - Present</p>
+                            <p className="text-gray-500 dark:text-white/50 text-sm font-normal break-words mb-2">Northeastern University, Massachusetts | Jan 2025 - Present</p>
                           </div>
                         </div>
                         <ul className="space-y-2 list-none">
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Led TA team, shipped MERN Q&A platform (500+ students)</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Led TA team, shipped MERN Q&A platform (500+ students)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Mentored 5 teams (TDD, peer reviews, improved deployment 25%, reduced incidents 40%)</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Mentored 5 teams (TDD, peer reviews, improved deployment 25%, reduced incidents 40%)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Ran labs/office hours (100+ students), taught MERN/Agile (95% project completion)</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Ran labs/office hours (100+ students), taught MERN/Agile (95% project completion)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Built CI/CD (raised coverage 20%, reduced deployment errors 20%, bug cycles 10%)</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Built CI/CD (raised coverage 20%, reduced deployment errors 20%, bug cycles 10%)</span>
                           </li>
                         </ul>
                         <div className="pt-2">
@@ -459,30 +459,30 @@ const ResumeSection = () => {
                             />
                           </div>
                           <div>
-                            <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-0.5">Software Engineer</h3>
-                            <p className="text-gray-500 dark:text-white/50 text-sm font-normal">AKQA, Gurgaon, India | Jul 2022 - Aug 2024</p>
+                            <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-2">Software Engineer</h3>
+                            <p className="text-gray-500 dark:text-white/50 text-sm font-normal mb-2">AKQA, Gurgaon, India | Jul 2022 - Aug 2024</p>
                           </div>
                         </div>
                         <ul className="space-y-2 list-none">
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Optimized IWC website (Core Web Vitals, UX, AEM+MERN)</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Optimized IWC website (Core Web Vitals, UX, AEM+MERN)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Stabilized releases via Jenkins CI/CD (11s to 4s page loads, lifted engagement 18%, interactions 23%)</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Stabilized releases via Jenkins CI/CD (11s to 4s page loads, lifted engagement 18%, interactions 23%)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Led accessibility/analytics (85%+ WCAG 2.1 A/AA, SKU attribution)</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Led accessibility/analytics (85%+ WCAG 2.1 A/AA, SKU attribution)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Led digital activations for WaW (55% reach/engagement, 500M+ online reach)</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Led digital activations for WaW (55% reach/engagement, 500M+ online reach)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Built JUnit/Jest/Cypress tests (lifted coverage 20%, cut errors 20%, bug cycles 10%)</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Built JUnit/Jest/Cypress tests (lifted coverage 20%, cut errors 20%, bug cycles 10%)</span>
                           </li>
                         </ul>
                         <div className="pt-2">
@@ -596,26 +596,26 @@ const ResumeSection = () => {
                           />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-0.5">Software Engineer Intern</h3>
-                          <p className="text-xs sm:text-sm text-gray-500 dark:text-white/50 font-normal break-words">Bluepi, Gurgaon, India | Nov 2021 - Feb 2022</p>
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-2">Software Engineer Intern</h3>
+                          <p className="text-gray-500 dark:text-white/50 text-sm font-normal break-words mb-2">Bluepi, Gurgaon, India | Nov 2021 - Feb 2022</p>
                         </div>
                       </div>
                       <ul className="space-y-2 list-none">
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Implemented Reddit-style Java/Spring CRUD app</span>
+                          <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Implemented Reddit-style Java/Spring CRUD app</span>
                         </li>
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Prototyped Spring Boot/Java CRUD flows</span>
+                          <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Prototyped Spring Boot/Java CRUD flows</span>
                         </li>
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Added JUnit with CI/CD (lifting reliability 15%, cutting defects 20%, cycle time 10%)</span>
+                          <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Added JUnit with CI/CD (lifting reliability 15%, cutting defects 20%, cycle time 10%)</span>
                         </li>
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Co-lead AWS redesign (right-sized EC2, tuned RDS, autoscaling, monitored CloudWatch – raised resilience, cut costs 10%)</span>
+                          <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Co-lead AWS redesign (right-sized EC2, tuned RDS, autoscaling, monitored CloudWatch – raised resilience, cut costs 10%)</span>
                         </li>
                       </ul>
                       <div className="pt-3">
@@ -649,7 +649,7 @@ const ResumeSection = () => {
                     {/* Google Slides Generator */}
                     <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
                       <div>
-                        <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-2">Google Slides Generator</h3>
+                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">Google Slides Generator</h3>
                         <div className="flex flex-wrap gap-2 mb-3">
                           {["React.js", "Express", "Vite", "NodeJS", "PostgreSQL", "MongoDB"].map((tech) => (
                             <span
@@ -663,11 +663,11 @@ const ResumeSection = () => {
                         <ul className="space-y-2 list-none mb-3">
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Created full-stack slide generator, integrated Google Slides API (OAuth, DB-backed templates)</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Created full-stack slide generator, integrated Google Slides API (OAuth, DB-backed templates)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Designed theme-first system/automated layout registry</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Designed theme-first system/automated layout registry</span>
                           </li>
                         </ul>
                         <div className="flex flex-wrap gap-4">
@@ -679,7 +679,7 @@ const ResumeSection = () => {
                     {/* Advance Image Processor */}
                     <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
                       <div>
-                        <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-2">Advance Image Processor</h3>
+                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">Advance Image Processor</h3>
                         <div className="flex flex-wrap gap-2 mb-3">
                           {["Java", "GUI", "Software Design Pattern", "OOD", "TDD"].map((tech) => (
                             <span
@@ -693,11 +693,11 @@ const ResumeSection = () => {
                         <ul className="space-y-2 list-none mb-3">
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Architected extensible image processing app (MVC), implemented 7+ core transformations</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Architected extensible image processing app (MVC), implemented 7+ core transformations</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Applied Strategy/Factory/Command patterns (cutting feature integration time by 30%)</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Applied Strategy/Factory/Command patterns (cutting feature integration time by 30%)</span>
                           </li>
                         </ul>
                         <div className="flex flex-wrap gap-4">
@@ -709,7 +709,7 @@ const ResumeSection = () => {
                     {/* LeetCode Power Up */}
                     <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
                       <div>
-                        <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-2">LeetCode Power Up - Chrome Extension</h3>
+                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">LeetCode Power Up - Chrome Extension</h3>
                         <div className="flex flex-wrap gap-2 mb-3">
                           {["JavaScript", "Chrome Extensions API", "YouTube Data API"].map((tech) => (
                             <span
@@ -723,15 +723,15 @@ const ResumeSection = () => {
                         <ul className="space-y-2 list-none mb-3">
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Shipped Chrome extension (injects 3-5 LeetCode solution videos)</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Shipped Chrome extension (injects 3-5 LeetCode solution videos)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Integrated per-problem scratchpad (chrome.storage)</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Integrated per-problem scratchpad (chrome.storage)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Engineered Promise-based async architecture</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Engineered Promise-based async architecture</span>
                           </li>
                         </ul>
                         <div className="flex flex-wrap gap-4">
@@ -756,79 +756,85 @@ const ResumeSection = () => {
                     <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Publications</h2>
                     
                     <div className="space-y-4">
-                      <div>
-                        <div className="flex items-center gap-3 mb-3">
-                          <div className="relative w-10 h-10 flex-shrink-0">
-                            <Image
-                              src={ieeeLogo}
-                              alt="IEEE"
-                              fill
-                              className="object-contain"
-                            />
+                      {/* Paper 1 */}
+                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                        <div>
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
+                              <Image
+                                src={ieeeLogo}
+                                alt="IEEE"
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                            <p className="text-xs sm:text-sm text-gray-500 dark:text-white/50 font-normal">IEEE Xplore | Dec 2023</p>
                           </div>
-                          <p className="text-gray-500 dark:text-white/50 text-sm font-normal">IEEE Xplore | Dec 2023</p>
-                        </div>
-                        <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">
-                          Evaluation of Tracking System using Facial Recognition and Location
-                        </h3>
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <a
-                            href="https://ieeexplore.ieee.org/document/10541414"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-300 rounded-lg text-sm font-medium shadow-md hover:shadow-lg transform hover:scale-105"
-                          >
-                            <span>Research Paper</span>
-                            <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
-                          </a>
-                          <button
-                            onClick={() => {
-                              setActiveResearchPaper('paper1');
-                              setShowResearchJourney(true);
-                            }}
-                            className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 rounded-lg text-sm font-medium"
-                          >
-                            <span>View Research Journey</span>
-                          </button>
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">
+                            Evaluation of Tracking System using Facial Recognition and Location
+                          </h3>
+                          <div className="flex flex-col sm:flex-row gap-3">
+                            <a
+                              href="https://ieeexplore.ieee.org/document/10541414"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center space-x-2 px-3 py-1.5 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs font-medium"
+                            >
+                              <span>Research Paper</span>
+                              <ArrowTopRightOnSquareIcon className="w-3 h-3" />
+                            </a>
+                            <button
+                              onClick={() => {
+                                setActiveResearchPaper('paper1');
+                                setShowResearchJourney(true);
+                              }}
+                              className="inline-flex items-center space-x-2 px-3 py-1.5 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs font-medium"
+                            >
+                              <span>View Research Journey</span>
+                            </button>
+                          </div>
                         </div>
                       </div>
 
-                      <div className="h-px bg-gray-300 dark:bg-white/10 my-6"></div>
+                      <div className="h-px bg-gray-200 dark:bg-white/10 my-4"></div>
 
-                      <div>
-                        <div className="flex items-center gap-3 mb-3">
-                          <div className="relative w-10 h-10 flex-shrink-0">
-                            <Image
-                              src={ieeeLogo}
-                              alt="IEEE"
-                              fill
-                              className="object-contain"
-                            />
+                      {/* Paper 2 */}
+                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                        <div>
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
+                              <Image
+                                src={ieeeLogo}
+                                alt="IEEE"
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                            <p className="text-xs sm:text-sm text-gray-500 dark:text-white/50 font-normal">IEEE Xplore | Dec 2023</p>
                           </div>
-                          <p className="text-gray-500 dark:text-white/50 text-sm font-normal">IEEE Xplore | Dec 2023</p>
-                        </div>
-                        <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">
-                          Understanding Factors Affecting Trust and Satisfaction with Banking in India
-                        </h3>
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <a
-                            href="https://ieeexplore.ieee.org/document/10541439"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-300 rounded-lg text-sm font-medium shadow-md hover:shadow-lg transform hover:scale-105"
-                          >
-                            <span>Research Paper</span>
-                            <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
-                          </a>
-                          <button
-                            onClick={() => {
-                              setActiveResearchPaper('paper2');
-                              setShowResearchJourney(true);
-                            }}
-                            className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 rounded-lg text-sm font-medium"
-                          >
-                            <span>View Research Journey</span>
-                          </button>
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">
+                            Understanding Factors Affecting Trust and Satisfaction with Banking in India
+                          </h3>
+                          <div className="flex flex-col sm:flex-row gap-3">
+                            <a
+                              href="https://ieeexplore.ieee.org/document/10541439"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center space-x-2 px-3 py-1.5 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs font-medium"
+                            >
+                              <span>Research Paper</span>
+                              <ArrowTopRightOnSquareIcon className="w-3 h-3" />
+                            </a>
+                            <button
+                              onClick={() => {
+                                setActiveResearchPaper('paper2');
+                                setShowResearchJourney(true);
+                              }}
+                              className="inline-flex items-center space-x-2 px-3 py-1.5 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs font-medium"
+                            >
+                              <span>View Research Journey</span>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
