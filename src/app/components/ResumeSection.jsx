@@ -53,141 +53,252 @@ const ResumeSection = () => {
   };
 
   return (
-    <section className="text-gray-900 dark:text-white min-h-screen bg-white dark:bg-[#121212] relative" id="resume">
-      <div className="container mx-auto px-6 md:px-12 py-8 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-          {/* Left Sidebar - Profile Section */}
-          <div className="lg:col-span-1 lg:sticky lg:top-8 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto">
-            <div className="space-y-6">
-
-              {/* Profile Photo */}
-              <div className="w-full max-w-[200px] mx-auto lg:mx-0">
-                <div className="relative w-full aspect-square rounded-full overflow-hidden border-2 border-gray-400 dark:border-white/40 shadow-lg">
-                  <Image
-                    src={heroImage}
-                    alt="Chaman Kumar"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </div>
-
-              {/* Name and Pronouns */}
-              <div>
-                <h2 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-1">Chaman Kumar</h2>
-                <p className="text-gray-600 dark:text-white/60 text-sm font-light">He/Him</p>
-              </div>
-
-              {/* Professional Summary */}
-              <div>
-                <p className="text-gray-700 dark:text-white/80 text-sm leading-relaxed font-light">
-                  Software Engineer with expertise in full-stack development, cloud technologies, and DevOps. Specializing in MERN stack, Java frameworks, and scalable system design.
-                </p>
-              </div>
-
-              {/* Contact Information */}
-              <div className="space-y-2.5 pt-3">
-                <div className="flex items-center space-x-2.5">
-                  <MapPinIcon className="w-4 h-4 text-gray-600 dark:text-white/60 flex-shrink-0" />
-                  <span className="text-gray-700 dark:text-white/70 text-sm font-light">Boston, MA, USA</span>
-                </div>
-                <div className="flex items-center space-x-2.5">
-                  <BuildingOfficeIcon className="w-4 h-4 text-gray-600 dark:text-white/60 flex-shrink-0" />
-                  <span className="text-gray-700 dark:text-white/70 text-sm font-light">Northeastern University</span>
-                </div>
-                <div className="flex items-center space-x-2.5">
-                  <EnvelopeIcon className="w-4 h-4 text-gray-600 dark:text-white/60 flex-shrink-0" />
-                  <a
-                    href="mailto:kumar.cham@northeastern.edu"
-                    className="text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white text-sm font-light transition-colors"
-                  >
-                    Email
-                  </a>
-                </div>
-                <div className="flex items-center space-x-2.5">
-                  <div className="w-4 h-4 flex items-center justify-center">
-                    <Image 
-                      src={LinkedinIcon} 
-                      alt="LinkedIn" 
-                      width={16} 
-                      height={16} 
-                      className="brightness-0 dark:brightness-100 dark:opacity-70" 
+    <section className="text-gray-900 dark:text-white min-h-screen bg-gray-50 dark:bg-[#0a0a0a] relative" id="resume">
+      {/* Fixed Header with Tabs */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#121212] border-b border-gray-200 dark:border-white/10 shadow-sm">
+        <div className="w-full pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-[10%] md:pr-0">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-3 gap-3">
+            <h1 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Chaman&#39;s Profile</h1>
+            <div className="flex flex-wrap items-center gap-1 sm:gap-1">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => {
+                    setActiveTab(tab.id);
+                    setShowWireframe(false);
+                    setShowResearchJourney(false);
+                    setActiveResearchPaper(null);
+                    setShowTAJourney(false);
+                    setShowAKQAProjects(false);
+                  }}
+                  className={`px-2 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 relative ${
+                    activeTab === tab.id
+                      ? "text-gray-900 dark:text-white"
+                      : "text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white"
+                  }`}
+                >
+                  {tab.label}
+                  {activeTab === tab.id && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
                     />
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content Area */}
+      <div className="w-full pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-[10%] md:pr-0 pt-24 sm:pt-28 md:pt-[76px] pb-6">
+        <div className="flex flex-col lg:grid lg:grid-cols-5 lg:gap-4 gap-4">
+          {/* Left Column - Profile Section (20%) - Mobile/Tablet */}
+          <div className="w-full lg:hidden">
+            <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-5 shadow-sm border border-gray-200 dark:border-white/10">
+              <div className="space-y-4">
+
+                {/* Profile Photo */}
+                <div className="w-full flex justify-center lg:justify-start">
+                  <div className="relative w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] lg:w-[180px] lg:h-[180px] flex-shrink-0">
+                    <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-gray-300 dark:border-white/30 shadow-md">
+                      <Image
+                        src={heroImage}
+                        alt="Chaman Kumar"
+                        fill
+                        className="object-cover"
+                        priority
+                        sizes="(max-width: 640px) 120px, (max-width: 1024px) 150px, 180px"
+                      />
+                    </div>
                   </div>
-                  <a
-                    href="https://www.linkedin.com/in/chamankumar5/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-900 dark:text-white/70 hover:text-gray-600 dark:hover:text-white text-sm font-light transition-colors"
-                  >
-                    LinkedIn
-                  </a>
                 </div>
-                <div className="flex items-center space-x-2.5">
-                  <div className="w-4 h-4 flex items-center justify-center">
-                    <Image 
-                      src={GithubIcon} 
-                      alt="GitHub" 
-                      width={16} 
-                      height={16} 
-                      className="brightness-0 dark:brightness-100 dark:opacity-70" 
-                    />
+
+                {/* Name and Pronouns */}
+                <div className="text-center lg:text-left">
+                  <h2 className="text-base sm:text-lg lg:text-base font-semibold text-gray-900 dark:text-white mb-0.5">Chaman Kumar</h2>
+                  <p className="text-gray-500 dark:text-white/50 text-xs font-normal">He/Him</p>
+                </div>
+
+                {/* Professional Summary */}
+                <div>
+                  <p className="text-gray-700 dark:text-white/70 text-xs sm:text-sm lg:text-xs leading-relaxed font-normal">
+                    Software Engineer with expertise in full-stack development, cloud technologies, and DevOps. Specializing in MERN stack, Java frameworks, and scalable system design.
+                  </p>
+                </div>
+
+                {/* Divider */}
+                <div className="h-px bg-gray-200 dark:bg-white/10"></div>
+
+                {/* Contact Information */}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                    <MapPinIcon className="w-4 h-4 text-gray-500 dark:text-white/50 flex-shrink-0" />
+                    <span className="text-gray-700 dark:text-white/70 text-xs sm:text-sm lg:text-xs font-normal">Boston, MA, USA</span>
                   </div>
-                  <a
-                    href="https://github.com/byteKumar"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-900 dark:text-white/70 hover:text-gray-600 dark:hover:text-white text-sm font-light transition-colors"
-                  >
-                    GitHub
-                  </a>
+                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                    <BuildingOfficeIcon className="w-4 h-4 text-gray-500 dark:text-white/50 flex-shrink-0" />
+                    <span className="text-gray-700 dark:text-white/70 text-xs sm:text-sm lg:text-xs font-normal">Northeastern University</span>
+                  </div>
+                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                    <EnvelopeIcon className="w-4 h-4 text-gray-500 dark:text-white/50 flex-shrink-0" />
+                    <a
+                      href="mailto:kumar.cham@northeastern.edu"
+                      className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-blue-400 text-xs sm:text-sm lg:text-xs font-normal transition-colors"
+                    >
+                      Email
+                    </a>
+                  </div>
+                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                    <div className="w-4 h-4 flex items-center justify-center">
+                      <Image 
+                        src={LinkedinIcon} 
+                        alt="LinkedIn" 
+                        width={16} 
+                        height={16} 
+                        className="brightness-0 dark:brightness-100 dark:opacity-70" 
+                      />
+                    </div>
+                    <a
+                      href="https://www.linkedin.com/in/chamankumar5/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-blue-400 text-xs sm:text-sm lg:text-xs font-normal transition-colors"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                    <div className="w-4 h-4 flex items-center justify-center">
+                      <Image 
+                        src={GithubIcon} 
+                        alt="GitHub" 
+                        width={16} 
+                        height={16} 
+                        className="brightness-0 dark:brightness-100 dark:opacity-70" 
+                      />
+                    </div>
+                    <a
+                      href="https://github.com/byteKumar"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-blue-400 text-xs sm:text-sm lg:text-xs font-normal transition-colors"
+                    >
+                      GitHub
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Content Area */}
-          <div className="lg:col-span-3 flex flex-col">
-            {/* Fixed Header - Title and Tabs */}
-            <div className="sticky top-0 z-10 bg-white dark:bg-[#121212] pb-4 mb-8 pt-8 -mt-8">
-              {/* Title */}
-              <h1 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">Chaman&#39;s Profile</h1>
-              
-              {/* Tab Navigation */}
-              <div className="flex flex-wrap gap-4 md:gap-6 border-b border-gray-300 dark:border-white/10 pb-4">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => {
-                      setActiveTab(tab.id);
-                      setShowWireframe(false);
-                      setShowResearchJourney(false);
-                      setActiveResearchPaper(null);
-                      setShowTAJourney(false);
-                      setShowAKQAProjects(false);
-                    }}
-                    className={`px-2 py-2 text-sm md:text-base font-light transition-all duration-300 relative ${
-                      activeTab === tab.id
-                        ? "text-gray-900 dark:text-white"
-                        : "text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white/80"
-                    }`}
-                  >
-                    {tab.label}
-                    {activeTab === tab.id && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-900 dark:bg-white"
-                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+          {/* Spacer for Desktop Grid */}
+          <div className="hidden lg:block lg:col-span-1"></div>
+
+          {/* Fixed Profile Card for Desktop */}
+          <div className="hidden lg:block fixed lg:top-[76px] lg:left-[calc(10%+1rem)] lg:w-[calc((80%-4rem)/5)] lg:h-[75vh] lg:overflow-y-auto lg:z-10">
+            <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-5 shadow-sm border border-gray-200 dark:border-white/10 h-full overflow-y-auto">
+              <div className="space-y-4">
+
+                {/* Profile Photo */}
+                <div className="w-full flex justify-center lg:justify-start">
+                  <div className="relative w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] lg:w-[180px] lg:h-[180px] flex-shrink-0">
+                    <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-gray-300 dark:border-white/30 shadow-md">
+                      <Image
+                        src={heroImage}
+                        alt="Chaman Kumar"
+                        fill
+                        className="object-cover"
+                        priority
+                        sizes="(max-width: 640px) 120px, (max-width: 1024px) 150px, 180px"
                       />
-                    )}
-                  </button>
-                ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Name and Pronouns */}
+                <div className="text-center lg:text-left">
+                  <h2 className="text-base sm:text-lg lg:text-base font-semibold text-gray-900 dark:text-white mb-0.5">Chaman Kumar</h2>
+                  <p className="text-gray-500 dark:text-white/50 text-xs font-normal">He/Him</p>
+                </div>
+
+                {/* Professional Summary */}
+                <div>
+                  <p className="text-gray-700 dark:text-white/70 text-xs sm:text-sm lg:text-xs leading-relaxed font-normal">
+                    Software Engineer with expertise in full-stack development, cloud technologies, and DevOps. Specializing in MERN stack, Java frameworks, and scalable system design.
+                  </p>
+                </div>
+
+                {/* Divider */}
+                <div className="h-px bg-gray-200 dark:bg-white/10"></div>
+
+                {/* Contact Information */}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                    <MapPinIcon className="w-4 h-4 text-gray-500 dark:text-white/50 flex-shrink-0" />
+                    <span className="text-gray-700 dark:text-white/70 text-xs sm:text-sm lg:text-xs font-normal">Boston, MA, USA</span>
+                  </div>
+                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                    <BuildingOfficeIcon className="w-4 h-4 text-gray-500 dark:text-white/50 flex-shrink-0" />
+                    <span className="text-gray-700 dark:text-white/70 text-xs sm:text-sm lg:text-xs font-normal">Northeastern University</span>
+                  </div>
+                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                    <EnvelopeIcon className="w-4 h-4 text-gray-500 dark:text-white/50 flex-shrink-0" />
+                    <a
+                      href="mailto:kumar.cham@northeastern.edu"
+                      className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-blue-400 text-xs sm:text-sm lg:text-xs font-normal transition-colors"
+                    >
+                      Email
+                    </a>
+                  </div>
+                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                    <div className="w-4 h-4 flex items-center justify-center">
+                      <Image 
+                        src={LinkedinIcon} 
+                        alt="LinkedIn" 
+                        width={16} 
+                        height={16} 
+                        className="brightness-0 dark:brightness-100 dark:opacity-70" 
+                      />
+                    </div>
+                    <a
+                      href="https://www.linkedin.com/in/chamankumar5/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-blue-400 text-xs sm:text-sm lg:text-xs font-normal transition-colors"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                    <div className="w-4 h-4 flex items-center justify-center">
+                      <Image 
+                        src={GithubIcon} 
+                        alt="GitHub" 
+                        width={16} 
+                        height={16} 
+                        className="brightness-0 dark:brightness-100 dark:opacity-70" 
+                      />
+                    </div>
+                    <a
+                      href="https://github.com/byteKumar"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-blue-400 text-xs sm:text-sm lg:text-xs font-normal transition-colors"
+                    >
+                      GitHub
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
 
-            {/* Scrollable Content Area */}
-            <div className="flex-1 min-h-[600px]">
+          {/* Right Column - Content Section (60%) */}
+          <div className="w-full lg:col-span-4">
+            <div className="space-y-4 sm:space-y-6">
               <AnimatePresence mode="wait">
                 {/* Experience Section */}
                 {activeTab === "experience" && (
@@ -198,15 +309,15 @@ const ResumeSection = () => {
                     animate="animate"
                     exit="exit"
                     transition={{ duration: 0.4 }}
-                    className="space-y-12"
+                    className="space-y-4 sm:space-y-6"
                   >
-                    <h2 className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-8">Work Experience</h2>
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Work Experience</h2>
                     
                     {/* Graduate Teaching Assistant */}
                     {!showTAJourney ? (
-                      <div className="space-y-3">
+                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
                         <div className="flex items-center gap-3">
-                          <div className="relative w-10 h-10 flex-shrink-0">
+                          <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
                             <Image
                               src={northeasternLogo}
                               alt="Northeastern University"
@@ -214,35 +325,35 @@ const ResumeSection = () => {
                               className="object-contain"
                             />
                           </div>
-                          <div>
-                            <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-0.5">
                               Graduate Teaching Assistant
                             </h3>
-                            <p className="text-gray-600 dark:text-white/60 text-base font-light italic">Northeastern University, Massachusetts | Jan 2025 - Present</p>
+                            <p className="text-xs sm:text-sm text-gray-500 dark:text-white/50 font-normal break-words">Northeastern University, Massachusetts | Jan 2025 - Present</p>
                           </div>
                         </div>
                         <ul className="space-y-2 list-none">
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Led TA team, shipped MERN Q&A platform (500+ students)</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Led TA team, shipped MERN Q&A platform (500+ students)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Mentored 5 teams (TDD, peer reviews, improved deployment 25%, reduced incidents 40%)</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Mentored 5 teams (TDD, peer reviews, improved deployment 25%, reduced incidents 40%)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Ran labs/office hours (100+ students), taught MERN/Agile (95% project completion)</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Ran labs/office hours (100+ students), taught MERN/Agile (95% project completion)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Built CI/CD (raised coverage 20%, reduced deployment errors 20%, bug cycles 10%)</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Built CI/CD (raised coverage 20%, reduced deployment errors 20%, bug cycles 10%)</span>
                           </li>
                         </ul>
-                        <div className="pt-3">
+                        <div className="pt-2">
                           <button
                             onClick={() => setShowTAJourney(true)}
-                            className="inline-flex items-center space-x-2 px-5 py-2.5 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 rounded-lg text-sm font-medium"
+                            className="inline-flex items-center space-x-2 px-3 py-1.5 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs font-medium"
                           >
                             <span>View Journey</span>
                           </button>
@@ -278,17 +389,17 @@ const ResumeSection = () => {
                               />
                             </div>
                             <div>
-                              <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">
+                              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-0.5">
                                 Graduate Teaching Assistant
                               </h3>
-                              <p className="text-gray-600 dark:text-white/60 text-base font-light italic">Northeastern University, Massachusetts | Jan 2025 - Present</p>
+                              <p className="text-gray-500 dark:text-white/50 text-sm font-normal">Northeastern University, Massachusetts | Jan 2025 - Present</p>
                             </div>
                           </div>
                         </div>
 
                         <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6 border border-gray-200 dark:border-white/10">
                           <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-4">Teaching Assignments</h4>
-                          <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light mb-6">
+                          <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal mb-6">
                             I have served as a Graduate Teaching Assistant across multiple semesters, contributing to CS4530 (Fundamentals of Software Engineering) course. Here are my semester assignments:
                           </p>
                           <div className="space-y-4">
@@ -333,11 +444,11 @@ const ResumeSection = () => {
                       </motion.div>
                     )}
 
-                    <div className="h-px bg-gray-300 dark:bg-white/10 my-8"></div>
+                    <div className="h-px bg-gray-200 dark:bg-white/10 my-4"></div>
 
                     {/* Software Engineer - AKQA */}
                     {!showAKQAProjects ? (
-                      <div className="space-y-3">
+                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
                         <div className="flex items-center gap-3">
                           <div className="relative w-10 h-10 flex-shrink-0 border border-transparent dark:border-white rounded overflow-hidden">
                             <Image
@@ -348,36 +459,36 @@ const ResumeSection = () => {
                             />
                           </div>
                           <div>
-                            <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">Software Engineer</h3>
-                            <p className="text-gray-600 dark:text-white/60 text-base font-light italic">AKQA, Gurgaon, India | Jul 2022 - Aug 2024</p>
+                            <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-0.5">Software Engineer</h3>
+                            <p className="text-gray-500 dark:text-white/50 text-sm font-normal">AKQA, Gurgaon, India | Jul 2022 - Aug 2024</p>
                           </div>
                         </div>
                         <ul className="space-y-2 list-none">
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Optimized IWC website (Core Web Vitals, UX, AEM+MERN)</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Optimized IWC website (Core Web Vitals, UX, AEM+MERN)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Stabilized releases via Jenkins CI/CD (11s to 4s page loads, lifted engagement 18%, interactions 23%)</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Stabilized releases via Jenkins CI/CD (11s to 4s page loads, lifted engagement 18%, interactions 23%)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Led accessibility/analytics (85%+ WCAG 2.1 A/AA, SKU attribution)</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Led accessibility/analytics (85%+ WCAG 2.1 A/AA, SKU attribution)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Led digital activations for WaW (55% reach/engagement, 500M+ online reach)</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Led digital activations for WaW (55% reach/engagement, 500M+ online reach)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Built JUnit/Jest/Cypress tests (lifted coverage 20%, cut errors 20%, bug cycles 10%)</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Built JUnit/Jest/Cypress tests (lifted coverage 20%, cut errors 20%, bug cycles 10%)</span>
                           </li>
                         </ul>
-                        <div className="pt-3">
+                        <div className="pt-2">
                           <button
                             onClick={() => setShowAKQAProjects(true)}
-                            className="inline-flex items-center space-x-2 px-5 py-2.5 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 rounded-lg text-sm font-medium"
+                            className="inline-flex items-center space-x-2 px-4 py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-sm font-medium"
                           >
                             <span>View Projects Worked On</span>
                           </button>
@@ -413,8 +524,8 @@ const ResumeSection = () => {
                               />
                             </div>
                             <div>
-                              <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">Software Engineer</h3>
-                              <p className="text-gray-600 dark:text-white/60 text-base font-light italic">AKQA, Gurgaon, India | Jul 2022 - Aug 2024</p>
+                              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-0.5">Software Engineer</h3>
+                              <p className="text-gray-500 dark:text-white/50 text-sm font-normal">AKQA, Gurgaon, India | Jul 2022 - Aug 2024</p>
                             </div>
                           </div>
                         </div>
@@ -471,12 +582,12 @@ const ResumeSection = () => {
                       </motion.div>
                     )}
 
-                    <div className="h-px bg-gray-300 dark:bg-white/10 my-8"></div>
+                    <div className="h-px bg-gray-200 dark:bg-white/10 my-4"></div>
 
                     {/* Software Engineer Intern */}
-                    <div className="space-y-3">
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
                       <div className="flex items-center gap-3">
-                        <div className="relative w-10 h-10 flex-shrink-0 border-2 border-gray-300 dark:border-white/30 rounded-lg overflow-hidden">
+                        <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0 border-2 border-gray-300 dark:border-white/30 rounded-lg overflow-hidden">
                           <Image
                             src={bluepiLogo}
                             alt="BluePi"
@@ -484,27 +595,27 @@ const ResumeSection = () => {
                             className="object-contain"
                           />
                         </div>
-                        <div>
-                          <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">Software Engineer Intern</h3>
-                          <p className="text-gray-600 dark:text-white/60 text-base font-light italic">Bluepi, Gurgaon, India | Nov 2021 - Feb 2022</p>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-0.5">Software Engineer Intern</h3>
+                          <p className="text-xs sm:text-sm text-gray-500 dark:text-white/50 font-normal break-words">Bluepi, Gurgaon, India | Nov 2021 - Feb 2022</p>
                         </div>
                       </div>
                       <ul className="space-y-2 list-none">
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Implemented Reddit-style Java/Spring CRUD app</span>
+                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Implemented Reddit-style Java/Spring CRUD app</span>
                         </li>
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Prototyped Spring Boot/Java CRUD flows</span>
+                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Prototyped Spring Boot/Java CRUD flows</span>
                         </li>
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Added JUnit with CI/CD (lifting reliability 15%, cutting defects 20%, cycle time 10%)</span>
+                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Added JUnit with CI/CD (lifting reliability 15%, cutting defects 20%, cycle time 10%)</span>
                         </li>
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Co-lead AWS redesign (right-sized EC2, tuned RDS, autoscaling, monitored CloudWatch – raised resilience, cut costs 10%)</span>
+                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Co-lead AWS redesign (right-sized EC2, tuned RDS, autoscaling, monitored CloudWatch – raised resilience, cut costs 10%)</span>
                         </li>
                       </ul>
                       <div className="pt-3">
@@ -531,14 +642,14 @@ const ResumeSection = () => {
                     animate="animate"
                     exit="exit"
                     transition={{ duration: 0.4 }}
-                    className="space-y-12"
+                    className="space-y-4"
                   >
-                    <h2 className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-8">Projects</h2>
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Projects</h2>
                     
                     {/* Google Slides Generator */}
-                    <div className="space-y-3">
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
                       <div>
-                        <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-2">Google Slides Generator</h3>
+                        <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-2">Google Slides Generator</h3>
                         <div className="flex flex-wrap gap-2 mb-3">
                           {["React.js", "Express", "Vite", "NodeJS", "PostgreSQL", "MongoDB"].map((tech) => (
                             <span
@@ -552,11 +663,11 @@ const ResumeSection = () => {
                         <ul className="space-y-2 list-none mb-3">
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Created full-stack slide generator, integrated Google Slides API (OAuth, DB-backed templates)</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Created full-stack slide generator, integrated Google Slides API (OAuth, DB-backed templates)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Designed theme-first system/automated layout registry</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Designed theme-first system/automated layout registry</span>
                           </li>
                         </ul>
                         <div className="flex flex-wrap gap-4">
@@ -565,12 +676,10 @@ const ResumeSection = () => {
                       </div>
                     </div>
 
-                    <div className="h-px bg-gray-300 dark:bg-white/10 my-8"></div>
-
                     {/* Advance Image Processor */}
-                    <div className="space-y-3">
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
                       <div>
-                        <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-2">Advance Image Processor</h3>
+                        <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-2">Advance Image Processor</h3>
                         <div className="flex flex-wrap gap-2 mb-3">
                           {["Java", "GUI", "Software Design Pattern", "OOD", "TDD"].map((tech) => (
                             <span
@@ -584,11 +693,11 @@ const ResumeSection = () => {
                         <ul className="space-y-2 list-none mb-3">
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Architected extensible image processing app (MVC), implemented 7+ core transformations</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Architected extensible image processing app (MVC), implemented 7+ core transformations</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Applied Strategy/Factory/Command patterns (cutting feature integration time by 30%)</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Applied Strategy/Factory/Command patterns (cutting feature integration time by 30%)</span>
                           </li>
                         </ul>
                         <div className="flex flex-wrap gap-4">
@@ -597,12 +706,10 @@ const ResumeSection = () => {
                       </div>
                     </div>
 
-                    <div className="h-px bg-gray-300 dark:bg-white/10 my-8"></div>
-
                     {/* LeetCode Power Up */}
-                    <div className="space-y-3">
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
                       <div>
-                        <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-2">LeetCode Power Up - Chrome Extension</h3>
+                        <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-2">LeetCode Power Up - Chrome Extension</h3>
                         <div className="flex flex-wrap gap-2 mb-3">
                           {["JavaScript", "Chrome Extensions API", "YouTube Data API"].map((tech) => (
                             <span
@@ -616,15 +723,15 @@ const ResumeSection = () => {
                         <ul className="space-y-2 list-none mb-3">
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Shipped Chrome extension (injects 3-5 LeetCode solution videos)</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Shipped Chrome extension (injects 3-5 LeetCode solution videos)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Integrated per-problem scratchpad (chrome.storage)</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Integrated per-problem scratchpad (chrome.storage)</span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Engineered Promise-based async architecture</span>
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Engineered Promise-based async architecture</span>
                           </li>
                         </ul>
                         <div className="flex flex-wrap gap-4">
@@ -644,11 +751,11 @@ const ResumeSection = () => {
                     animate="animate"
                     exit="exit"
                     transition={{ duration: 0.4 }}
-                    className="space-y-8"
+                    className="space-y-4"
                   >
-                    <h2 className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-8">Publications</h2>
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Publications</h2>
                     
-                    <div className="space-y-8">
+                    <div className="space-y-4">
                       <div>
                         <div className="flex items-center gap-3 mb-3">
                           <div className="relative w-10 h-10 flex-shrink-0">
@@ -659,7 +766,7 @@ const ResumeSection = () => {
                               className="object-contain"
                             />
                           </div>
-                          <p className="text-gray-600 dark:text-white/60 text-base font-light italic">IEEE Xplore | Dec 2023</p>
+                          <p className="text-gray-500 dark:text-white/50 text-sm font-normal">IEEE Xplore | Dec 2023</p>
                         </div>
                         <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">
                           Evaluation of Tracking System using Facial Recognition and Location
@@ -698,7 +805,7 @@ const ResumeSection = () => {
                               className="object-contain"
                             />
                           </div>
-                          <p className="text-gray-600 dark:text-white/60 text-base font-light italic">IEEE Xplore | Dec 2023</p>
+                          <p className="text-gray-500 dark:text-white/50 text-sm font-normal">IEEE Xplore | Dec 2023</p>
                         </div>
                         <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">
                           Understanding Factors Affecting Trust and Satisfaction with Banking in India
@@ -737,9 +844,9 @@ const ResumeSection = () => {
                     animate="animate"
                     exit="exit"
                     transition={{ duration: 0.4 }}
-                    className="space-y-10"
+                    className="space-y-4"
                   >
-                    <h2 className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-8">Skills</h2>
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Skills</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                       <div className="space-y-4">
                         <h4 className="text-xl font-light text-gray-900 dark:text-white/90 mb-4">Programming</h4>
@@ -796,10 +903,10 @@ const ResumeSection = () => {
                     animate="animate"
                     exit="exit"
                     transition={{ duration: 0.4 }}
-                    className="space-y-8"
+                    className="space-y-4"
                   >
-                    <h2 className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-8">Education</h2>
-                    <div className="space-y-12">
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Education</h2>
+                    <div className="space-y-4">
                       {/* Master's Degree */}
                       <div>
                         <div className="flex items-center gap-3 mb-3">
@@ -815,7 +922,7 @@ const ResumeSection = () => {
                             Northeastern University
                           </h3>
                         </div>
-                        <p className="text-gray-600 dark:text-white/60 text-base font-light italic mb-2">United States | Sep 2024 - Dec 2026</p>
+                        <p className="text-gray-500 dark:text-white/50 text-sm font-normal mb-2">United States | Sep 2024 - Dec 2026</p>
                         <p className="text-gray-800 dark:text-white/80 text-lg font-light mb-1">Master of Science in Computer Science</p>
                         <p className="text-gray-600 dark:text-white/60 text-base font-light mb-4">GPA: 3.67/4</p>
                         <div>
@@ -833,7 +940,7 @@ const ResumeSection = () => {
                         </div>
                       </div>
 
-                      <div className="h-px bg-gray-300 dark:bg-white/10 my-8"></div>
+                      <div className="h-px bg-gray-200 dark:bg-white/10 my-4"></div>
 
                       {/* Bachelor's Degree */}
                       <div>
@@ -850,7 +957,7 @@ const ResumeSection = () => {
                             Galgotias University
                           </h3>
                         </div>
-                        <p className="text-gray-600 dark:text-white/60 text-base font-light italic mb-2">India | Sep 2018 - Apr 2022</p>
+                        <p className="text-gray-500 dark:text-white/50 text-sm font-normal mb-2">India | Sep 2018 - Apr 2022</p>
                         <p className="text-gray-800 dark:text-white/80 text-lg font-light mb-1">Bachelor of Science in Computer Science</p>
                         <p className="text-gray-600 dark:text-white/60 text-base font-light mb-4">CGPA: 8.4/10</p>
                         <div>
@@ -880,10 +987,10 @@ const ResumeSection = () => {
                     animate="animate"
                     exit="exit"
                     transition={{ duration: 0.4 }}
-                    className="space-y-8"
+                    className="space-y-4"
                   >
-                    <h2 className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-8">Leadership</h2>
-                    <div className="space-y-12">
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Leadership</h2>
+                    <div className="space-y-4">
                       {/* PepperUni Product */}
                       <div className="space-y-4">
                         <div>
@@ -899,13 +1006,13 @@ const ResumeSection = () => {
                                 className="object-contain"
                               />
                             </div>
-                            <p className="text-gray-600 dark:text-white/60 text-base font-light italic">Aspiring Product Managers Club @ Northeastern University</p>
+                            <p className="text-gray-500 dark:text-white/50 text-sm font-normal">Aspiring Product Managers Club @ Northeastern University</p>
                           </div>
                           <p className="text-gray-800 dark:text-white/80 text-lg font-light mb-4">Leader of Technical Development and Product Management</p>
                         </div>
                         
                         <div className="space-y-3">
-                          <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                          <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                             Comprehensive platform designed to assist students in crafting personalized and job-specific resumes. By tailoring resumes based on specific job requirements, students can significantly improve their chances of impressing potential employers.
                           </p>
                         </div>
@@ -972,7 +1079,7 @@ const ResumeSection = () => {
                     animate="animate"
                     exit="exit"
                     transition={{ duration: 0.4 }}
-                    className="space-y-12"
+                    className="space-y-4"
                   >
                     <div className="flex items-center justify-between">
                       <div>
@@ -991,7 +1098,7 @@ const ResumeSection = () => {
                           </button>
                           <h2 className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white">Research Journey</h2>
                         </div>
-                        <p className="text-gray-600 dark:text-white/60 text-base font-light italic">
+                        <p className="text-gray-500 dark:text-white/50 text-sm font-normal">
                           {activeResearchPaper === 'paper1' 
                             ? 'Facial Recognition & Location-Based Attendance Tracking System'
                             : 'Understanding Factors Affecting Trust and Satisfaction with Banking in India'}
@@ -1014,7 +1121,7 @@ const ResumeSection = () => {
                         </div>
                         <p className="text-gray-600 dark:text-white/60 text-sm font-light italic mb-3">Goal: Accurate, low-friction, and privacy-preserving classroom attendance that verifies who (identity) and where (in-class location)</p>
                       </div>
-                      <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                      <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                         A modular client–server attendance system that authenticates students with <strong>facial recognition</strong> and verifies <strong>in-class presence</strong> using device location. Built with separate services for <strong>biometrics, attendance logic, data storage,</strong> and <strong>analytics</strong>; secured via <strong>token-based auth</strong>, <strong>service isolation</strong>, and <strong>encryption</strong>.
                       </p>
                     </div>
@@ -1028,7 +1135,7 @@ const ResumeSection = () => {
                           {/* Situation */}
                           <div className="space-y-3">
                             <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Situation</h4>
-                            <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               Manual roll-calls and paper sign-ins were error-prone (proxy/bogus attendance) and consumed lecture time; existing automated options still had gaps in identity and location verification. This created challenges for academic institutions in accurately tracking student attendance while maintaining lecture efficiency.
                             </p>
                           </div>
@@ -1036,7 +1143,7 @@ const ResumeSection = () => {
                           {/* Task */}
                           <div className="space-y-3">
                             <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Task</h4>
-                            <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               Design an automated system that (1) verifies who is submitting attendance and (2) confirms where they are (in class), while protecting privacy and scaling for large cohorts. The solution needed to be reliable, secure, and user-friendly for both students and instructors.
                             </p>
                           </div>
@@ -1047,25 +1154,25 @@ const ResumeSection = () => {
                             <ul className="space-y-3 list-none">
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Architecture Design:</strong> Architected a modular client–server system: student & lecturer apps; facial-recognition, attendance, database, and data-presentation servers.
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Biometric Integration:</strong> Implemented biometric verification (facial recognition) and real-time location checks; enforced token-based auth and service isolation.
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>User Flows:</strong> Built instructor flows: authenticate → select course/time → call web service → fetch roster → mark/save attendance, with records persisted and visualized in a web portal (interactive plots + exports).
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Testing & Validation:</strong> Ran real-world testing to validate effectiveness and precision of the system in live classroom environments.
                                 </span>
                               </li>
@@ -1078,25 +1185,25 @@ const ResumeSection = () => {
                             <ul className="space-y-3 list-none">
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Integrity:</strong> Proxy/bogus attendance significantly reduced by combining identity + location verification, cutting proxy incidents to near zero in pilot tests.
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Efficiency:</strong> Instructors avoided time-consuming roll-calls; submissions became parallel and faster, saving approximately 8–10 minutes per 60-student lecture.
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Visibility:</strong> Automated stats and exports enabled quick administrative decisions and compliance reporting.
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Accuracy:</strong> The system accurately tracked attendance in live settings, proving reliable in real-world classroom environments with high precision.
                                 </span>
                               </li>
@@ -1284,21 +1391,21 @@ const ResumeSection = () => {
                     {/* Target Audience */}
                     <div className="pt-4">
                       <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Target Audience</h3>
-                      <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light mb-4">
+                      <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal mb-4">
                         The primary audience consists of academic institutions seeking automated attendance solutions. Specifically targeting:
                       </p>
                       <ul className="space-y-2 list-none">
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Educational institutions needing accurate attendance tracking for large cohorts</span>
+                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Educational institutions needing accurate attendance tracking for large cohorts</span>
                         </li>
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Instructors and lecturers seeking to reduce manual attendance overhead</span>
+                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Instructors and lecturers seeking to reduce manual attendance overhead</span>
                         </li>
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Administrators requiring attendance data for academic decision-making and compliance</span>
+                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Administrators requiring attendance data for academic decision-making and compliance</span>
                         </li>
                       </ul>
                     </div>
@@ -1348,37 +1455,37 @@ const ResumeSection = () => {
                     <div className="pt-4">
                       <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Impact & Outcomes</h3>
                       <div className="space-y-4">
-                        <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                        <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                           The research project demonstrated significant impact in addressing real-world attendance tracking challenges:
                         </p>
                         <ul className="space-y-3 list-none">
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               <strong>Accuracy & Integrity:</strong> Dual-factor verification (face + location) curtailed proxy attendance, ensuring authentic student presence tracking.
                             </span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               <strong>Time Saved:</strong> Streamlined roll-call into a few taps; simultaneous submissions from students reduced lecture disruption by 8–10 minutes per session.
                             </span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               <strong>Actionable Insights:</strong> One-click exports and trend views for administrators enabled data-driven academic decisions.
                             </span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               <strong>Privacy by Design:</strong> Per-user data isolation, tokenized access, and encrypted distributed storage protected student privacy and complied with data protection regulations.
                             </span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               <strong>Maintainability:</strong> Modular services enable independent updates and scaling, simplifying maintenance for multi-campus deployments.
                             </span>
                           </li>
@@ -1395,19 +1502,19 @@ const ResumeSection = () => {
                           <ul className="space-y-2 list-none">
                             <li className="flex items-start space-x-2">
                               <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                 <strong>Why facial + location vs QR/RFID/NFC?</strong> No extra hardware/tags required; stronger anti-proxy guarantees; works with standard smartphones.
                               </span>
                             </li>
                             <li className="flex items-start space-x-2">
                               <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                 <strong>Trade-off:</strong> Biometrics latency vs UX → mitigated via efficient capture, caching tokens, and retry flows.
                               </span>
                             </li>
                             <li className="flex items-start space-x-2">
                               <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                 <strong>Scale & Reliability:</strong> Implemented idempotent submissions, rate limiting, retries, and circuit breakers between services.
                               </span>
                             </li>
@@ -1418,19 +1525,19 @@ const ResumeSection = () => {
                           <ul className="space-y-2 list-none">
                             <li className="flex items-start space-x-2">
                               <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                 <strong>Low light/occlusion:</strong> Retry with guidance; temporary manual verification fallback
                               </span>
                             </li>
                             <li className="flex items-start space-x-2">
                               <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                 <strong>Weak GPS/indoors:</strong> Multimodal checks (Wi-Fi/BLE) and manual override policy
                               </span>
                             </li>
                             <li className="flex items-start space-x-2">
                               <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                 <strong>Lost connectivity:</strong> Queued submissions with signed tokens for secure deferred sync
                               </span>
                             </li>
@@ -1441,19 +1548,19 @@ const ResumeSection = () => {
                           <ul className="space-y-2 list-none">
                             <li className="flex items-start space-x-2">
                               <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                 Consent flows and clear data usage policies
                               </span>
                             </li>
                             <li className="flex items-start space-x-2">
                               <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                 Storage minimization and retention policies
                               </span>
                             </li>
                             <li className="flex items-start space-x-2">
                               <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                 Opt-out path and bias testing for facial recognition
                               </span>
                             </li>
@@ -1525,7 +1632,7 @@ const ResumeSection = () => {
                     <div className="pt-4">
                       <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800">
                         <h3 className="text-xl font-light text-gray-900 dark:text-white mb-3">Elevator Pitch</h3>
-                        <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light italic">
+                        <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal italic">
                           &quot;Replaced time-consuming roll-calls with a privacy-preserving system that verifies <strong>who</strong> you are (facial recognition) and <strong>where</strong> you are (device location). Built a <strong>modular client–server</strong> architecture with secure storage and a reporting portal; proved accurate in real settings and reduced instructor workload by 8–10 minutes per lecture.&quot;
                         </p>
                       </div>
@@ -1570,7 +1677,7 @@ const ResumeSection = () => {
                               <span className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light">Trust & Privacy</span>
                             </div>
                           </div>
-                          <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                          <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                             Redesigned mobile-banking UX to improve trust and satisfaction by applying customer-centric design principles, cross-platform insights (iOS/Android), and a structured UX process (research → wireframes → evaluation) tailored to Indian banking users.
                           </p>
                         </div>
@@ -1584,7 +1691,7 @@ const ResumeSection = () => {
                               {/* Situation */}
                               <div className="space-y-3">
                                 <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Situation</h4>
-                                <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   Indian banking users increasingly prefer mobile, but common apps are hard to navigate, visually dated, and trust-eroding (privacy/clarity gaps). Banks move slowly and often lack customer-centric design, creating friction that reduces user satisfaction and adoption.
                                 </p>
                               </div>
@@ -1592,7 +1699,7 @@ const ResumeSection = () => {
                               {/* Task */}
                               <div className="space-y-3">
                                 <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Task</h4>
-                                <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   Identify factors that drive trust and satisfaction, and design a simpler, clearer mobile experience that reduces friction while addressing privacy and usability issues. The solution needed to be tailored specifically to Indian banking users&apos; needs and mental models.
                                 </p>
                               </div>
@@ -1603,25 +1710,25 @@ const ResumeSection = () => {
                                 <ul className="space-y-3 list-none">
                                   <li className="flex items-start space-x-2">
                                     <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                    <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                       <strong>Research & Analysis:</strong> Analyzed multiple banking apps&apos; usability patterns, platform constraints, and UI real-estate usage. Conducted comparative review of existing Indian banking apps.
                                     </span>
                                   </li>
                                   <li className="flex items-start space-x-2">
                                     <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                    <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                       <strong>Design Principles:</strong> Grounded design in seven principles: Personalization, Transparency, Self-service, Mobile-first, Simplicity, Aesthetic, Holistic.
                                     </span>
                                   </li>
                                   <li className="flex items-start space-x-2">
                                     <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                    <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                       <strong>UX Process:</strong> Ran a structured UX process (research → define → wireframe → iterate) and produced low-fi wireframes to validate flows early before high-fidelity design.
                                     </span>
                                   </li>
                                   <li className="flex items-start space-x-2">
                                     <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                    <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                       <strong>Product Heuristics:</strong> Codified five product heuristics for teams: listen to customers, challenge status quo, be customer-centric, modernize digital strategy, delight with up-to-date UI.
                                     </span>
                                   </li>
@@ -1634,31 +1741,31 @@ const ResumeSection = () => {
                                 <ul className="space-y-3 list-none">
                                   <li className="flex items-start space-x-2">
                                     <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                    <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                       <strong>Learning Curve:</strong> Reduced from ~1h45m to ~15m (≈7× faster), dramatically improving time-to-proficiency.
                                     </span>
                                   </li>
                                   <li className="flex items-start space-x-2">
                                     <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                    <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                       <strong>Customer Satisfaction:</strong> Increased by +320%, demonstrating significant improvement in user experience.
                                     </span>
                                   </li>
                                   <li className="flex items-start space-x-2">
                                     <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                    <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                       <strong>Feature Adoption:</strong> Use of additional services increased by +85%, showing improved engagement and cross-selling success.
                                     </span>
                                   </li>
                                   <li className="flex items-start space-x-2">
                                     <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                    <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                       <strong>Advocacy:</strong> Ready-to-Recommend score increased by +460%, indicating strong user satisfaction and loyalty.
                                     </span>
                                   </li>
                                   <li className="flex items-start space-x-2">
                                     <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                    <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                    <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                       <strong>Churn Reduction:</strong> Willingness to switch banks decreased by ~1/6, demonstrating improved retention through better UX.
                                     </span>
                                   </li>
@@ -1713,21 +1820,21 @@ const ResumeSection = () => {
                         {/* Target Audience */}
                         <div className="pt-4">
                           <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Target Audience</h3>
-                          <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light mb-4">
+                          <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal mb-4">
                             The primary audience consists of Indian banking users seeking mobile banking solutions. Specifically targeting:
                           </p>
                           <ul className="space-y-2 list-none">
                             <li className="flex items-start space-x-2">
                               <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Mobile-first banking users who prefer smartphone apps over traditional banking methods</span>
+                              <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Mobile-first banking users who prefer smartphone apps over traditional banking methods</span>
                             </li>
                             <li className="flex items-start space-x-2">
                               <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Users frustrated with existing banking apps due to poor navigation, trust issues, and outdated interfaces</span>
+                              <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Users frustrated with existing banking apps due to poor navigation, trust issues, and outdated interfaces</span>
                             </li>
                             <li className="flex items-start space-x-2">
                               <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Indian banking customers with diverse device capabilities, variable connectivity, and varying digital literacy levels</span>
+                              <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Indian banking customers with diverse device capabilities, variable connectivity, and varying digital literacy levels</span>
                             </li>
                           </ul>
                         </div>
@@ -1773,31 +1880,31 @@ const ResumeSection = () => {
                         <div className="pt-4">
                           <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Impact & Outcomes</h3>
                           <div className="space-y-4">
-                            <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               The research project demonstrated significant impact in improving mobile banking experience for Indian users:
                             </p>
                             <ul className="space-y-3 list-none">
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Faster Onboarding:</strong> Simplified flows and clearer hierarchy cut learning time by ~7× (from ~1h45m to ~15m), dramatically improving time-to-proficiency.
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Significant Satisfaction Lifts:</strong> Customer satisfaction increased by +320%, cross-sell/feature adoption by +85%, and advocacy (Ready-to-Recommend) by +460%.
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Reduced Churn Intent:</strong> Willingness to switch banks decreased by ~1/6 by addressing trust and usability gaps, demonstrating improved retention.
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Trust-Building:</strong> &quot;Trust is a UX outcome&quot;—treated trust as the product of clarity (transparency), control (privacy UI), and reliability (predictable flows), not just security tech.
                                 </span>
                               </li>
@@ -1831,34 +1938,34 @@ const ResumeSection = () => {
                           <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Key Insights & Interview Angles</h3>
                           <div className="space-y-4">
                             <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-white/10">
-                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light italic mb-2">
+                              <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal italic mb-2">
                                 &quot;Trust is a UX outcome.&quot;
                               </p>
-                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                 We treated trust as the product of clarity (transparency), control (privacy UI), and reliability (predictable flows)—not just security tech.
                               </p>
                             </div>
                             <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-white/10">
-                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light italic mb-2">
+                              <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal italic mb-2">
                                 &quot;Simplicity wins adoption.&quot;
                               </p>
-                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                 Cutting navigation depth and surfacing common tasks materially reduced time-to-proficiency by ~7×.
                               </p>
                             </div>
                             <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-white/10">
-                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light italic mb-2">
+                              <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal italic mb-2">
                                 &quot;Design for India&apos;s realities.&quot;
                               </p>
-                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                 Fragmented devices, variable connectivity, and diverse mental models guided our emphasis on self-service and mobile-first approaches.
                               </p>
                             </div>
                             <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-white/10">
-                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light italic mb-2">
+                              <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal italic mb-2">
                                 &quot;Principles → Patterns → Proof.&quot;
                               </p>
-                              <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                              <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                 Principles informed patterns; patterns validated via wireframes and outcome metrics, creating a systematic approach to design.
                               </p>
                             </div>
@@ -1869,7 +1976,7 @@ const ResumeSection = () => {
                         <div className="pt-4">
                           <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800">
                             <h3 className="text-xl font-light text-gray-900 dark:text-white mb-3">Elevator Pitch</h3>
-                            <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light italic">
+                            <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal italic">
                               &quot;Redesigned mobile-banking UX for Indian users, applying seven trust-driving design principles and a research-to-wireframe process that cut learning time ~7× and lifted satisfaction by ~320%. The design addressed trust and usability gaps, reducing churn intent by ~1/6 and increasing feature adoption by +85%.&quot;
                             </p>
                           </div>
@@ -1912,7 +2019,7 @@ const ResumeSection = () => {
                     animate="animate"
                     exit="exit"
                     transition={{ duration: 0.4 }}
-                    className="space-y-12"
+                    className="space-y-4"
                   >
                     <div className="flex items-center justify-between">
                       <div>
@@ -1928,12 +2035,12 @@ const ResumeSection = () => {
                           </button>
                           <h2 className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white">PepperUni Wireframe Journey</h2>
                         </div>
-                        <p className="text-gray-600 dark:text-white/60 text-base font-light italic">From Concept to Production</p>
+                        <p className="text-gray-500 dark:text-white/50 text-sm font-normal">From Concept to Production</p>
                       </div>
                     </div>
 
                     {/* STAR Format */}
-                    <div className="space-y-8">
+                    <div className="space-y-4">
                       <div>
                         <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">The Journey: STAR Format</h3>
                         
@@ -1941,7 +2048,7 @@ const ResumeSection = () => {
                           {/* Situation */}
                           <div className="space-y-3">
                             <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Situation</h4>
-                            <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               As Leader of Technical Development at the Aspiring Product Managers Club, I observed a critical challenge: students were struggling with resume optimization for job applications. Many were submitting generic resumes that didn&apos;t align with specific job requirements, resulting in low interview conversion rates. The competitive job market demanded tailored, impactful resumes that highlighted relevant skills and experiences.
                             </p>
                           </div>
@@ -1949,7 +2056,7 @@ const ResumeSection = () => {
                           {/* Task */}
                           <div className="space-y-3">
                             <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Task</h4>
-                            <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               My responsibility was to identify a solution that could help students create job-specific, optimized resumes efficiently. I needed to build a platform that could analyze job descriptions, extract key requirements, and guide students in tailoring their resumes to match specific roles. The solution had to be scalable, user-friendly, and provide measurable improvements in application success rates.
                             </p>
                           </div>
@@ -1960,31 +2067,31 @@ const ResumeSection = () => {
                             <ul className="space-y-3 list-none">
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Research & Ideation:</strong> Conducted user interviews with 30+ students to understand pain points in resume creation. Identified that manual resume tailoring was time-consuming and often missed key keywords.
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Design Process:</strong> Created comprehensive wireframes in Figma, iterating through two design drafts. First draft focused on core functionality, second draft refined UX/UI based on user feedback and accessibility principles.
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Development:</strong> Architected full-stack solution using React for frontend, Node.js/Express for backend, and PostgreSQL for data management. Implemented resume parsing algorithms and job description analysis using NLP techniques.
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Infrastructure:</strong> Deployed on AWS using Terraform for Infrastructure as Code, ensuring scalability and reliability. Integrated Cloudflare for global CDN and performance optimization.
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   <strong>Testing & Iteration:</strong> Conducted beta testing with club members, gathering feedback to improve accuracy of resume analysis and user experience.
                                 </span>
                               </li>
@@ -1997,25 +2104,25 @@ const ResumeSection = () => {
                             <ul className="space-y-3 list-none">
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   Successfully launched PepperUni as a production-ready platform at <strong>pepperuni.com</strong>, serving 500+ students at Northeastern University
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   Users reported an average <strong>20% improvement in resume scores</strong> and increased interview callbacks by tailoring resumes to job descriptions
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   Reduced resume customization time from <strong>2-3 hours to 15-20 minutes</strong> per application
                                 </span>
                               </li>
                               <li className="flex items-start space-x-2">
                                 <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                                   Platform demonstrates strong user retention with <strong>85% of users returning</strong> for multiple resume versions
                                 </span>
                               </li>
@@ -2028,21 +2135,21 @@ const ResumeSection = () => {
                     {/* Target Audience */}
                     <div className="pt-4">
                       <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Target Audience</h3>
-                      <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                      <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                         The primary audience consists of university students and recent graduates actively seeking internships and full-time positions. Specifically targeting:
                       </p>
                       <ul className="space-y-2 list-none mt-4">
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Students applying to multiple positions requiring tailored resumes</span>
+                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Students applying to multiple positions requiring tailored resumes</span>
                         </li>
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">Career changers needing to reframe experiences for different industries</span>
+                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Career changers needing to reframe experiences for different industries</span>
                         </li>
                         <li className="flex items-start space-x-2">
                           <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">International students adapting resumes to US job market standards</span>
+                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">International students adapting resumes to US job market standards</span>
                         </li>
                       </ul>
                     </div>
@@ -2100,31 +2207,31 @@ const ResumeSection = () => {
                     <div className="pt-4">
                       <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Impact & Outcomes</h3>
                       <div className="space-y-4">
-                        <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                        <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                           PepperUni has become a valuable resource within our university community, helping students navigate the competitive job market more effectively. The platform has demonstrated tangible impact through:
                         </p>
                         <ul className="space-y-3 list-none">
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               <strong>Improved Application Success:</strong> Students using PepperUni reported a 35% increase in interview callbacks compared to those using generic resumes
                             </span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               <strong>Time Efficiency:</strong> Streamlined the resume customization process, enabling students to apply to 3x more positions with quality applications
                             </span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               <strong>Educational Value:</strong> The platform serves as a learning tool, helping students understand how to identify and highlight relevant skills for different roles
                             </span>
                           </li>
                           <li className="flex items-start space-x-2">
                             <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light">
+                            <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
                               <strong>Community Impact:</strong> Built a tool that has become an integral part of the career development resources at Northeastern University
                             </span>
                           </li>
@@ -2135,7 +2242,7 @@ const ResumeSection = () => {
                     {/* Design Process */}
                     <div className="pt-4">
                       <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Design Process</h3>
-                      <p className="text-gray-700 dark:text-white/80 text-base leading-relaxed font-light mb-4">
+                      <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal mb-4">
                         The design journey began with understanding user needs through research, followed by iterative wireframing and prototyping in Figma. The process evolved from initial concepts to a polished, user-friendly interface.
                       </p>
                       <div className="flex flex-col sm:flex-row gap-4 pt-2">
@@ -2187,9 +2294,9 @@ const ResumeSection = () => {
                     animate="animate"
                     exit="exit"
                     transition={{ duration: 0.4 }}
-                    className="space-y-8"
+                    className="space-y-4"
                   >
-                    <h2 className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-8">CV</h2>
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">CV</h2>
                     
                     {/* Contact Message */}
                     <motion.div
