@@ -17,7 +17,7 @@ import bluepiLogo from "../../../public/bluepi.jpeg";
 import folderImage from "./folder.png";
 
 const ResumeSection = () => {
-  const [activeTab, setActiveTab] = useState("education");
+  const [activeTab, setActiveTab] = useState("about");
   const [showWireframe, setShowWireframe] = useState(false);
   const [showResearchJourney, setShowResearchJourney] = useState(false);
   const [activeResearchPaper, setActiveResearchPaper] = useState(null); // 'paper1' or 'paper2'
@@ -29,6 +29,7 @@ const ResumeSection = () => {
   const [studyPasswordError, setStudyPasswordError] = useState(false);
 
   const tabs = [
+    { id: "about", label: "About" },
     { id: "education", label: "Education" },
     { id: "experience", label: "Experience" },
     { id: "projects", label: "Projects" },
@@ -99,7 +100,19 @@ const ResumeSection = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#121212] border-b border-gray-200 dark:border-white/10 shadow-sm">
         <div className="w-full pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-[10%] md:pr-[10%]">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-3 gap-3">
-            <h1 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Chaman&#39;s Profile</h1>
+            <h1 
+              className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              onClick={() => {
+                setActiveTab("about");
+                setShowWireframe(false);
+                setShowResearchJourney(false);
+                setActiveResearchPaper(null);
+                setShowTAJourney(false);
+                setShowAKQAProjects(false);
+              }}
+            >
+              Chaman&#39;s Profile
+            </h1>
             <div className="flex flex-wrap items-center gap-1 sm:gap-1">
               {tabs.map((tab) => (
                 <button
@@ -355,6 +368,98 @@ const ResumeSection = () => {
           <div className="w-full lg:col-span-4">
             <div className="space-y-4 sm:space-y-6">
               <AnimatePresence mode="wait">
+                {/* About Section */}
+                {activeTab === "about" && (
+                  <motion.div
+                    key="about"
+                    variants={sectionVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.4 }}
+                    className="space-y-4 sm:space-y-6"
+                  >
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-6 sm:p-7 md:p-8 shadow-sm border border-gray-200 dark:border-white/10">
+                      <h2 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">About ME 👋</h2>
+                      
+                      <div className="space-y-6 text-base leading-relaxed font-light text-gray-700 dark:text-white/70">
+                        <p>
+                          Hello! I&#39;m <strong className="font-medium text-gray-900 dark:text-white">Chaman Kumar</strong>, a Master of Science in Computer Science candidate at Northeastern University (Boston). With a strong foundation in full-stack engineering, web performance & accessibility, and cloud-native DevOps, I&#39;m passionate about building fast, scalable, and deployment-ready web applications.
+                        </p>
+
+                        <div>
+                          <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">🔍 Experience & Background</h3>
+                          <p>
+                            My journey spans teaching, product engineering, and research—with roles at Northeastern&#39;s Khoury College (Graduate TA), AKQA, and BluePi. At Northeastern, I led a TA team and shipped a Stack Overflow–style MERN platform used by 100+ students while driving TDD and structured code reviews. At AKQA, I optimized IWC Schaffhausen&#39;s AEM/MERN e-commerce stack—raising code coverage, cutting load time 11s → 4s, and boosting engagement while hardening releases via CI/CD and WCAG 2.1. Earlier at BluePi, I built Spring Boot + AWS prototypes and strengthened pipelines with JUnit/CI to improve efficiency and reduce runtime errors. Along the way, I delivered industry-aligned academic builds (Java image pipeline, Chrome extension, RecipeHub) and an IEEE-published face-recognition attendance system.
+                          </p>
+                        </div>
+
+                        <div>
+                          <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">💻 Technical Expertise</h3>
+                          <p className="mb-3">I specialize in:</p>
+                          <div className="space-y-3 pl-4 border-l-2 border-gray-200 dark:border-white/20">
+                            <div>
+                              <strong className="font-medium text-gray-900 dark:text-white">Programming:</strong> Java, Python, C/C++, JavaScript, TypeScript, C#, SQL, Go(Golang), Ruby
+                            </div>
+                            <div>
+                              <strong className="font-medium text-gray-900 dark:text-white">Web/Frameworks:</strong> React, Node.js, Next.js, Express, Spring Boot, .NET, Angular, HTML5/CSS3, Webpack, Socket.IO
+                            </div>
+                            <div>
+                              <strong className="font-medium text-gray-900 dark:text-white">Databases/Testing:</strong> MySQL, PostgreSQL, DynamoDB, MongoDB, Redis, JUnit, Mockito, Jest, Postman, SonarQube
+                            </div>
+                            <div>
+                              <strong className="font-medium text-gray-900 dark:text-white">Cloud & DevOps:</strong> Jenkins, Docker, Kubernetes, GCP, Azure, AWS (Lambda, EC2, S3, RDS/DynamoDB, IAM, SNS)
+                            </div>
+                            <div>
+                              <strong className="font-medium text-gray-900 dark:text-white">Software Development:</strong> Object-Oriented Design, TDD, Agile, Scrum, Retrospective, Story Planning, Sprint, Service First
+                            </div>
+                            <div>
+                              <strong className="font-medium text-gray-900 dark:text-white">Certifications:</strong> AWS Cloud Practitioner, AWS Certified Developer Associate
+                            </div>
+                            <div>
+                              <strong className="font-medium text-gray-900 dark:text-white">Other Tools:</strong> Selenium, jQuery, CloudWatch, Cypress, Git, Linux/Bash, CI/CD, GitHub Actions, REST API, JWT
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">🚀 Current Focus</h3>
+                          <p className="mb-3">Currently, I am advancing my software engineering by building end-to-end products that combine scalable systems, cloud, and AI/ML. My work includes:</p>
+                          <ul className="space-y-2 pl-6 list-disc">
+                            <li>Designing and deploying scalable web services and APIs (MERN/TypeScript, Java/Spring) on cloud platforms with CI/CD and observability.</li>
+                            <li>Integrating AI/ML features into applications (e.g., vision/NLP) and serving models through reliable inference endpoints.</li>
+                            <li>Optimizing performance, accessibility, and reliability to ensure production-ready experiences at scale.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">🔍 Career Goals</h3>
+                          <p className="mb-3">
+                            As I move into a full-time role, I want to build scalable, distributed systems that power real products end-to-end—systems that are resilient, observable, and easy to evolve. I&#39;m especially excited about applying AI/ML in production, where strong platform engineering meets high-throughput, low-latency design.
+                          </p>
+                          <ul className="space-y-2 pl-6 list-disc">
+                            <li><strong className="font-medium text-gray-900 dark:text-white">Backend & Platform Engineering:</strong> Design and implement distributed, fault-tolerant services (microservices, event-driven, async queues) with strict SLOs, horizontal scaling, and graceful degradation.</li>
+                            <li><strong className="font-medium text-gray-900 dark:text-white">AI/ML in Production:</strong> Ship scalable inference and retrieval services (feature stores, vector search, model serving, A/B rollouts) that make AI useful, reliable, and cost-efficient.</li>
+                            <li><strong className="font-medium text-gray-900 dark:text-white">Cloud-Native at Scale:</strong> Operate Kubernetes-based stacks with IaC, autoscaling, blue/green & canary deploys, and deep observability (metrics, logs, traces) for fast incident response.</li>
+                            <li><strong className="font-medium text-gray-900 dark:text-white">Data & Streaming Systems:</strong> Build streaming pipelines and storage layers that handle spikes, ensure consistency where needed, and optimize for throughput and latency.</li>
+                            <li><strong className="font-medium text-gray-900 dark:text-white">Performance & Reliability:</strong> Lead capacity planning, load testing, caching strategies, and performance tuning to keep p99s low and availability high.</li>
+                          </ul>
+                          <p className="mt-4">
+                            In short: roles where I can own and scale distributed systems, bring AI/ML to production responsibly, and drive engineering practices (TDD, CI/CD, reviews) that keep teams shipping fast with confidence.
+                          </p>
+                        </div>
+
+                        <div>
+                          <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">🔗 Let&#39;s Connect!</h3>
+                          <p>
+                            I am always open to discussions on collaborating to drive innovation in AI and technology. Let&#39;s connect and explore how we can create impactful solutions together!
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
                 {/* Experience Section */}
                 {activeTab === "experience" && (
                   <motion.div
