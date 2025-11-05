@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowTopRightOnSquareIcon, MapPinIcon, BuildingOfficeIcon, EnvelopeIcon, SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,7 +15,6 @@ import iwcLogo from "../../../public/iwc.png";
 import montblancLogo from "../../../public/montblanc.svg";
 import bluepiLogo from "../../../public/bluepi.jpeg";
 import folderImage from "./folder.png";
-import VisitorCounter from "./VisitorCounter";
 
 const ResumeSection = () => {
   const [activeTab, setActiveTab] = useState("education");
@@ -28,20 +27,6 @@ const ResumeSection = () => {
   const [studyAuthenticated, setStudyAuthenticated] = useState(false);
   const [studyPassword, setStudyPassword] = useState("");
   const [studyPasswordError, setStudyPasswordError] = useState(false);
-  const [folderPositions, setFolderPositions] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('studyFolderPositions');
-      return saved ? JSON.parse(saved) : {};
-    }
-    return {};
-  });
-  const [draggedFolder, setDraggedFolder] = useState(null);
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStartPos, setDragStartPos] = useState({ x: 0, y: 0 });
-  const [snapToGrid, setSnapToGrid] = useState(true);
-  const [gridSize] = useState(100); // Grid size in pixels
-  const [dragPreview, setDragPreview] = useState(null);
 
   const tabs = [
     { id: "education", label: "Education" },
@@ -107,116 +92,6 @@ const ResumeSection = () => {
     }
   };
 
-  // Helper function to snap to grid
-  const snapToGridPosition = useCallback((x, y) => {
-    if (!snapToGrid) return { x, y };
-    return {
-      x: Math.round(x / gridSize) * gridSize,
-      y: Math.round(y / gridSize) * gridSize,
-    };
-  }, [snapToGrid, gridSize]);
-
-  // Drag handlers for macOS-style folder dragging
-  const handleMouseDown = (e, folderId, folderName) => {
-    // Don't prevent default on anchor tags - allow clicks to work
-    const rect = e.currentTarget.getBoundingClientRect();
-    const offset = {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    };
-    setDragOffset(offset);
-    setDragStartPos({
-      x: e.clientX,
-      y: e.clientY,
-    });
-    setDraggedFolder(folderId);
-    setIsDragging(false);
-    
-    // Create drag preview
-    setDragPreview({
-      x: e.clientX,
-      y: e.clientY,
-      name: folderName,
-    });
-  };
-
-  const handleMouseMove = useCallback((e) => {
-    if (!draggedFolder) return;
-    
-    // Check if user has moved enough to consider it a drag (not just a click)
-    const moveThreshold = 5;
-    const movedX = Math.abs(e.clientX - dragStartPos.x);
-    const movedY = Math.abs(e.clientY - dragStartPos.y);
-    
-    if (movedX > moveThreshold || movedY > moveThreshold) {
-      setIsDragging(true);
-      e.preventDefault(); // Prevent default only when actually dragging
-    }
-    
-    if (!isDragging && (movedX <= moveThreshold && movedY <= moveThreshold)) {
-      return; // Don't move if it's just a small movement (likely a click)
-    }
-    
-    // Update drag preview position
-    setDragPreview(prev => prev ? {
-      ...prev,
-      x: e.clientX,
-      y: e.clientY,
-    } : null);
-    
-    const container = document.querySelector('.study-container');
-    if (!container) return;
-    
-    const containerRect = container.getBoundingClientRect();
-    let newX = e.clientX - containerRect.left - dragOffset.x;
-    let newY = e.clientY - containerRect.top - dragOffset.y;
-    
-    // Constrain to container bounds
-    const maxX = containerRect.width - 80;
-    const maxY = containerRect.height - 80;
-    newX = Math.max(0, Math.min(newX, maxX));
-    newY = Math.max(0, Math.min(newY, maxY));
-    
-    // Snap to grid if enabled
-    const snapped = snapToGridPosition(newX, newY);
-    
-    setFolderPositions(prev => ({
-      ...prev,
-      [draggedFolder]: snapped,
-    }));
-  }, [draggedFolder, dragOffset, dragStartPos, isDragging, snapToGridPosition]);
-
-  const handleMouseUp = useCallback((e) => {
-    if (draggedFolder) {
-      if (isDragging) {
-        // If we were dragging, prevent the click
-        e?.preventDefault?.();
-      }
-      
-      setFolderPositions(prev => {
-        // Save positions to localStorage
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('studyFolderPositions', JSON.stringify(prev));
-        }
-        return prev;
-      });
-      setDraggedFolder(null);
-      setIsDragging(false);
-      setDragPreview(null);
-    }
-  }, [draggedFolder, isDragging]);
-
-  // Cleanup drag handlers on unmount
-  useEffect(() => {
-    if (draggedFolder) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
-      return () => {
-        document.removeEventListener('mousemove', handleMouseMove);
-        document.removeEventListener('mouseup', handleMouseUp);
-      };
-    }
-  }, [draggedFolder, handleMouseMove, handleMouseUp]);
 
   return (
     <section className="text-gray-900 dark:text-white min-h-screen bg-gray-50 dark:bg-[#0a0a0a] relative" id="resume">
@@ -224,10 +99,7 @@ const ResumeSection = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#121212] border-b border-gray-200 dark:border-white/10 shadow-sm">
         <div className="w-full pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-[10%] md:pr-[10%]">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-3 gap-3">
-            <div className="flex items-center gap-4">
-              <h1 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Chaman&#39;s Profile</h1>
-              <VisitorCounter />
-            </div>
+            <h1 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Chaman&#39;s Profile</h1>
             <div className="flex flex-wrap items-center gap-1 sm:gap-1">
               {tabs.map((tab) => (
                 <button
@@ -2611,159 +2483,46 @@ const ResumeSection = () => {
                         </form>
                       </div>
                     ) : (
-                      <div className="space-y-4">
-                        {/* Grid toggle and options */}
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="flex items-center space-x-3">
-                            <label className="flex items-center space-x-2 cursor-pointer">
-                              <input
-                                type="checkbox"
-                                checked={snapToGrid}
-                                onChange={(e) => setSnapToGrid(e.target.checked)}
-                                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                              />
-                              <span className="text-sm text-gray-700 dark:text-white/70">
-                                Snap to Grid
-                              </span>
-                            </label>
-                          </div>
-                        </div>
-                        
-                        {/* Drag preview */}
-                        {dragPreview && isDragging && (
-                          <div
-                            className="fixed pointer-events-none z-50 opacity-50"
-                            style={{
-                              left: dragPreview.x - 40,
-                              top: dragPreview.y - 40,
-                              transform: 'scale(1.2)',
-                            }}
-                          >
-                            <div className="flex flex-col items-center space-y-1">
-                              <div className="relative w-16 h-16">
-                                <Image
-                                  src={folderImage}
-                                  alt={dragPreview.name}
-                                  fill
-                                  className="object-contain"
-                                />
-                              </div>
-                              <p className="text-xs font-medium text-gray-900 dark:text-white bg-white/80 dark:bg-gray-800/80 px-2 py-1 rounded">
-                                {dragPreview.name}
-                              </p>
-                            </div>
-                          </div>
-                        )}
-                        
-                        <div 
-                          className="study-container relative min-h-[400px] w-full"
-                          onMouseLeave={handleMouseUp}
-                          style={{
-                            backgroundImage: snapToGrid ? `
-                              linear-gradient(to right, currentColor 1px, transparent 1px),
-                              linear-gradient(to bottom, currentColor 1px, transparent 1px)
-                            ` : 'none',
-                            backgroundSize: snapToGrid ? `${gridSize}px ${gridSize}px` : 'auto',
-                            opacity: snapToGrid ? 0.1 : 0,
-                            transition: 'opacity 0.2s',
-                          }}
-                        >
+                      <div className="flex flex-wrap gap-3 sm:gap-4">
                         {/* Blind 75 Folder */}
-                        <div
-                          className="absolute select-none transition-transform duration-150"
-                          style={{
-                            left: folderPositions['blind75']?.x || 0,
-                            top: folderPositions['blind75']?.y || 0,
-                            zIndex: draggedFolder === 'blind75' ? 50 : 1,
-                            transform: draggedFolder === 'blind75' && isDragging ? 'scale(1.1)' : 'scale(1)',
-                            opacity: draggedFolder === 'blind75' && isDragging ? 0.9 : 1,
-                            cursor: isDragging && draggedFolder === 'blind75' ? 'grabbing' : 'grab',
-                          }}
-                          onMouseDown={(e) => {
-                            // Only handle drag if clicking on the container, not the link
-                            if (e.target === e.currentTarget || e.target.closest('a') === null) {
-                              handleMouseDown(e, 'blind75', 'Blind 75');
-                            }
-                          }}
+                        <a
+                          href="https://github.com/byteKumar/Blind-75"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex flex-col items-center justify-start space-y-1 hover:opacity-80 transition-opacity duration-200"
                         >
-                          <a
-                            href="https://github.com/byteKumar/Blind-75"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex flex-col items-center justify-start space-y-1 hover:opacity-80 transition-opacity duration-200"
-                            onClick={(e) => {
-                              if (isDragging && draggedFolder === 'blind75') {
-                                e.preventDefault();
-                                e.stopPropagation();
-                              }
-                            }}
-                            onMouseDown={(e) => {
-                              // Allow clicks on the link itself - stop propagation so drag doesn't start
-                              e.stopPropagation();
-                            }}
-                          >
-                            <div className="relative w-16 h-16 sm:w-20 sm:h-20">
-                              <Image
-                                src={folderImage}
-                                alt="Blind 75"
-                                fill
-                                className="object-contain"
-                              />
-                            </div>
-                            <p className="text-gray-900 dark:text-white text-xs sm:text-sm font-medium text-center max-w-[80px] break-words">
-                              Blind 75
-                            </p>
-                          </a>
-                        </div>
+                          <div className="relative w-16 h-16 sm:w-20 sm:h-20">
+                            <Image
+                              src={folderImage}
+                              alt="Blind 75"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                          <p className="text-gray-900 dark:text-white text-xs sm:text-sm font-medium text-center max-w-[80px] break-words">
+                            Blind 75
+                          </p>
+                        </a>
 
                         {/* Design Pattern Folder */}
-                        <div
-                          className="absolute select-none transition-transform duration-150"
-                          style={{
-                            left: folderPositions['designPattern']?.x || 100,
-                            top: folderPositions['designPattern']?.y || 0,
-                            zIndex: draggedFolder === 'designPattern' ? 50 : 1,
-                            transform: draggedFolder === 'designPattern' && isDragging ? 'scale(1.1)' : 'scale(1)',
-                            opacity: draggedFolder === 'designPattern' && isDragging ? 0.9 : 1,
-                            cursor: isDragging && draggedFolder === 'designPattern' ? 'grabbing' : 'grab',
-                          }}
-                          onMouseDown={(e) => {
-                            // Only handle drag if clicking on the container, not the link
-                            if (e.target === e.currentTarget || e.target.closest('a') === null) {
-                              handleMouseDown(e, 'designPattern', 'Design Pattern');
-                            }
-                          }}
+                        <a
+                          href="https://github.com/byteKumar/systemdesign"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex flex-col items-center justify-start space-y-1 hover:opacity-80 transition-opacity duration-200"
                         >
-                          <a
-                            href="https://github.com/byteKumar/systemdesign"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex flex-col items-center justify-start space-y-1 hover:opacity-80 transition-opacity duration-200"
-                            onClick={(e) => {
-                              if (isDragging && draggedFolder === 'designPattern') {
-                                e.preventDefault();
-                                e.stopPropagation();
-                              }
-                            }}
-                            onMouseDown={(e) => {
-                              // Allow clicks on the link itself - stop propagation so drag doesn't start
-                              e.stopPropagation();
-                            }}
-                          >
-                            <div className="relative w-16 h-16 sm:w-20 sm:h-20">
-                              <Image
-                                src={folderImage}
-                                alt="Design Pattern"
-                                fill
-                                className="object-contain"
-                              />
-                            </div>
-                            <p className="text-gray-900 dark:text-white text-xs sm:text-sm font-medium text-center max-w-[80px] break-words">
-                              Design Pattern
-                            </p>
-                          </a>
-                        </div>
-                        </div>
+                          <div className="relative w-16 h-16 sm:w-20 sm:h-20">
+                            <Image
+                              src={folderImage}
+                              alt="Design Pattern"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                          <p className="text-gray-900 dark:text-white text-xs sm:text-sm font-medium text-center max-w-[80px] break-words">
+                            Design Pattern
+                          </p>
+                        </a>
                       </div>
                     )}
                   </motion.div>
