@@ -95,11 +95,11 @@ const ResumeSection = () => {
 
 
   return (
-    <section className="text-gray-900 dark:text-white min-h-screen bg-gray-50 dark:bg-[#0a0a0a] relative" id="resume">
+    <section className="text-gray-900 dark:text-white min-h-screen bg-gray-50 dark:bg-[#0a0a0a] relative overflow-x-hidden" id="resume">
       {/* Fixed Header with Tabs */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#121212] border-b border-gray-200 dark:border-white/10 shadow-sm">
-        <div className="w-full pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-[10%] md:pr-[10%]">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-3 gap-3">
+        <div className="w-full pl-3 pr-3 sm:pl-4 sm:pr-4 md:pl-6 md:pr-6 lg:pl-[10%] lg:pr-[10%]">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-2.5 sm:py-3 gap-2 sm:gap-3">
             <h1 
               className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               onClick={() => {
@@ -130,7 +130,7 @@ const ResumeSection = () => {
                       setStudyPasswordError(false);
                     }
                   }}
-                  className={`px-2 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 relative ${
+                  className={`px-2 py-1.5 sm:px-3 sm:py-1.5 md:px-4 md:py-2 text-xs sm:text-sm font-medium transition-all duration-200 relative ${
                     activeTab === tab.id
                       ? "text-gray-900 dark:text-white"
                       : "text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white"
@@ -163,7 +163,7 @@ const ResumeSection = () => {
       </header>
 
       {/* Main Content Area */}
-      <div className="w-full pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-[10%] md:pr-0 pt-28 sm:pt-32 md:pt-[76px] pb-6">
+      <div className="w-full pl-3 pr-3 sm:pl-4 sm:pr-4 md:pl-6 md:pr-6 lg:pl-[10%] lg:pr-0 pt-28 sm:pt-32 md:pt-[76px] pb-4 sm:pb-6">
         <div className="flex flex-col lg:grid lg:grid-cols-5 lg:gap-4 gap-4">
           {/* Left Column - Profile Section (20%) - Mobile/Tablet */}
           <div className="w-full lg:hidden">
@@ -379,53 +379,53 @@ const ResumeSection = () => {
                     transition={{ duration: 0.4 }}
                     className="space-y-4 sm:space-y-6"
                   >
-                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-6 sm:p-7 md:p-8 shadow-sm border border-gray-200 dark:border-white/10">
-                      <h2 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">About ME 👋</h2>
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-6 md:p-7 lg:p-8 shadow-sm border border-gray-200 dark:border-white/10">
+                      <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4 sm:mb-6">About ME 👋</h2>
                       
-                      <div className="space-y-6 text-base leading-relaxed font-light text-gray-700 dark:text-white/70">
-                        <p>
+                      <div className="space-y-4 sm:space-y-6 text-sm sm:text-base leading-relaxed font-light text-gray-700 dark:text-white/70">
+                        <p className="text-sm sm:text-base">
                           Hello! I&#39;m <strong className="font-medium text-gray-900 dark:text-white">Chaman Kumar</strong>, a Master of Science in Computer Science candidate at Northeastern University (Boston). With a strong foundation in full-stack engineering, web performance & accessibility, and cloud-native DevOps, I&#39;m passionate about building fast, scalable, and deployment-ready web applications.
                         </p>
 
                         <div>
-                          <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">🔍 Experience & Background</h3>
-                          <p>
+                          <h3 className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-3 sm:mb-4">🔍 Experience & Background</h3>
+                          <p className="text-sm sm:text-base">
                             My journey spans teaching, product engineering, and research—with roles at Northeastern&#39;s Khoury College (Graduate TA), AKQA, and BluePi. At Northeastern, I led a TA team and shipped a Stack Overflow–style MERN platform used by 100+ students while driving TDD and structured code reviews. At AKQA, I optimized IWC Schaffhausen&#39;s AEM/MERN e-commerce stack—raising code coverage, cutting load time 11s → 4s, and boosting engagement while hardening releases via CI/CD and WCAG 2.1. Earlier at BluePi, I built Spring Boot + AWS prototypes and strengthened pipelines with JUnit/CI to improve efficiency and reduce runtime errors. Along the way, I delivered industry-aligned academic builds (Java image pipeline, Chrome extension, RecipeHub) and an IEEE-published face-recognition attendance system.
                           </p>
                         </div>
 
                         <div>
-                          <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">💻 Technical Expertise</h3>
-                          <p className="mb-3">I specialize in:</p>
-                          <div className="space-y-3 pl-4 border-l-2 border-gray-200 dark:border-white/20">
-                            <div>
-                              <strong className="font-medium text-gray-900 dark:text-white">Programming:</strong> Java, Python, C/C++, JavaScript, TypeScript, C#, SQL, Go(Golang), Ruby
+                          <h3 className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-3 sm:mb-4">💻 Technical Expertise</h3>
+                          <p className="mb-3 text-sm sm:text-base">I specialize in:</p>
+                          <div className="space-y-2 sm:space-y-3 pl-3 sm:pl-4 border-l-2 border-gray-200 dark:border-white/20">
+                            <div className="text-xs sm:text-sm">
+                              <strong className="font-medium text-gray-900 dark:text-white">Programming:</strong> <span className="break-words">Java, Python, C/C++, JavaScript, TypeScript, C#, SQL, Go(Golang), Ruby</span>
                             </div>
-                            <div>
-                              <strong className="font-medium text-gray-900 dark:text-white">Web/Frameworks:</strong> React, Node.js, Next.js, Express, Spring Boot, .NET, Angular, HTML5/CSS3, Webpack, Socket.IO
+                            <div className="text-xs sm:text-sm">
+                              <strong className="font-medium text-gray-900 dark:text-white">Web/Frameworks:</strong> <span className="break-words">React, Node.js, Next.js, Express, Spring Boot, .NET, Angular, HTML5/CSS3, Webpack, Socket.IO</span>
                             </div>
-                            <div>
-                              <strong className="font-medium text-gray-900 dark:text-white">Databases/Testing:</strong> MySQL, PostgreSQL, DynamoDB, MongoDB, Redis, JUnit, Mockito, Jest, Postman, SonarQube
+                            <div className="text-xs sm:text-sm">
+                              <strong className="font-medium text-gray-900 dark:text-white">Databases/Testing:</strong> <span className="break-words">MySQL, PostgreSQL, DynamoDB, MongoDB, Redis, JUnit, Mockito, Jest, Postman, SonarQube</span>
                             </div>
-                            <div>
-                              <strong className="font-medium text-gray-900 dark:text-white">Cloud & DevOps:</strong> Jenkins, Docker, Kubernetes, GCP, Azure, AWS (Lambda, EC2, S3, RDS/DynamoDB, IAM, SNS)
+                            <div className="text-xs sm:text-sm">
+                              <strong className="font-medium text-gray-900 dark:text-white">Cloud & DevOps:</strong> <span className="break-words">Jenkins, Docker, Kubernetes, GCP, Azure, AWS (Lambda, EC2, S3, RDS/DynamoDB, IAM, SNS)</span>
                             </div>
-                            <div>
-                              <strong className="font-medium text-gray-900 dark:text-white">Software Development:</strong> Object-Oriented Design, TDD, Agile, Scrum, Retrospective, Story Planning, Sprint, Service First
+                            <div className="text-xs sm:text-sm">
+                              <strong className="font-medium text-gray-900 dark:text-white">Software Development:</strong> <span className="break-words">Object-Oriented Design, TDD, Agile, Scrum, Retrospective, Story Planning, Sprint, Service First</span>
                             </div>
-                            <div>
-                              <strong className="font-medium text-gray-900 dark:text-white">Certifications:</strong> AWS Cloud Practitioner, AWS Certified Developer Associate
+                            <div className="text-xs sm:text-sm">
+                              <strong className="font-medium text-gray-900 dark:text-white">Certifications:</strong> <span className="break-words">AWS Cloud Practitioner, AWS Certified Developer Associate</span>
                             </div>
-                            <div>
-                              <strong className="font-medium text-gray-900 dark:text-white">Other Tools:</strong> Selenium, jQuery, CloudWatch, Cypress, Git, Linux/Bash, CI/CD, GitHub Actions, REST API, JWT
+                            <div className="text-xs sm:text-sm">
+                              <strong className="font-medium text-gray-900 dark:text-white">Other Tools:</strong> <span className="break-words">Selenium, jQuery, CloudWatch, Cypress, Git, Linux/Bash, CI/CD, GitHub Actions, REST API, JWT</span>
                             </div>
                           </div>
                         </div>
 
                         <div>
-                          <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">🚀 Current Focus</h3>
-                          <p className="mb-3">Currently, I am advancing my software engineering by building end-to-end products that combine scalable systems, cloud, and AI/ML. My work includes:</p>
-                          <ul className="space-y-2 pl-6 list-disc">
+                          <h3 className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-3 sm:mb-4">🚀 Current Focus</h3>
+                          <p className="mb-3 text-sm sm:text-base">Currently, I am advancing my software engineering by building end-to-end products that combine scalable systems, cloud, and AI/ML. My work includes:</p>
+                          <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
                             <li>Designing and deploying scalable web services and APIs (MERN/TypeScript, Java/Spring) on cloud platforms with CI/CD and observability.</li>
                             <li>Integrating AI/ML features into applications (e.g., vision/NLP) and serving models through reliable inference endpoints.</li>
                             <li>Optimizing performance, accessibility, and reliability to ensure production-ready experiences at scale.</li>
@@ -433,25 +433,25 @@ const ResumeSection = () => {
                         </div>
 
                         <div>
-                          <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">🔍 Career Goals</h3>
-                          <p className="mb-3">
+                          <h3 className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-3 sm:mb-4">🔍 Career Goals</h3>
+                          <p className="mb-3 text-sm sm:text-base">
                             As I move into a full-time role, I want to build scalable, distributed systems that power real products end-to-end—systems that are resilient, observable, and easy to evolve. I&#39;m especially excited about applying AI/ML in production, where strong platform engineering meets high-throughput, low-latency design.
                           </p>
-                          <ul className="space-y-2 pl-6 list-disc">
+                          <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
                             <li><strong className="font-medium text-gray-900 dark:text-white">Backend & Platform Engineering:</strong> Design and implement distributed, fault-tolerant services (microservices, event-driven, async queues) with strict SLOs, horizontal scaling, and graceful degradation.</li>
                             <li><strong className="font-medium text-gray-900 dark:text-white">AI/ML in Production:</strong> Ship scalable inference and retrieval services (feature stores, vector search, model serving, A/B rollouts) that make AI useful, reliable, and cost-efficient.</li>
                             <li><strong className="font-medium text-gray-900 dark:text-white">Cloud-Native at Scale:</strong> Operate Kubernetes-based stacks with IaC, autoscaling, blue/green & canary deploys, and deep observability (metrics, logs, traces) for fast incident response.</li>
                             <li><strong className="font-medium text-gray-900 dark:text-white">Data & Streaming Systems:</strong> Build streaming pipelines and storage layers that handle spikes, ensure consistency where needed, and optimize for throughput and latency.</li>
                             <li><strong className="font-medium text-gray-900 dark:text-white">Performance & Reliability:</strong> Lead capacity planning, load testing, caching strategies, and performance tuning to keep p99s low and availability high.</li>
                           </ul>
-                          <p className="mt-4">
+                          <p className="mt-4 text-sm sm:text-base">
                             In short: roles where I can own and scale distributed systems, bring AI/ML to production responsibly, and drive engineering practices (TDD, CI/CD, reviews) that keep teams shipping fast with confidence.
                           </p>
                         </div>
 
                         <div>
-                          <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">🔗 Let&#39;s Connect!</h3>
-                          <p>
+                          <h3 className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-3 sm:mb-4">🔗 Let&#39;s Connect!</h3>
+                          <p className="text-sm sm:text-base">
                             I am always open to discussions on collaborating to drive innovation in AI and technology. Let&#39;s connect and explore how we can create impactful solutions together!
                           </p>
                         </div>
@@ -486,34 +486,34 @@ const ResumeSection = () => {
                             />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-2">
+                            <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-2">
                               Graduate Teaching Assistant
                             </h3>
-                            <p className="text-gray-500 dark:text-white/50 text-sm font-normal break-words mb-2">Northeastern University, Massachusetts | Jan 2025 - Present</p>
+                            <p className="text-gray-500 dark:text-white/50 text-xs sm:text-sm font-normal break-words mb-2">Northeastern University, Massachusetts | Jan 2025 - Present</p>
                           </div>
                         </div>
                         <ul className="space-y-2 list-none">
                           <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Led TA team, shipped MERN Q&A platform (500+ students)</span>
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light">Led TA team, shipped MERN Q&A platform (500+ students)</span>
                           </li>
                           <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Mentored 5 teams (TDD, peer reviews, improved deployment 25%, reduced incidents 40%)</span>
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Mentored 5 teams (TDD, peer reviews, improved deployment 25%, reduced incidents 40%)</span>
                           </li>
                           <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Ran labs/office hours (100+ students), taught MERN/Agile (95% project completion)</span>
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Ran labs/office hours (100+ students), taught MERN/Agile (95% project completion)</span>
                           </li>
                           <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Built CI/CD (raised coverage 20%, reduced deployment errors 20%, bug cycles 10%)</span>
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Built CI/CD (raised coverage 20%, reduced deployment errors 20%, bug cycles 10%)</span>
                           </li>
                         </ul>
                         <div className="pt-2">
                           <button
                             onClick={() => setShowTAJourney(true)}
-                            className="inline-flex items-center space-x-2 px-3 py-1.5 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs font-medium"
+                            className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
                           >
                             <span>View Journey</span>
                           </button>
