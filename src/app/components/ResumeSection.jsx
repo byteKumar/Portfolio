@@ -952,6 +952,33 @@ const ResumeSection = () => {
                         </ul>
                       </div>
                     </div>
+
+                    {/* RecipeHub */}
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">RecipeHub</h3>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {["Node.js", "TypeScript", "MongoDB", "React", "Express", "Redux", "Rest APIs"].map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <ul className="space-y-2 list-none mb-3">
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Built a full stack MERN web application that allows users to browse, search, and save their favorite recipes</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Integrated authentication, content editing, and a personalized recipe feed to elevate user retention and engagement</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </motion.div>
                 )}
 
