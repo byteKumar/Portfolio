@@ -163,7 +163,7 @@ const ResumeSection = () => {
       </header>
 
       {/* Main Content Area */}
-      <div className="w-full pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-[10%] md:pr-0 pt-24 sm:pt-28 md:pt-[76px] pb-6">
+      <div className="w-full pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-[10%] md:pr-0 pt-28 sm:pt-32 md:pt-[76px] pb-6">
         <div className="flex flex-col lg:grid lg:grid-cols-5 lg:gap-4 gap-4">
           {/* Left Column - Profile Section (20%) - Mobile/Tablet */}
           <div className="w-full lg:hidden">
