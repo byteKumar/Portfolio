@@ -921,6 +921,37 @@ const ResumeSection = () => {
                         </div>
                       </div>
                     </div>
+
+                    {/* DesignCraft */}
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">DesignCraft</h3>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {["Java", "JUnit", "UML", "Markdown", "Git", "Lombok", "OOPs", "LLD"].map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <ul className="space-y-2 list-none mb-3">
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Built a system design course on OOP, SOLID, and design patterns with 50+ live code examples used by 500+ students</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Created UML diagrams, JUnit tests, and markdown notes for clear, practical learning</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Implemented 15+ real-world assignments, driving a 90%+ completion-rate among senior year undergrad students</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </motion.div>
                 )}
 
