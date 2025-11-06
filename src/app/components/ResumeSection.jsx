@@ -1653,8 +1653,311 @@ const ResumeSection = () => {
                       </div>
                     )}
 
+                    {/* LeetCode Power-Up Journey */}
+                    {activeProjectJourney === "leetcode" && (
+                      <div className="space-y-6">
+                        <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-6 md:p-8 shadow-sm border border-gray-200 dark:border-white/10">
+                          <div className="space-y-6 text-sm sm:text-base leading-relaxed font-light text-gray-700 dark:text-white/70">
+                            <div>
+                              <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-4">🚀 Project Journey: LeetCode Power-Up</h2>
+                              <blockquote className="border-l-4 border-blue-500 dark:border-blue-400 pl-4 py-2 italic text-gray-600 dark:text-white/60 mb-6">
+                                A comprehensive overview of my project development journey, showcasing the process, impact, and technical excellence behind building a Chrome extension that enhances the LeetCode learning experience.
+                              </blockquote>
+                            </div>
+
+                            {/* STAR Format */}
+                            <div className="pt-4">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">📖 The Journey: STAR Format</h3>
+                              
+                              {/* Situation */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Situation</h4>
+                                <p className="text-sm sm:text-base">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Context:</strong> LeetCode problem-solving often requires switching between the problem page and external resources (YouTube tutorials, notes) to understand solutions. This context switching disrupts the learning flow and reduces efficiency. Developers need a streamlined way to access solution videos and maintain notes directly within the LeetCode interface.
+                                </p>
+                                <p className="text-sm sm:text-base">
+                                  <em className="text-gray-600 dark:text-white/60">The challenge was to build a system that:</em>
+                                </p>
+                                <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                  <li>Seamlessly integrates with LeetCode&apos;s existing interface without disrupting the user experience</li>
+                                  <li>Fetches relevant YouTube solution videos dynamically using the YouTube Data API</li>
+                                  <li>Provides per-problem scratchpad functionality with persistent storage</li>
+                                  <li>Handles API key management securely in a browser extension environment</li>
+                                  <li>Works across different LeetCode problem pages with dynamic content injection</li>
+                                  <li>Provides real-time updates without page refresh</li>
+                                </ul>
+                              </div>
+
+                              {/* Task */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Task</h4>
+                                <p className="text-sm sm:text-base">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Objective:</strong> Develop a Chrome extension that enhances LeetCode problem-solving by injecting a sidebar with top solution videos from YouTube and a per-problem scratchpad for notes, creating a seamless learning experience within the LeetCode interface.
+                                </p>
+                                <p className="text-sm sm:text-base">
+                                  <em className="text-gray-600 dark:text-white/60">Key requirements:</em>
+                                </p>
+                                <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                  <li>Build a Chrome extension using Manifest V3 architecture</li>
+                                  <li>Integrate YouTube Data API to fetch solution videos dynamically</li>
+                                  <li>Implement content script injection on LeetCode problem pages</li>
+                                  <li>Create a sidebar component that doesn&apos;t interfere with LeetCode&apos;s UI</li>
+                                  <li>Implement per-problem scratchpad with chrome.storage for persistence</li>
+                                  <li>Handle API key management securely using environment variables and Vite</li>
+                                  <li>Design async architecture for API calls and data handling</li>
+                                </ul>
+                              </div>
+
+                              {/* Action */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Action</h4>
+                                <p className="text-sm sm:text-base mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Approach:</strong> Implemented a Chrome extension with Manifest V3, using Promise-based async architecture for API calls, content script injection for dynamic UI, and chrome.storage for persistent data management.
+                                </p>
+                                
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Architecture & Design:</strong>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li><strong>Extension Type:</strong> Chrome Extension with Manifest V3</li>
+                                    <li><strong>Build Tool:</strong> Vite for bundling and environment variable injection</li>
+                                    <li><strong>API Integration:</strong> YouTube Data API v3 for fetching solution videos</li>
+                                    <li><strong>Storage:</strong> chrome.storage API for per-problem note persistence</li>
+                                    <li><strong>Content Scripts:</strong> Dynamic injection on LeetCode problem pages</li>
+                                    <li><strong>Async Architecture:</strong> Promise-based API calls and data handling</li>
+                                  </ul>
+                                </div>
+
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Key Implementation Steps:</strong>
+                                  <div className="space-y-4 mt-4 pl-4 border-l-2 border-gray-200 dark:border-white/20">
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">1. Extension Setup</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Configured Manifest V3 with proper permissions and content scripts</li>
+                                        <li>• Set up Vite build configuration for extension bundling</li>
+                                        <li>• Implemented environment variable handling for API key management</li>
+                                        <li>• Created proper file structure for Chrome extension architecture</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">2. Content Script Injection</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Built content script that detects LeetCode problem pages</li>
+                                        <li>• Implemented dynamic sidebar injection without disrupting existing UI</li>
+                                        <li>• Created responsive sidebar component that adapts to LeetCode&apos;s layout</li>
+                                        <li>• Handled DOM manipulation and event listeners for user interaction</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">3. YouTube Data API Integration</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Implemented YouTube Data API client with proper error handling</li>
+                                        <li>• Created search query generation based on LeetCode problem title</li>
+                                        <li>• Built API request handler with Promise-based async architecture</li>
+                                        <li>• Implemented top 3-5 video selection with relevance filtering</li>
+                                        <li>• Added error handling for API rate limits and network failures</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">4. Scratchpad Functionality</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Implemented per-problem note storage using chrome.storage API</li>
+                                        <li>• Created unique key generation based on problem URL/slug</li>
+                                        <li>• Built text editor component with auto-save functionality</li>
+                                        <li>• Implemented data persistence across browser sessions</li>
+                                        <li>• Added note retrieval and display on page load</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">5. Async Architecture</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Designed Promise-based architecture for API calls</li>
+                                        <li>• Implemented async/await patterns for clean code flow</li>
+                                        <li>• Built error handling and retry logic for API failures</li>
+                                        <li>• Created loading states and user feedback during API calls</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">6. Security & Configuration</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Implemented environment variable handling with Vite</li>
+                                        <li>• Created secure API key management for development and production</li>
+                                        <li>• Added .env file support with proper gitignore configuration</li>
+                                        <li>• Documented security best practices for API key protection</li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Result */}
+                              <div className="space-y-4">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Result</h4>
+                                <p className="text-sm sm:text-base mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Outcome:</strong> Successfully delivered a Chrome extension that enhances LeetCode problem-solving by providing instant access to solution videos and persistent note-taking, improving the learning experience and productivity for developers.
+                                </p>
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Quantifiable Results:</strong>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li>✅ <strong>Top 3-5 Solution Videos</strong> dynamically fetched and displayed per problem</li>
+                                    <li>✅ <strong>Per-Problem Scratchpad</strong> with persistent storage using chrome.storage</li>
+                                    <li>✅ <strong>Seamless Integration</strong> with LeetCode interface without UI disruption</li>
+                                    <li>✅ <strong>Promise-Based Architecture</strong> for efficient async API calls</li>
+                                    <li>✅ <strong>Manifest V3</strong> compliance with modern Chrome extension standards</li>
+                                    <li>✅ <strong>Secure API Key Management</strong> with environment variables and Vite</li>
+                                    <li>✅ <strong>Zero Page Refresh</strong> required for dynamic content updates</li>
+                                  </ul>
+                                </div>
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Qualitative Achievements:</strong>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li><strong>User Experience:</strong> Seamless integration eliminates context switching between LeetCode and external resources</li>
+                                    <li><strong>Productivity:</strong> Instant access to solution videos reduces time spent searching for tutorials</li>
+                                    <li><strong>Learning Efficiency:</strong> Per-problem notes enable better knowledge retention and review</li>
+                                    <li><strong>Developer Experience:</strong> Clean, Promise-based architecture makes code maintainable and extensible</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Skills & Tools */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🛠️ Skills & Tools Applied</h3>
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Languages & Frameworks</h4>
+                                  <p className="text-sm sm:text-base">JavaScript (ES6+), Chrome Extensions API, HTML5, CSS3</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Build Tools & Development</h4>
+                                  <p className="text-sm sm:text-base">Vite, npm, Git, Environment Variables</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">APIs & Integration</h4>
+                                  <p className="text-sm sm:text-base">YouTube Data API v3, chrome.storage API, chrome.runtime API</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Architecture & Patterns</h4>
+                                  <p className="text-sm sm:text-base">Promise-based Async Architecture, Content Script Injection, Manifest V3</p>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Impact */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">💡 Impact & Outcomes</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Technical Impact</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Chrome Extension Development:</strong> Deep understanding of Manifest V3, content scripts, and extension architecture</li>
+                                    <li><strong>API Integration:</strong> Experience with YouTube Data API, async request handling, and error management</li>
+                                    <li><strong>Async Architecture:</strong> Promise-based design for efficient API calls and data handling</li>
+                                    <li><strong>Security Practices:</strong> Proper API key management and environment variable handling</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">User Impact</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Time Savings:</strong> Instant access to solution videos eliminates manual searching</li>
+                                    <li><strong>Learning Efficiency:</strong> Per-problem notes enable better knowledge retention</li>
+                                    <li><strong>Seamless Experience:</strong> No context switching between LeetCode and external resources</li>
+                                    <li><strong>Productivity:</strong> All problem-solving resources available in one place</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Learning & Growth</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Chrome Extension Architecture:</strong> Understanding of Manifest V3, content scripts, and extension lifecycle</li>
+                                    <li><strong>API Integration:</strong> Experience with YouTube Data API, request handling, and error management</li>
+                                    <li><strong>Async Programming:</strong> Promise-based architecture and async/await patterns</li>
+                                    <li><strong>Browser APIs:</strong> chrome.storage for persistent data and chrome.runtime for extension communication</li>
+                                    <li><strong>Build Tools:</strong> Vite configuration for extension bundling and environment variable injection</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Target Audience */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">👥 Target Audience</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Primary Users</h4>
+                                  <p className="text-sm sm:text-base mb-3">
+                                    <strong>Recruiters & Hiring Managers:</strong> This project demonstrates expertise in browser extension development, API integration, async programming, and user experience design. It showcases the ability to build practical tools that solve real-world problems and enhance developer productivity.
+                                  </p>
+                                  <p className="text-sm sm:text-base">
+                                    <strong>Who This Project Appeals To:</strong>
+                                  </p>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li>Companies seeking JavaScript developers with browser extension experience</li>
+                                    <li>Organizations valuing API integration skills and async programming expertise</li>
+                                    <li>Teams looking for developers who can build practical productivity tools</li>
+                                    <li>Companies interested in candidates with user experience design and problem-solving skills</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Design Process */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🎨 Design Process</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Architecture Decisions</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Manifest V3:</strong> Used modern Chrome extension architecture for better security and performance</li>
+                                    <li><strong>Content Script Injection:</strong> Dynamic sidebar injection ensures non-intrusive integration with LeetCode UI</li>
+                                    <li><strong>Promise-Based Architecture:</strong> Async/await patterns for clean, maintainable API call handling</li>
+                                    <li><strong>chrome.storage API:</strong> Persistent storage for per-problem notes without external dependencies</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Key Design Justifications</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Sidebar Approach:</strong> Non-intrusive design that doesn&apos;t disrupt LeetCode&apos;s existing UI</li>
+                                    <li><strong>Top 3-5 Videos:</strong> Curated selection balances information without overwhelming users</li>
+                                    <li><strong>Per-Problem Notes:</strong> Unique key generation based on problem URL ensures notes are problem-specific</li>
+                                    <li><strong>Environment Variables:</strong> Secure API key management using Vite for build-time injection</li>
+                                    <li><strong>Async Architecture:</strong> Promise-based design handles API calls efficiently without blocking UI</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Technical Challenges & Solutions</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>API Key Security:</strong> Implemented environment variable handling with Vite to prevent key exposure in code</li>
+                                    <li><strong>Content Script Timing:</strong> Ensured proper DOM ready state before injecting sidebar to avoid conflicts</li>
+                                    <li><strong>Async API Calls:</strong> Promise-based architecture handles API responses and errors gracefully</li>
+                                    <li><strong>Storage Management:</strong> Unique key generation ensures per-problem note isolation and persistence</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Project Highlights */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🏆 Project Highlights</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">What Makes This Project Stand Out</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Practical Problem-Solving:</strong> Addresses real pain point for developers learning algorithms</li>
+                                    <li><strong>Clean Architecture:</strong> Promise-based async design with proper error handling</li>
+                                    <li><strong>User-Centric Design:</strong> Seamless integration that enhances rather than disrupts the learning experience</li>
+                                    <li><strong>Technical Excellence:</strong> Manifest V3 compliance, secure API key management, and efficient storage</li>
+                                    <li><strong>Extensibility:</strong> Modular design allows easy addition of new features (e.g., more video sources, note templates)</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
                     {/* Placeholder for other project journeys */}
-                    {activeProjectJourney !== "google-slides" && activeProjectJourney !== "image-processor" && (
+                    {activeProjectJourney !== "google-slides" && activeProjectJourney !== "image-processor" && activeProjectJourney !== "leetcode" && (
                       <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-gray-200 dark:border-white/10">
                         <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white/90 mb-4">Project Journey</h4>
                         <p className="text-gray-700 dark:text-white/80 text-sm sm:text-base leading-relaxed font-normal mb-4">
