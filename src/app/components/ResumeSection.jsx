@@ -132,10 +132,10 @@ const ResumeSection = () => {
                       setStudyPasswordError(false);
                     }
                   }}
-                  className={`px-2 py-1.5 sm:px-3 sm:py-1.5 md:px-4 md:py-2 text-xs sm:text-sm font-medium transition-all duration-200 relative ${
+                  className={`px-2 py-1.5 sm:px-3 sm:py-1.5 md:px-4 md:py-2 text-xs sm:text-sm font-medium transition-all duration-200 relative rounded-md ${
                     activeTab === tab.id
-                      ? "text-gray-900 dark:text-white"
-                      : "text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white"
+                      ? "text-gray-900 dark:text-white bg-gray-100 dark:bg-white/10"
+                      : "text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10"
                   }`}
                 >
                   {tab.label}
@@ -818,9 +818,9 @@ const ResumeSection = () => {
                 )}
 
                 {/* Projects Section */}
-                {activeTab === "projects" && (
+                {activeTab === "projects" && !activeProjectJourney && (
                   <motion.div
-                    key="projects"
+                    key="projects-list"
                     variants={sectionVariants}
                     initial="initial"
                     animate="animate"
@@ -831,202 +831,192 @@ const ResumeSection = () => {
                     <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Projects</h2>
                     
                     {/* Google Slides Generator */}
-                    {activeProjectJourney !== "google-slides" && (
-                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
-                        <div>
-                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">Google Slides Generator</h3>
-                          <div className="flex flex-wrap gap-2 mb-3">
-                            {["React.js", "Express", "Vite", "NodeJS", "PostgreSQL", "MongoDB"].map((tech) => (
-                              <span
-                                key={tech}
-                                className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                          <ul className="space-y-2 list-none mb-3">
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Created full-stack slide generator, integrated Google Slides API (OAuth, DB-backed templates)</span>
-                            </li>
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Designed theme-first system/automated layout registry</span>
-                            </li>
-                          </ul>
-                          <div className="flex flex-wrap gap-3">
-                            <LinkButton href="https://github.com/byteKumar/google_slide_generator" icon={null}>GitHub</LinkButton>
-                            <button
-                              onClick={() => setActiveProjectJourney("google-slides")}
-                              className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">Google Slides Generator</h3>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {["React.js", "Express", "Vite", "NodeJS", "PostgreSQL", "MongoDB"].map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
                             >
-                              <span>Project Journey</span>
-                            </button>
-                          </div>
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <ul className="space-y-2 list-none mb-3">
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Created full-stack slide generator, integrated Google Slides API (OAuth, DB-backed templates)</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Designed theme-first system/automated layout registry</span>
+                          </li>
+                        </ul>
+                        <div className="flex flex-wrap gap-3">
+                          <LinkButton href="https://github.com/byteKumar/google_slide_generator" icon={null}>GitHub</LinkButton>
+                          <button
+                            onClick={() => setActiveProjectJourney("google-slides")}
+                            className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
+                          >
+                            <span>Project Journey</span>
+                          </button>
                         </div>
                       </div>
-                    )}
+                    </div>
 
                     {/* Advance Image Processor */}
-                    {activeProjectJourney !== "image-processor" && (
-                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
-                        <div>
-                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">Advance Image Processor</h3>
-                          <div className="flex flex-wrap gap-2 mb-3">
-                            {["Java", "GUI", "Software Design Pattern", "OOD", "TDD"].map((tech) => (
-                              <span
-                                key={tech}
-                                className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                          <ul className="space-y-2 list-none mb-3">
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Architected extensible image processing app (MVC), implemented 7+ core transformations</span>
-                            </li>
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Applied Strategy/Factory/Command patterns (cutting feature integration time by 30%)</span>
-                            </li>
-                          </ul>
-                          <div className="flex flex-wrap gap-3">
-                            <LinkButton href="https://github.com/byteKumar/advanced_image_manipulation_and_enhancement_application" icon={null}>GitHub</LinkButton>
-                            <button
-                              onClick={() => setActiveProjectJourney("image-processor")}
-                              className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">Advance Image Processor</h3>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {["Java", "GUI", "Software Design Pattern", "OOD", "TDD"].map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
                             >
-                              <span>Project Journey</span>
-                            </button>
-                          </div>
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <ul className="space-y-2 list-none mb-3">
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Architected extensible image processing app (MVC), implemented 7+ core transformations</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Applied Strategy/Factory/Command patterns (cutting feature integration time by 30%)</span>
+                          </li>
+                        </ul>
+                        <div className="flex flex-wrap gap-3">
+                          <LinkButton href="https://github.com/byteKumar/advanced_image_manipulation_and_enhancement_application" icon={null}>GitHub</LinkButton>
+                          <button
+                            onClick={() => setActiveProjectJourney("image-processor")}
+                            className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
+                          >
+                            <span>Project Journey</span>
+                          </button>
                         </div>
                       </div>
-                    )}
+                    </div>
 
                     {/* LeetCode Power Up */}
-                    {activeProjectJourney !== "leetcode" && (
-                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
-                        <div>
-                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">LeetCode Power Up - Chrome Extension</h3>
-                          <div className="flex flex-wrap gap-2 mb-3">
-                            {["JavaScript", "Chrome Extensions API", "YouTube Data API"].map((tech) => (
-                              <span
-                                key={tech}
-                                className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                          <ul className="space-y-2 list-none mb-3">
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Shipped Chrome extension (injects 3-5 LeetCode solution videos)</span>
-                            </li>
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Integrated per-problem scratchpad (chrome.storage)</span>
-                            </li>
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Engineered Promise-based async architecture</span>
-                            </li>
-                          </ul>
-                          <div className="flex flex-wrap gap-3">
-                            <LinkButton href="https://github.com/byteKumar/LeetCode-Power-Up" icon={null}>GitHub</LinkButton>
-                            <button
-                              onClick={() => setActiveProjectJourney("leetcode")}
-                              className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">LeetCode Power Up - Chrome Extension</h3>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {["JavaScript", "Chrome Extensions API", "YouTube Data API"].map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
                             >
-                              <span>Project Journey</span>
-                            </button>
-                          </div>
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <ul className="space-y-2 list-none mb-3">
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Shipped Chrome extension (injects 3-5 LeetCode solution videos)</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Integrated per-problem scratchpad (chrome.storage)</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Engineered Promise-based async architecture</span>
+                          </li>
+                        </ul>
+                        <div className="flex flex-wrap gap-3">
+                          <LinkButton href="https://github.com/byteKumar/LeetCode-Power-Up" icon={null}>GitHub</LinkButton>
+                          <button
+                            onClick={() => setActiveProjectJourney("leetcode")}
+                            className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
+                          >
+                            <span>Project Journey</span>
+                          </button>
                         </div>
                       </div>
-                    )}
+                    </div>
 
                     {/* DesignCraft */}
-                    {activeProjectJourney !== "designcraft" && (
-                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
-                        <div>
-                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">DesignCraft</h3>
-                          <div className="flex flex-wrap gap-2 mb-3">
-                            {["Java", "JUnit", "UML", "Markdown", "Git", "Lombok", "OOPs", "LLD"].map((tech) => (
-                              <span
-                                key={tech}
-                                className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                          <ul className="space-y-2 list-none mb-3">
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
-                              <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Built a system design course on OOP, SOLID, and design patterns with 50+ live code examples used by 500+ students</span>
-                            </li>
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
-                              <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Created UML diagrams, JUnit tests, and markdown notes for clear, practical learning</span>
-                            </li>
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
-                              <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Implemented 15+ real-world assignments, driving a 90%+ completion-rate among senior year undergrad students</span>
-                            </li>
-                          </ul>
-                          <div className="flex flex-wrap gap-3">
-                            <LinkButton href="https://github.com/byteKumar/systemdesign" icon={null}>GitHub</LinkButton>
-                            <button
-                              onClick={() => setActiveProjectJourney("designcraft")}
-                              className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">DesignCraft</h3>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {["Java", "JUnit", "UML", "Markdown", "Git", "Lombok", "OOPs", "LLD"].map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
                             >
-                              <span>Project Journey</span>
-                            </button>
-                          </div>
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <ul className="space-y-2 list-none mb-3">
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Built a system design course on OOP, SOLID, and design patterns with 50+ live code examples used by 500+ students</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Created UML diagrams, JUnit tests, and markdown notes for clear, practical learning</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Implemented 15+ real-world assignments, driving a 90%+ completion-rate among senior year undergrad students</span>
+                          </li>
+                        </ul>
+                        <div className="flex flex-wrap gap-3">
+                          <LinkButton href="https://github.com/byteKumar/systemdesign" icon={null}>GitHub</LinkButton>
+                          <button
+                            onClick={() => setActiveProjectJourney("designcraft")}
+                            className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
+                          >
+                            <span>Project Journey</span>
+                          </button>
                         </div>
                       </div>
-                    )}
+                    </div>
 
                     {/* RecipeHub */}
-                    {activeProjectJourney !== "recipehub" && (
-                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
-                        <div>
-                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">RecipeHub</h3>
-                          <div className="flex flex-wrap gap-2 mb-3">
-                            {["Node.js", "TypeScript", "MongoDB", "React", "Express", "Redux", "Rest APIs"].map((tech) => (
-                              <span
-                                key={tech}
-                                className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                          <ul className="space-y-2 list-none mb-3">
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
-                              <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Built a full stack MERN web application that allows users to browse, search, and save their favorite recipes</span>
-                            </li>
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
-                              <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Integrated authentication, content editing, and a personalized recipe feed to elevate user retention and engagement</span>
-                            </li>
-                          </ul>
-                          <div className="flex flex-wrap gap-3">
-                            <LinkButton href="https://github.com/byteKumar/RecipeHub" icon={null}>GitHub</LinkButton>
-                            <button
-                              onClick={() => setActiveProjectJourney("recipehub")}
-                              className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">RecipeHub</h3>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {["Node.js", "TypeScript", "MongoDB", "React", "Express", "Redux", "Rest APIs"].map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
                             >
-                              <span>Project Journey</span>
-                            </button>
-                          </div>
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <ul className="space-y-2 list-none mb-3">
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Built a full stack MERN web application that allows users to browse, search, and save their favorite recipes</span>
+                          </li>
+                          <li className="flex items-start space-x-2">
+                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Integrated authentication, content editing, and a personalized recipe feed to elevate user retention and engagement</span>
+                          </li>
+                        </ul>
+                        <div className="flex flex-wrap gap-3">
+                          <LinkButton href="https://github.com/byteKumar/RecipeHub" icon={null}>GitHub</LinkButton>
+                          <button
+                            onClick={() => setActiveProjectJourney("recipehub")}
+                            className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
+                          >
+                            <span>Project Journey</span>
+                          </button>
                         </div>
                       </div>
-                    )}
+                    </div>
                   </motion.div>
                 )}
 
@@ -1060,20 +1050,301 @@ const ResumeSection = () => {
                       </h3>
                     </div>
 
-                    <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-gray-200 dark:border-white/10">
-                      <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white/90 mb-4">Project Journey</h4>
-                      <p className="text-gray-700 dark:text-white/80 text-sm sm:text-base leading-relaxed font-normal mb-4">
-                        This section will showcase your motivation, thought process, challenges faced, and key decisions made during the development of this project. You can add your detailed journey here, including:
-                      </p>
-                      <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base text-gray-700 dark:text-white/80">
-                        <li>What inspired you to build this project?</li>
-                        <li>What problems were you trying to solve?</li>
-                        <li>Key technical decisions and why you made them</li>
-                        <li>Challenges faced and how you overcame them</li>
-                        <li>What you learned from this project</li>
-                        <li>Impact and results achieved</li>
-                      </ul>
-                    </div>
+                    {/* Google Slides Generator Journey */}
+                    {activeProjectJourney === "google-slides" && (
+                      <div className="space-y-6">
+                        <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-6 md:p-8 shadow-sm border border-gray-200 dark:border-white/10">
+                          <div className="space-y-6 text-sm sm:text-base leading-relaxed font-light text-gray-700 dark:text-white/70">
+                            <div>
+                              <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-4">🚀 Project Journey: Google Slides Generator</h2>
+                              <blockquote className="border-l-4 border-blue-500 dark:border-blue-400 pl-4 py-2 italic text-gray-600 dark:text-white/60 mb-6">
+                                A comprehensive overview of my project development journey, showcasing the process, impact, and technical excellence behind building a modern presentation generation platform.
+                              </blockquote>
+                            </div>
+
+                            {/* STAR Format */}
+                            <div className="pt-4">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">📖 The Journey: STAR Format</h3>
+                              
+                              {/* Situation */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Situation</h4>
+                                <p className="text-sm sm:text-base">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Context:</strong> The need for an automated, customizable presentation generation system that bridges the gap between content creation and professional design. Users needed a way to create Google Slides presentations programmatically with full control over layouts, themes, and styling—something that wasn&apos;t easily achievable with existing tools.
+                                </p>
+                                <p className="text-sm sm:text-base">
+                                  <em className="text-gray-600 dark:text-white/60">The challenge was to build a system that:</em>
+                                </p>
+                                <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                  <li>Seamlessly integrates with Google Slides API</li>
+                                  <li>Provides a flexible design system with theme management</li>
+                                  <li>Offers real-time preview capabilities</li>
+                                  <li>Manages complex slide layouts and content models</li>
+                                  <li>Ensures data persistence and user isolation</li>
+                                </ul>
+                              </div>
+
+                              {/* Task */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Task</h4>
+                                <p className="text-sm sm:text-base">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Objective:</strong> Develop a full-stack web application that allows users to create, customize, and generate professional Google Slides presentations with a comprehensive design system, theme management, and real-time preview capabilities.
+                                </p>
+                                <p className="text-sm sm:text-base">
+                                  <em className="text-gray-600 dark:text-white/60">Key requirements:</em>
+                                </p>
+                                <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                  <li>Build a modern React frontend with Google Slides-like interface</li>
+                                  <li>Create a robust TypeScript/Express backend with Google OAuth integration</li>
+                                  <li>Implement a comprehensive design system with theme tokens and layout registry</li>
+                                  <li>Design database schema for persistent theme storage and user management</li>
+                                  <li>Integrate Google Slides API for seamless presentation generation</li>
+                                  <li>Provide real-time preview and theme customization at both presentation and slide levels</li>
+                                </ul>
+                              </div>
+
+                              {/* Action */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Action</h4>
+                                <p className="text-sm sm:text-base mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Approach:</strong> Implemented a modular, service-oriented architecture with clear separation of concerns, focusing on scalability, maintainability, and user experience.
+                                </p>
+                                
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Architecture & Design:</strong>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li><strong>Frontend:</strong> Built with React 19, TypeScript, and Vite for modern development experience</li>
+                                    <li><strong>Backend:</strong> Express.js with TypeScript, implementing interface-based design patterns</li>
+                                    <li><strong>Database:</strong> PostgreSQL (Neon DB) for user data and theme persistence, MongoDB for presentation storage</li>
+                                    <li><strong>Authentication:</strong> Google OAuth 2.0 with session-based authentication</li>
+                                    <li><strong>API Integration:</strong> Google Slides API for presentation generation and manipulation</li>
+                                  </ul>
+                                </div>
+
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Key Implementation Steps:</strong>
+                                  <div className="space-y-4 mt-4 pl-4 border-l-2 border-gray-200 dark:border-white/20">
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">1. Design System Foundation</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Created comprehensive design tokens system with colors, typography, spacing, shadows, and transitions</li>
+                                        <li>• Implemented 5 pre-built themes inspired by Google Slides</li>
+                                        <li>• Built ThemeManager singleton service for centralized theme operations</li>
+                                        <li>• Developed CSS custom properties injection for dynamic theme application</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">2. Layout System Architecture</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Created modular layout registry pattern supporting 7 slide layouts</li>
+                                        <li>• Implemented Zod schema validation for type-safe layout definitions</li>
+                                        <li>• Built flexible placeholder system that maps user inputs to Google Slides placeholders</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">3. Theme Management System</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Implemented multi-level theme application (presentation-level and slide-level)</li>
+                                        <li>• Created theme inheritance system where slides inherit presentation theme by default</li>
+                                        <li>• Built ThemeDashboard, ThemeCreator, and ThemeSelector components</li>
+                                        <li>• Developed real-time theme preview with instant visual feedback</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">4. Database Integration</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Designed theme_schema table with proper indexing for efficient queries</li>
+                                        <li>• Implemented user ownership validation for theme CRUD operations</li>
+                                        <li>• Created NeonDBService with connection pooling for scalability</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">5. Google Slides API Integration</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Created slide generator that maps internal layouts to Google Slides predefined layouts</li>
+                                        <li>• Implemented batch update operations for efficient slide creation</li>
+                                        <li>• Built theme application system that converts hex colors to RGB for Google Slides API</li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Result */}
+                              <div className="space-y-4">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Result</h4>
+                                <p className="text-sm sm:text-base mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Outcome:</strong> Successfully delivered a production-ready, full-stack application that enables users to create professional presentations with unprecedented customization and control.
+                                </p>
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Quantifiable Results:</strong>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li>✅ <strong>7 Slide Layouts</strong> implemented with full Google Slides API integration</li>
+                                    <li>✅ <strong>5 Pre-built Themes</strong> + unlimited custom themes with database persistence</li>
+                                    <li>✅ <strong>Multi-level Theme System</strong> (presentation + slide-level overrides)</li>
+                                    <li>✅ <strong>Real-time Preview</strong> with instant visual feedback</li>
+                                    <li>✅ <strong>100% Type Safety</strong> with TypeScript on backend and Zod schema validation</li>
+                                    <li>✅ <strong>Scalable Architecture</strong> with service-oriented design and database connection pooling</li>
+                                    <li>✅ <strong>Production Deployment</strong> configured with Vercel</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Skills & Tools */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🛠️ Skills & Tools Applied</h3>
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Frontend</h4>
+                                  <p className="text-sm sm:text-base">React 19, TypeScript, Vite, CSS3, Material Design</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Backend</h4>
+                                  <p className="text-sm sm:text-base">Node.js, Express.js, TypeScript, RESTful APIs</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Database</h4>
+                                  <p className="text-sm sm:text-base">PostgreSQL (Neon DB), MongoDB, JSONB</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">APIs</h4>
+                                  <p className="text-sm sm:text-base">Google Slides API, Google Drive API, OAuth 2.0</p>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Impact */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">💡 Impact & Outcomes</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Technical Impact</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Modular Architecture:</strong> Service-oriented design enables easy addition of new features</li>
+                                    <li><strong>Database Design:</strong> Normalized schema with proper indexing supports growing user base</li>
+                                    <li><strong>Type Safety:</strong> TypeScript throughout backend ensures compile-time error detection</li>
+                                    <li><strong>Code Quality:</strong> Interface-based design enables easy testing and mocking</li>
+                                    <li><strong>Maintainability:</strong> Clear separation of concerns improves code readability</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">User Impact</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Time Savings:</strong> Automated presentation generation reduces manual work from hours to minutes</li>
+                                    <li><strong>Real-time Preview:</strong> Instant feedback eliminates guesswork and reduces iteration cycles</li>
+                                    <li><strong>Theme Reusability:</strong> Save and reuse themes across presentations, maintaining brand consistency</li>
+                                    <li><strong>Cross-Device Access:</strong> Database persistence enables access from any device</li>
+                                    <li><strong>Intuitive UX:</strong> Google Slides-like interface feels familiar and requires minimal learning curve</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Learning & Growth</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Google Slides API:</strong> Deep understanding of API capabilities, batch operations, and placeholder mapping</li>
+                                    <li><strong>Serverless Databases:</strong> Experience with Neon DB serverless PostgreSQL and connection pooling</li>
+                                    <li><strong>TypeScript Patterns:</strong> Interface-based design, generic types, and type inference</li>
+                                    <li><strong>Design Systems:</strong> Comprehensive design token implementation and theme management</li>
+                                    <li><strong>OAuth 2.0:</strong> Complete OAuth flow implementation with token refresh and session management</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Target Audience */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">👥 Target Audience</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Primary Users</h4>
+                                  <p className="text-sm sm:text-base mb-3">
+                                    <strong>Recruiters & Hiring Managers:</strong> This project demonstrates full-stack development capabilities, API integration skills, and modern web development practices. It showcases architecture decisions, code quality, system design, and scalability considerations.
+                                  </p>
+                                  <p className="text-sm sm:text-base">
+                                    <strong>Who This Project Appeals To:</strong>
+                                  </p>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li>Companies seeking full-stack developers with React, TypeScript, and Node.js expertise</li>
+                                    <li>Organizations valuing clean architecture, maintainable code, and scalable solutions</li>
+                                    <li>Teams looking for developers who can integrate complex third-party APIs (Google Workspace)</li>
+                                    <li>Companies interested in candidates with design system implementation experience</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Key Challenges */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🔍 Key Challenges & Solutions</h3>
+                              <div className="space-y-6">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Challenge 1: Google Slides API Placeholder Mapping</h4>
+                                  <p className="text-sm sm:text-base mb-2">
+                                    <strong>Problem:</strong> Mapping internal layout system to Google Slides API placeholders required understanding complex API structure and placeholder types.
+                                  </p>
+                                  <p className="text-sm sm:text-base">
+                                    <strong>Solution:</strong> Created placeholder mapping system that identifies placeholder types, built layout registry that maps internal layouts to Google Slides predefined layouts, and implemented batch update operations for efficient slide creation.
+                                  </p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Challenge 2: Theme Persistence and User Isolation</h4>
+                                  <p className="text-sm sm:text-base mb-2">
+                                    <strong>Problem:</strong> Moving from localStorage to database while maintaining user isolation and ensuring data integrity.
+                                  </p>
+                                  <p className="text-sm sm:text-base">
+                                    <strong>Solution:</strong> Designed PostgreSQL schema with user ownership validation, implemented user isolation at database level with foreign key constraints, and created migration system from localStorage to database.
+                                  </p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Challenge 3: Real-time Theme Application</h4>
+                                  <p className="text-sm sm:text-base mb-2">
+                                    <strong>Problem:</strong> Applying theme changes instantly across presentation and individual slides without performance issues.
+                                  </p>
+                                  <p className="text-sm sm:text-base">
+                                    <strong>Solution:</strong> Implemented CSS custom properties for dynamic theme injection, created event-driven theme change system, and optimized CSS application to prevent layout shifts.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Project Highlights */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🏆 Project Highlights</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">What Makes This Project Stand Out</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Innovation:</strong> Multi-level theme system with presentation-level and slide-level overrides</li>
+                                    <li><strong>Technical Excellence:</strong> Full-stack TypeScript with type safety from frontend to backend</li>
+                                    <li><strong>User-Centric Design:</strong> Google Slides-inspired interface with real-time feedback</li>
+                                    <li><strong>Production Readiness:</strong> Deployment configuration with Vercel and comprehensive error handling</li>
+                                    <li><strong>Scalability:</strong> Architecture supports future features like theme sharing, collaboration, and marketplace</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Placeholder for other project journeys */}
+                    {activeProjectJourney !== "google-slides" && (
+                      <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-gray-200 dark:border-white/10">
+                        <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white/90 mb-4">Project Journey</h4>
+                        <p className="text-gray-700 dark:text-white/80 text-sm sm:text-base leading-relaxed font-normal mb-4">
+                          This section will showcase your motivation, thought process, challenges faced, and key decisions made during the development of this project. You can add your detailed journey here, including:
+                        </p>
+                        <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base text-gray-700 dark:text-white/80">
+                          <li>What inspired you to build this project?</li>
+                          <li>What problems were you trying to solve?</li>
+                          <li>Key technical decisions and why you made them</li>
+                          <li>Challenges faced and how you overcame them</li>
+                          <li>What you learned from this project</li>
+                          <li>Impact and results achieved</li>
+                        </ul>
+                      </div>
+                    )}
                   </motion.div>
                 )}
 
