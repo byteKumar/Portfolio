@@ -1328,8 +1328,333 @@ const ResumeSection = () => {
                       </div>
                     )}
 
+                    {/* Advance Image Processor Journey */}
+                    {activeProjectJourney === "image-processor" && (
+                      <div className="space-y-6">
+                        <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-6 md:p-8 shadow-sm border border-gray-200 dark:border-white/10">
+                          <div className="space-y-6 text-sm sm:text-base leading-relaxed font-light text-gray-700 dark:text-white/70">
+                            <div>
+                              <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-4">🚀 Project Journey: Advance Image Processor</h2>
+                              <blockquote className="border-l-4 border-blue-500 dark:border-blue-400 pl-4 py-2 italic text-gray-600 dark:text-white/60 mb-6">
+                                A comprehensive overview of my project development journey, showcasing the process, impact, and technical excellence behind building a sophisticated image processing application with GUI support.
+                              </blockquote>
+                            </div>
+
+                            {/* STAR Format */}
+                            <div className="pt-4">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">📖 The Journey: STAR Format</h3>
+                              
+                              {/* Situation */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Situation</h4>
+                                <p className="text-sm sm:text-base">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Context:</strong> The need for a comprehensive, extensible image processing application that supports both command-line and graphical user interface modes. Users needed a flexible system to perform various image manipulation operations—from basic transformations to advanced features like compression, color correction, and histogram analysis.
+                                </p>
+                                <p className="text-sm sm:text-base">
+                                  <em className="text-gray-600 dark:text-white/60">The challenge was to build a system that:</em>
+                                </p>
+                                <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                  <li>Supports 20+ image processing operations (load, save, flip, brightness, filters, compression, etc.)</li>
+                                  <li>Implements both command-line and GUI interfaces for user interaction</li>
+                                  <li>Provides extensible architecture for adding new image operations</li>
+                                  <li>Handles complex image transformations with proper pixel manipulation</li>
+                                  <li>Supports script file execution for batch operations</li>
+                                  <li>Implements advanced features like Haar Wavelet Transform, histogram analysis, and split view operations</li>
+                                </ul>
+                              </div>
+
+                              {/* Task */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Task</h4>
+                                <p className="text-sm sm:text-base">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Objective:</strong> Develop a robust, extensible image processing application using Java with MVC architecture, supporting comprehensive image manipulation operations, GUI interface, and advanced features like compression, color correction, and histogram generation.
+                                </p>
+                                <p className="text-sm sm:text-base">
+                                  <em className="text-gray-600 dark:text-white/60">Key requirements:</em>
+                                </p>
+                                <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                  <li>Build a modular architecture with clear separation of concerns (Model-View-Controller)</li>
+                                  <li>Implement 20+ image processing operations with proper pixel-level manipulation</li>
+                                  <li>Create both command-line parser and GUI interface for user interaction</li>
+                                  <li>Design extensible class structure for easy addition of new operations</li>
+                                  <li>Implement advanced algorithms (Haar Wavelet Transform, histogram analysis, color correction)</li>
+                                  <li>Support script file execution for batch processing</li>
+                                  <li>Apply design patterns (Strategy, Factory, Command) for maintainability</li>
+                                </ul>
+                              </div>
+
+                              {/* Action */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Action</h4>
+                                <p className="text-sm sm:text-base mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Approach:</strong> Implemented a modular, MVC-based architecture with clear separation of concerns, applying object-oriented design principles and design patterns to create an extensible, maintainable system.
+                                </p>
+                                
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Architecture & Design:</strong>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li><strong>Language & Framework:</strong> Java with Swing for GUI development</li>
+                                    <li><strong>Architecture:</strong> MVC (Model-View-Controller) pattern for separation of concerns</li>
+                                    <li><strong>Design Patterns:</strong> Strategy, Factory, Command patterns for extensibility</li>
+                                    <li><strong>Testing:</strong> JUnit for unit testing and TDD practices</li>
+                                    <li><strong>Code Quality:</strong> Object-Oriented Design principles and SOLID principles</li>
+                                  </ul>
+                                </div>
+
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Key Implementation Steps:</strong>
+                                  <div className="space-y-4 mt-4 pl-4 border-l-2 border-gray-200 dark:border-white/20">
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">1. Core Architecture</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Designed MVC architecture with MatrixImage (Model), ImageConsoleView/ImageProcessorGUI (View), ImageCommandParser (Controller)</li>
+                                        <li>• Implemented ImagePixel class for pixel-level operations with RGB component management</li>
+                                        <li>• Created MatrixImageCommand class as command executor following Command pattern</li>
+                                        <li>• Built extensible command parser supporting 20+ image operations</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">2. Basic Image Operations</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Implemented load/save operations with file path validation</li>
+                                        <li>• Created RGB component extraction (red, green, blue, value, luma, intensity)</li>
+                                        <li>• Built horizontal and vertical flip operations</li>
+                                        <li>• Implemented brightness adjustment with increment support</li>
+                                        <li>• Developed RGB split and combine operations</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">3. Advanced Filters</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Implemented blur filter using kernel convolution</li>
+                                        <li>• Created sharpen filter with edge detection kernel</li>
+                                        <li>• Built sepia tone filter with color transformation</li>
+                                        <li>• Applied kernel-based filtering for pixel manipulation</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">4. Advanced Features</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Implemented Haar Wavelet Transform for image compression</li>
+                                        <li>• Created histogram generation for RGB channel analysis</li>
+                                        <li>• Built color correction algorithm using histogram peak alignment</li>
+                                        <li>• Implemented levels adjustment with quadratic curve transformation</li>
+                                        <li>• Developed split view functionality for visual comparison</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">5. GUI Implementation</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Created ImageProcessorGUI class with Swing components</li>
+                                        <li>• Implemented interactive buttons and input fields for all operations</li>
+                                        <li>• Built real-time image preview and display functionality</li>
+                                        <li>• Designed intuitive interface for image loading, processing, and saving</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">6. Script Execution</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Implemented script file parser for batch command execution</li>
+                                        <li>• Created command-line argument handling for script files</li>
+                                        <li>• Built interactive mode for manual command entry</li>
+                                        <li>• Added error handling and validation for script commands</li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Result */}
+                              <div className="space-y-4">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Result</h4>
+                                <p className="text-sm sm:text-base mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Outcome:</strong> Successfully delivered a production-ready, extensible image processing application with comprehensive operations, dual interface support (CLI and GUI), and advanced features demonstrating strong software engineering practices.
+                                </p>
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Quantifiable Results:</strong>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li>✅ <strong>20+ Image Operations</strong> implemented with proper pixel manipulation</li>
+                                    <li>✅ <strong>Dual Interface Support</strong> (command-line and GUI) for flexible user interaction</li>
+                                    <li>✅ <strong>MVC Architecture</strong> with clear separation of concerns</li>
+                                    <li>✅ <strong>Advanced Algorithms</strong> (Haar Wavelet Transform, histogram analysis, color correction)</li>
+                                    <li>✅ <strong>Design Patterns</strong> (Strategy, Factory, Command) for extensibility</li>
+                                    <li>✅ <strong>Script Execution</strong> for batch processing operations</li>
+                                    <li>✅ <strong>Split View Feature</strong> for visual comparison of transformations</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Skills & Tools */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🛠️ Skills & Tools Applied</h3>
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Languages & Frameworks</h4>
+                                  <p className="text-sm sm:text-base">Java, Swing, Object-Oriented Design, Design Patterns</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Architecture & Patterns</h4>
+                                  <p className="text-sm sm:text-base">MVC, Strategy Pattern, Factory Pattern, Command Pattern</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Testing & Quality</h4>
+                                  <p className="text-sm sm:text-base">JUnit, TDD, SOLID Principles, Code Review</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Algorithms & Techniques</h4>
+                                  <p className="text-sm sm:text-base">Haar Wavelet Transform, Kernel Convolution, Histogram Analysis, Color Correction</p>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Class Diagram */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🏗️ Architecture & Design</h3>
+                              <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 border border-gray-200 dark:border-white/10">
+                                <h4 className="font-medium text-gray-900 dark:text-white mb-3">Class Diagram</h4>
+                                <div className="relative w-full aspect-auto rounded-lg overflow-hidden border border-gray-200 dark:border-white/10">
+                                  <Image
+                                    src="/classDiagram.png"
+                                    alt="Advance Image Processor Class Diagram"
+                                    width={800}
+                                    height={600}
+                                    className="w-full h-auto object-contain"
+                                  />
+                                </div>
+                                <p className="text-xs sm:text-sm text-gray-600 dark:text-white/60 mt-3 italic">
+                                  The class diagram illustrates the MVC architecture with clear separation between Model (MatrixImage, ImagePixel), View (ImageConsoleView, ImageProcessorGUI), and Controller (ImageCommandParser, MatrixImageCommand).
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* Features Overview */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">✨ Key Features</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Basic Operations</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li>Load and save images with file path validation</li>
+                                    <li>RGB component extraction (red, green, blue, value, luma, intensity)</li>
+                                    <li>Horizontal and vertical flip operations</li>
+                                    <li>Brightness adjustment with positive/negative increments</li>
+                                    <li>RGB split and combine operations</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Advanced Filters</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li>Blur filter using kernel convolution</li>
+                                    <li>Sharpen filter with edge detection</li>
+                                    <li>Sepia tone transformation</li>
+                                    <li>Kernel-based pixel manipulation</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Advanced Features</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li>Haar Wavelet Transform for image compression</li>
+                                    <li>Histogram generation for RGB channel analysis</li>
+                                    <li>Color correction using histogram peak alignment</li>
+                                    <li>Levels adjustment with quadratic curve transformation</li>
+                                    <li>Split view for visual comparison (blur, sharpen, sepia, greyscale, color correction, levels adjustment)</li>
+                                    <li>Downscale operation for image resizing</li>
+                                    <li>Mask image generation</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">User Interface</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li>Command-line interface with interactive mode</li>
+                                    <li>Graphical User Interface (GUI) with Swing components</li>
+                                    <li>Script file execution for batch operations</li>
+                                    <li>Real-time image preview and display</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Impact */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">💡 Impact & Outcomes</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Technical Impact</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Modular Architecture:</strong> MVC design enables easy addition of new image operations without modifying existing code</li>
+                                    <li><strong>Design Patterns:</strong> Strategy, Factory, and Command patterns improve code maintainability and extensibility</li>
+                                    <li><strong>Code Quality:</strong> Object-oriented design and SOLID principles ensure clean, readable, and testable code</li>
+                                    <li><strong>Extensibility:</strong> Clear separation of concerns allows new features to be added with minimal impact on existing functionality</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Learning & Growth</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Image Processing Algorithms:</strong> Deep understanding of pixel manipulation, kernel convolution, and wavelet transforms</li>
+                                    <li><strong>GUI Development:</strong> Experience with Swing framework and event-driven programming</li>
+                                    <li><strong>Design Patterns:</strong> Practical application of Strategy, Factory, and Command patterns</li>
+                                    <li><strong>Software Architecture:</strong> Implementation of MVC architecture with proper separation of concerns</li>
+                                    <li><strong>Testing:</strong> TDD practices and JUnit testing for code quality assurance</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Target Audience */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">👥 Target Audience</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Primary Users</h4>
+                                  <p className="text-sm sm:text-base mb-3">
+                                    <strong>Recruiters & Hiring Managers:</strong> This project demonstrates strong object-oriented programming skills, design pattern implementation, GUI development, and algorithm expertise. It showcases the ability to build complex, feature-rich applications with clean architecture and extensible design.
+                                  </p>
+                                  <p className="text-sm sm:text-base">
+                                    <strong>Who This Project Appeals To:</strong>
+                                  </p>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li>Companies seeking Java developers with strong OOP and design pattern knowledge</li>
+                                    <li>Organizations valuing clean architecture, maintainable code, and extensible design</li>
+                                    <li>Teams looking for developers who can implement complex algorithms and data structures</li>
+                                    <li>Companies interested in candidates with GUI development and user experience skills</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Design Process */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🎨 Design Process</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Architecture Decisions</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>MVC Pattern:</strong> Separated concerns between data (MatrixImage), view (ImageConsoleView/GUI), and controller (ImageCommandParser) for maintainability</li>
+                                    <li><strong>Command Pattern:</strong> MatrixImageCommand class encapsulates operations, enabling extensibility and script execution</li>
+                                    <li><strong>Strategy Pattern:</strong> Different image operations can be swapped without modifying client code</li>
+                                    <li><strong>Factory Pattern:</strong> Simplified object creation for different image operations</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Key Design Justifications</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>ImagePixel Class:</strong> Encapsulates pixel operations, enabling reusable RGB manipulation methods</li>
+                                    <li><strong>MatrixImage Class:</strong> Central data model for all image operations, ensuring consistency</li>
+                                    <li><strong>Dual Interface:</strong> Both CLI and GUI provide flexibility for different user preferences</li>
+                                    <li><strong>Script Execution:</strong> Batch processing capability enhances productivity for multiple operations</li>
+                                    <li><strong>Split View:</strong> Visual comparison feature demonstrates attention to user experience</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
                     {/* Placeholder for other project journeys */}
-                    {activeProjectJourney !== "google-slides" && (
+                    {activeProjectJourney !== "google-slides" && activeProjectJourney !== "image-processor" && (
                       <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-gray-200 dark:border-white/10">
                         <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white/90 mb-4">Project Journey</h4>
                         <p className="text-gray-700 dark:text-white/80 text-sm sm:text-base leading-relaxed font-normal mb-4">
