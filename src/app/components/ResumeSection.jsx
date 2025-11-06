@@ -23,6 +23,7 @@ const ResumeSection = () => {
   const [activeResearchPaper, setActiveResearchPaper] = useState(null); // 'paper1' or 'paper2'
   const [showTAJourney, setShowTAJourney] = useState(false);
   const [showAKQAProjects, setShowAKQAProjects] = useState(false);
+  const [activeProjectJourney, setActiveProjectJourney] = useState(null); // 'google-slides', 'image-processor', 'leetcode', 'designcraft', 'recipehub'
   const [theme, setTheme] = useState("light");
   const [studyAuthenticated, setStudyAuthenticated] = useState(false);
   const [studyPassword, setStudyPassword] = useState("");
@@ -45,7 +46,7 @@ const ResumeSection = () => {
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="inline-flex items-center space-x-2 text-gray-900 dark:text-white/70 hover:text-gray-600 dark:hover:text-white transition-colors duration-200 text-sm font-light group"
+      className="inline-flex items-center justify-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
     >
       {icon && <span className="w-4 h-4">{icon}</span>}
       <span>{children}</span>
@@ -121,10 +122,11 @@ const ResumeSection = () => {
                     setActiveTab(tab.id);
                     setShowWireframe(false);
                     setShowResearchJourney(false);
-                    setActiveResearchPaper(null);
-                    setShowTAJourney(false);
-                    setShowAKQAProjects(false);
-                    // Reset password state when switching away from study tab
+                setActiveResearchPaper(null);
+                setShowTAJourney(false);
+                setShowAKQAProjects(false);
+                setActiveProjectJourney(null);
+                // Reset password state when switching away from study tab
                     if (tab.id !== "study") {
                       setStudyPassword("");
                       setStudyPasswordError(false);
@@ -829,155 +831,248 @@ const ResumeSection = () => {
                     <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Projects</h2>
                     
                     {/* Google Slides Generator */}
-                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
-                      <div>
-                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">Google Slides Generator</h3>
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          {["React.js", "Express", "Vite", "NodeJS", "PostgreSQL", "MongoDB"].map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
+                    {activeProjectJourney !== "google-slides" && (
+                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                        <div>
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">Google Slides Generator</h3>
+                          <div className="flex flex-wrap gap-2 mb-3">
+                            {["React.js", "Express", "Vite", "NodeJS", "PostgreSQL", "MongoDB"].map((tech) => (
+                              <span
+                                key={tech}
+                                className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                          <ul className="space-y-2 list-none mb-3">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Created full-stack slide generator, integrated Google Slides API (OAuth, DB-backed templates)</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Designed theme-first system/automated layout registry</span>
+                            </li>
+                          </ul>
+                          <div className="flex flex-wrap gap-3">
+                            <LinkButton href="https://github.com/byteKumar/google_slide_generator" icon={null}>GitHub</LinkButton>
+                            <button
+                              onClick={() => setActiveProjectJourney("google-slides")}
+                              className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
                             >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                        <ul className="space-y-2 list-none mb-3">
-                          <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Created full-stack slide generator, integrated Google Slides API (OAuth, DB-backed templates)</span>
-                          </li>
-                          <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Designed theme-first system/automated layout registry</span>
-                          </li>
-                        </ul>
-                        <div className="flex flex-wrap gap-4">
-                          <LinkButton href="https://github.com/byteKumar/google_slide_generator" icon={null}>GitHub</LinkButton>
+                              <span>Project Journey</span>
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    )}
 
                     {/* Advance Image Processor */}
-                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
-                      <div>
-                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">Advance Image Processor</h3>
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          {["Java", "GUI", "Software Design Pattern", "OOD", "TDD"].map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
+                    {activeProjectJourney !== "image-processor" && (
+                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                        <div>
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">Advance Image Processor</h3>
+                          <div className="flex flex-wrap gap-2 mb-3">
+                            {["Java", "GUI", "Software Design Pattern", "OOD", "TDD"].map((tech) => (
+                              <span
+                                key={tech}
+                                className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                          <ul className="space-y-2 list-none mb-3">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Architected extensible image processing app (MVC), implemented 7+ core transformations</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Applied Strategy/Factory/Command patterns (cutting feature integration time by 30%)</span>
+                            </li>
+                          </ul>
+                          <div className="flex flex-wrap gap-3">
+                            <LinkButton href="https://github.com/byteKumar/advanced_image_manipulation_and_enhancement_application" icon={null}>GitHub</LinkButton>
+                            <button
+                              onClick={() => setActiveProjectJourney("image-processor")}
+                              className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
                             >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                        <ul className="space-y-2 list-none mb-3">
-                          <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Architected extensible image processing app (MVC), implemented 7+ core transformations</span>
-                          </li>
-                          <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Applied Strategy/Factory/Command patterns (cutting feature integration time by 30%)</span>
-                          </li>
-                        </ul>
-                        <div className="flex flex-wrap gap-4">
-                          <LinkButton href="https://github.com/byteKumar/advanced_image_manipulation_and_enhancement_application" icon={null}>GitHub</LinkButton>
+                              <span>Project Journey</span>
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    )}
 
                     {/* LeetCode Power Up */}
-                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
-                      <div>
-                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">LeetCode Power Up - Chrome Extension</h3>
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          {["JavaScript", "Chrome Extensions API", "YouTube Data API"].map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
+                    {activeProjectJourney !== "leetcode" && (
+                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                        <div>
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">LeetCode Power Up - Chrome Extension</h3>
+                          <div className="flex flex-wrap gap-2 mb-3">
+                            {["JavaScript", "Chrome Extensions API", "YouTube Data API"].map((tech) => (
+                              <span
+                                key={tech}
+                                className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                          <ul className="space-y-2 list-none mb-3">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Shipped Chrome extension (injects 3-5 LeetCode solution videos)</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Integrated per-problem scratchpad (chrome.storage)</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
+                              <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Engineered Promise-based async architecture</span>
+                            </li>
+                          </ul>
+                          <div className="flex flex-wrap gap-3">
+                            <LinkButton href="https://github.com/byteKumar/LeetCode-Power-Up" icon={null}>GitHub</LinkButton>
+                            <button
+                              onClick={() => setActiveProjectJourney("leetcode")}
+                              className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
                             >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                        <ul className="space-y-2 list-none mb-3">
-                          <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Shipped Chrome extension (injects 3-5 LeetCode solution videos)</span>
-                          </li>
-                          <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Integrated per-problem scratchpad (chrome.storage)</span>
-                          </li>
-                          <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">Engineered Promise-based async architecture</span>
-                          </li>
-                        </ul>
-                        <div className="flex flex-wrap gap-4">
-                          <LinkButton href="https://github.com/byteKumar/LeetCode-Power-Up" icon={null}>GitHub</LinkButton>
+                              <span>Project Journey</span>
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    )}
 
                     {/* DesignCraft */}
-                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
-                      <div>
-                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">DesignCraft</h3>
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          {["Java", "JUnit", "UML", "Markdown", "Git", "Lombok", "OOPs", "LLD"].map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
+                    {activeProjectJourney !== "designcraft" && (
+                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                        <div>
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">DesignCraft</h3>
+                          <div className="flex flex-wrap gap-2 mb-3">
+                            {["Java", "JUnit", "UML", "Markdown", "Git", "Lombok", "OOPs", "LLD"].map((tech) => (
+                              <span
+                                key={tech}
+                                className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                          <ul className="space-y-2 list-none mb-3">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                              <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Built a system design course on OOP, SOLID, and design patterns with 50+ live code examples used by 500+ students</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                              <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Created UML diagrams, JUnit tests, and markdown notes for clear, practical learning</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                              <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Implemented 15+ real-world assignments, driving a 90%+ completion-rate among senior year undergrad students</span>
+                            </li>
+                          </ul>
+                          <div className="flex flex-wrap gap-3">
+                            <LinkButton href="https://github.com/byteKumar/systemdesign" icon={null}>GitHub</LinkButton>
+                            <button
+                              onClick={() => setActiveProjectJourney("designcraft")}
+                              className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
                             >
-                              {tech}
-                            </span>
-                          ))}
+                              <span>Project Journey</span>
+                            </button>
+                          </div>
                         </div>
-                        <ul className="space-y-2 list-none mb-3">
-                          <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Built a system design course on OOP, SOLID, and design patterns with 50+ live code examples used by 500+ students</span>
-                          </li>
-                          <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Created UML diagrams, JUnit tests, and markdown notes for clear, practical learning</span>
-                          </li>
-                          <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Implemented 15+ real-world assignments, driving a 90%+ completion-rate among senior year undergrad students</span>
-                          </li>
-                        </ul>
                       </div>
-                    </div>
+                    )}
 
                     {/* RecipeHub */}
-                    <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
-                      <div>
-                        <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">RecipeHub</h3>
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          {["Node.js", "TypeScript", "MongoDB", "React", "Express", "Redux", "Rest APIs"].map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
+                    {activeProjectJourney !== "recipehub" && (
+                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-white/10 space-y-3">
+                        <div>
+                          <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">RecipeHub</h3>
+                          <div className="flex flex-wrap gap-2 mb-3">
+                            {["Node.js", "TypeScript", "MongoDB", "React", "Express", "Redux", "Rest APIs"].map((tech) => (
+                              <span
+                                key={tech}
+                                className="px-3 py-1 text-xs text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                          <ul className="space-y-2 list-none mb-3">
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                              <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Built a full stack MERN web application that allows users to browse, search, and save their favorite recipes</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
+                              <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Integrated authentication, content editing, and a personalized recipe feed to elevate user retention and engagement</span>
+                            </li>
+                          </ul>
+                          <div className="flex flex-wrap gap-3">
+                            <LinkButton href="https://github.com/byteKumar/RecipeHub" icon={null}>GitHub</LinkButton>
+                            <button
+                              onClick={() => setActiveProjectJourney("recipehub")}
+                              className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 rounded text-xs sm:text-sm font-medium"
                             >
-                              {tech}
-                            </span>
-                          ))}
+                              <span>Project Journey</span>
+                            </button>
+                          </div>
                         </div>
-                        <ul className="space-y-2 list-none mb-3">
-                          <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Built a full stack MERN web application that allows users to browse, search, and save their favorite recipes</span>
-                          </li>
-                          <li className="flex items-start space-x-2">
-                            <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs flex-shrink-0">—</span>
-                            <span className="text-gray-700 dark:text-white/70 text-sm sm:text-base leading-relaxed font-light break-words">Integrated authentication, content editing, and a personalized recipe feed to elevate user retention and engagement</span>
-                          </li>
-                        </ul>
                       </div>
+                    )}
+                  </motion.div>
+                )}
+
+                {/* Project Journey Sections */}
+                {activeTab === "projects" && activeProjectJourney && (
+                  <motion.div
+                    key={`project-journey-${activeProjectJourney}`}
+                    variants={sectionVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.4 }}
+                    className="space-y-6"
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <button
+                        onClick={() => setActiveProjectJourney(null)}
+                        className="p-2 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors"
+                        aria-label="Back to Projects"
+                      >
+                        <svg className="w-5 h-5 text-gray-600 dark:text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">
+                        {activeProjectJourney === "google-slides" && "Google Slides Generator"}
+                        {activeProjectJourney === "image-processor" && "Advance Image Processor"}
+                        {activeProjectJourney === "leetcode" && "LeetCode Power Up - Chrome Extension"}
+                        {activeProjectJourney === "designcraft" && "DesignCraft"}
+                        {activeProjectJourney === "recipehub" && "RecipeHub"}
+                      </h3>
+                    </div>
+
+                    <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-gray-200 dark:border-white/10">
+                      <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white/90 mb-4">Project Journey</h4>
+                      <p className="text-gray-700 dark:text-white/80 text-sm sm:text-base leading-relaxed font-normal mb-4">
+                        This section will showcase your motivation, thought process, challenges faced, and key decisions made during the development of this project. You can add your detailed journey here, including:
+                      </p>
+                      <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base text-gray-700 dark:text-white/80">
+                        <li>What inspired you to build this project?</li>
+                        <li>What problems were you trying to solve?</li>
+                        <li>Key technical decisions and why you made them</li>
+                        <li>Challenges faced and how you overcame them</li>
+                        <li>What you learned from this project</li>
+                        <li>Impact and results achieved</li>
+                      </ul>
                     </div>
                   </motion.div>
                 )}
