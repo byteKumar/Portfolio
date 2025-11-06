@@ -1956,8 +1956,684 @@ const ResumeSection = () => {
                       </div>
                     )}
 
+                    {/* DesignCraft Journey */}
+                    {activeProjectJourney === "designcraft" && (
+                      <div className="space-y-6">
+                        <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-6 md:p-8 shadow-sm border border-gray-200 dark:border-white/10">
+                          <div className="space-y-6 text-sm sm:text-base leading-relaxed font-light text-gray-700 dark:text-white/70">
+                            <div>
+                              <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-4">🚀 Project Journey: DesignCraft</h2>
+                              <blockquote className="border-l-4 border-blue-500 dark:border-blue-400 pl-4 py-2 italic text-gray-600 dark:text-white/60 mb-6">
+                                A comprehensive overview of my project development journey, showcasing the process, impact, and technical excellence behind building a structured learning curriculum for mastering Low-Level Design and Object-Oriented Programming.
+                              </blockquote>
+                            </div>
+
+                            {/* STAR Format */}
+                            <div className="pt-4">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">📖 The Journey: STAR Format</h3>
+                              
+                              {/* Situation */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Situation</h4>
+                                <p className="text-sm sm:text-base">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Context:</strong> Students and developers often struggle to master Low-Level Design (LLD) and Object-Oriented Programming concepts due to fragmented learning resources and lack of structured, progressive curriculum. There was a need for a comprehensive, hands-on learning project that systematically teaches OOP principles, SOLID design principles, and design patterns with real-world examples and practical exercises.
+                                </p>
+                                <p className="text-sm sm:text-base">
+                                  <em className="text-gray-600 dark:text-white/60">The challenge was to build a system that:</em>
+                                </p>
+                                <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                  <li>Provides a structured, progressive curriculum from fundamentals to advanced concepts</li>
+                                  <li>Includes 50+ live code examples demonstrating OOP, SOLID principles, and design patterns</li>
+                                  <li>Offers comprehensive documentation with notes, PDFs, and assignments</li>
+                                  <li>Delivers practical, real-world examples that students can run and modify</li>
+                                  <li>Scales to support 500+ students with consistent learning outcomes</li>
+                                  <li>Maintains high completion rates through engaging, hands-on exercises</li>
+                                </ul>
+                              </div>
+
+                              {/* Task */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Task</h4>
+                                <p className="text-sm sm:text-base">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Objective:</strong> Develop a comprehensive, day-by-day learning curriculum for mastering Low-Level Design and Object-Oriented Programming, including 50+ live code examples, detailed documentation, UML diagrams, JUnit tests, and practical assignments that drive 90%+ completion rates among senior year undergraduate students.
+                                </p>
+                                <p className="text-sm sm:text-base">
+                                  <em className="text-gray-600 dark:text-white/60">Key requirements:</em>
+                                </p>
+                                <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                  <li>Create a 10-day progressive curriculum covering OOP fundamentals to design patterns</li>
+                                  <li>Implement 50+ live code examples with clear, practical demonstrations</li>
+                                  <li>Develop comprehensive documentation (Markdown notes, PDF lecture notes, assignments)</li>
+                                  <li>Design UML diagrams for visual understanding of class relationships</li>
+                                  <li>Write JUnit tests for all examples to ensure code quality and correctness</li>
+                                  <li>Create 15+ real-world assignments that reinforce learning</li>
+                                  <li>Structure the project for easy navigation and progressive learning</li>
+                                </ul>
+                              </div>
+
+                              {/* Action */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Action</h4>
+                                <p className="text-sm sm:text-base mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Approach:</strong> Designed and developed a structured, progressive learning curriculum with hands-on examples, comprehensive documentation, and practical assignments, organized in a day-by-day format that systematically builds understanding from fundamentals to advanced design patterns.
+                                </p>
+                                
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Architecture & Design:</strong>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li><strong>Language & Framework:</strong> Java 23 with Maven for project management</li>
+                                    <li><strong>Testing Framework:</strong> JUnit 5 (Jupiter) for unit testing</li>
+                                    <li><strong>Code Quality:</strong> Lombok for reducing boilerplate, clean code principles</li>
+                                    <li><strong>Documentation:</strong> Markdown notes, PDF lecture notes, UML diagrams</li>
+                                    <li><strong>Project Structure:</strong> Day-by-day organization with code, notes, and assignments</li>
+                                    <li><strong>Learning Path:</strong> Progressive curriculum from OOP basics to design patterns</li>
+                                  </ul>
+                                </div>
+
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Key Implementation Steps:</strong>
+                                  <div className="space-y-4 mt-4 pl-4 border-l-2 border-gray-200 dark:border-white/20">
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">1. Curriculum Design</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Designed 10-day progressive curriculum starting with OOP fundamentals</li>
+                                        <li>• Created learning path from basics (classes, objects) to advanced (design patterns)</li>
+                                        <li>• Structured each day with clear learning objectives and outcomes</li>
+                                        <li>• Ensured each day builds upon previous concepts for cumulative learning</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">2. Code Examples & Implementation</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Implemented 50+ live code examples across 10 days of curriculum</li>
+                                        <li>• Created practical examples (BankAccount, Student, Bird, PasswordEncoder, etc.)</li>
+                                        <li>• Designed examples demonstrating OOP principles, SOLID principles, and design patterns</li>
+                                        <li>• Ensured all code is runnable with Main.java files for each day</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">3. Documentation & Learning Materials</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Created comprehensive Markdown notes for each day (DayXXFullFledgeNotes.md)</li>
+                                        <li>• Developed PDF lecture notes (DayXXClassNotes.pdf) for visual learning</li>
+                                        <li>• Added optional reading materials (optionalToRead.md) for deeper understanding</li>
+                                        <li>• Documented key concepts, examples, and learning outcomes</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">4. UML Diagrams & Visual Learning</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Created UML diagrams for class relationships and design patterns</li>
+                                        <li>• Designed visual representations of OOP concepts and SOLID principles</li>
+                                        <li>• Included diagrams in PDF notes for better understanding</li>
+                                        <li>• Visualized design patterns (Singleton, Builder, Factory, Prototype/Registry)</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">5. Testing & Quality Assurance</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Wrote JUnit tests for all code examples to ensure correctness</li>
+                                        <li>• Implemented unit tests for each day&apos;s concepts (BankAccountTest, etc.)</li>
+                                        <li>• Created test reports using Maven Surefire for quality assurance</li>
+                                        <li>• Ensured all examples are testable and maintainable</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">6. Assignments & Practice Problems</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Created 15+ real-world assignments across the curriculum</li>
+                                        <li>• Designed practice problems that reinforce daily learning</li>
+                                        <li>• Ensured assignments are practical and applicable to real-world scenarios</li>
+                                        <li>• Structured assignments to build confidence and mastery</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">7. Project Organization & Structure</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Organized project with day-by-day structure (day01 through day10)</li>
+                                        <li>• Created consistent folder structure (code/, notes/, assignments/) for each day</li>
+                                        <li>• Built common utilities package for shared code</li>
+                                        <li>• Configured Maven for easy compilation and testing</li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Result */}
+                              <div className="space-y-4">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Result</h4>
+                                <p className="text-sm sm:text-base mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Outcome:</strong> Successfully delivered a comprehensive, production-ready learning curriculum that has been used by 500+ students, achieving 90%+ completion rates through engaging, hands-on examples and structured learning materials.
+                                </p>
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Quantifiable Results:</strong>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li>✅ <strong>500+ Students</strong> have used the curriculum for learning LLD and OOP</li>
+                                    <li>✅ <strong>90%+ Completion Rate</strong> among senior year undergraduate students</li>
+                                    <li>✅ <strong>50+ Live Code Examples</strong> demonstrating OOP, SOLID, and design patterns</li>
+                                    <li>✅ <strong>10-Day Progressive Curriculum</strong> from fundamentals to advanced concepts</li>
+                                    <li>✅ <strong>15+ Real-World Assignments</strong> driving practical application</li>
+                                    <li>✅ <strong>Comprehensive Documentation</strong> (Markdown notes, PDFs, UML diagrams)</li>
+                                    <li>✅ <strong>JUnit Tests</strong> ensuring code quality and correctness</li>
+                                  </ul>
+                                </div>
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Qualitative Achievements:</strong>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li><strong>Educational Impact:</strong> Structured learning path helps students master LLD systematically</li>
+                                    <li><strong>Learning Efficiency:</strong> Progressive curriculum reduces learning curve and improves retention</li>
+                                    <li><strong>Practical Application:</strong> Real-world examples enable students to apply concepts immediately</li>
+                                    <li><strong>Code Quality:</strong> JUnit tests and clean code principles ensure maintainable examples</li>
+                                    <li><strong>Scalability:</strong> Well-organized structure supports large-scale learning deployment</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Skills & Tools */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🛠️ Skills & Tools Applied</h3>
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Languages & Frameworks</h4>
+                                  <p className="text-sm sm:text-base">Java 23, Object-Oriented Programming, Design Patterns, SOLID Principles</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Build Tools & Development</h4>
+                                  <p className="text-sm sm:text-base">Apache Maven, JUnit 5, Lombok, Git, IDE (IntelliJ IDEA)</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Design Patterns</h4>
+                                  <p className="text-sm sm:text-base">Singleton, Builder, Factory, Prototype/Registry, Strategy</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Documentation & Learning</h4>
+                                  <p className="text-sm sm:text-base">Markdown, PDF, UML Diagrams, JUnit Tests, Maven</p>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Curriculum Overview */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">📚 Learning Curriculum</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Day 1-4: OOP Fundamentals</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Day 1:</strong> Introduction to OOP (Classes, Objects, Encapsulation) - BankAccount example</li>
+                                    <li><strong>Day 2:</strong> Access Modifiers (public, private, protected, package-private) - Student example</li>
+                                    <li><strong>Day 3:</strong> Polymorphism (Method overriding, overloading, runtime polymorphism) - User/Student/Mentor hierarchy</li>
+                                    <li><strong>Day 4:</strong> Abstraction (Abstract classes, Interfaces) - PasswordEncoder interface with implementations</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Day 5-6: SOLID Principles</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Day 5:</strong> Single Responsibility Principle (SRP) & Open/Closed Principle (OCP) - Bird class evolution</li>
+                                    <li><strong>Day 6:</strong> Liskov Substitution Principle (LSP) - Bird hierarchy with FlyableBird/NonFlyableBird and Strategy pattern</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Day 7-10: Design Patterns</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Day 7:</strong> Singleton Pattern - CollectionPool with thread-safe implementation</li>
+                                    <li><strong>Day 8:</strong> Builder Pattern - Student and Database builders with fluent interfaces</li>
+                                    <li><strong>Day 9:</strong> Prototype & Registry Pattern - BackgroundRegistry with cloning capabilities</li>
+                                    <li><strong>Day 10:</strong> Factory Pattern - Simple, Method, and Abstract Factory implementations</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Impact */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">💡 Impact & Outcomes</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Educational Impact</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Structured Learning:</strong> Progressive curriculum reduces learning curve and improves comprehension</li>
+                                    <li><strong>Hands-On Experience:</strong> 50+ live code examples enable practical learning and experimentation</li>
+                                    <li><strong>High Completion Rates:</strong> 90%+ completion rate demonstrates engagement and effectiveness</li>
+                                    <li><strong>Scalable Education:</strong> Well-organized structure supports large-scale deployment (500+ students)</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Technical Impact</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Code Quality:</strong> JUnit tests and clean code principles ensure maintainable, correct examples</li>
+                                    <li><strong>Documentation:</strong> Comprehensive notes, PDFs, and UML diagrams enhance understanding</li>
+                                    <li><strong>Best Practices:</strong> SOLID principles and design patterns demonstrated through practical examples</li>
+                                    <li><strong>Project Structure:</strong> Well-organized day-by-day structure enables easy navigation and learning</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Learning & Growth</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Teaching Experience:</strong> Designed and delivered curriculum for 500+ students</li>
+                                    <li><strong>Curriculum Design:</strong> Created structured learning path from fundamentals to advanced concepts</li>
+                                    <li><strong>Technical Communication:</strong> Developed comprehensive documentation and learning materials</li>
+                                    <li><strong>Software Engineering:</strong> Applied best practices (SOLID, design patterns, testing) in educational context</li>
+                                    <li><strong>Project Management:</strong> Organized complex learning curriculum with clear structure and deliverables</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Target Audience */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">👥 Target Audience</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Primary Users</h4>
+                                  <p className="text-sm sm:text-base mb-3">
+                                    <strong>Recruiters & Hiring Managers:</strong> This project demonstrates expertise in software engineering education, curriculum design, and technical communication. It showcases the ability to create structured learning resources, teach complex concepts effectively, and scale educational content to support large numbers of students with high completion rates.
+                                  </p>
+                                  <p className="text-sm sm:text-base">
+                                    <strong>Who This Project Appeals To:</strong>
+                                  </p>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li>Companies seeking Java developers with strong OOP and design pattern knowledge</li>
+                                    <li>Organizations valuing software engineering education and curriculum development</li>
+                                    <li>Teams looking for developers who can teach, document, and communicate technical concepts</li>
+                                    <li>Companies interested in candidates with experience in educational technology and learning design</li>
+                                    <li>Organizations seeking developers who understand best practices (SOLID, design patterns) and can teach them</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Design Process */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🎨 Design Process</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Curriculum Design Decisions</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Progressive Learning:</strong> Day-by-day structure ensures concepts build upon each other systematically</li>
+                                    <li><strong>Hands-On Approach:</strong> 50+ live code examples enable practical learning and experimentation</li>
+                                    <li><strong>Comprehensive Documentation:</strong> Multiple formats (Markdown, PDF, UML) cater to different learning styles</li>
+                                    <li><strong>Real-World Examples:</strong> Practical examples (BankAccount, Student, Bird) make concepts relatable</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Key Design Justifications</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Day-by-Day Structure:</strong> Breaks complex topics into manageable, daily learning chunks</li>
+                                    <li><strong>Code, Notes, Assignments:</strong> Three-tier structure provides examples, documentation, and practice</li>
+                                    <li><strong>JUnit Testing:</strong> Ensures code quality and correctness while teaching testing practices</li>
+                                    <li><strong>Progressive Complexity:</strong> Starts with OOP basics, progresses through SOLID, ends with design patterns</li>
+                                    <li><strong>Maven Configuration:</strong> Professional build tool setup teaches industry-standard practices</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Technical Challenges & Solutions</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Curriculum Balance:</strong> Balanced theory with practice through examples and assignments</li>
+                                    <li><strong>Scalability:</strong> Well-organized structure supports large-scale deployment (500+ students)</li>
+                                    <li><strong>Code Quality:</strong> JUnit tests and clean code principles ensure maintainable examples</li>
+                                    <li><strong>Learning Engagement:</strong> Practical assignments and real-world examples drive 90%+ completion rates</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Project Highlights */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🏆 Project Highlights</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">What Makes This Project Stand Out</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Educational Excellence:</strong> Comprehensive curriculum with 90%+ completion rates demonstrates effective teaching</li>
+                                    <li><strong>Technical Depth:</strong> 50+ live code examples covering OOP, SOLID, and design patterns</li>
+                                    <li><strong>Production Quality:</strong> JUnit tests, clean code, and professional documentation</li>
+                                    <li><strong>Scalability:</strong> Well-organized structure supports 500+ students with consistent outcomes</li>
+                                    <li><strong>Practical Application:</strong> Real-world examples and assignments enable immediate application</li>
+                                    <li><strong>Progressive Learning:</strong> Day-by-day structure systematically builds understanding</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* RecipeHub Journey */}
+                    {activeProjectJourney === "recipehub" && (
+                      <div className="space-y-6">
+                        <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-6 md:p-8 shadow-sm border border-gray-200 dark:border-white/10">
+                          <div className="space-y-6 text-sm sm:text-base leading-relaxed font-light text-gray-700 dark:text-white/70">
+                            <div>
+                              <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-4">🚀 Project Journey: RecipeHub</h2>
+                              <blockquote className="border-l-4 border-blue-500 dark:border-blue-400 pl-4 py-2 italic text-gray-600 dark:text-white/60 mb-6">
+                                A comprehensive overview of my project development journey, showcasing the process, impact, and technical excellence behind building a full-stack MERN web application for browsing, searching, and saving favorite recipes.
+                              </blockquote>
+                            </div>
+
+                            {/* STAR Format */}
+                            <div className="pt-4">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-6">📖 The Journey: STAR Format</h3>
+                              
+                              {/* Situation */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Situation</h4>
+                                <p className="text-sm sm:text-base">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Context:</strong> Users need a centralized platform to browse, search, and save their favorite recipes. Existing solutions often lack personalization, authentication, and a seamless user experience. There was a need for a full-stack web application that combines recipe discovery, user authentication, content management, and personalized recipe feeds in a single, intuitive platform.
+                                </p>
+                                <p className="text-sm sm:text-base">
+                                  <em className="text-gray-600 dark:text-white/60">The challenge was to build a system that:</em>
+                                </p>
+                                <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                  <li>Provides an intuitive interface for browsing and searching recipes</li>
+                                  <li>Implements secure user authentication and authorization</li>
+                                  <li>Enables users to save and manage their favorite recipes</li>
+                                  <li>Offers personalized recipe feeds based on user preferences</li>
+                                  <li>Supports content editing and recipe management</li>
+                                  <li>Delivers a responsive, modern user experience across devices</li>
+                                  <li>Handles large-scale data efficiently with MongoDB</li>
+                                </ul>
+                              </div>
+
+                              {/* Task */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Task</h4>
+                                <p className="text-sm sm:text-base">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Objective:</strong> Develop a full-stack MERN web application that allows users to browse, search, and save their favorite recipes, with integrated authentication, content editing, and personalized recipe feeds to elevate user retention and engagement.
+                                </p>
+                                <p className="text-sm sm:text-base">
+                                  <em className="text-gray-600 dark:text-white/60">Key requirements:</em>
+                                </p>
+                                <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                  <li>Build a modern React frontend with TypeScript for type safety</li>
+                                  <li>Create a robust Node.js/Express backend with RESTful API architecture</li>
+                                  <li>Implement MongoDB database for recipe storage and user management</li>
+                                  <li>Develop secure authentication system with JWT tokens</li>
+                                  <li>Integrate Redux for state management and data flow</li>
+                                  <li>Design responsive UI with modern design principles</li>
+                                  <li>Implement search functionality and recipe filtering</li>
+                                  <li>Create personalized recipe feeds based on user preferences</li>
+                                </ul>
+                              </div>
+
+                              {/* Action */}
+                              <div className="space-y-4 mb-6">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Action</h4>
+                                <p className="text-sm sm:text-base mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Approach:</strong> Implemented a full-stack MERN application with TypeScript for type safety, Redux for state management, RESTful API architecture, and MongoDB for data persistence, creating a scalable, maintainable solution with modern development practices.
+                                </p>
+                                
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Architecture & Design:</strong>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li><strong>Frontend:</strong> React with TypeScript, Redux for state management, Create React App</li>
+                                    <li><strong>Backend:</strong> Node.js with Express.js, TypeScript for type safety</li>
+                                    <li><strong>Database:</strong> MongoDB for document storage with Mongoose ODM</li>
+                                    <li><strong>API:</strong> RESTful API architecture with proper error handling</li>
+                                    <li><strong>Authentication:</strong> JWT-based authentication with secure token management</li>
+                                    <li><strong>State Management:</strong> Redux for centralized state and data flow</li>
+                                  </ul>
+                                </div>
+
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Key Implementation Steps:</strong>
+                                  <div className="space-y-4 mt-4 pl-4 border-l-2 border-gray-200 dark:border-white/20">
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">1. Frontend Development</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Built React application with TypeScript for type safety and better developer experience</li>
+                                        <li>• Implemented Redux for centralized state management and data flow</li>
+                                        <li>• Created responsive UI components with modern design principles</li>
+                                        <li>• Developed recipe browsing, search, and filtering interfaces</li>
+                                        <li>• Built user authentication UI with login and registration forms</li>
+                                        <li>• Designed personalized recipe feed component with user preferences</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">2. Backend API Development</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Created Express.js server with TypeScript for type-safe backend development</li>
+                                        <li>• Implemented RESTful API endpoints for recipes, users, and authentication</li>
+                                        <li>• Built secure authentication middleware with JWT token validation</li>
+                                        <li>• Developed recipe CRUD operations with proper error handling</li>
+                                        <li>• Created search and filtering endpoints with MongoDB query optimization</li>
+                                        <li>• Implemented user profile management and recipe saving functionality</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">3. Database Design & Integration</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Designed MongoDB schema for recipes, users, and saved recipes</li>
+                                        <li>• Implemented Mongoose ODM for database operations and validation</li>
+                                        <li>• Created indexes for efficient recipe search and filtering</li>
+                                        <li>• Built user-recipe relationships for saved recipes and favorites</li>
+                                        <li>• Implemented data validation and error handling at database level</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">4. Authentication & Authorization</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Implemented JWT-based authentication with secure token generation</li>
+                                        <li>• Created user registration and login endpoints with password hashing</li>
+                                        <li>• Built authentication middleware for protected routes</li>
+                                        <li>• Implemented token refresh mechanism for session management</li>
+                                        <li>• Added user authorization for recipe editing and management</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">5. State Management & Data Flow</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Integrated Redux for centralized state management</li>
+                                        <li>• Created Redux actions and reducers for recipes, users, and authentication</li>
+                                        <li>• Implemented async actions with Redux Thunk for API calls</li>
+                                        <li>• Built state persistence for user sessions and preferences</li>
+                                        <li>• Designed efficient data flow from API to UI components</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">6. Search & Personalization</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Implemented recipe search functionality with MongoDB text search</li>
+                                        <li>• Created filtering options (category, cuisine, difficulty, time)</li>
+                                        <li>• Built personalized recipe feed based on user preferences and saved recipes</li>
+                                        <li>• Developed recommendation system using user interaction data</li>
+                                        <li>• Optimized search queries for performance and scalability</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <strong className="text-gray-900 dark:text-white">7. Content Management</strong>
+                                      <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                        <li>• Built recipe creation and editing interface with rich text support</li>
+                                        <li>• Implemented image upload and management for recipe photos</li>
+                                        <li>• Created recipe saving and favorite functionality</li>
+                                        <li>• Developed user recipe collections and organization features</li>
+                                        <li>• Added content validation and moderation capabilities</li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Result */}
+                              <div className="space-y-4">
+                                <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white mb-3">Result</h4>
+                                <p className="text-sm sm:text-base mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Outcome:</strong> Successfully delivered a production-ready, full-stack MERN web application that enables users to browse, search, and save their favorite recipes with integrated authentication, personalized feeds, and content management, driving user retention and engagement.
+                                </p>
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Quantifiable Results:</strong>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li>✅ <strong>Full-Stack MERN Application</strong> with React, Node.js, Express, and MongoDB</li>
+                                    <li>✅ <strong>TypeScript Integration</strong> for type safety across frontend and backend</li>
+                                    <li>✅ <strong>Redux State Management</strong> for efficient data flow and state handling</li>
+                                    <li>✅ <strong>Secure Authentication</strong> with JWT tokens and password hashing</li>
+                                    <li>✅ <strong>RESTful API Architecture</strong> with proper error handling and validation</li>
+                                    <li>✅ <strong>Personalized Recipe Feeds</strong> based on user preferences and saved recipes</li>
+                                    <li>✅ <strong>Search & Filtering</strong> functionality with MongoDB text search</li>
+                                    <li>✅ <strong>Recipe Management</strong> with CRUD operations and content editing</li>
+                                  </ul>
+                                </div>
+                                <div className="mb-4">
+                                  <strong className="font-medium text-gray-900 dark:text-white">Qualitative Achievements:</strong>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li><strong>User Experience:</strong> Intuitive interface with responsive design across devices</li>
+                                    <li><strong>Code Quality:</strong> TypeScript ensures type safety and reduces runtime errors</li>
+                                    <li><strong>Scalability:</strong> MongoDB and RESTful API architecture support growing user base</li>
+                                    <li><strong>Maintainability:</strong> Redux and modular architecture enable easy feature additions</li>
+                                    <li><strong>Security:</strong> JWT authentication and password hashing ensure user data protection</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Skills & Tools */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🛠️ Skills & Tools Applied</h3>
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Frontend</h4>
+                                  <p className="text-sm sm:text-base">React, TypeScript, Redux, Create React App, HTML5, CSS3</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Backend</h4>
+                                  <p className="text-sm sm:text-base">Node.js, Express.js, TypeScript, RESTful APIs</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Database</h4>
+                                  <p className="text-sm sm:text-base">MongoDB, Mongoose ODM, Indexing, Query Optimization</p>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Authentication & Security</h4>
+                                  <p className="text-sm sm:text-base">JWT Tokens, Password Hashing, Secure Authentication</p>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Impact */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">💡 Impact & Outcomes</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Technical Impact</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Full-Stack Development:</strong> Demonstrated expertise in MERN stack with TypeScript integration</li>
+                                    <li><strong>State Management:</strong> Redux implementation for efficient data flow and centralized state</li>
+                                    <li><strong>API Design:</strong> RESTful API architecture with proper error handling and validation</li>
+                                    <li><strong>Database Design:</strong> MongoDB schema design with indexes for optimized queries</li>
+                                    <li><strong>Type Safety:</strong> TypeScript across frontend and backend reduces bugs and improves maintainability</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">User Impact</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Recipe Discovery:</strong> Easy browsing and searching of recipes with advanced filtering</li>
+                                    <li><strong>Personalization:</strong> Personalized recipe feeds based on user preferences and saved recipes</li>
+                                    <li><strong>User Engagement:</strong> Recipe saving and favorite functionality drives user retention</li>
+                                    <li><strong>Content Management:</strong> Recipe creation and editing capabilities enable user-generated content</li>
+                                    <li><strong>Seamless Experience:</strong> Integrated authentication and responsive design across devices</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Learning & Growth</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>MERN Stack Mastery:</strong> Comprehensive understanding of React, Node.js, Express, and MongoDB</li>
+                                    <li><strong>TypeScript Expertise:</strong> Type safety implementation across full-stack development</li>
+                                    <li><strong>State Management:</strong> Redux for complex state handling and data flow</li>
+                                    <li><strong>API Development:</strong> RESTful API design with authentication and error handling</li>
+                                    <li><strong>Database Design:</strong> MongoDB schema design, indexing, and query optimization</li>
+                                    <li><strong>Authentication:</strong> JWT-based authentication with secure token management</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Target Audience */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">👥 Target Audience</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Primary Users</h4>
+                                  <p className="text-sm sm:text-base mb-3">
+                                    <strong>Recruiters & Hiring Managers:</strong> This project demonstrates expertise in full-stack MERN development, TypeScript integration, Redux state management, and RESTful API design. It showcases the ability to build production-ready applications with authentication, data persistence, and personalized user experiences.
+                                  </p>
+                                  <p className="text-sm sm:text-base">
+                                    <strong>Who This Project Appeals To:</strong>
+                                  </p>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                    <li>Companies seeking full-stack developers with MERN stack expertise</li>
+                                    <li>Organizations valuing TypeScript integration for type safety and maintainability</li>
+                                    <li>Teams looking for developers who can build scalable, production-ready applications</li>
+                                    <li>Companies interested in candidates with experience in state management and API design</li>
+                                    <li>Organizations seeking developers who understand authentication, security, and user experience</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Design Process */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🎨 Design Process</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Architecture Decisions</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>MERN Stack:</strong> Chose React, Node.js, Express, and MongoDB for full-stack development</li>
+                                    <li><strong>TypeScript:</strong> Integrated TypeScript for type safety across frontend and backend</li>
+                                    <li><strong>Redux:</strong> Used Redux for centralized state management and predictable data flow</li>
+                                    <li><strong>RESTful API:</strong> Designed RESTful API architecture for clear separation of concerns</li>
+                                    <li><strong>MongoDB:</strong> Selected MongoDB for flexible document storage and scalability</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Key Design Justifications</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>TypeScript Integration:</strong> Type safety reduces bugs and improves code maintainability</li>
+                                    <li><strong>Redux State Management:</strong> Centralized state enables efficient data flow and debugging</li>
+                                    <li><strong>RESTful API:</strong> Standard API design facilitates frontend-backend communication</li>
+                                    <li><strong>MongoDB Schema:</strong> Flexible document structure supports recipe variations and user preferences</li>
+                                    <li><strong>JWT Authentication:</strong> Stateless authentication enables scalable user sessions</li>
+                                    <li><strong>Personalized Feeds:</strong> User preference-based recommendations drive engagement</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Technical Challenges & Solutions</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>State Management:</strong> Implemented Redux for complex state handling and data flow</li>
+                                    <li><strong>Search Performance:</strong> Created MongoDB indexes and optimized queries for fast search</li>
+                                    <li><strong>Authentication:</strong> JWT token management with secure storage and refresh mechanisms</li>
+                                    <li><strong>Data Persistence:</strong> MongoDB schema design with proper relationships and indexing</li>
+                                    <li><strong>Type Safety:</strong> TypeScript integration across full-stack for compile-time error detection</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Project Highlights */}
+                            <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🏆 Project Highlights</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">What Makes This Project Stand Out</h4>
+                                  <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                                    <li><strong>Full-Stack Excellence:</strong> Complete MERN stack implementation with TypeScript integration</li>
+                                    <li><strong>Production-Ready:</strong> Secure authentication, error handling, and scalable architecture</li>
+                                    <li><strong>User-Centric Design:</strong> Personalized recipe feeds and intuitive browsing experience</li>
+                                    <li><strong>Technical Depth:</strong> Redux state management, RESTful API design, and MongoDB optimization</li>
+                                    <li><strong>Type Safety:</strong> TypeScript across frontend and backend ensures code quality</li>
+                                    <li><strong>Scalability:</strong> MongoDB and RESTful API architecture support growing user base</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
                     {/* Placeholder for other project journeys */}
-                    {activeProjectJourney !== "google-slides" && activeProjectJourney !== "image-processor" && activeProjectJourney !== "leetcode" && (
+                    {activeProjectJourney !== "google-slides" && activeProjectJourney !== "image-processor" && activeProjectJourney !== "leetcode" && activeProjectJourney !== "designcraft" && activeProjectJourney !== "recipehub" && (
                       <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-gray-200 dark:border-white/10">
                         <h4 className="text-lg sm:text-xl font-light text-gray-900 dark:text-white/90 mb-4">Project Journey</h4>
                         <p className="text-gray-700 dark:text-white/80 text-sm sm:text-base leading-relaxed font-normal mb-4">
