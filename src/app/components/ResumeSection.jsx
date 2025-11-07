@@ -2965,7 +2965,7 @@ const ResumeSection = () => {
                           </div>
                           <div className="flex flex-col sm:flex-row gap-4 pt-2">
                             <a
-                              href="https://pepperuni.com/"
+                              href="https://pepperuni.onrender.com/"
                               target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center space-x-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-200 text-sm font-medium rounded-lg shadow-md hover:shadow-lg"
@@ -3965,156 +3965,308 @@ const ResumeSection = () => {
                           <div className="space-y-3">
                             <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Situation</h4>
                             <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
-                              As Leader of Technical Development at the Aspiring Product Managers Club, I observed a critical challenge: students were struggling with resume optimization for job applications. Many were submitting generic resumes that didn&apos;t align with specific job requirements, resulting in low interview conversion rates. The competitive job market demanded tailored, impactful resumes that highlighted relevant skills and experiences.
+                              <strong className="font-medium text-gray-900 dark:text-white">Context:</strong> Students and job seekers needed a way to create personalized, job-specific resumes that stand out to employers. Existing solutions lacked AI-powered tailoring capabilities, making it time-consuming to manually customize resumes for each job application. The challenge was to build a platform that leverages AI technology (OpenAI GPT-4) to automatically analyze job descriptions and tailor resumes to match specific role requirements, significantly improving interview chances.
                             </p>
+                            <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
+                              <em className="text-gray-600 dark:text-white/60">The challenge was to build a system that:</em>
+                            </p>
+                            <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                              <li>Seamlessly integrates with OpenAI GPT-4 Turbo for AI-powered resume tailoring</li>
+                              <li>Provides PDF file upload with automatic text extraction</li>
+                              <li>Offers real-time resume scoring and analysis</li>
+                              <li>Manages user authentication and resume history (up to 5 resumes per user)</li>
+                              <li>Ensures secure data management with JWT-based authentication</li>
+                              <li>Delivers a responsive, modern UI/UX with dark/light theme support</li>
+                            </ul>
                           </div>
 
                           {/* Task */}
                           <div className="space-y-3">
                             <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Task</h4>
                             <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
-                              My responsibility was to identify a solution that could help students create job-specific, optimized resumes efficiently. I needed to build a platform that could analyze job descriptions, extract key requirements, and guide students in tailoring their resumes to match specific roles. The solution had to be scalable, user-friendly, and provide measurable improvements in application success rates.
+                              <strong className="font-medium text-gray-900 dark:text-white">Objective:</strong> Develop a comprehensive full-stack MERN web application that helps students and job seekers create personalized, job-specific resumes using AI technology. The platform should analyze job descriptions, automatically tailor resumes, provide scoring feedback, and manage resume history—all while ensuring a secure, user-friendly experience.
                             </p>
+                            <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
+                              <em className="text-gray-600 dark:text-white/60">Key requirements:</em>
+                            </p>
+                            <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                              <li>Build a modern React frontend with responsive design and theme support</li>
+                              <li>Create a robust Node.js/Express backend with MongoDB for data persistence</li>
+                              <li>Implement OpenAI GPT-4 Turbo integration for AI-powered resume tailoring</li>
+                              <li>Develop secure authentication system with JWT tokens and password hashing</li>
+                              <li>Design resume upload and processing with PDF text extraction</li>
+                              <li>Implement resume scoring system (0-100) with visual feedback</li>
+                              <li>Create resume management system (save up to 5 resumes per user)</li>
+                              <li>Build user profile management with contact details</li>
+                            </ul>
                           </div>
 
                           {/* Action */}
                           <div className="space-y-3">
                             <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Action</h4>
-                            <ul className="space-y-3 list-none">
-                              <li className="flex items-start space-x-2">
-                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
-                                  <strong>Research & Ideation:</strong> Conducted user interviews with 30+ students to understand pain points in resume creation. Identified that manual resume tailoring was time-consuming and often missed key keywords.
-                                </span>
-                              </li>
-                              <li className="flex items-start space-x-2">
-                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
-                                  <strong>Design Process:</strong> Created comprehensive wireframes in Figma, iterating through two design drafts. First draft focused on core functionality, second draft refined UX/UI based on user feedback and accessibility principles.
-                                </span>
-                              </li>
-                              <li className="flex items-start space-x-2">
-                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
-                                  <strong>Development:</strong> Architected full-stack solution using React for frontend, Node.js/Express for backend, and PostgreSQL for data management. Implemented resume parsing algorithms and job description analysis using NLP techniques.
-                                </span>
-                              </li>
-                              <li className="flex items-start space-x-2">
-                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
-                                  <strong>Infrastructure:</strong> Deployed on AWS using Terraform for Infrastructure as Code, ensuring scalability and reliability. Integrated Cloudflare for global CDN and performance optimization.
-                                </span>
-                              </li>
-                              <li className="flex items-start space-x-2">
-                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
-                                  <strong>Testing & Iteration:</strong> Conducted beta testing with club members, gathering feedback to improve accuracy of resume analysis and user experience.
-                                </span>
-                              </li>
-                            </ul>
+                            <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal mb-4">
+                              <strong className="font-medium text-gray-900 dark:text-white">Approach:</strong> Implemented a full-stack MERN application with OpenAI GPT-4 Turbo integration, MongoDB for data persistence, JWT authentication, and a modern React frontend with responsive design and theme management.
+                            </p>
+                            
+                            <div className="mb-4">
+                              <strong className="font-medium text-gray-900 dark:text-white">Architecture & Design:</strong>
+                              <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                <li><strong>Frontend:</strong> React 18.3.1 with React Router, Axios, Tailwind CSS, Lucide React icons</li>
+                                <li><strong>Backend:</strong> Node.js with Express.js, MongoDB with Mongoose ODM</li>
+                                <li><strong>Database:</strong> MongoDB Atlas for user data and resume storage</li>
+                                <li><strong>AI Integration:</strong> OpenAI GPT-4 Turbo API for resume tailoring and analysis</li>
+                                <li><strong>Authentication:</strong> JWT-based authentication with bcrypt password hashing</li>
+                                <li><strong>File Processing:</strong> Multer for file uploads, pdf-parse for text extraction</li>
+                                <li><strong>Deployment:</strong> Render for backend and frontend hosting</li>
+                              </ul>
+                            </div>
+
+                            <div className="mb-4">
+                              <strong className="font-medium text-gray-900 dark:text-white">Key Implementation Steps:</strong>
+                              <div className="space-y-4 mt-4 pl-4 border-l-2 border-gray-200 dark:border-white/20">
+                                <div>
+                                  <strong className="text-gray-900 dark:text-white">1. Frontend Development</strong>
+                                  <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                    <li>• Built React application with React Router for client-side routing</li>
+                                    <li>• Implemented Axios for HTTP client with JWT token management</li>
+                                    <li>• Created responsive UI components with Tailwind CSS</li>
+                                    <li>• Developed dark/light theme toggle with floating draggable button</li>
+                                    <li>• Built user authentication UI (Login, SignUp) with form validation</li>
+                                    <li>• Designed resume upload interface with file validation</li>
+                                    <li>• Created resume history and profile management components</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <strong className="text-gray-900 dark:text-white">2. Backend API Development</strong>
+                                  <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                    <li>• Created Express.js server with modular router architecture</li>
+                                    <li>• Implemented RESTful API endpoints for auth, resumes, and profiles</li>
+                                    <li>• Built secure authentication middleware with JWT token validation</li>
+                                    <li>• Developed resume upload endpoint with Multer file handling</li>
+                                    <li>• Created PDF text extraction service using pdf-parse</li>
+                                    <li>• Implemented OpenAI GPT-4 Turbo integration for resume tailoring</li>
+                                    <li>• Built resume scoring algorithm based on job description alignment</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <strong className="text-gray-900 dark:text-white">3. Database Design & Integration</strong>
+                                  <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                    <li>• Designed MongoDB schema for users and resumes</li>
+                                    <li>• Implemented Mongoose ODM for database operations and validation</li>
+                                    <li>• Created indexes for efficient user and resume queries</li>
+                                    <li>• Built user-resume relationships with resume history management</li>
+                                    <li>• Implemented data validation and error handling at database level</li>
+                                    <li>• Created resume limit enforcement (max 5 resumes per user)</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <strong className="text-gray-900 dark:text-white">4. AI Integration & Resume Processing</strong>
+                                  <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                    <li>• Integrated OpenAI GPT-4 Turbo API for intelligent resume tailoring</li>
+                                    <li>• Implemented job description analysis and keyword extraction</li>
+                                    <li>• Built resume customization prompts for GPT-4 Turbo</li>
+                                    <li>• Created resume scoring algorithm (0-100) based on alignment</li>
+                                    <li>• Developed text extraction from PDF files using pdf-parse</li>
+                                    <li>• Implemented file validation (PDF, DOC, DOCX, max 50MB)</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <strong className="text-gray-900 dark:text-white">5. Authentication & Security</strong>
+                                  <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                    <li>• Implemented JWT-based authentication with secure token generation</li>
+                                    <li>• Created user registration and login endpoints with password hashing (bcrypt)</li>
+                                    <li>• Built authentication middleware for protected routes</li>
+                                    <li>• Implemented session management with token expiration</li>
+                                    <li>• Added user authorization for resume and profile management</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <strong className="text-gray-900 dark:text-white">6. User Experience & UI/UX</strong>
+                                  <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                    <li>• Built responsive design for mobile, tablet, and desktop</li>
+                                    <li>• Implemented dark/light theme toggle with persistent preferences</li>
+                                    <li>• Created intuitive navigation with sidebar menu</li>
+                                    <li>• Developed loading states and error handling throughout</li>
+                                    <li>• Built visual resume scoring with color-coded feedback</li>
+                                    <li>• Designed smooth animations and transitions</li>
+                                  </ul>
+                                </div>
+                                <div>
+                                  <strong className="text-gray-900 dark:text-white">7. Deployment & Infrastructure</strong>
+                                  <ul className="space-y-1 pl-4 mt-2 text-sm sm:text-base">
+                                    <li>• Configured Render deployment for backend and frontend</li>
+                                    <li>• Set up MongoDB Atlas cloud database</li>
+                                    <li>• Implemented environment variable management</li>
+                                    <li>• Created production build configuration</li>
+                                    <li>• Set up CORS configuration for production</li>
+                                    <li>• Implemented error handling and logging</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
                           </div>
 
                           {/* Result */}
                           <div className="space-y-3">
                             <h4 className="text-xl font-light text-gray-900 dark:text-white mb-2">Result</h4>
-                            <ul className="space-y-3 list-none">
-                              <li className="flex items-start space-x-2">
-                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
-                                  Successfully launched PepperUni as a production-ready platform at <strong>pepperuni.com</strong>, serving 500+ students at Northeastern University
-                                </span>
-                              </li>
-                              <li className="flex items-start space-x-2">
-                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
-                                  Users reported an average <strong>20% improvement in resume scores</strong> and increased interview callbacks by tailoring resumes to job descriptions
-                                </span>
-                              </li>
-                              <li className="flex items-start space-x-2">
-                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
-                                  Reduced resume customization time from <strong>2-3 hours to 15-20 minutes</strong> per application
-                                </span>
-                              </li>
-                              <li className="flex items-start space-x-2">
-                                <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                                <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
-                                  Platform demonstrates strong user retention with <strong>85% of users returning</strong> for multiple resume versions
-                                </span>
-                              </li>
+                            <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal mb-4">
+                              <strong className="font-medium text-gray-900 dark:text-white">Outcome:</strong> Successfully delivered a production-ready, full-stack MERN web application that enables students and job seekers to create personalized, job-specific resumes using AI technology, significantly improving their chances of landing interviews.
+                            </p>
+                            <div className="mb-4">
+                              <strong className="font-medium text-gray-900 dark:text-white">Quantifiable Results:</strong>
+                              <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                <li>✅ <strong>Full-Stack MERN Application</strong> with React, Node.js, Express, and MongoDB</li>
+                                <li>✅ <strong>AI-Powered Resume Tailoring</strong> using OpenAI GPT-4 Turbo</li>
+                                <li>✅ <strong>Resume Scoring System</strong> (0-100) with real-time analysis</li>
+                                <li>✅ <strong>Secure Authentication</strong> with JWT tokens and password hashing</li>
+                                <li>✅ <strong>Resume Management</strong> (save up to 5 resumes per user)</li>
+                                <li>✅ <strong>PDF Text Extraction</strong> with support for multiple file formats</li>
+                                <li>✅ <strong>Responsive Design</strong> with dark/light theme support</li>
+                                <li>✅ <strong>Production Deployment</strong> on Render with MongoDB Atlas</li>
+                              </ul>
+                            </div>
+                            <div className="mb-4">
+                              <strong className="font-medium text-gray-900 dark:text-white">Qualitative Achievements:</strong>
+                              <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base mt-2">
+                                <li><strong>User Experience:</strong> Intuitive interface with responsive design across all devices</li>
+                                <li><strong>AI Integration:</strong> Seamless OpenAI GPT-4 Turbo integration for intelligent resume tailoring</li>
+                                <li><strong>Scalability:</strong> MongoDB and RESTful API architecture support growing user base</li>
+                                <li><strong>Security:</strong> JWT authentication and password hashing ensure user data protection</li>
+                                <li><strong>Performance:</strong> Optimized file processing and AI API calls for fast response times</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* System Architecture */}
+                    <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🏗️ System Architecture</h3>
+                      <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-gray-200 dark:border-white/10 mb-4">
+                        <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
+                          PepperUni follows a modular client-server architecture with clear separation between frontend, backend, and external services:
+                        </p>
+                        <div className="space-y-4">
+                          <div>
+                            <h4 className="font-medium text-gray-900 dark:text-white mb-2">Client Layer (React)</h4>
+                            <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                              <li>React 18.3.1 with React Router for client-side routing</li>
+                              <li>Axios for HTTP client with JWT token management</li>
+                              <li>Tailwind CSS for responsive styling</li>
+                              <li>Theme management with React Context API</li>
+                              <li>Components: Login, SignUp, ResumeUpload, ResumeList, Profile, Response</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h4 className="font-medium text-gray-900 dark:text-white mb-2">Server Layer (Node.js/Express)</h4>
+                            <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                              <li>Express.js with modular router architecture</li>
+                              <li>Express middleware: CORS, body parser, JWT auth, file upload (Multer)</li>
+                              <li>Controllers: authController, resumeController, profileController</li>
+                              <li>Services: PDF extraction service (pdf-parse)</li>
+                              <li>RESTful API endpoints for authentication, resumes, and profiles</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h4 className="font-medium text-gray-900 dark:text-white mb-2">Data Layer (MongoDB)</h4>
+                            <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                              <li>MongoDB Atlas for cloud database storage</li>
+                              <li>Mongoose ODM for schema definition and validation</li>
+                              <li>Collections: Users (authentication, profiles), Resumes (resume data, scores, metadata)</li>
+                              <li>Indexes for efficient queries on email and user_id</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h4 className="font-medium text-gray-900 dark:text-white mb-2">External Services</h4>
+                            <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                              <li>OpenAI GPT-4 Turbo API for AI-powered resume tailoring</li>
+                              <li>File Storage: Temporary file storage for uploaded resumes</li>
+                              <li>Render: Backend and frontend hosting platform</li>
                             </ul>
                           </div>
                         </div>
                       </div>
                     </div>
 
+                    {/* Data Flow */}
+                    <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🔄 Data Flow</h3>
+                      <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-gray-200 dark:border-white/10">
+                        <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
+                          The resume processing workflow follows a clear data flow from user upload to AI-tailored output:
+                        </p>
+                        <div className="space-y-4">
+                          <div className="border-l-2 border-blue-500 dark:border-blue-400 pl-4">
+                            <h4 className="font-medium text-gray-900 dark:text-white mb-2">1. User Uploads Resume</h4>
+                            <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">User uploads PDF file with job description, job title, and company name through the React frontend.</p>
+                          </div>
+                          <div className="border-l-2 border-blue-500 dark:border-blue-400 pl-4">
+                            <h4 className="font-medium text-gray-900 dark:text-white mb-2">2. File Validation</h4>
+                            <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">Backend validates file format (PDF/DOC/DOCX) and size (max 50MB) using Multer middleware.</p>
+                          </div>
+                          <div className="border-l-2 border-blue-500 dark:border-blue-400 pl-4">
+                            <h4 className="font-medium text-gray-900 dark:text-white mb-2">3. Text Extraction</h4>
+                            <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">PDF text extraction service (pdf-parse) extracts text content from the uploaded resume file.</p>
+                          </div>
+                          <div className="border-l-2 border-blue-500 dark:border-blue-400 pl-4">
+                            <h4 className="font-medium text-gray-900 dark:text-white mb-2">4. OpenAI API Call</h4>
+                            <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">Backend sends extracted resume text and job description to OpenAI GPT-4 Turbo API for analysis, tailoring, and scoring.</p>
+                          </div>
+                          <div className="border-l-2 border-blue-500 dark:border-blue-400 pl-4">
+                            <h4 className="font-medium text-gray-900 dark:text-white mb-2">5. Save to MongoDB</h4>
+                            <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">AI-tailored resume, original text, score, and metadata are saved to MongoDB with user_id association.</p>
+                          </div>
+                          <div className="border-l-2 border-blue-500 dark:border-blue-400 pl-4">
+                            <h4 className="font-medium text-gray-900 dark:text-white mb-2">6. Return to Client</h4>
+                            <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">Backend returns tailored resume, score, and metadata to React frontend for display and download.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                     {/* Target Audience */}
-                    <div className="pt-4">
-                      <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Target Audience</h3>
-                      <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">
+                    <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">👥 Target Audience</h3>
+                      <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal mb-4">
                         The primary audience consists of university students and recent graduates actively seeking internships and full-time positions. Specifically targeting:
                       </p>
-                      <ul className="space-y-2 list-none mt-4">
-                        <li className="flex items-start space-x-2">
-                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Students applying to multiple positions requiring tailored resumes</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">Career changers needing to reframe experiences for different industries</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                          <span className="text-gray-700 dark:text-white/80 text-xs sm:text-sm leading-relaxed font-normal">International students adapting resumes to US job market standards</span>
-                        </li>
+                      <ul className="space-y-2 pl-5 sm:pl-6 list-disc text-sm sm:text-base">
+                        <li>Students applying to multiple positions requiring tailored resumes</li>
+                        <li>Career changers needing to reframe experiences for different industries</li>
+                        <li>International students adapting resumes to US job market standards</li>
+                        <li>Job seekers looking to improve their resume scores and interview chances</li>
+                        <li>Users who want AI-powered assistance in resume customization</li>
                       </ul>
                     </div>
 
                     {/* Skills & Tools */}
-                    <div className="pt-4">
-                      <h3 className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">Skills & Tools Applied</h3>
+                    <div className="pt-6 border-t border-gray-200 dark:border-white/10">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">🛠️ Skills & Tools Applied</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-3">
-                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Technical Skills</h4>
-                          <ul className="space-y-2 list-none">
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Full-stack development (React, Node.js, Express)</span>
-                            </li>
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Database design and optimization (PostgreSQL)</span>
-                            </li>
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Cloud infrastructure (AWS, Terraform)</span>
-                            </li>
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base font-light">NLP for text analysis and keyword extraction</span>
-                            </li>
-                          </ul>
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Frontend</h4>
+                          <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">React 18.3.1, React Router 6.28.0, Axios 1.7.7, Tailwind CSS 3.4.15, Lucide React 0.460.0</p>
                         </div>
                         <div className="space-y-3">
-                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Product & Design Skills</h4>
-                          <ul className="space-y-2 list-none">
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base font-light">UI/UX design and prototyping (Figma)</span>
-                            </li>
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base font-light">User research and validation</span>
-                            </li>
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Product strategy and roadmap planning</span>
-                            </li>
-                            <li className="flex items-start space-x-2">
-                              <span className="text-gray-400 dark:text-white/40 mt-1.5 text-xs">—</span>
-                              <span className="text-gray-700 dark:text-white/80 text-base font-light">Agile development and sprint planning</span>
-                            </li>
-                          </ul>
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Backend</h4>
+                          <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">Node.js, Express.js 4.21.2, MongoDB 8.9.1, Mongoose 8.9.1, JWT 9.0.2, bcrypt 5.1.1</p>
+                        </div>
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">AI & File Processing</h4>
+                          <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">OpenAI API 4.77.0 (GPT-4 Turbo), Multer 1.4.5, pdf-parse 1.1.1</p>
+                        </div>
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Deployment</h4>
+                          <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">Render (Backend & Frontend), MongoDB Atlas, Git</p>
+                        </div>
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Product & Design</h4>
+                          <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">Figma (UI/UX design), User research, Product strategy, Agile development</p>
+                        </div>
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-2">Development Tools</h4>
+                          <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">ESLint, Nodemon, dotenv, Git</p>
                         </div>
                       </div>
                     </div>
@@ -4187,7 +4339,7 @@ const ResumeSection = () => {
                     <div className="pt-6 border-t border-gray-300 dark:border-white/10">
                       <div className="flex flex-wrap gap-4">
                         <a
-                          href="https://pepperuni.com/"
+                          href="https://pepperuni.onrender.com/"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center space-x-2 px-5 py-2 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/70 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200 text-sm font-light rounded-lg"
