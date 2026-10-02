@@ -262,7 +262,7 @@ function HydroJourney({ onBack }) {
 
       <Chapter id="product" kicker="01 — The product" title="LYQUID is a strength workout. It does not live in one repository.">
         <p>
-          Hydrow already had a rowing experience. LYQUID is the strength product beside it. A member presses through a set. The machine writes a firmware log. A producer has already decided what that set is: which movements, how long the intro is, whether captions exist, and when the routine becomes public. None of that is one app.
+          Hydrow already had a rowing experience. LYQUID is the strength product beside it. A member completes a strength set. The machine writes a firmware log. A producer has already decided what that set is: which movements, how long the intro is, whether captions exist, and when the routine becomes public. None of that is one app.
         </p>
         <p>
           I joined as a full-stack engineer from January 2026 to May 2026 and took pieces of that path in four codebases. The commits are under my name. The story below is those commits, grouped by surface, not a tour of the whole company.
