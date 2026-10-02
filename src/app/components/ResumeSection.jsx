@@ -15,6 +15,7 @@ import iwcLogo from "../../../public/iwc.png";
 import montblancLogo from "../../../public/montblanc.svg";
 import bluepiLogo from "../../../public/bluepi.jpeg";
 import AmazonExperience from "./AmazonExperience";
+import HydroExperience from "./HydroExperience";
 
 const ResumeSection = () => {
   const [activeTab, setActiveTab] = useState("about");
@@ -24,6 +25,7 @@ const ResumeSection = () => {
   const [showTAJourney, setShowTAJourney] = useState(false);
   const [showAKQAProjects, setShowAKQAProjects] = useState(false);
   const [amazonView, setAmazonView] = useState(null);
+  const [hydroView, setHydroView] = useState(null);
   const [activeProjectJourney, setActiveProjectJourney] = useState(null); // 'google-slides', 'image-processor', 'leetcode', 'designcraft', 'recipehub'
   const [theme, setTheme] = useState("light");
 
@@ -94,6 +96,7 @@ const ResumeSection = () => {
                 setShowTAJourney(false);
                 setShowAKQAProjects(false);
                 setAmazonView(null);
+                setHydroView(null);
               }}
             >
               Chaman&#39;s Profile
@@ -110,6 +113,7 @@ const ResumeSection = () => {
                 setShowTAJourney(false);
                 setShowAKQAProjects(false);
                 setAmazonView(null);
+                setHydroView(null);
                 setActiveProjectJourney(null);
                   }}
                   className={`px-2 py-1.5 sm:px-2.5 sm:py-1.5 md:px-3 md:py-2 text-xs sm:text-sm font-medium transition-all duration-200 relative rounded-md ${
@@ -342,7 +346,7 @@ const ResumeSection = () => {
                 )}
 
                 {/* Experience Section */}
-                {activeTab === "experience" && !amazonView && (
+                {activeTab === "experience" && !amazonView && !hydroView && (
                   <motion.div
                     key="experience"
                     variants={sectionVariants}
@@ -355,8 +359,27 @@ const ResumeSection = () => {
                     <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Work Experience</h2>
 
                     <AmazonExperience
-                      onOverview={() => setAmazonView("overview")}
-                      onJourney={() => setAmazonView("journey")}
+                      onOverview={() => {
+                        setHydroView(null);
+                        setAmazonView("overview");
+                      }}
+                      onJourney={() => {
+                        setHydroView(null);
+                        setAmazonView("journey");
+                      }}
+                    />
+
+                    <div className="h-px bg-gray-200 dark:bg-white/10 my-4"></div>
+
+                    <HydroExperience
+                      onOverview={() => {
+                        setAmazonView(null);
+                        setHydroView("overview");
+                      }}
+                      onJourney={() => {
+                        setAmazonView(null);
+                        setHydroView("journey");
+                      }}
                     />
 
                     <div className="h-px bg-gray-200 dark:bg-white/10 my-4"></div>
@@ -717,6 +740,24 @@ const ResumeSection = () => {
                       mode={amazonView}
                       onBack={() => setAmazonView(null)}
                       onJourney={() => setAmazonView("journey")}
+                    />
+                  </motion.div>
+                )}
+
+                {activeTab === "experience" && hydroView && (
+                  <motion.div
+                    key={`hydro-${hydroView}`}
+                    variants={sectionVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.4 }}
+                    className="space-y-6"
+                  >
+                    <HydroExperience
+                      mode={hydroView}
+                      onBack={() => setHydroView(null)}
+                      onJourney={() => setHydroView("journey")}
                     />
                   </motion.div>
                 )}
