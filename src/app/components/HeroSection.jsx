@@ -4,7 +4,7 @@ import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import heroImage from "../../../public/hero-image.jpeg";
+import heroImage from "../../../public/profile.jpeg";
 
 const HeroSection = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);

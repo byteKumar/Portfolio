@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowTopRightOnSquareIcon, MapPinIcon, BuildingOfficeIcon, EnvelopeIcon, SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
-import heroImage from "../../../public/hero-image.jpeg";
+import heroImage from "../../../public/profile.jpeg";
 import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
 import apmcImage from "../../../public/apmc.png";
@@ -14,7 +14,7 @@ import akqaLogo from "../../../public/akqa.png";
 import iwcLogo from "../../../public/iwc.png";
 import montblancLogo from "../../../public/montblanc.svg";
 import bluepiLogo from "../../../public/bluepi.jpeg";
-import folderImage from "./folder.png";
+import AmazonExperience from "./AmazonExperience";
 
 const ResumeSection = () => {
   const [activeTab, setActiveTab] = useState("about");
@@ -23,11 +23,9 @@ const ResumeSection = () => {
   const [activeResearchPaper, setActiveResearchPaper] = useState(null); // 'paper1' or 'paper2'
   const [showTAJourney, setShowTAJourney] = useState(false);
   const [showAKQAProjects, setShowAKQAProjects] = useState(false);
+  const [amazonView, setAmazonView] = useState(null);
   const [activeProjectJourney, setActiveProjectJourney] = useState(null); // 'google-slides', 'image-processor', 'leetcode', 'designcraft', 'recipehub'
   const [theme, setTheme] = useState("light");
-  const [studyAuthenticated, setStudyAuthenticated] = useState(false);
-  const [studyPassword, setStudyPassword] = useState("");
-  const [studyPasswordError, setStudyPasswordError] = useState(false);
 
   const tabs = [
     { id: "about", label: "About" },
@@ -37,8 +35,6 @@ const ResumeSection = () => {
     { id: "skills", label: "Skills" },
     { id: "publications", label: "Publications" },
     { id: "leadership", label: "Leadership" },
-    { id: "cv", label: "CV" },
-    { id: "study", label: "Study" },
   ];
 
   const LinkButton = ({ href, children, icon, external = true }) => (
@@ -82,27 +78,14 @@ const ResumeSection = () => {
     }
   };
 
-  const handleStudyPasswordSubmit = (e) => {
-    e.preventDefault();
-    if (studyPassword === "Varun@9315852072") {
-      setStudyAuthenticated(true);
-      setStudyPasswordError(false);
-      setStudyPassword("");
-    } else {
-      setStudyPasswordError(true);
-      setStudyPassword("");
-    }
-  };
-
-
   return (
     <section className="text-gray-900 dark:text-white min-h-screen bg-gray-50 dark:bg-[#0a0a0a] relative overflow-x-hidden" id="resume">
       {/* Fixed Header with Tabs */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#121212] border-b border-gray-200 dark:border-white/10 shadow-sm">
-        <div className="w-full pl-3 pr-3 sm:pl-4 sm:pr-4 md:pl-6 md:pr-6 lg:pl-[10%] lg:pr-[10%]">
+        <div className="mx-auto w-full max-w-[1200px] px-3 sm:px-4 md:px-6 lg:px-10">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-2.5 sm:py-3 gap-2 sm:gap-3">
             <h1 
-              className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="shrink-0 whitespace-nowrap text-lg sm:text-xl font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               onClick={() => {
                 setActiveTab("about");
                 setShowWireframe(false);
@@ -110,6 +93,7 @@ const ResumeSection = () => {
                 setActiveResearchPaper(null);
                 setShowTAJourney(false);
                 setShowAKQAProjects(false);
+                setAmazonView(null);
               }}
             >
               Chaman&#39;s Profile
@@ -125,14 +109,10 @@ const ResumeSection = () => {
                 setActiveResearchPaper(null);
                 setShowTAJourney(false);
                 setShowAKQAProjects(false);
+                setAmazonView(null);
                 setActiveProjectJourney(null);
-                // Reset password state when switching away from study tab
-                    if (tab.id !== "study") {
-                      setStudyPassword("");
-                      setStudyPasswordError(false);
-                    }
                   }}
-                  className={`px-2 py-1.5 sm:px-3 sm:py-1.5 md:px-4 md:py-2 text-xs sm:text-sm font-medium transition-all duration-200 relative rounded-md ${
+                  className={`px-2 py-1.5 sm:px-2.5 sm:py-1.5 md:px-3 md:py-2 text-xs sm:text-sm font-medium transition-all duration-200 relative rounded-md ${
                     activeTab === tab.id
                       ? "text-gray-900 dark:text-white bg-gray-100 dark:bg-white/10"
                       : "text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10"
@@ -165,14 +145,14 @@ const ResumeSection = () => {
       </header>
 
       {/* Main Content Area */}
-      <div className="w-full pl-3 pr-3 sm:pl-4 sm:pr-4 md:pl-6 md:pr-6 lg:pl-[10%] lg:pr-0 pt-28 sm:pt-32 md:pt-[76px] pb-4 sm:pb-6">
-        <div className="flex flex-col lg:grid lg:grid-cols-5 lg:gap-4 gap-4">
-          {/* Left Column - Profile Section (20%) - Mobile/Tablet */}
-          <div className="w-full lg:hidden">
+      <div className="mx-auto w-full max-w-[1200px] px-3 sm:px-4 md:px-6 lg:px-10 pt-32 lg:pt-[4.75rem] pb-4 sm:pb-6">
+        <div className="flex flex-col items-start gap-4 sm:flex-row">
+          {/* Profile */}
+          <div className="w-full sm:sticky sm:top-32 lg:top-[4.75rem] sm:w-56 sm:shrink-0 sm:self-start">
             <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-5 shadow-sm border border-gray-200 dark:border-white/10">
               <div className="space-y-4">
                 {/* Profile Photo */}
-                <div className="w-full flex justify-center lg:justify-start">
+                <div className="w-full flex justify-center sm:justify-start">
                   <div className="relative w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] flex-shrink-0">
                     <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-gray-300 dark:border-white/30 shadow-md">
                       <Image
@@ -188,8 +168,8 @@ const ResumeSection = () => {
                 </div>
 
                 {/* Name and Pronouns */}
-                <div className="text-center lg:text-left">
-                  <h2 className="text-base sm:text-lg lg:text-base font-semibold text-gray-900 dark:text-white mb-0.5">Chaman Kumar</h2>
+                <div className="text-center sm:text-left">
+                  <h2 className="whitespace-nowrap text-base font-semibold text-gray-900 dark:text-white mb-0.5">Chaman Kumar</h2>
                   <p className="text-gray-500 dark:text-white/50 text-xs font-normal">He/Him</p>
                 </div>
 
@@ -205,15 +185,15 @@ const ResumeSection = () => {
 
                 {/* Contact Information */}
                 <div className="space-y-2">
-                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                  <div className="flex items-center justify-center sm:justify-start space-x-2">
                     <MapPinIcon className="w-4 h-4 text-gray-500 dark:text-white/50 flex-shrink-0" />
                     <span className="text-gray-700 dark:text-white/70 text-xs sm:text-sm lg:text-xs font-normal">Boston, MA, USA</span>
                   </div>
-                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                  <div className="flex items-center justify-center sm:justify-start space-x-2">
                     <BuildingOfficeIcon className="w-4 h-4 text-gray-500 dark:text-white/50 flex-shrink-0" />
                     <span className="text-gray-700 dark:text-white/70 text-xs sm:text-sm lg:text-xs font-normal">Northeastern University</span>
                   </div>
-                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                  <div className="flex items-center justify-center sm:justify-start space-x-2">
                     <EnvelopeIcon className="w-4 h-4 text-gray-500 dark:text-white/50 flex-shrink-0" />
                     <a
                       href="mailto:kumar.cham@northeastern.edu"
@@ -222,7 +202,7 @@ const ResumeSection = () => {
                       Email
                     </a>
                   </div>
-                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                  <div className="flex items-center justify-center sm:justify-start space-x-2">
                     <div className="w-4 h-4 flex items-center justify-center">
                       <Image 
                         src={LinkedinIcon} 
@@ -241,7 +221,7 @@ const ResumeSection = () => {
                       LinkedIn
                     </a>
                   </div>
-                  <div className="flex items-center justify-center lg:justify-start space-x-2">
+                  <div className="flex items-center justify-center sm:justify-start space-x-2">
                     <div className="w-4 h-4 flex items-center justify-center">
                       <Image 
                         src={GithubIcon} 
@@ -265,109 +245,8 @@ const ResumeSection = () => {
             </div>
           </div>
 
-          {/* Spacer for Desktop Grid */}
-          <div className="hidden lg:block lg:col-span-1"></div>
-
-          {/* Fixed Profile Card for Desktop */}
-          <div className="hidden lg:block fixed lg:top-[76px] lg:left-[calc(10%+1rem)] lg:w-[calc((80%-4rem)/5)] lg:h-[75vh] lg:overflow-hidden lg:z-10">
-            <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-5 shadow-sm border border-gray-200 dark:border-white/10 h-full overflow-hidden">
-              <div className="space-y-4">
-                {/* Profile Photo */}
-                <div className="w-full flex justify-center lg:justify-start">
-                  <div className="relative w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] lg:w-[180px] lg:h-[180px] flex-shrink-0">
-                    <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-gray-300 dark:border-white/30 shadow-md">
-                      <Image
-                        src={heroImage}
-                        alt="Chaman Kumar"
-                        fill
-                        className="object-cover"
-                        priority
-                        sizes="(max-width: 640px) 120px, (max-width: 1024px) 150px, 180px"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Name and Pronouns */}
-                <div className="text-center lg:text-left">
-                  <h2 className="text-base sm:text-lg lg:text-base font-semibold text-gray-900 dark:text-white mb-0.5">Chaman Kumar</h2>
-                  <p className="text-gray-500 dark:text-white/50 text-xs font-normal">He/Him</p>
-                </div>
-
-                {/* Professional Summary */}
-                <div>
-                  <p className="text-gray-700 dark:text-white/70 text-xs sm:text-sm lg:text-xs leading-relaxed font-normal">
-                    Software Engineer with expertise in full-stack development, cloud technologies, and DevOps. Specializing in MERN stack, Java frameworks, and scalable system design.
-                  </p>
-                </div>
-
-                {/* Divider */}
-                <div className="h-px bg-gray-200 dark:bg-white/10"></div>
-
-                {/* Contact Information */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-center lg:justify-start space-x-2">
-                    <MapPinIcon className="w-4 h-4 text-gray-500 dark:text-white/50 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-white/70 text-xs sm:text-sm lg:text-xs font-normal">Boston, MA, USA</span>
-                  </div>
-                  <div className="flex items-center justify-center lg:justify-start space-x-2">
-                    <BuildingOfficeIcon className="w-4 h-4 text-gray-500 dark:text-white/50 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-white/70 text-xs sm:text-sm lg:text-xs font-normal">Northeastern University</span>
-                  </div>
-                  <div className="flex items-center justify-center lg:justify-start space-x-2">
-                    <EnvelopeIcon className="w-4 h-4 text-gray-500 dark:text-white/50 flex-shrink-0" />
-                    <a
-                      href="mailto:kumar.cham@northeastern.edu"
-                      className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-blue-400 text-xs sm:text-sm lg:text-xs font-normal transition-colors"
-                    >
-                      Email
-                    </a>
-                  </div>
-                  <div className="flex items-center justify-center lg:justify-start space-x-2">
-                    <div className="w-4 h-4 flex items-center justify-center">
-                      <Image 
-                        src={LinkedinIcon} 
-                        alt="LinkedIn" 
-                        width={16} 
-                        height={16} 
-                        className="brightness-0 dark:brightness-100 dark:opacity-70" 
-                      />
-                    </div>
-                    <a
-                      href="https://www.linkedin.com/in/chamankumar5/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-blue-400 text-xs sm:text-sm lg:text-xs font-normal transition-colors"
-                    >
-                      LinkedIn
-                    </a>
-                  </div>
-                  <div className="flex items-center justify-center lg:justify-start space-x-2">
-                    <div className="w-4 h-4 flex items-center justify-center">
-                      <Image 
-                        src={GithubIcon} 
-                        alt="GitHub" 
-                        width={16} 
-                        height={16} 
-                        className="brightness-0 dark:brightness-100 dark:opacity-70" 
-                      />
-                    </div>
-                    <a
-                      href="https://github.com/byteKumar"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-blue-400 text-xs sm:text-sm lg:text-xs font-normal transition-colors"
-                    >
-                      GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column - Content Section (60%) */}
-          <div className="w-full lg:col-span-4">
+          {/* Main content */}
+          <div className="w-full min-w-0 sm:flex-1">
             <div className="space-y-4 sm:space-y-6">
               <AnimatePresence mode="wait">
                 {/* About Section */}
@@ -463,7 +342,7 @@ const ResumeSection = () => {
                 )}
 
                 {/* Experience Section */}
-                {activeTab === "experience" && (
+                {activeTab === "experience" && !amazonView && (
                   <motion.div
                     key="experience"
                     variants={sectionVariants}
@@ -474,6 +353,13 @@ const ResumeSection = () => {
                     className="space-y-4 sm:space-y-6"
                   >
                     <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Work Experience</h2>
+
+                    <AmazonExperience
+                      onOverview={() => setAmazonView("overview")}
+                      onJourney={() => setAmazonView("journey")}
+                    />
+
+                    <div className="h-px bg-gray-200 dark:bg-white/10 my-4"></div>
                     
                     {/* Graduate Teaching Assistant */}
                     {!showTAJourney ? (
@@ -814,6 +700,24 @@ const ResumeSection = () => {
                         </a>
                       </div>
                     </div>
+                  </motion.div>
+                )}
+
+                {activeTab === "experience" && amazonView && (
+                  <motion.div
+                    key={`amazon-${amazonView}`}
+                    variants={sectionVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.4 }}
+                    className="space-y-6"
+                  >
+                    <AmazonExperience
+                      mode={amazonView}
+                      onBack={() => setAmazonView(null)}
+                      onJourney={() => setAmazonView("journey")}
+                    />
                   </motion.div>
                 )}
 
@@ -2840,11 +2744,11 @@ const ResumeSection = () => {
                         </div>
                         <p className="text-gray-500 dark:text-white/50 text-sm font-normal mb-2">United States | Sep 2024 - Dec 2026</p>
                         <p className="text-gray-800 dark:text-white/80 text-lg font-light mb-1">Master of Science in Computer Science</p>
-                        <p className="text-gray-600 dark:text-white/60 text-base font-light mb-4">GPA: 3.67/4</p>
+                        <p className="text-gray-600 dark:text-white/60 text-base font-light mb-4">GPA: 3.77/4</p>
                         <div>
                           <h4 className="text-lg font-light text-gray-900 dark:text-white/90 mb-4">Relevant Courses</h4>
                           <div className="flex flex-wrap gap-3">
-                            {["Design Patterns", "Web Development", "Algorithms", "DBMS", "Computer Systems", "HCI", "Cloud Computing", "ML"].map((course) => (
+                            {["Program Design Paradigms", "Web Development", "Algorithms", "Database Management Systems", "Computer Systems", "Human Computer Interaction", "Natural Language Processing", "Essentials of Data Science"].map((course) => (
                               <span
                                 key={course}
                                 className="px-4 py-2 text-sm text-gray-600 dark:text-white/60 border border-gray-300 dark:border-white/20 rounded-full font-light"
@@ -4353,165 +4257,6 @@ const ResumeSection = () => {
                   </motion.div>
                 )}
 
-                {/* CV Section */}
-                {activeTab === "cv" && (
-                  <motion.div
-                    key="cv"
-                    variants={sectionVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.4 }}
-                    className="space-y-4"
-                  >
-                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">CV</h2>
-                    
-                    {/* Contact Message */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-lg p-6 border border-gray-200 dark:border-white/10 mb-8"
-                    >
-                      <p className="text-gray-900 dark:text-white text-base leading-relaxed font-light text-center">
-                        Interested in connecting? Feel free to reach out at{" "}
-                        <a 
-                          href="mailto:kumar.cham@northeastern.edu" 
-                          className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                        >
-                          kumar.cham@northeastern.edu
-                        </a>
-                        {" "}or{" "}
-                        <a 
-                          href="tel:+18573398868" 
-                          className="text-blue-600 dark:text-blue-400 hover:underline font-medium whitespace-nowrap"
-                        >
-                          +1 (857) 339-8868
-                        </a>
-                        . I&apos;m open to discussing opportunities.
-                      </p>
-                    </motion.div>
-
-                    {/* Resume Preview Frame */}
-                    <div className="relative w-full max-w-md mx-auto mb-8">
-                      <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-xl border-2 border-gray-300 dark:border-white/20">
-                        <div className="bg-white dark:bg-gray-900 rounded-lg shadow-inner p-3 aspect-[8.5/11] overflow-hidden relative">
-                          <iframe
-                            src="/Chaman_Kumar_Resume_2025.pdf#view=FitH"
-                            className="w-full h-full border-0 rounded"
-                            title="Resume Preview"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/10 dark:to-gray-900/10 pointer-events-none rounded"></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Download Section */}
-                    <div className="flex flex-col items-center gap-4 pt-4">
-                      <a
-                        href="/Chaman_Kumar_Resume_2025.pdf"
-                        download="Chaman_Kumar_Resume_2025.pdf"
-                        className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-300 rounded-lg font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        <span>Download Resume</span>
-                      </a>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Study Section */}
-                {activeTab === "study" && (
-                  <motion.div
-                    key="study"
-                    variants={sectionVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.4 }}
-                    className="space-y-4"
-                  >
-                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Study</h2>
-                    
-                    {!studyAuthenticated ? (
-                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-white/10">
-                        <form onSubmit={handleStudyPasswordSubmit} className="space-y-4">
-                          <div>
-                            <label htmlFor="study-password" className="block text-sm font-medium text-gray-700 dark:text-white/70 mb-2">
-                              Enter Password
-                            </label>
-                            <input
-                              type="password"
-                              id="study-password"
-                              value={studyPassword}
-                              onChange={(e) => {
-                                setStudyPassword(e.target.value);
-                                setStudyPasswordError(false);
-                              }}
-                              className="w-full px-4 py-2 border border-gray-300 dark:border-white/20 rounded-lg bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent"
-                              placeholder="Enter password"
-                              autoFocus
-                            />
-                          </div>
-                          {studyPasswordError && (
-                            <div className="text-red-600 dark:text-red-400 text-sm font-medium">
-                              Restricted Zone.
-                            </div>
-                          )}
-                          <button
-                            type="submit"
-                            className="w-full px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-white/90 transition-all duration-200 rounded-lg font-medium"
-                          >
-                            Access Study Section
-                          </button>
-                        </form>
-                      </div>
-                    ) : (
-                      <div className="flex flex-wrap gap-3 sm:gap-4">
-                        {/* Blind 75 Folder */}
-                        <a
-                          href="https://github.com/byteKumar/Blind-75"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex flex-col items-center justify-start space-y-1 hover:opacity-80 transition-opacity duration-200"
-                        >
-                          <div className="relative w-16 h-16 sm:w-20 sm:h-20">
-                            <Image
-                              src={folderImage}
-                              alt="Blind 75"
-                              fill
-                              className="object-contain"
-                            />
-                          </div>
-                          <p className="text-gray-900 dark:text-white text-xs sm:text-sm font-medium text-center max-w-[80px] break-words">
-                            Blind 75
-                          </p>
-                        </a>
-
-                        {/* Design Pattern Folder */}
-                        <a
-                          href="https://github.com/byteKumar/systemdesign"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex flex-col items-center justify-start space-y-1 hover:opacity-80 transition-opacity duration-200"
-                        >
-                          <div className="relative w-16 h-16 sm:w-20 sm:h-20">
-                            <Image
-                              src={folderImage}
-                              alt="Design Pattern"
-                              fill
-                              className="object-contain"
-                            />
-                          </div>
-                          <p className="text-gray-900 dark:text-white text-xs sm:text-sm font-medium text-center max-w-[80px] break-words">
-                            Design Pattern
-                          </p>
-                        </a>
-                      </div>
-                    )}
-                  </motion.div>
-                )}
               </AnimatePresence>
             </div>
           </div>
