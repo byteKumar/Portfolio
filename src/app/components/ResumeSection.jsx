@@ -265,53 +265,27 @@ const ResumeSection = () => {
                     className="space-y-4 sm:space-y-6"
                   >
                     <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 sm:p-6 md:p-7 lg:p-8 shadow-sm border border-gray-200 dark:border-white/10">
-                      <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4 sm:mb-6">About</h2>
+                      <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4 sm:mb-6">About Me</h2>
                       
                       <div className="space-y-4 sm:space-y-6 text-sm sm:text-base leading-relaxed font-light text-gray-700 dark:text-white/70">
                         <p className="text-sm sm:text-base">
-                          I&#39;m <strong className="font-medium text-gray-900 dark:text-white">Chaman Kumar</strong>, a Master of Science in Computer Science candidate at Northeastern University in Boston. I build full-stack products and database systems, and I am looking for a full-time role in Software Engineering or Software Development. I will be eligible to start in January 2027.
+                          Hi, I&#39;m <strong className="font-medium text-gray-900 dark:text-white">Chaman Kumar</strong>, a software engineer and M.S. in Computer Science candidate at Northeastern University. I build full-stack products and backend services with TypeScript, React/Next.js, Java, and cloud platforms, focusing on reliable APIs, thoughtful user experiences, and engineering practices that help teams ship safely.
                         </p>
-
-                        <div>
-                          <h3 className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-3 sm:mb-4">Experience</h3>
-                          <p className="text-sm sm:text-base">
-                            Most recently I was a Software Development Engineer Intern at Amazon Web Services, on Amazon Redshift. I implemented server-side WHERE filtering for SHOW discovery commands, reusing PostgreSQL parsing and execution so a driver can ask for the metadata it needs. Before that I was a Full-Stack Engineer at Hydrow, on LYQUID, the strength product. That work spanned Allegrow and HyAdmin, Hydrow&#39;s internal authoring and operations tools, a NestJS and TypeORM workout API, and the member site. I have also been a Graduate Teaching Assistant at Northeastern, and earlier I did product engineering at AKQA and BluePi.
-                          </p>
-                        </div>
-
-                        <div>
-                          <h3 className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-3 sm:mb-4">Technical expertise</h3>
-                          <div className="space-y-2 sm:space-y-3 pl-3 sm:pl-4 border-l-2 border-gray-200 dark:border-white/20">
-                            <div className="text-xs sm:text-sm">
-                              <strong className="font-medium text-gray-900 dark:text-white">Programming:</strong> <span className="break-words">Java, Python, C/C++, JavaScript, TypeScript, C#, SQL, Go(Golang), Ruby</span>
-                            </div>
-                            <div className="text-xs sm:text-sm">
-                              <strong className="font-medium text-gray-900 dark:text-white">Web/Frameworks:</strong> <span className="break-words">React, Node.js, Next.js, NestJS, Express, Spring Boot, .NET, Angular, Tailwind CSS, Material UI, Chart.js, HTML5/CSS3, Webpack, Socket.IO</span>
-                            </div>
-                            <div className="text-xs sm:text-sm">
-                              <strong className="font-medium text-gray-900 dark:text-white">Databases/Testing:</strong> <span className="break-words">MySQL, PostgreSQL, Amazon Redshift, TypeORM, JDBC, DynamoDB, MongoDB, Redis, JUnit, Mockito, Jest, Postman, SonarQube</span>
-                            </div>
-                            <div className="text-xs sm:text-sm">
-                              <strong className="font-medium text-gray-900 dark:text-white">Cloud & DevOps:</strong> <span className="break-words">Jenkins, Docker, Kubernetes, GCP, Azure, AWS (Lambda, EC2, S3, RDS/DynamoDB, IAM, SNS)</span>
-                            </div>
-                            <div className="text-xs sm:text-sm">
-                              <strong className="font-medium text-gray-900 dark:text-white">Software Development:</strong> <span className="break-words">Object-Oriented Design, TDD, Agile, Scrum, Retrospective, Story Planning, Sprint, Service First</span>
-                            </div>
-                            <div className="text-xs sm:text-sm">
-                              <strong className="font-medium text-gray-900 dark:text-white">Certifications:</strong> <span className="break-words">AWS Cloud Practitioner, AWS Certified Developer Associate</span>
-                            </div>
-                            <div className="text-xs sm:text-sm">
-                              <strong className="font-medium text-gray-900 dark:text-white">Other Tools:</strong> <span className="break-words">Selenium, jQuery, CloudWatch, Cypress, Stripe, Git, Linux/Bash, CI/CD, GitHub Actions, REST API, JWT</span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div>
-                          <h3 className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-3 sm:mb-4">What I am looking for</h3>
-                          <p className="text-sm sm:text-base">
-                            I am currently looking for full-time opportunities in Software Engineering and Software Development, and I will be eligible to start in January 2027. I want to work on products where the API, the data, and the interface have to stay correct together, the same kind of path I took at Amazon and Hydrow.
-                          </p>
-                        </div>
+                        <p className="text-sm sm:text-base">
+                          Most recently, I worked at Amazon on Redshift discovery tooling, where I implemented server-side filtering for SHOW commands and improved selective-query performance through predicate pushdown.
+                        </p>
+                        <p className="text-sm sm:text-base">
+                          At Hydrow, I built features across internal web applications and backend APIs, including strength-workout authoring workflows, firmware-log analysis tools, interactive telemetry visualizations, and tested API and data-model enhancements.
+                        </p>
+                        <p className="text-sm sm:text-base">
+                          Earlier, I worked on web performance, accessibility, CI/CD, and cloud-native application development at AKQA and BluePi. I enjoy solving product problems end to end, from data models and APIs to polished frontend workflows, and I am especially interested in backend, platform, and full-stack engineering roles.
+                        </p>
+                        <p className="text-sm sm:text-base">
+                          <strong className="font-medium text-gray-900 dark:text-white">Core stack:</strong> TypeScript, React, Next.js, Node.js, Java/Spring Boot, NestJS, SQL, AWS, Docker, CI/CD, and automated testing.
+                        </p>
+                        <p className="text-sm sm:text-base">
+                          I&#39;m seeking a full-time Software Engineer or Software Development Engineer role starting January 2027. I&#39;m most interested in building reliable systems end to end—from well-designed APIs and data models to polished interfaces people can trust.
+                        </p>
                       </div>
                     </div>
                   </motion.div>
