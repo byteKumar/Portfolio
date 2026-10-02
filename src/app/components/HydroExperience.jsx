@@ -16,10 +16,10 @@ function BulletList({ items }) {
 }
 
 const summaryBullets = [
-  "Built strength-workout authoring in Allegrow so a single-set video, a bodyweight movement, and an athlete-developed routine could be published with the rules the player expects.",
-  "Extended the NestJS workout API: history by workout id, interval stats, athlete custom routines, body-focus tags, and max-weight fields, with end-to-end tests.",
-  "Shipped HyAdmin diagnostics for strength firmware logs: sampled charts, left and right force, zoom, and a permalink, plus workout search and badge modality rules.",
-  "Updated the member site so a LYQUID collection, muscle-load stats, the default payment card, and an 18+ admin check match the product.",
+  "Built internal tooling for authoring and publishing strength-workout content, including single-set video, bodyweight, and athlete-created routine workflows.",
+  "Extended NestJS workout APIs with workout-history retrieval, interval metrics, custom routines, body-focus metadata, and max-weight fields, and added 15 Jest end-to-end tests for the new flows.",
+  "Developed HyAdmin diagnostics for strength-device logs, including force visualizations, sampling controls, zoom, permalink sharing, and workout search.",
+  "Delivered member-site updates for LYQUID collections, muscle-load insights, payment-card display, and administrative age-gating requirements.",
 ];
 
 function HydrowMark() {
@@ -44,9 +44,15 @@ function HydroCard({ onOverview, onJourney }) {
           <p className="text-gray-500 dark:text-white/50 text-xs sm:text-sm font-normal break-words mb-2">
             Hydrow — Strength, LYQUID | Jan 2026 – May 2026
           </p>
+          <p className="text-sm leading-6 font-light text-gray-600 dark:text-white/70">
+            Allegrow and HyAdmin are Hydrow&#39;s internal workout-authoring and operations tools. LYQUID is the strength product.
+          </p>
         </div>
       </div>
       <BulletList items={summaryBullets} />
+      <p className="text-sm leading-6 font-light text-gray-600 dark:text-white/65">
+        Payment-card and age-gating work was display and validation on the member site.
+      </p>
       <div className="pt-2 flex flex-wrap gap-2">
         <button onClick={onOverview} className={buttonClass}>
           <span>Overview</span>

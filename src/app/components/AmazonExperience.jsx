@@ -18,10 +18,10 @@ function BulletList({ items }) {
 }
 
 const summaryBullets = [
-  "Added a SQL WHERE clause to Redshift SHOW TABLES, SCHEMAS, COLUMNS, and GRANTS so a driver can ask for only the metadata it needs instead of downloading the catalog and throwing rows away.",
-  "Reused PostgreSQL's analyzer and executor. SHOW output is not a real table, so I built a synthetic result description, prepared the expression once, and evaluated it per candidate row.",
-  "Shipped as 11 reviewable changes. Core grammar and safety first, then grants, local catalog narrowing, datashare, and Glue. Pushdown only reduces work. The full WHERE still decides which rows come back.",
-  "Fixed the 100k-row cap so it applies after filtering. On the demo cluster, materialized-view discovery went from 0 rows to 40, and rows fetched dropped from about 2,041 to 40.",
+  "Implemented server-side WHERE filtering for Amazon Redshift SHOW TABLES, SHOW SCHEMAS, SHOW COLUMNS, and SHOW GRANTS, reducing unnecessary metadata transfer and fixing filtering behavior around legacy result caps.",
+  "Reused PostgreSQL parsing and execution primitives to evaluate predicates against synthesized SHOW result rows, preserving type coercion and SQL NULL semantics.",
+  "Added safe predicate narrowing for supported name-based filters while retaining full server-side predicate evaluation for correctness.",
+  "Validated selective discovery on benchmark schemas: exact-name lookups improved from about 2.7 s to 127 ms. A separate driver demo reduced returned rows from about 2,041 to 40.",
 ];
 
 function AmazonCard({ onOverview, onJourney }) {
@@ -38,11 +38,14 @@ function AmazonCard({ onOverview, onJourney }) {
             Software Development Engineer Intern
           </h3>
           <p className="text-gray-500 dark:text-white/50 text-xs sm:text-sm font-normal break-words mb-2">
-            Amazon — Redshift RedCat, Catalog & Data Governance | Jun 2026 – Sept 2026
+            Amazon Web Services (AWS) — Amazon Redshift | Jun 2026 – Sept 2026
           </p>
         </div>
       </div>
       <BulletList items={summaryBullets} />
+      <p className="text-sm leading-6 font-light text-gray-600 dark:text-white/65">
+        Implemented and validated in review; production driver integration remained a follow-up.
+      </p>
       <div className="pt-2 flex flex-wrap gap-2">
         <button onClick={onOverview} className={buttonClass}>
           <span>Overview</span>
@@ -87,7 +90,7 @@ function AmazonOverview({ onBack, onJourney }) {
         <BackButton onBack={onBack} />
         <div className="min-w-0">
           <p className="text-[11px] uppercase tracking-[0.18em] text-gray-400 dark:text-white/40 mb-1">
-            Amazon · Redshift RedCat · Jun 2026 – Sept 2026
+            Amazon Web Services · Amazon Redshift · Jun 2026 – Sept 2026
           </p>
           <h3 className="text-2xl sm:text-3xl font-light text-gray-900 dark:text-white leading-tight">
             SHOW could list a schema. It could not answer a smaller question.
@@ -122,19 +125,19 @@ function AmazonOverview({ onBack, onJourney }) {
         <div className="rounded-xl border border-gray-200 dark:border-white/10 p-4 sm:p-5">
           <p className="text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-white/40">Large-schema benchmark</p>
           <p className="mt-1 text-3xl font-light text-gray-900 dark:text-white">~21×</p>
-          <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-white/65">Exact table lookup, about 2,665 ms to 127 ms, on a schema of about 30,300 tables. A broad filter that still matches most rows was about 1.3×.</p>
+          <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-white/65">Exact table lookup, about 2.7 s to 127 ms. A broad filter that still matches most rows was about 1.3×.</p>
         </div>
         <div className="rounded-xl border border-gray-200 dark:border-white/10 p-4 sm:p-5">
           <p className="text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-white/40">The cluster I ran</p>
           <p className="mt-1 text-3xl font-light text-gray-900 dark:text-white">~2.2×</p>
-          <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-white/65">About 2,000 objects. Materialized-view discovery went from 0 rows to 40. Rows fetched dropped from about 2,041 to 40.</p>
+          <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-white/65">Materialized-view discovery went from 0 rows to 40. Rows fetched dropped from about 2,041 to 40. Latency on that demo was about 2.2×.</p>
         </div>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2 text-sm leading-6 text-gray-600 dark:text-white/70">
         <div className="rounded-xl bg-gray-50 dark:bg-white/[0.04] p-4">
-          <p className="font-medium text-gray-900 dark:text-white">Shipped, in review</p>
-          <p className="mt-1">Eleven changes: grammar and the safety allowlist, then execution, grants, and safe narrowing for the local catalog, datashare, and Glue.</p>
+          <p className="font-medium text-gray-900 dark:text-white">Status</p>
+          <p className="mt-1">Implemented and validated in review. Production driver integration remained a follow-up.</p>
         </div>
         <div className="rounded-xl bg-gray-50 dark:bg-white/[0.04] p-4">
           <p className="font-medium text-gray-900 dark:text-white">Still outside the product path</p>
@@ -185,7 +188,7 @@ const pathStages = [
     n: "04",
     title: "Collect",
     file: "collectors",
-    text: "Each source still produces candidates. The local catalog scans its tables. Glue uses the Glue API. A datashare asks the producer. The filter has to be right for every one of them.",
+    text: "Each source still produces candidates. The filter has to be right for every one of them.",
   },
   {
     n: "05",
@@ -199,17 +202,6 @@ const pathStages = [
     file: "ExecQual",
     text: "Each candidate becomes a tuple. ExecQual returns true or false. Only matches count toward LIMIT and the row cap. Survivors are sorted by leaf name and emitted.",
   },
-];
-
-const changes = [
-  { id: "01", title: "Grammar and the safety allowlist", detail: "The clause exists, names resolve, and unsupported shapes die at analysis." },
-  { id: "02", title: "Executor on TABLES, SCHEMAS, COLUMNS", detail: "Prepare once, qualify every candidate, then sort and emit." },
-  { id: "03", title: "The feature gate", detail: "A switch that can turn the clause off on its own, and a discovery-version bump so a driver can see the server can filter." },
-  { id: "04", title: "Non-batch GRANTS", detail: "The command the brief had listed as a follow-up. Streaming, not buffered." },
-  { id: "05", title: "Inline filter for buffered callers", detail: "TABLES, SCHEMAS, and COLUMNS keep only matches, then sort." },
-  { id: "06 · 10", title: "Local catalog narrowing", detail: "Exact names and fixed-prefix LIKE become index or range bounds." },
-  { id: "07 – 09", title: "Datashare", detail: "Safe fields travel with the producer request. The consumer still rechecks the full predicate." },
-  { id: "11", title: "Glue name prefixes", detail: "A fixed table-name prefix becomes a safe GetTables pattern. Anything richer stays local." },
 ];
 
 function Chapter({ id, kicker, title, children }) {
@@ -340,9 +332,9 @@ function GrantsChain() {
           <p className="mt-2 text-sm text-gray-600 dark:text-white/65">The statement is streaming. A real predicate is returned, and each row is filtered.</p>
         </div>
         <div className="rounded-xl bg-gray-50 dark:bg-white/[0.04] p-3">
-          <p className="text-[11px] uppercase tracking-[0.14em] text-gray-400 dark:text-white/40">Consumer RPC</p>
-          <p className="mt-1 font-mono text-[12px] leading-5 text-gray-900 dark:text-white">Producer asked for grants on t1</p>
-          <p className="mt-2 text-sm text-gray-600 dark:text-white/65">There is no WHERE clause on this hop. The predicate stays empty, and every row goes back to the consumer, who filters.</p>
+          <p className="text-[11px] uppercase tracking-[0.14em] text-gray-400 dark:text-white/40">No WHERE clause</p>
+          <p className="mt-1 font-mono text-[12px] leading-5 text-gray-900 dark:text-white">SHOW GRANTS ON TABLE t1</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-white/65">There is no WHERE clause. The predicate stays empty, and every row goes back to the caller, who filters.</p>
         </div>
       </div>
     </Diagram>
@@ -582,34 +574,6 @@ function MemoryStory() {
   );
 }
 
-function ClusterTraces() {
-  const traces = [
-    { sql: "SHOW TABLES FROM SCHEMA dev.public WHERE table_type = 'TABLE'", scan: "full_scan", flow: "10 scanned → 10 kept", note: "Every object in that schema was a table, so the filter keeps the whole scan." },
-    { sql: "SHOW SCHEMAS FROM DATABASE dev WHERE schema_name = 'public'", scan: "equality_pushdown", flow: "1 scanned → 1 kept", note: "The exact schema name is the lookup key." },
-    { sql: "SHOW COLUMNS FROM TABLE dev.public.perf_test_1 WHERE column_name = 'id'", scan: "equality_pushdown", flow: "1 scanned → 1 kept", note: "Same pattern, on a column name." },
-    { sql: "WHERE table_name = 'perf_test_5' AND table_type = 'VIEW'", scan: "equality_pushdown", flow: "1 scanned → 0 kept", note: "The name hint returns the table. The predicate sees it is not a view and drops it." },
-    { sql: "After CREATE VIEW test_view, WHERE table_type = 'VIEW'", scan: "full_scan", flow: "11 scanned → 1 kept", note: "Type still cannot narrow the catalog. The filter keeps the one view." },
-    { sql: "WHERE table_name = 'test_view'", scan: "equality_pushdown", flow: "1 scanned → 1 kept", note: "The same view, found by name." },
-  ];
-
-  return (
-    <Diagram kicker="What the cluster log was showing">
-      <ul className="space-y-2">
-        {traces.map((trace) => (
-          <li key={trace.sql} className="rounded-xl border border-gray-200 dark:border-white/10 p-3">
-            <p className="font-mono text-[12px] sm:text-[13px] leading-5 text-gray-900 dark:text-white break-words">{trace.sql}</p>
-            <div className="mt-2 flex flex-wrap items-center gap-2">
-              <span className="rounded-full bg-gray-900 px-2.5 py-0.5 font-mono text-[11px] text-white dark:bg-white dark:text-gray-900">{trace.scan}</span>
-              <span className="text-xs text-gray-500 dark:text-white/50">{trace.flow}</span>
-            </div>
-            <p className="mt-1.5 text-sm leading-6 text-gray-600 dark:text-white/65">{trace.note}</p>
-          </li>
-        ))}
-      </ul>
-    </Diagram>
-  );
-}
-
 function OperatorTable() {
   const rows = [
     ["=", "WHERE table_type = 'VIEW'"],
@@ -675,7 +639,7 @@ function EdgeTable() {
     ["Unknown column", "Rejected at parse-analyze: column does not exist", "Tested"],
     ["Subquery or aggregate", "Rejected by the subset check", "Tested"],
     ["Legacy LIKE plus WHERE", "Rejected in the grammar", "Tested"],
-    ["GUC off", "Rejected before execution", "Tested"],
+    ["Feature off", "Rejected before execution", "Tested"],
     ["Dropped owner", "The scan returns rows and does not crash", "Tested"],
     ["Case", "= is case-sensitive. ILIKE is not.", "Tested"],
     ["Cross-database and external schema", "The same filter runs on the rows that come back", "Tested"],
@@ -753,7 +717,7 @@ function AmazonJourney({ onBack }) {
         </button>
         <div className="min-w-0">
           <p className="text-[11px] uppercase tracking-[0.18em] text-gray-400 dark:text-white/40 mb-1">
-            Amazon · Redshift RedCat · Jun 2026 – Sept 2026
+            Amazon Web Services · Amazon Redshift · Jun 2026 – Sept 2026
           </p>
           <h3 className="text-2xl sm:text-3xl font-light text-gray-900 dark:text-white leading-tight">
             Teaching a catalog command to answer a smaller question
@@ -795,10 +759,7 @@ function AmazonJourney({ onBack }) {
           Four pressures sat on that gap, and they all wanted the same clause. Driver compliance was the primary one: getTables-style type filters had to become a server predicate. ODBC <span className="font-normal text-gray-900 dark:text-white">SQL_ATTR_METADATA_ID</span> folds identifier arguments to uppercase and matches them case-insensitively. SHOW LIKE was case-sensitive only. There was no ILIKE, and a general WHERE absorbs ILIKE without another one-off keyword. Customers already had this kind of predicate on SVV, including <span className="font-normal text-gray-900 dark:text-white">svv_all_tables WHERE database_name IN (...)</span>. The SVV version of that gap had a separate fix in flight. If SHOW is supposed to become the recommended discovery path, it needs the same kind of predicate, on one result shape rather than an N-leg UNION ALL.
         </p>
         <p>
-          The grammar was also growing one keyword at a time. Each new filter meant another optional clause in the grammar, plus another branch in the discovery code. A general WHERE collapses those into one path. Later filters, including owner or last-altered time, become a column on the result, which is a descriptor change, and the grammar stays still.
-        </p>
-        <p>
-          The discovery plan already called SHOW WHERE and projection a funded item for the second half of 2026. I was the intern on Redshift RedCat, Catalog & Data Governance, from June 2026 to September 2026. Projection stayed a separate work item. WHERE is the half I built.
+          The grammar was also growing one keyword at a time. Each new filter meant another optional clause in the grammar, plus another branch in the discovery code. A general WHERE collapses those into one path.           Later filters, including owner or last-altered time, become a column on the result, which is a descriptor change, and the grammar stays still. I built the WHERE half from June 2026 to September 2026. Returning fewer columns stayed a separate feature.
         </p>
       </Chapter>
 
@@ -807,16 +768,16 @@ function AmazonJourney({ onBack }) {
           The two-month must-finish list was a WHERE clause on three commands: <span className="font-normal text-gray-900 dark:text-white">SHOW TABLES FROM SCHEMA</span>, <span className="font-normal text-gray-900 dark:text-white">SHOW COLUMNS FROM TABLE</span>, and <span className="font-normal text-gray-900 dark:text-white">SHOW SCHEMAS FROM DATABASE</span>. The expression subset, evaluated on the server after enumeration, was equality and inequality, LIKE and NOT LIKE, ILIKE and NOT ILIKE, IN and NOT IN, IS NULL and IS NOT NULL, AND, OR, NOT, parentheses, string literals, and bound parameters. LIMIT still applies after WHERE. An empty result is success, the same way LIKE already worked. Column names resolve case-insensitively. A type error such as <span className="font-normal text-gray-900 dark:text-white">ordinal_position = &apos;foo&apos;</span> fails at parse time, which is an error, and the session stays up.
         </p>
         <p>
-          Filterable columns are the columns that command already returns. For SHOW TABLES that includes database, schema, table name, table type, ACL, remarks, and, when extended fields are on, owner, last altered, last modified, dist style, and table subtype. SHOW COLUMNS and SHOW SCHEMAS each use their own result descriptor. Filtering on an extended column while that GUC is off is a clear error. Evaluating those columns as NULL would have produced surprising empty results.
+          Filterable columns are the columns that command already returns. For SHOW TABLES that includes database, schema, table name, table type, ACL, remarks, and, when extended fields are on, owner, last altered, last modified, dist style, and table subtype. SHOW COLUMNS and SHOW SCHEMAS each use their own result descriptor. Filtering on an extended column while those fields are off is a clear error. Evaluating those columns as NULL would have produced surprising empty results.
         </p>
         <p>
           Left outside the original scope, on purpose: subqueries, JOINs, CTEs, aggregates, window functions, function calls such as LOWER or SUBSTR, cross-column comparisons such as <span className="font-normal text-gray-900 dark:text-white">schema_name = table_name</span>, RESULT_SCAN over SHOW, and projection. Projection is the other half of the same effort. Drivers hurt more from extra rows than from extra columns, and trying to ship both risked finishing neither. BETWEEN and timestamp comparisons on last-altered and last-modified were in the recommended first version. LOWER and UPPER were an explicit no, because ILIKE already covers case folding.
         </p>
         <p>
-          SHOW DATABASES, FUNCTIONS, PROCEDURES, PARAMETERS, GRANTS, and CONSTRAINTS were follow-ups in the brief. The brief estimated that a fourth command is about 50 lines plus tests once the framework exists. GRANTS later became stretch work and did ship. Predicate pushdown into the local catalog, datashare RPC, and Glue was written down as a stretch goal. The first design applied WHERE only after the rows were gathered. I finished that core early, and the rest of the internship extended the same rule into those sources.
+          SHOW DATABASES, FUNCTIONS, PROCEDURES, PARAMETERS, and CONSTRAINTS stayed outside this work. SHOW GRANTS was included and went to review with the rest. The first design applied WHERE only after the rows were gathered. Supported name filters can narrow a scan later, and the full predicate still decides the result.
         </p>
         <p>
-          LIKE was already public, so the design conversation was about coexistence. Four options were written down. A: LIKE or WHERE, never both. B: both allowed, AND-ed together, so a driver can append WHERE to a call site that already sends LIKE. C: rewrite LIKE into WHERE internally, so there is one evaluator. D: deprecate LIKE. The brief recommended B, and it said not to start week-2 grammar work until this and the clause order were signed off. C is cleaner on paper, and it was deferred, because today&apos;s LIKE is sometimes pushed into a catalog ScanKey and sometimes applied after the fact. Sugaring it into WHERE can silently lose that pushdown. D is a breaking change. Clause order in the brief follows PostgreSQL as far as SHOW has those clauses: LIKE, then WHERE, then LIMIT.
+          LIKE was already public, so the design conversation was about coexistence. Four options were written down. A: LIKE or WHERE, never both. B: both allowed, AND-ed together, so a driver can append WHERE to a call site that already sends LIKE. C: rewrite LIKE into WHERE internally, so there is one evaluator. D: deprecate LIKE. The recommended option was B. Grammar work waited until that choice and the clause order were settled. C is cleaner on paper, and it was deferred, because today&apos;s LIKE is sometimes pushed into a catalog ScanKey and sometimes applied after the fact. Sugaring it into WHERE can silently lose that pushdown. D is a breaking change. Clause order in the brief follows PostgreSQL as far as SHOW has those clauses: LIKE, then WHERE, then LIMIT.
         </p>
         <p>
           The tests I kept from the implementation record a stricter grammar than that recommendation. A statement that uses the legacy LIKE clause and a WHERE clause together is rejected at parse time, with an error that you cannot use both. The LIKE a caller wants is written inside the WHERE expression — <span className="font-normal text-gray-900 dark:text-white">WHERE table_name LIKE &apos;w6_%&apos;</span> — and that operator is part of the supported subset. Those are two different LIKEs. The legacy keyword stays where it already was. The new clause is the general predicate.
@@ -865,7 +826,7 @@ function AmazonJourney({ onBack }) {
           The original filter loop was modeled on <span className="font-normal text-gray-900 dark:text-white">ExecScan</span>: create an executor state, attach parameter bindings, prepare the qual, fill a slot the same way the existing tuple builder already does, point the scan slot at that tuple, reset the expression context per row, and erase rows that fail ExecQual. Buffered callers — TABLES, SCHEMAS, COLUMNS — keep matching tuples and then sort. Streaming callers — GRANTS and COLUMN GRANTS — evaluate and emit immediately. In both forms the cap increments only for matching rows.
         </p>
         <p>
-          Error text was treated as part of the feature. An unknown column comes back as column &quot;foo&quot; does not exist in the SHOW TABLES result. A function call comes back as function calls are not supported in WHERE for SHOW; use ILIKE for case-insensitive matching. A subquery comes back as subqueries are not supported. A bad comparison such as <span className="font-normal text-gray-900 dark:text-white">ordinal_position = &apos;foo&apos;</span> comes out of PostgreSQL as operator does not exist. A disabled GUC is a feature-not-supported error before any execution.
+          Error text was treated as part of the feature. An unknown column comes back as column &quot;foo&quot; does not exist in the SHOW TABLES result. A function call comes back as function calls are not supported in WHERE for SHOW; use ILIKE for case-insensitive matching. A subquery comes back as subqueries are not supported. A bad comparison such as <span className="font-normal text-gray-900 dark:text-white">ordinal_position = &apos;foo&apos;</span> comes out of PostgreSQL as operator does not exist. Turning the feature off is a feature-not-supported error before any execution.
         </p>
         <Callout>
           The predicate object is shared. It owns parameter values, compilation, NULL handling, the full-row check, and cleanup. A predicate can parse and still fail on one row — division by zero, a bad regular expression, a bad cast. Cleanup restores the caller memory context before executor state is freed, so the failure is a normal query error and the session stays usable. That cleanup is the next chapter&apos;s whole subject, because the per-row tuple is where the memory goes.
@@ -877,13 +838,13 @@ function AmazonJourney({ onBack }) {
           TABLES, SCHEMAS, and COLUMNS can build their candidate rows up front, store them, filter them, and sort them. GRANTS cannot, in the interesting case. A grant row is assembled as the scan walks users and roles. The column a WHERE clause wants — <span className="font-normal text-gray-900 dark:text-white">privilege_type</span> — is filled in at the bottom of that walk, inside the function that builds the tuple. Evaluating the predicate any earlier would be asking a question about a field that does not exist yet.
         </p>
         <p>
-          So the predicate is created once, at the grants entry point, and passed down. The user-and-role walk is the orchestrator: scan users, then roles. The user walk and the role walk pass the predicate through. Evaluation happens only when the tuple is built, which is also the moment the row is complete: database, schema, object, type, privilege, identity, grantor. A user statement such as <span className="font-normal text-gray-900 dark:text-white">SHOW GRANTS ON TABLE t1 WHERE privilege_type = &apos;SELECT&apos;</span> is streaming, the setup returns a real predicate, and each row is filtered. A request from a consumer for the grants on that table arrives with no WHERE clause. Setup returns an empty predicate, and every row goes back to the consumer. The consumer is the one who filters. The producer does not invent a predicate the caller did not send.
+          So the predicate is created once, at the grants entry point, and passed down. The user-and-role walk is the orchestrator: scan users, then roles. The user walk and the role walk pass the predicate through. Evaluation happens only when the tuple is built, which is also the moment the row is complete: database, schema, object, type, privilege, identity, grantor. A user statement such as <span className="font-normal text-gray-900 dark:text-white">SHOW GRANTS ON TABLE t1 WHERE privilege_type = &apos;SELECT&apos;</span> is streaming, the setup returns a real predicate, and each row is filtered. A request that arrives with no WHERE clause returns an empty predicate, and every row goes back. The caller is the one who filters.
         </p>
 
         <GrantsChain />
 
         <p>
-          Once the tuple exists, three cases fall out of one function. If the privilege matches, skip the free, send the row, and return true so the caller can count it. If it does not match, free the tuple and return false. If the predicate pointer is null, skip the test and send the row. That third case is the RPC path and any caller that has no WHERE clause. It has to be a short-circuit, because there is nothing to evaluate.
+          Once the tuple exists, three cases fall out of one function. If the privilege matches, skip the free, send the row, and return true so the caller can count it. If it does not match, free the tuple and return false. If the predicate pointer is null, skip the test and send the row. That third case is any caller that has no WHERE clause. It has to be a short-circuit, because there is nothing to evaluate.
         </p>
 
         <GrantOutcomes />
@@ -918,7 +879,7 @@ function AmazonJourney({ onBack }) {
 
       <Chapter id="memory" kicker="05 — Memory" title="Every row allocates a tuple. The next row has to start from zero.">
         <p>
-          Building a tuple, for tables and for grants, allocates. A text column such as <span className="font-normal text-gray-900 dark:text-white">dev</span>, <span className="font-normal text-gray-900 dark:text-white">public</span>, or <span className="font-normal text-gray-900 dark:text-white">VIEW</span> is a <span className="font-normal text-gray-900 dark:text-white">palloc</span> inside the current PostgreSQL memory context. After ExecQual has said yes or no, that tuple is garbage. PostgreSQL does not free it because the statement ended. It frees a context when someone resets that context. If the loop never resets, a schema of 20,000 tables at about 300 bytes of temporary tuple each leaves about 6 MB allocated until the whole SHOW finishes. The result the client wanted might have been 40 rows. The other 19,960 tuples were only there to be rejected.
+          Building a tuple, for tables and for grants, allocates. A text column such as <span className="font-normal text-gray-900 dark:text-white">dev</span>, <span className="font-normal text-gray-900 dark:text-white">public</span>, or <span className="font-normal text-gray-900 dark:text-white">VIEW</span> is a <span className="font-normal text-gray-900 dark:text-white">palloc</span> inside the current PostgreSQL memory context. After ExecQual has said yes or no, that tuple is garbage. PostgreSQL does not free it because the statement ended. It frees a context when someone resets that context. If the loop never resets, every rejected row stays allocated until the whole SHOW finishes. The result the client wanted might have been a handful of rows.
         </p>
         <p>
           Two contexts keep that safe, and the order between them is the whole trick. The scratch context is where the tuple lives. It is emptied after the match returns, once the true or false has been read. The expression context is where ExecQual&apos;s own temporary results live. It is emptied inside the match, before the tuple is read. That order matters. The match has to see the tuple. The tuple must not sit in the context the match is about to wipe.
@@ -934,7 +895,7 @@ function AmazonJourney({ onBack }) {
 
       <Chapter id="narrow" kicker="06 — Narrowing" title="Ask the source for less, then check the real predicate anyway">
         <p>
-          Once the inline filter was correct, the remaining cost was obvious. A type filter still has to look at every object, build a tuple, and throw most of them away. That saves the network, because the client receives 40 rows instead of 3,000, and it still spends the classification work. An exact name can do better. The local catalog already knows how to look up <span className="font-normal text-gray-900 dark:text-white">table_name = &apos;orders&apos;</span> with an index key. A fixed prefix can bound a range. Glue already accepts a name pattern on its existing GetTables path, behind that pattern-pushdown setting. A datashare producer can be sent the fields it knows how to apply. The same SQL text cannot be handed to all three.
+          Once the inline filter was correct, the remaining cost was obvious. A type filter still has to look at every object, build a tuple, and throw most of them away. That saves the network, and it still spends the classification work. An exact name can do better. The catalog can look up an exact name directly. A fixed prefix can bound a range. A source that already accepts a name pattern can use that pattern. The same SQL text cannot be handed to every source.
         </p>
         <p>
           So pushdown is a narrowing hint. The extractor keeps safe top-level conjuncts: exact name matches and fixed-prefix LIKE. <span className="font-normal text-gray-900 dark:text-white">table_type = &apos;VIEW&apos;</span> usually cannot be pushed, because the source still has to classify the object before it knows the type. OR, IN, ILIKE, a nested NOT, and a leading-wildcard LIKE can still be correct through the inline check, and they may scan everything. Every candidate that survives the hint is passed through ExecQual on the original WHERE. If a hint is loose, or a source cannot accept it, the query may do more work, and the set of rows stays the same. That is the safety argument for the whole stretch: pushdown changes how much work a source does. The full WHERE decides which rows come back.
@@ -943,50 +904,13 @@ function AmazonJourney({ onBack }) {
           There are two savings, and they stay separate when I talk about speed. A type or subtype filter may still scan broadly and then return only the matches. That is a transfer saving. An exact name or a fixed prefix can also narrow the local catalog scan. That saves classification work and transfer. Exact-name cases are faster for that reason. The gain depends on whether the predicate is sargable and how selective it is.
         </p>
         <p>
-          The cluster logs from the internship are the picture of that split. I turned statement logging up and ran SHOW against a small schema of <span className="font-normal text-gray-900 dark:text-white">perf_test_*</span> tables.
-        </p>
-
-        <div className="grid gap-3 sm:grid-cols-3">
-          {[
-            ["full_scan", "A type filter. The catalog cannot narrow on table_type, so every candidate is built and the inline filter keeps or drops it."],
-            ["equality_pushdown", "An exact schema, table, or column name. The lookup returns that one object, and WHERE still runs on it."],
-            ["prefix_pushdown", "A fixed-prefix LIKE. The name range is bounded. The inline filter remains the membership test."],
-          ].map(([name, text]) => (
-            <div key={name} className="rounded-xl border border-gray-200 dark:border-white/10 p-4">
-              <p className="font-mono text-xs text-gray-900 dark:text-white mb-2">{name}</p>
-              <p className="text-sm leading-6 text-gray-600 dark:text-white/65">{text}</p>
-            </div>
-          ))}
-        </div>
-
-        <ClusterTraces />
-
-        <p>
-          The line to read in those logs is the pair of counts. <span className="font-normal text-gray-900 dark:text-white">rows_scanned</span> is what the hint asked the source to touch. <span className="font-normal text-gray-900 dark:text-white">SHOW WHERE filter: N rows in, M rows out</span> is the membership test. When they differ, the hint was wider than the predicate, and the predicate won.
+          Those three shapes are the split. A type filter still walks the candidates. An exact name or a fixed prefix can ask the source for less, and WHERE still decides membership.
         </p>
         <p>
-          The old cap order was the dangerous one: collect a broad candidate set, apply the cap, return that slice, then let the client filter. A match outside the first cap-sized slice is gone. The new order evaluates WHERE first and counts only matches toward the cap. This project wires that ordering for its FROM SCHEMA and FROM TABLE paths. The batched FROM DATABASE path has its own LIKE behavior and was not wired to this predicate layer. An 18.2× figure from a GRANTS batch or FROM DATABASE path belongs to that other work. I leave it off this project.
+          The old cap order was the dangerous one: collect a broad candidate set, apply the cap, return that slice, then let the client filter. A match outside that slice is gone. The new order evaluates WHERE first and counts only matches toward the cap. A separate batch path was not wired to this predicate, so its timings stay off these results.
         </p>
-        <p>
-          The eleven changes are that story in review order. The brief estimated about 800 to 1,200 lines including tests, with most of the parser and node plumbing being mechanical. The thinking was the synthetic range table, the allowlist, the executor wiring, and later the pushdown. I split it so each change could be reviewed on its own. The original week plan stopped at a GUC, docs, a sanity benchmark, and local-catalog pushdown only if the core had merged. The core finished early, so the stretch — grants, datashare, Glue prefixes — landed in the same internship, under the same rule.
-        </p>
-
-        <ol className="space-y-3">
-          {changes.map((change) => (
-            <li key={change.id} className="flex gap-3 sm:gap-4">
-              <span className="mt-0.5 w-[5.5rem] shrink-0 font-mono text-[11px] sm:text-xs tracking-wide text-gray-500 dark:text-white/45">
-                {change.id}
-              </span>
-              <span>
-                <span className="block text-gray-900 dark:text-white font-normal">{change.title}</span>
-                <span className="block text-sm leading-6">{change.detail}</span>
-              </span>
-            </li>
-          ))}
-        </ol>
-
         <Callout>
-          Across all eleven, the rule did not change. Push down what a source can safely use. The full WHERE decides the final result.
+          Push down what a source can safely use. The full WHERE decides the final result.
         </Callout>
       </Chapter>
 
@@ -995,7 +919,7 @@ function AmazonJourney({ onBack }) {
           Two demos, and they prove different things. The server demo uses a stock JDBC REPL that sends raw SHOW SQL. No patched driver is involved, because the SQL reaches Redshift directly. The walkthrough was an exact table name, <span className="font-normal text-gray-900 dark:text-white">table_subtype = &apos;MATERIALIZED VIEW&apos;</span> with LIMIT 5, then LIKE, ILIKE, and AND, then the same WHERE on SHOW COLUMNS, SHOW SCHEMAS, and SHOW GRANTS, then an empty result, then rejected shapes such as an aggregate or a non-boolean expression. That demo shows capability and SQL behavior. Materialized views were already filterable somewhere in the stack. The change is where the filter runs, and how many rows come back.
         </p>
         <p>
-          The client demo used a prepared cluster of about 2,000 tables and 40 materialized views. Baseline TRACE shows the stock driver sending a broad SHOW and filtering locally. A patched demo driver turns the same metadata call into <span className="font-normal text-gray-900 dark:text-white">WHERE table_subtype =</span> a bound parameter, visible in TRACE. A raw SHOW confirms the same 40-row answer. SHOW GRANTS filtered by privilege and identity was the functional extra on that demo. The patched JAR is a demo integration. The official JDBC driver does not yet emit this predicate. Emission from the official driver is a remaining production step, together with final compatibility validation and keeping selective SHOW cases in recurring regression coverage.
+          The client demo used a patched driver. The stock driver sent a broad SHOW and filtered locally. The patched driver turns the same metadata call into a WHERE predicate. A raw SHOW confirms the same 40-row answer. SHOW GRANTS filtered by privilege and identity was the functional extra on that demo. The official JDBC driver does not yet emit this predicate. Production driver integration remained a follow-up.
         </p>
         <p>
           Selectivity and catalog size decide the gain, so the numbers stay attached to the experiment that produced them.
@@ -1006,26 +930,26 @@ function AmazonJourney({ onBack }) {
             <p className="text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-white/40">Large-schema benchmark</p>
             <p className="text-3xl font-light text-gray-900 dark:text-white">~21×</p>
             <p>
-              <span className="font-normal text-gray-900 dark:text-white">dblarge.schema_large</span>, exact table lookup, about 2,665 ms down to 127 ms. That schema is about 30,300 tables. The comparable exact-name case on <span className="font-normal text-gray-900 dark:text-white">dbmedium.schema_large</span>, about 3,181 objects, was about 6×. A broad VIEW predicate was about 1.3×, because many rows still match.
+              Exact table lookup, about 2.7 s down to 127 ms, about 21×. A smaller exact-name case was about 6×. A broad VIEW predicate was about 1.3×, because many rows still match.
             </p>
             <p>
-              A materialized-view or subtype filter on the medium schema still classifies a broad candidate set, then returns 40 rows instead of about 3,181. Transfer drops by about 99%. Latency in that writeup was about 3.8×. That is the transfer saving. It is a different experiment from the index-narrowed exact-name case.
+              A materialized-view or subtype filter still classifies a broad candidate set, then returns 40 rows. Transfer drops by about 99%. Latency in that writeup was about 3.8×. That is the transfer saving. It is a different experiment from the exact-name case.
             </p>
           </div>
           <div className="rounded-xl border border-gray-200 dark:border-white/10 p-4 sm:p-5 space-y-3">
             <p className="text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-white/40">The cluster I probed</p>
             <p className="text-3xl font-light text-gray-900 dark:text-white">~2.2×</p>
             <p>
-              About 2,000 objects, plus 40 materialized views. <span className="font-normal text-gray-900 dark:text-white">getTables</span> for MATERIALIZED VIEW returned 0 rows before the patched driver emitted WHERE, and 40 rows after. Rows fetched dropped from about 2,041 to 40, about 99% fewer rows on the wire. Latency on that cluster was about 2.2×. When the number has to be the one from this cluster, I say about 2 to 3×, and I keep 21× labeled as the large-schema exact-name benchmark.
+              <span className="font-normal text-gray-900 dark:text-white">getTables</span> for MATERIALIZED VIEW returned 0 rows before the patched driver emitted WHERE, and 40 rows after. Rows fetched dropped from about 2,041 to 40. Latency on that demo was about 2.2×. The 21× figure stays labeled as the large-schema exact-name benchmark.
             </p>
             <p>
-              Before pushdown, the sanity target was different. On a 10,000-table snapshot, <span className="font-normal text-gray-900 dark:text-white">SHOW TABLES WHERE table_name LIKE &apos;t%&apos;</span> was expected to be at most 10 to 15% slower than the existing LIKE path, because of one expression context and a slot per row. Pushdown is what turns a selective predicate into a speedup.
+              Before narrowing, a selective name filter was not expected to be much slower than the existing LIKE path. Narrowing is what turns a selective predicate into a speedup.
             </p>
           </div>
         </div>
 
         <p>
-          Cantos is a third kind of evidence, and it is a guard. The candidate build was compared with a baseline. The captured run passed overall and showed no statistically significant regression signal. I call that regression testing with Cantos, or Cantos jj-diff. Targeted SHOW measurements show the benefit of filtering. Cantos is the check that the rest of the system held its speed.
+          A candidate build was compared with a baseline and showed no significant regression. Targeted SHOW measurements show the benefit of filtering. The comparison is the check that the rest of the system held its speed.
         </p>
         <p>
           The operators I included are the contract from the brief, exercised as SQL. Equality, inequality, LIKE, NOT LIKE, ILIKE, IN, IS NULL, IS NOT NULL, AND, OR, NOT, nested boolean structure, LIMIT after WHERE, and an implicit cast such as comparing a name to an integer, which PostgreSQL accepts by inserting a cast.
@@ -1034,16 +958,16 @@ function AmazonJourney({ onBack }) {
         <OperatorTable />
 
         <p>
-          Around that subset, the edges are part of the behavior a caller can rely on. An empty result returns zero rows and is success, and an empty candidate set never builds executor state. An empty string compares normally. NULL follows PostgreSQL: a comparison with NULL is unknown, and IS NULL is the way to ask. An unknown column dies at parse-analyze. A subquery, an aggregate, or a window dies in the subset validator. The legacy LIKE clause combined with WHERE dies in the grammar. A disabled GUC dies before execution. A dropped table owner does not crash the scan. A cross-database query and an external schema still run the same filter on the rows that come back. Prepared statements go through as Param nodes and are evaluated at execute time, because RAFF cannot bind an extended-protocol parameter onto a SHOW utility statement; PREPARE and EXECUTE cover that case. A runtime fault inside one row is caught, the executor state is cleaned up, and the error is rethrown as a query error.
+          Around that subset, the edges are part of the behavior a caller can rely on. An empty result returns zero rows and is success, and an empty candidate set never builds executor state. An empty string compares normally. NULL follows PostgreSQL: a comparison with NULL is unknown, and IS NULL is the way to ask. An unknown column dies at parse-analyze. A subquery, an aggregate, or a window dies in the subset validator. The legacy LIKE clause combined with WHERE dies in the grammar. Turning the feature off dies before execution. A dropped table owner does not crash the scan. A cross-database query and an external schema still run the same filter on the rows that come back. Prepared statements are evaluated at execute time. PREPARE and EXECUTE cover that case. A runtime fault inside one row is caught, the executor state is cleaned up, and the error is rethrown as a query error.
         </p>
 
         <EdgeTable />
 
         <p>
-          The test layers stop where the evidence stops. Parser and negative tests check that SHOW WHERE parses into a statement that carries the clause, and that the validator rejects a subquery, a function call, an unknown column, a type mismatch, and a disabled switch. The integration tests cover equality and IN on table_type, LIKE and ILIKE, AND, OR with parentheses, IS NULL, NOT LIKE, a prepared statement with <span className="font-normal text-gray-900 dark:text-white">table_type = $1</span>, LIMIT after WHERE, an unknown column, and the feature-off error. Three of them anchor the rest: one for validation at parse-analyze, one for end-to-end filtering, and one for an unknown column. Integration goldens for TABLES, SCHEMAS, and COLUMNS cover a positive match and a no-match across local, cross-database, cross-cluster datashare, external schema, and direct connect or DSW. Existing SHOW tests were required to keep passing unchanged, because the LIKE path was left in place. Glue and Lake Formation tests are gated on that infrastructure. Parse and executor errors that do not depend on the discovery source are tested once locally, which keeps them from being copied across five contexts.
+          The test layers stop where the evidence stops. Parser and negative tests check that SHOW WHERE parses into a statement that carries the clause, and that the validator rejects a subquery, a function call, an unknown column, a type mismatch, and a disabled switch. The integration tests cover equality and IN on table_type, LIKE and ILIKE, AND, OR with parentheses, IS NULL, NOT LIKE, a prepared statement with <span className="font-normal text-gray-900 dark:text-white">table_type = $1</span>, LIMIT after WHERE, an unknown column, and the feature-off error. Three of them anchor the rest: one for validation at parse-analyze, one for end-to-end filtering, and one for an unknown column. Integration checks for TABLES, SCHEMAS, and COLUMNS cover a positive match and a no-match on local catalogs, cross-database queries, and external schemas. Existing SHOW tests were required to keep passing unchanged, because the LIKE path was left in place. Parse and executor errors that do not depend on the discovery source are tested once, which keeps them from being copied across every context.
         </p>
         <p>
-          The implementation of the eleven changes was complete and in review by the end of the internship. What a customer still needs, before this is an ordinary production capability, is the rest of the path: finish compatibility validation, emit the predicate from the official JDBC driver, and keep selective SHOW cases in recurring regression coverage. The deliberate limits stay. Subqueries, aggregates, windows, and arbitrary function calls are rejected. Supported pushdown is mainly safe name-oriented predicates. Richer boolean shapes still return the right rows through the inline check, and they may scan more. SHOW SELECT projection is a separate feature. A new SHOW command can reuse the result descriptor, the shared analysis, and the row evaluator, and can add its own narrowing later. A new optimization is held to the same rule as the eleven changes: it can reduce work, and it has to agree with the full predicate.
+          The work was implemented and validated in review by the end of the internship. Production driver integration remained a follow-up: the official JDBC driver still had to emit the predicate. Subqueries, aggregates, windows, and arbitrary function calls are rejected. Supported narrowing is mainly safe name-oriented predicates. Richer boolean shapes still return the right rows through the inline check, and they may scan more. Returning fewer columns stayed a separate feature. A new optimization can reduce work, and it has to agree with the full predicate.
         </p>
         <Callout>
           A driver can now ask for the rows it actually wants. The server resolves that question against a result that was never a table, checks it with the same executor SELECT uses, throws away the temporary tuple before the next row, and only then lets a source skip work it can prove is irrelevant. The rows that come back are the rows the predicate accepted.
