@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
+import hydrowLogo from "../../../public/hydrow.jpg";
 
 function BulletList({ items }) {
   return (
@@ -24,8 +26,8 @@ const summaryBullets = [
 
 function HydrowMark() {
   return (
-    <div className="flex h-10 w-[4.2rem] flex-shrink-0 items-center justify-center rounded-md bg-[#0b1f33] text-[10px] font-semibold tracking-[0.14em] text-white">
-      HYDROW
+    <div className="relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-md">
+      <Image src={hydrowLogo} alt="Hydrow" fill className="object-cover" />
     </div>
   );
 }
