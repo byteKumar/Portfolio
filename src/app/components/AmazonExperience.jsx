@@ -301,11 +301,11 @@ function ExecutionWalk() {
       <div className="mt-4 grid gap-2 sm:grid-cols-2 text-sm">
         <p className="rounded-xl bg-gray-50 dark:bg-white/[0.04] px-3 py-2.5 text-gray-600 dark:text-white/70">
           <span className="block font-medium text-gray-900 dark:text-white">SHOW SCHEMAS</span>
-          Same loop, with that command's own descriptor and tuple builder.
+          Same loop, with the descriptor and tuple builder for that command.
         </p>
         <p className="rounded-xl bg-gray-50 dark:bg-white/[0.04] px-3 py-2.5 text-gray-600 dark:text-white/70">
           <span className="block font-medium text-gray-900 dark:text-white">SHOW COLUMNS</span>
-          Same loop, with that command's own descriptor and tuple builder.
+          Same loop, with the descriptor and tuple builder for that command.
         </p>
       </div>
     </Diagram>
