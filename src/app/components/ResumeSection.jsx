@@ -2718,13 +2718,13 @@ const ResumeSection = () => {
                       <div className="space-y-4">
                         <h4 className="text-xl font-light text-gray-900 dark:text-white/90 mb-4">Web/Frameworks</h4>
                         <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
-                          React, Node.js, Next.js, Express, Spring Boot, .NET, Angular, HTML5/CSS3, Webpack, Socket.IO
+                          React, Node.js, Next.js, NestJS, Express, Spring Boot, .NET, Angular, Tailwind CSS, Material UI, Chart.js, HTML5/CSS3, Webpack, Socket.IO
                         </p>
                       </div>
                       <div className="space-y-4">
                         <h4 className="text-xl font-light text-gray-900 dark:text-white/90 mb-4">Databases/Testing</h4>
                         <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
-                          MySQL, PostgreSQL, DynamoDB, MongoDB, Redis, JUnit, Mockito, Jest, Postman, SonarQube
+                          MySQL, PostgreSQL, Amazon Redshift, TypeORM, JDBC, DynamoDB, MongoDB, Redis, JUnit, Mockito, Jest, Postman, SonarQube
                         </p>
                       </div>
                       <div className="space-y-4">
@@ -2748,7 +2748,7 @@ const ResumeSection = () => {
                       <div className="md:col-span-2 space-y-4">
                         <h4 className="text-xl font-light text-gray-900 dark:text-white/90 mb-4">Other Tools</h4>
                         <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-light">
-                          Selenium, jQuery, CloudWatch, Cypress, Git, Linux/Bash, CI/CD, GitHub Actions, REST API, JWT
+                          Selenium, jQuery, CloudWatch, Cypress, Stripe, Git, Linux/Bash, CI/CD, GitHub Actions, REST API, JWT
                         </p>
                       </div>
                     </div>
